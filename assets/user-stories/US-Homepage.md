@@ -1,7 +1,7 @@
 ---
-name: Homage
-about: This is the landing page
-title: 'homepage'
+name: Activities-App
+about: An App for planning and getting inspiring activity ideas.
+title: "(in progress)"
 labels: ''
 assignees: 'Jessica, Volker, Dominik, Richard'
 

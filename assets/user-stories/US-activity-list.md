@@ -1,7 +1,7 @@
 ---
-name: Homage
-about: This is the landing page
-title: 'homepage'
+name: Activities-App
+about: An App for planning and getting inspiring activity ideas.
+title: "(in progress)"
 labels: ''
 assignees: 'Jessica, Volker, Dominik, Richard'
 
@@ -9,19 +9,16 @@ assignees: 'Jessica, Volker, Dominik, Richard'
 
 ## Value proposition
 As a outdoor enthusiast </br>
-I want to see an activating Spotlight </br>
-In order to get inspired to explore a fresh outdoor activity
+I want to see a list of categories in form of images </br>
+In order to navigate between different areas of activity and choose the most intriguing
 
 ## Description
-<img src="../images/user-story-wireframes/hompage-wireframe.png">
+<img src="../images/user-story-wireframes">
 
 ## Acceptance criteria
-- [ ] Opening the app you will see a spotlight page
-- [ ] Above the spotlight you can see the app title or logo
-- [ ] The spotlight page displays an weather forcast
-- [ ] ... and also includes a random "activity of the day" in form of an teaser-image
-- [ ] A navigation bar is shown at the bottom of the page
-- [ ] The Navbar consists of: homepage icon, category overview icon, add activity icon, profile icon
+- [ ] Entering the category overview we see 
+- [ ] 
+
 ## Tasks
 - [ ] Creat a next.js page
 - [ ] A title via a h1
