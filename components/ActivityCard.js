@@ -10,18 +10,22 @@ const StyledDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 25px;
 `;
 
 const StyledTitle = styled.p`
   margin: 0;
   padding: 0;
   font-size: 15px;
+  margin-top: 10px;
 `;
 
 const StyledArea = styled.p`
   margin: 0;
   padding: 0;
   font-size: 10px;
+  margin-top: 10px;
+  padding-top: 2.5px;
 `;
 
 export default function ActivityCard({ image, title, area }) {

@@ -6,6 +6,13 @@ const StyledLi = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  margin: 0px 30px 0px 30px;
+  padding: 20px 0 20px 0;
 `;
 
 const StyledUl = styled.ul`
@@ -16,10 +23,14 @@ const StyledUl = styled.ul`
   margin: 0;
 `;
 
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
+
 export default function HomePage() {
   return (
     <>
-      <h1>List of Activities</h1>
+      <StyledHeadline>List of Activities</StyledHeadline>
       <StyledUl>
         {activities.map((activity) => (
           <StyledLi key={activity.id}>
