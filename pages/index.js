@@ -35,6 +35,7 @@ export default function HomePage() {
         {activities.map((activity) => (
           <StyledLi key={activity.id}>
             <ActivityCard
+              id={activity.id}
               image={activity.image}
               title={activity.title}
               area={activity.area}
