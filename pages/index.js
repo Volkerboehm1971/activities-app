@@ -1,6 +1,7 @@
 import { activities } from "@/lib/dummydata";
 import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
+import Link from "next/link";
 
 const StyledLi = styled.li`
   display: flex;
@@ -27,6 +28,15 @@ const StyledHeadline = styled.h1`
   text-align: center;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #4caf50;
+  border: 5px solid #4caf50;
+  border-radius: 5px;
+  margin-left: 10px;
+`;
+
 export default function HomePage() {
   return (
     <>
@@ -42,6 +52,7 @@ export default function HomePage() {
           </StyledLi>
         ))}
       </StyledUl>
+      <StyledLink href="/create">Add new Activity →</StyledLink>
     </>
   );
 }
