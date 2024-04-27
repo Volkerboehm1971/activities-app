@@ -2,23 +2,46 @@ import styled from "styled-components";
 import Image from "next/image";
 import { activities } from "@/lib/dummydata";
 import { useRouter } from "next/router";
+import Link from "next/link";
+
+
+const StyledHeadline = styled.h2`
+    text-align: center;
+`;
 
 const StyledButton = styled.button`
-    position: relative;
-    
+    position: absolute;
+    left: 8%;
+    padding: 1% 3%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: transparent;
 `
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`
+
 const StyledSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 8vw;
-    margin-right: 5vw;
-    margin-top: 10vw;
+    margin-right: 8vw;
+    margin-top: 15vw;
 `
+
 
 const StyledImage = styled(Image)`
-   position: relative;
-
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 5vw;
+    border-radius: 13px;
 `
 
 const StyledSubheader = styled.h5`
+    margin-top: 2vw;
     margin-bottom: 0;
 `
 
@@ -48,10 +71,11 @@ export default function ActivityCardDetails(){
 
     return (
         <>  
-            <StyledButton></StyledButton>
-            <StyledImage src={detailActivity.image} width={187.5} height={140.5} alt="hiker on a mountain"/>
+            <StyledHeadline>Details of Activity</StyledHeadline>
+            <StyledButton><StyledLink href="/">Back</StyledLink></StyledButton>
+            
             <StyledSection>
-
+                <StyledImage src={detailActivity.image} width={187.5} height={140.5} alt="hiker on a mountain"/>
                 <StyledSubheader>Type of Tour</StyledSubheader>
                     <Styledinfo>{detailActivity.title}</Styledinfo>
 

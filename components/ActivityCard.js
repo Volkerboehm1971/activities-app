@@ -1,11 +1,19 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  &:active {
+  color: black;
+}
+`
 
 const StyledImage = styled(Image)`
-  /* object-fit: cover; */
+      border-radius: 13px;
 `;
 
 const StyledDiv = styled.div`
@@ -33,19 +41,15 @@ const StyledArea = styled.p`
 
 export default function ActivityCard({ id, image, title, area }) {
 
-  // const router = useRouter();
-  // const { id } = router.query;
-  // console.log(id)
-
   return (
     <>
-      <Link href={`/${id}`}>
+      <StyledLink href={`/${id}`}>
       <StyledImage src={image} width={187.5} height={140.5} alt="" />
       <StyledDiv>
         <StyledTitle>{title}</StyledTitle>
         <StyledArea>{area}</StyledArea>
       </StyledDiv>
-      </Link>
+      </StyledLink>
     </>
   );
 }
