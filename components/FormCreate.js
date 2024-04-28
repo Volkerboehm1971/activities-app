@@ -1,11 +1,13 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { useId } from "react";
+import { images } from "@/next.config";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #ffffff;
-  background-color: #4caf50;
-  border: 5px solid #4caf50;
+  background-color: #3e407d;
+  border: 5px solid #3e407d;
   border-radius: 5px;
   margin-left: 10px;
   font-size: 17px;
@@ -52,7 +54,9 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function FormCreate() {
+export default function FormCreate({ onSubmit }) {
+  const id = useId();
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -60,12 +64,16 @@ export default function FormCreate() {
     const data = Object.fromEntries(formData);
 
     const newActivity = {
+      id,
       title: data.title,
       category: data.category,
       area: data.area,
       country: data.country,
+      image: data.image,
       description: data.description,
     };
+
+    onSubmit(newActivity);
 
     console.log(newActivity);
   }
@@ -109,6 +117,18 @@ export default function FormCreate() {
         <StyledSection>
           <label htmlFor="country">Country</label>
           <StyledInput id="country" name="country" type="text" required />
+        </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="image">Image URL</label>
+          <StyledInput
+            id="image"
+            name="image"
+            type="url"
+            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            required
+            readOnly
+          />
         </StyledSection>
 
         <StyledSection>

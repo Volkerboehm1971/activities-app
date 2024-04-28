@@ -3,6 +3,18 @@ import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
 
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
+
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 0 65px 0;
+  margin: 0;
+`;
+
 const StyledLi = styled.li`
   display: flex;
   flex-direction: column;
@@ -16,25 +28,19 @@ const StyledLi = styled.li`
   padding: 20px 0 20px 0;
 `;
 
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 0;
-  margin: 0;
-`;
-
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
-
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #ffffff;
-  background-color: #4caf50;
-  border: 5px solid #4caf50;
+  text-align: center;
+  font-size: 18px;
+  color: #2c3752;
+  background-color: #faa62f;
+  border: 8px solid #faa62f;
   border-radius: 5px;
-  margin-left: 10px;
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 100;
 `;
 
 export default function HomePage() {
