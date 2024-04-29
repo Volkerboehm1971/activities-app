@@ -1,16 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
 
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
 
-  &:active {
-  color: black;
-}
-`
 
 const StyledImage = styled(Image)`
       border-radius: 13px;
@@ -39,17 +31,17 @@ const StyledArea = styled.p`
   padding-top: 2.5px;
 `;
 
-export default function ActivityCard({ id, image, title, area }) {
+export default function ActivityCard({ image, title, area }) {
 
   return (
     <>
-      <StyledLink href={`/${id}`}>
+  
       <StyledImage src={image} width={187.5} height={140.5} alt="" />
       <StyledDiv>
         <StyledTitle>{title}</StyledTitle>
         <StyledArea>{area}</StyledArea>
       </StyledDiv>
-      </StyledLink>
+   
     </>
   );
 }

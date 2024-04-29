@@ -63,7 +63,6 @@ export default function ActivityCardDetails(){
     const { id } = router.query;
 
     const detailActivity = activities.find((activity) => activity.id === id);
-    console.log(detailActivity);
 
     if (!detailActivity) {
         return null;
@@ -72,7 +71,7 @@ export default function ActivityCardDetails(){
     return (
         <>  
             <StyledHeadline>Details of Activity</StyledHeadline>
-            <StyledButton><StyledLink href="/">Back</StyledLink></StyledButton>
+            <StyledLink href="/"><StyledButton>Back</StyledButton></StyledLink>
             
             <StyledSection>
                 <StyledImage src={detailActivity.image} width={187.5} height={140.5} alt="hiker on a mountain"/>
