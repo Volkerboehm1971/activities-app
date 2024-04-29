@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-const StyledLink = styled(Link)`
+const StyledLinkHomePage = styled(Link)`
   text-decoration: none;
   color: #ffffff;
   background-color: #3e407d;
@@ -53,7 +53,7 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function FormCreate({ addActivity }) {
+export default function FormCreate({ onAddActivity }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -71,14 +71,14 @@ export default function FormCreate({ addActivity }) {
       description: data.description,
     };
 
-    addActivity(newActivity);
+    onAddActivity(newActivity);
 
     router.push("/");
   }
 
   return (
     <>
-      <StyledLink href="/">← Back</StyledLink>
+      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
       <StyledForm onSubmit={handleSubmit}>
         <StyledSection>
           <label htmlFor="title">Activity Name</label>

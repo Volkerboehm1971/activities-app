@@ -2,14 +2,26 @@ import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
 
-const StyledLink = styled(Link)`
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
+
+const StyledUl = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 0 65px 0;
+  margin: 0 2rem 0 2rem;
+`;
+
+const StyledLinkDetailsPage = styled(Link)`
   text-decoration: none;
   color: black;
 
   &:active {
-  color: black;
-}
-`
+    color: black;
+  }
+`;
 
 const StyledLi = styled.li`
   display: flex;
@@ -23,16 +35,9 @@ const StyledLi = styled.li`
   padding: 20px 0 20px 0;
 `;
 
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 0;
-  margin: 0 2rem 0 2rem;
-`;
-
-const StyledHeadline = styled.h1`
+const StyledLinkAddActivity = styled(Link)`
   text-align: center;
+  text-decoration: none;
   font-size: 18px;
   color: #2c3752;
   background-color: #faa62f;
@@ -52,20 +57,22 @@ export default function HomePage({ activities }) {
       <StyledUl>
         {activities.map((activity) => (
           <>
-          <StyledLink href={`/${activity.id}`}>
-          <StyledLi key={activity.id}>
-            <ActivityCard
-              id={activity.id}
-              image={activity.image}
-              title={activity.title}
-              area={activity.area}
-            />
-          </StyledLi>
-          </StyledLink>
+            <StyledLinkDetailsPage href={`/${activity.id}`}>
+              <StyledLi key={activity.id}>
+                <ActivityCard
+                  id={activity.id}
+                  image={activity.image}
+                  title={activity.title}
+                  area={activity.area}
+                />
+              </StyledLi>
+            </StyledLinkDetailsPage>
           </>
         ))}
       </StyledUl>
-      <StyledLink href="/create">Add new Activity →</StyledLink>
+      <StyledLinkAddActivity href="/create">
+        Add new Activity →
+      </StyledLinkAddActivity>
     </>
   );
 }

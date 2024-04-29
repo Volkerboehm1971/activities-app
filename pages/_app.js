@@ -9,15 +9,15 @@ export default function App({ Component, pageProps }) {
   });
 
   function handleAddActivity(newActivity) {
-    const setNewActivties = { ...newActivity, id: uuid() };
-    setActivties([setNewActivties, ...activities]);
+    const newActivitiyWithID = { ...newActivity, id: uuid() };
+    setActivties([newActivitiyWithID, ...activities]);
   }
 
   return (
     <>
       <GlobalStyle />
       <Component
-        addActivity={handleAddActivity}
+        onAddActivity={handleAddActivity}
         activities={activities}
         {...pageProps}
       />

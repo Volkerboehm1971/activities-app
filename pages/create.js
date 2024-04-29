@@ -6,11 +6,11 @@ const StyledHeadline = styled.h1`
   text-align: center;
 `;
 
-export default function CreateActivityPage({ addActivity }) {
+export default function CreateActivityPage({ onAddActivity }) {
   return (
     <>
       <StyledHeadline>Create a new activity</StyledHeadline>
-      <FormCreate addActivity={addActivity} />
+      <FormCreate onAddActivity={onAddActivity} />
     </>
   );
 }
