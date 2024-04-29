@@ -1,7 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
-import { useId } from "react";
-import { images } from "@/next.config";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -54,8 +53,8 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function FormCreate({ onSubmit }) {
-  const id = useId();
+export default function FormCreate({ addActivity }) {
+  const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -64,7 +63,6 @@ export default function FormCreate({ onSubmit }) {
     const data = Object.fromEntries(formData);
 
     const newActivity = {
-      id,
       title: data.title,
       category: data.category,
       area: data.area,
@@ -73,9 +71,9 @@ export default function FormCreate({ onSubmit }) {
       description: data.description,
     };
 
-    onSubmit(newActivity);
+    addActivity(newActivity);
 
-    console.log(newActivity);
+    router.push("/");
   }
 
   return (
@@ -95,7 +93,6 @@ export default function FormCreate({ onSubmit }) {
         </StyledSection>
 
         <StyledSection>
-          {" "}
           <label htmlFor="category">Category of Activity</label>
           <StyledSelect id="category" name="category" required>
             <option value="">--Please select a category--</option>
@@ -141,8 +138,7 @@ export default function FormCreate({ onSubmit }) {
             required
           />
         </StyledSection>
-
-        <StyledButton type="input">Add Activity</StyledButton>
+        <StyledButton type="submit">Add Activity</StyledButton>
       </StyledForm>
     </>
   );

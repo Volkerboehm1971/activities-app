@@ -1,4 +1,3 @@
-import { activities } from "@/lib/dummydata";
 import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
@@ -43,7 +42,7 @@ const StyledLink = styled(Link)`
   z-index: 100;
 `;
 
-export default function HomePage() {
+export default function HomePage({ activities }) {
   return (
     <>
       <StyledHeadline>List of Activities</StyledHeadline>
