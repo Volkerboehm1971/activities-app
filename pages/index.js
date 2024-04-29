@@ -1,8 +1,6 @@
-import { activities } from "@/lib/dummydata";
 import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
-
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -35,9 +33,19 @@ const StyledUl = styled.ul`
 
 const StyledHeadline = styled.h1`
   text-align: center;
+  font-size: 18px;
+  color: #2c3752;
+  background-color: #faa62f;
+  border: 8px solid #faa62f;
+  border-radius: 5px;
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 100;
 `;
 
-export default function HomePage() {
+export default function HomePage({ activities }) {
   return (
     <>
       <StyledHeadline>List of Activities</StyledHeadline>
@@ -57,6 +65,7 @@ export default function HomePage() {
           </>
         ))}
       </StyledUl>
+      <StyledLink href="/create">Add new Activity →</StyledLink>
     </>
   );
 }
