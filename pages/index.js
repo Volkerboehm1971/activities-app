@@ -30,7 +30,7 @@ const StyledUl = styled.ul`
   flex-direction: column;
   gap: 25px;
   padding: 0;
-  margin: 0 5vw 0 5vw;
+  margin: 0 2rem 0 2rem;
 `;
 
 const StyledHeadline = styled.h1`
