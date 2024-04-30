@@ -88,7 +88,7 @@ export default function FormCreate({ onAddActivity }) {
             type="text"
             minLength="1"
             maxLength="150"
-            pattern="[A-Za-z\s]+"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
@@ -113,7 +113,7 @@ export default function FormCreate({ onAddActivity }) {
             id="area"
             name="area"
             type="text"
-            pattern="[A-Za-z\s]+"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
@@ -124,7 +124,7 @@ export default function FormCreate({ onAddActivity }) {
             id="country"
             name="country"
             type="text"
-            pattern="[A-Za-z\s]+"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
@@ -147,7 +147,7 @@ export default function FormCreate({ onAddActivity }) {
             rows="8"
             name="description"
             type="text"
-            pattern="[A-Za-z\s]+"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
