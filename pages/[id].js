@@ -1,26 +1,21 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { activities } from "@/lib/dummydata";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const StyledHeadline = styled.h2`
+const StyledHeadline = styled.h1`
   text-align: center;
 `;
 
-const StyledButton = styled.button`
-
-`;
-
-const StyledLink = styled(Link)`
+const StyledLinkHomePage = styled(Link)`
   text-decoration: none;
-  color: black;
-  position: absolute;
-  left: 8%;
-  padding: 1% 3%;
-  border: 1px solid black;
-  border-radius: 10px;
-  background-color: transparent;
+  color: #ffffff;
+  background-color: #3e407d;
+  border: 5px solid #3e407d;
+  border-radius: 5px;
+  margin-top: 500px;
+  margin-left: 30px;
+  font-size: 17px;
 `;
 
 const StyledSection = styled.section`
@@ -29,7 +24,7 @@ const StyledSection = styled.section`
   justify-content: center;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
-  margin-top: 3.9rem;
+  margin-top: 2.7rem;
   max-height: 500px;
 `;
 const StyledDiv = styled.div`
@@ -50,8 +45,8 @@ const StyledSubheader = styled.h3`
 `;
 
 const Styledinfo = styled.p`
-font-size: small; 
-margin-top: 0.3rem;
+  font-size: small;
+  margin-top: 0.3rem;
 `;
 
 const Styledarticle = styled.p`
@@ -62,7 +57,7 @@ const Styledarticle = styled.p`
   padding-right: 1.5rem;
 `;
 
-export default function ActivityCardDetails() {
+export default function ActivityCardDetails({ activities }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -75,7 +70,7 @@ export default function ActivityCardDetails() {
   return (
     <>
       <StyledHeadline>Details of Activity</StyledHeadline>
-      <StyledLink href="/">Back</StyledLink>
+      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
 
       <StyledSection>
         <StyledDiv>

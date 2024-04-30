@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-const StyledLink = styled(Link)`
+const StyledLinkHomePage = styled(Link)`
   text-decoration: none;
   color: #ffffff;
   background-color: #3e407d;
@@ -53,7 +53,7 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function FormCreate({ addActivity }) {
+export default function FormCreate({ onAddActivity }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -71,14 +71,14 @@ export default function FormCreate({ addActivity }) {
       description: data.description,
     };
 
-    addActivity(newActivity);
+    onAddActivity(newActivity);
 
     router.push("/");
   }
 
   return (
     <>
-      <StyledLink href="/">← Back</StyledLink>
+      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
       <StyledForm onSubmit={handleSubmit}>
         <StyledSection>
           <label htmlFor="title">Activity Name</label>
@@ -88,6 +88,7 @@ export default function FormCreate({ addActivity }) {
             type="text"
             minLength="1"
             maxLength="150"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
@@ -108,12 +109,24 @@ export default function FormCreate({ addActivity }) {
 
         <StyledSection>
           <label htmlFor="area">Area</label>
-          <StyledInput id="area" name="area" type="text" required />
+          <StyledInput
+            id="area"
+            name="area"
+            type="text"
+            pattern="^(?!.*\s{2,}).+$"
+            required
+          />
         </StyledSection>
 
         <StyledSection>
           <label htmlFor="country">Country</label>
-          <StyledInput id="country" name="country" type="text" required />
+          <StyledInput
+            id="country"
+            name="country"
+            type="text"
+            pattern="^(?!.*\s{2,}).+$"
+            required
+          />
         </StyledSection>
 
         <StyledSection>
@@ -124,7 +137,6 @@ export default function FormCreate({ addActivity }) {
             type="url"
             defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             required
-            readOnly
           />
         </StyledSection>
 
@@ -135,6 +147,7 @@ export default function FormCreate({ addActivity }) {
             rows="8"
             name="description"
             type="text"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
