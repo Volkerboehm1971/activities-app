@@ -57,6 +57,18 @@ const Styledarticle = styled.p`
   padding-right: 1.5rem;
 `;
 
+const StyledButton = styled.button`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 15px;
+  color: #ffffff;
+  background-color: #ed3021;
+  border: 7px solid #ed3021;
+  border-radius: 5px;
+  font-size: 18px;
+`;
+
 export default function ActivityCardDetails({ activities }) {
   const router = useRouter();
   const { id } = router.query;
@@ -99,6 +111,8 @@ export default function ActivityCardDetails({ activities }) {
           <Styledarticle>{detailActivity.description}</Styledarticle>
         </StyledDiv>
       </StyledSection>
+
+      <StyledButton>Delete</StyledButton>
     </>
   );
 }
