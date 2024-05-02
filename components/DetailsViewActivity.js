@@ -12,7 +12,6 @@ const StyledLinkHomePage = styled(Link)`
   background-color: #3e407d;
   border: 5px solid #3e407d;
   border-radius: 5px;
-  margin-top: 500px;
   margin-left: 30px;
   font-size: 17px;
 `;
@@ -52,7 +51,6 @@ const StyledArticle = styled.p`
   line-height: 1.4;
   font-size: small;
   margin-top: 0.7rem;
-  /* text-align: justify; */
   padding-right: 1.5rem;
 `;
 
