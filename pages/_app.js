@@ -16,6 +16,16 @@ export default function App({ Component, pageProps }) {
     setActivties([newActivitiyWithID, ...activities]);
   }
 
+  function handleEditActivity(modifiedActivity, id) {
+    const modifiedState = activities.map((activity) => {
+      if (activity.id !== id) {
+        return activity;
+      }
+      return modifiedActivity;
+    });
+    setActivties(modifiedState);
+  }
+
   function handleDeleteActivity(id) {
     const updatedActivities = activities.filter(
       (activity) => activity.id !== id
@@ -31,6 +41,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Component
         onAddActivity={handleAddActivity}
+        onEditActivity={handleEditActivity}
         onDeleteActivity={handleDeleteActivity}
         activities={activities}
         {...pageProps}

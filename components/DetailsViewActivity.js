@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -27,6 +28,7 @@ const StyledSection = styled.section`
   margin-top: 2rem;
   max-height: 500px;
 `;
+
 const StyledDiv = styled.div`
   margin-top: 0.5rem;
 `;
@@ -89,7 +91,9 @@ export default function DetailsViewActivity({
   detailActivity,
   isDeleteMode,
   setIsDeleteMode,
+  id,
 }) {
+  const router = useRouter();
   return (
     <>
       <StyledHeadline>Details of Activity</StyledHeadline>
@@ -122,7 +126,12 @@ export default function DetailsViewActivity({
         </StyledDiv>
       </StyledSection>
       <StyledButtonContainer>
-        <StyledButtonEdit type="button">Edit</StyledButtonEdit>
+        <StyledButtonEdit
+          type="button"
+          onClick={() => router.push(`/${id}/edit`)}
+        >
+          Edit
+        </StyledButtonEdit>
         <StyledButtonDelete
           type="button"
           onClick={() => setIsDeleteMode(!isDeleteMode)}

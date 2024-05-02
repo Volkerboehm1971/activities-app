@@ -28,6 +28,7 @@ export default function ActivityCardDetails({ activities, onDeleteActivity }) {
           detailActivity={detailActivity}
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
+          id={id}
         />
       )}
     </>
