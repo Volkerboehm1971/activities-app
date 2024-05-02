@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
+import DeleteActivityWindow from "@/components/DeleteActivityWindow";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -71,31 +72,6 @@ const StyledButtonDeletePage = styled.button`
   font-size: 18px;
 `;
 
-const StyledArticle = styled.p`
-  line-height: 1.4;
-  font-size: medium;
-  margin-top: 150px;
-  text-align: center;
-`;
-
-const StyledLinkCancel = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
-  border-radius: 5px;
-  padding: 3px;
-  font-size: 18px;
-`;
-
-const StyledButton = styled.button`
-  color: #ffffff;
-  background-color: #ed3021;
-  border: 7px solid #ed3021;
-  border-radius: 5px;
-  font-size: 18px;
-`;
-
 export default function ActivityCardDetails({ activities, onDeleteActivity }) {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
   const router = useRouter();
@@ -107,25 +83,10 @@ export default function ActivityCardDetails({ activities, onDeleteActivity }) {
     return null;
   }
 
-  const handleClick = () => {
-    router.push("/delete");
-  };
-
   return (
     <>
       {isDeleteMode ? (
-        <>
-          <StyledArticle>
-            Do you really want <br />
-            to delete the Activity?
-          </StyledArticle>
-          <StyledSection>
-            <StyledLinkCancel href="/">Cancel</StyledLinkCancel>
-            <StyledButton onClick={() => onDeleteActivity(id)}>
-              Delete
-            </StyledButton>
-          </StyledSection>
-        </>
+        <DeleteActivityWindow onDeleteActivity={() => onDeleteActivity(id)} />
       ) : (
         <>
           <StyledHeadline>Details of Activity</StyledHeadline>

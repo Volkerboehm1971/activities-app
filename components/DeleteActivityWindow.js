@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
 
+const StyledHeadline = styled.h1`
+  text-align: center;
+`;
+
 const StyledArticle = styled.p`
   line-height: 1.4;
   font-size: medium;
@@ -32,17 +36,17 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function DeleteActivity({ onDeleteActivity, activities }) {
-  const [id] = activities;
+export default function DeleteActivityWindow({ onDeleteActivity }) {
   return (
     <>
+      <StyledHeadline>Delete activity</StyledHeadline>
       <StyledArticle>
         Do you really want <br />
         to delete the Activity?
       </StyledArticle>
       <StyledSection>
         <StyledLinkCancel href="/">Cancel</StyledLinkCancel>
-        <StyledButton onClick={() => onDeleteActivity(id)}>Delete</StyledButton>
+        <StyledButton onClick={onDeleteActivity}>Delete</StyledButton>
       </StyledSection>
     </>
   );
