@@ -10,6 +10,8 @@ const StyledLinkHomePage = styled(Link)`
   border-radius: 5px;
   margin-left: 10px;
   font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 const StyledForm = styled.form`

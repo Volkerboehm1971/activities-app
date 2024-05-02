@@ -14,6 +14,8 @@ const StyledLinkHomePage = styled(Link)`
   border-radius: 5px;
   margin-left: 30px;
   font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 const StyledSection = styled.section`
@@ -54,10 +56,14 @@ const StyledArticle = styled.p`
   padding-right: 1.5rem;
 `;
 
-const StyledButtonDeletePage = styled.button`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+const StyledButtonContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+`;
+
+const StyledButtonDelete = styled.button`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
@@ -65,6 +71,18 @@ const StyledButtonDeletePage = styled.button`
   border: 7px solid #ed3021;
   border-radius: 5px;
   font-size: 18px;
+  width: 75px;
+`;
+
+const StyledButtonEdit = styled.button`
+  margin: 15px 0 15px 0;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #4caf50;
+  border: 7px solid #4caf50;
+  border-radius: 5px;
+  font-size: 18px;
+  width: 75px;
 `;
 
 export default function DetailsViewActivity({
@@ -103,12 +121,15 @@ export default function DetailsViewActivity({
           <StyledArticle>{detailActivity.description}</StyledArticle>
         </StyledDiv>
       </StyledSection>
-      <StyledButtonDeletePage
-        type="button"
-        onClick={() => setIsDeleteMode(!isDeleteMode)}
-      >
-        Delete
-      </StyledButtonDeletePage>
+      <StyledButtonContainer>
+        <StyledButtonEdit type="button">Edit</StyledButtonEdit>
+        <StyledButtonDelete
+          type="button"
+          onClick={() => setIsDeleteMode(!isDeleteMode)}
+        >
+          Delete
+        </StyledButtonDelete>
+      </StyledButtonContainer>
     </>
   );
 }
