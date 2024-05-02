@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useState } from "react";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -24,7 +25,7 @@ const StyledSection = styled.section`
   justify-content: center;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
-  margin-top: 2.7rem;
+  margin-top: 2rem;
   max-height: 500px;
 `;
 const StyledDiv = styled.div`
@@ -57,11 +58,12 @@ const Styledarticle = styled.p`
   padding-right: 1.5rem;
 `;
 
-const StyledButton = styled.button`
+const StyledButtonDeletePage = styled.button`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 15px;
+  margin: 15px 0 15px 0;
+  text-decoration: none;
   color: #ffffff;
   background-color: #ed3021;
   border: 7px solid #ed3021;
@@ -69,7 +71,33 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function ActivityCardDetails({ activities }) {
+const StyledArticle = styled.p`
+  line-height: 1.4;
+  font-size: medium;
+  margin-top: 150px;
+  text-align: center;
+`;
+
+const StyledLinkCancel = styled(Link)`
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3e407d;
+  border: 7px solid #3e407d;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 18px;
+`;
+
+const StyledButton = styled.button`
+  color: #ffffff;
+  background-color: #ed3021;
+  border: 7px solid #ed3021;
+  border-radius: 5px;
+  font-size: 18px;
+`;
+
+export default function ActivityCardDetails({ activities, onDeleteActivity }) {
+  const [isDeleteMode, setIsDeleteMode] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
@@ -79,40 +107,64 @@ export default function ActivityCardDetails({ activities }) {
     return null;
   }
 
+  const handleClick = () => {
+    router.push("/delete");
+  };
+
   return (
     <>
-      <StyledHeadline>Details of Activity</StyledHeadline>
-      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
+      {isDeleteMode ? (
+        <>
+          <StyledArticle>
+            Do you really want <br />
+            to delete the Activity?
+          </StyledArticle>
+          <StyledSection>
+            <StyledLinkCancel href="/">Cancel</StyledLinkCancel>
+            <StyledButton onClick={() => onDeleteActivity(id)}>
+              Delete
+            </StyledButton>
+          </StyledSection>
+        </>
+      ) : (
+        <>
+          <StyledHeadline>Details of Activity</StyledHeadline>
+          <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
+          <StyledSection>
+            <StyledDiv>
+              <StyledImage
+                src={detailActivity.image}
+                width={187.5}
+                height={140.5}
+                alt="hiker on a mountain"
+              />
+              <StyledSubheader>Type of Activity</StyledSubheader>
+              <Styledinfo>{detailActivity.title}</Styledinfo>
+            </StyledDiv>
 
-      <StyledSection>
-        <StyledDiv>
-          <StyledImage
-            src={detailActivity.image}
-            width={187.5}
-            height={140.5}
-            alt="hiker on a mountain"
-          />
-          <StyledSubheader>Type of Activity</StyledSubheader>
-          <Styledinfo>{detailActivity.title}</Styledinfo>
-        </StyledDiv>
+            <StyledDiv>
+              <StyledSubheader>Area</StyledSubheader>
+              <Styledinfo> {detailActivity.area}</Styledinfo>
+            </StyledDiv>
 
-        <StyledDiv>
-          <StyledSubheader>Area</StyledSubheader>
-          <Styledinfo> {detailActivity.area}</Styledinfo>
-        </StyledDiv>
+            <StyledDiv>
+              <StyledSubheader>Country</StyledSubheader>
+              <Styledinfo> {detailActivity.country}</Styledinfo>
+            </StyledDiv>
 
-        <StyledDiv>
-          <StyledSubheader>Country</StyledSubheader>
-          <Styledinfo> {detailActivity.country}</Styledinfo>
-        </StyledDiv>
-
-        <StyledDiv>
-          <StyledSubheader>Description</StyledSubheader>
-          <Styledarticle>{detailActivity.description}</Styledarticle>
-        </StyledDiv>
-      </StyledSection>
-
-      <StyledButton>Delete</StyledButton>
+            <StyledDiv>
+              <StyledSubheader>Description</StyledSubheader>
+              <Styledarticle>{detailActivity.description}</Styledarticle>
+            </StyledDiv>
+          </StyledSection>
+          <StyledButtonDeletePage
+            type="button"
+            onClick={() => setIsDeleteMode(!isDeleteMode)}
+          >
+            Delete
+          </StyledButtonDeletePage>
+        </>
+      )}
     </>
   );
 }
