@@ -11,14 +11,6 @@ export default function EditActivityPage({ onEditActivity }) {
   const router = useRouter();
   const { id } = router.query;
 
-  console.log(id);
-
-  // const detailActivity = activities.find((activity) => activity.id === id);
-
-  // if (!detailActivity) {
-  //   return null;
-  // }
-
   return (
     <>
       <StyledHeadline>Edit Activity</StyledHeadline>
