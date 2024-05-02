@@ -18,7 +18,11 @@ export default function ActivityCardDetails({ activities, onDeleteActivity }) {
   return (
     <>
       {isDeleteMode ? (
-        <DeleteActivityWindow onDeleteActivity={() => onDeleteActivity(id)} />
+        <DeleteActivityWindow
+          onDeleteActivity={() => onDeleteActivity(id)}
+          isDeleteMode={isDeleteMode}
+          setIsDeleteMode={setIsDeleteMode}
+        />
       ) : (
         <DetailsViewActivity
           detailActivity={detailActivity}

@@ -23,8 +23,6 @@ export default function App({ Component, pageProps }) {
 
     setActivties(updatedActivities);
 
-    console.log("Updated activities:", updatedActivities);
-
     router.push("/");
   }
 

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -18,17 +17,15 @@ const StyledSection = styled.section`
   justify-content: space-evenly;
 `;
 
-const StyledLinkCancel = styled(Link)`
-  text-decoration: none;
+const StyledButtonCancel = styled.button`
   color: #ffffff;
   background-color: #3e407d;
   border: 7px solid #3e407d;
   border-radius: 5px;
-  padding: 3px;
   font-size: 18px;
 `;
 
-const StyledButton = styled.button`
+const StyledButtonDelete = styled.button`
   color: #ffffff;
   background-color: #ed3021;
   border: 7px solid #ed3021;
@@ -36,7 +33,11 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function DeleteActivityWindow({ onDeleteActivity }) {
+export default function DeleteActivityWindow({
+  onDeleteActivity,
+  isDeleteMode,
+  setIsDeleteMode,
+}) {
   return (
     <>
       <StyledHeadline>Delete activity</StyledHeadline>
@@ -45,8 +46,12 @@ export default function DeleteActivityWindow({ onDeleteActivity }) {
         to delete the Activity?
       </StyledArticle>
       <StyledSection>
-        <StyledLinkCancel href="/">Cancel</StyledLinkCancel>
-        <StyledButton onClick={onDeleteActivity}>Delete</StyledButton>
+        <StyledButtonCancel onClick={() => setIsDeleteMode(!isDeleteMode)}>
+          Cancel
+        </StyledButtonCancel>
+        <StyledButtonDelete onClick={onDeleteActivity}>
+          Delete
+        </StyledButtonDelete>
       </StyledSection>
     </>
   );
