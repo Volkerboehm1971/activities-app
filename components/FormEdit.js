@@ -1,18 +1,6 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-
-const StyledLinkHomePage = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #3e407d;
-  border: 5px solid #3e407d;
-  border-radius: 5px;
-  margin-left: 10px;
-  font-size: 17px;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
+import Link from "next/link";
 
 const StyledForm = styled.form`
   margin: 10px;
@@ -46,7 +34,23 @@ const StyledTextarea = styled.textarea`
   border-radius: 0.5rem;
 `;
 
-const StyledButton = styled.button`
+const StyledButtonContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+`;
+
+const StyledLinkCancel = styled(Link)`
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3e407d;
+  border: 7px solid #3e407d;
+  border-radius: 5px;
+  font-size: 18px;
+`;
+
+const StyledButtonSave = styled.button`
   position: center;
   color: #ffffff;
   background-color: #4caf50;
@@ -55,8 +59,10 @@ const StyledButton = styled.button`
   font-size: 18px;
 `;
 
-export default function FormCreate({ onAddActivity }) {
+export default function FormEdit({ onEditActivity, id, activities }) {
   const router = useRouter();
+
+  const defaultActivity = activities.find((activity) => activity.id === id);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -64,7 +70,8 @@ export default function FormCreate({ onAddActivity }) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    const newActivity = {
+    const modifiedActivity = {
+      id: id,
       title: data.title,
       category: data.category,
       area: data.area,
@@ -73,14 +80,13 @@ export default function FormCreate({ onAddActivity }) {
       description: data.description,
     };
 
-    onAddActivity(newActivity);
+    onEditActivity(modifiedActivity, id);
 
     router.push("/");
   }
 
   return (
     <>
-      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
       <StyledForm onSubmit={handleSubmit}>
         <StyledSection>
           <label htmlFor="title">Activity Name</label>
@@ -91,13 +97,19 @@ export default function FormCreate({ onAddActivity }) {
             minLength="1"
             maxLength="150"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.title}
             required
           />
         </StyledSection>
 
         <StyledSection>
           <label htmlFor="category">Category of Activity</label>
-          <StyledSelect id="category" name="category" required>
+          <StyledSelect
+            id="category"
+            name="category"
+            defaultValue={defaultActivity?.category}
+            required
+          >
             <option value="">--Please select a category--</option>
             <option value="Surfing">Surfing</option>
             <option value="Hiking">Hiking</option>
@@ -116,6 +128,7 @@ export default function FormCreate({ onAddActivity }) {
             name="area"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.area}
             required
           />
         </StyledSection>
@@ -127,6 +140,7 @@ export default function FormCreate({ onAddActivity }) {
             name="country"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.country}
             required
           />
         </StyledSection>
@@ -150,10 +164,17 @@ export default function FormCreate({ onAddActivity }) {
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.description}
             required
           />
         </StyledSection>
-        <StyledButton type="submit">Add Activity</StyledButton>
+        <StyledButtonContainer>
+          <StyledLinkCancel href={`/${id}`}>Cancel</StyledLinkCancel>
+          {/* <StyledButtonCancel onClick={() => router.push(`/${id}`)}>
+            Cancel
+          </StyledButtonCancel> */}
+          <StyledButtonSave type="submit">Save</StyledButtonSave>
+        </StyledButtonContainer>
       </StyledForm>
     </>
   );

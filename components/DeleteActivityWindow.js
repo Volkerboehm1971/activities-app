@@ -23,6 +23,7 @@ const StyledButtonCancel = styled.button`
   border: 7px solid #3e407d;
   border-radius: 5px;
   font-size: 18px;
+  width: 85px;
 `;
 
 const StyledButtonDelete = styled.button`
@@ -31,6 +32,7 @@ const StyledButtonDelete = styled.button`
   border: 7px solid #ed3021;
   border-radius: 5px;
   font-size: 18px;
+  width: 85px;
 `;
 
 export default function DeleteActivityWindow({
