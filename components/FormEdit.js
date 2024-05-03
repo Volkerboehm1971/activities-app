@@ -170,9 +170,6 @@ export default function FormEdit({ onEditActivity, id, activities }) {
         </StyledSection>
         <StyledButtonContainer>
           <StyledLinkCancel href={`/${id}`}>Cancel</StyledLinkCancel>
-          {/* <StyledButtonCancel onClick={() => router.push(`/${id}`)}>
-            Cancel
-          </StyledButtonCancel> */}
           <StyledButtonSave type="submit">Save</StyledButtonSave>
         </StyledButtonContainer>
       </StyledForm>
