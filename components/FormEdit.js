@@ -36,7 +36,6 @@ const StyledTextarea = styled.textarea`
 
 const StyledButtonContainer = styled.section`
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
   margin-top: 1rem;
   margin-bottom: 70px;
