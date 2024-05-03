@@ -57,8 +57,10 @@ const StyledButtonSave = styled.button`
   font-size: 18px;
 `;
 
-export default function FormEdit({ onEditActivity, id }) {
+export default function FormEdit({ onEditActivity, id, activities }) {
   const router = useRouter();
+
+  const defaultActivity = activities.find((activity) => activity.id === id);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -66,7 +68,8 @@ export default function FormEdit({ onEditActivity, id }) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    const newActivity = {
+    const modifiedActivity = {
+      id: id,
       title: data.title,
       category: data.category,
       area: data.area,
@@ -75,7 +78,7 @@ export default function FormEdit({ onEditActivity, id }) {
       description: data.description,
     };
 
-    onEditActivity(newActivity, id);
+    onEditActivity(modifiedActivity, id);
 
     router.push("/");
   }
@@ -92,13 +95,19 @@ export default function FormEdit({ onEditActivity, id }) {
             minLength="1"
             maxLength="150"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.title}
             required
           />
         </StyledSection>
 
         <StyledSection>
           <label htmlFor="category">Category of Activity</label>
-          <StyledSelect id="category" name="category" required>
+          <StyledSelect
+            id="category"
+            name="category"
+            defaultValue={defaultActivity?.category}
+            required
+          >
             <option value="">--Please select a category--</option>
             <option value="Surfing">Surfing</option>
             <option value="Hiking">Hiking</option>
@@ -117,6 +126,7 @@ export default function FormEdit({ onEditActivity, id }) {
             name="area"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.area}
             required
           />
         </StyledSection>
@@ -128,6 +138,7 @@ export default function FormEdit({ onEditActivity, id }) {
             name="country"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.country}
             required
           />
         </StyledSection>
@@ -151,6 +162,7 @@ export default function FormEdit({ onEditActivity, id }) {
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.description}
             required
           />
         </StyledSection>
