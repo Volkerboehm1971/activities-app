@@ -51,8 +51,6 @@ const StyledLinkAddActivity = styled(Link)`
 `;
 
 export default function HomePage({ activities }) {
-  console.log(activities);
-
   return (
     <>
       <StyledHeadline>List of Activities</StyledHeadline>
