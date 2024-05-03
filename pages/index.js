@@ -1,56 +1,39 @@
-import ActivityList from "./activityList";
-// import ActivityCard from "@/components/ActivityCard";
-// import styled from "styled-components";
-// import Link from "next/link";
+import Link from "next/link";
+import styled from "styled-components";
+import dynamic from "next/dynamic";
 
-// const StyledHeadline = styled.h1`
-//   text-align: center;
-// `;
+const Spotlight = dynamic(() => import("@/components/Spotlight"), {
+  ssr: false,
+});
 
-// const StyledUl = styled.ul`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 25px;
-//   padding: 0 0 65px 0;
-//   margin: 0 2rem 0 2rem;
-// `;
+const Headline = styled.h1`
+  text-align: center;
+`;
 
-// const StyledLinkDetailsPage = styled(Link)`
-//   text-decoration: none;
-//   color: black;
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+`;
 
-//   &:active {
-//     color: black;
-//   }
-// `;
-
-// const StyledLi = styled.li`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   border-style: solid;
-//   border-color: black;
-//   border-width: 1px;
-//   border-radius: 10px;
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-//   padding: 20px 0 20px 0;
-// `;
-
-// const StyledLinkAddActivity = styled(Link)`
-//   text-align: center;
-//   text-decoration: none;
-//   font-size: 18px;
-//   color: #2c3752;
-//   background-color: #faa62f;
-//   border: 8px solid #faa62f;
-//   border-radius: 5px;
-//   position: fixed;
-//   left: 10px;
-//   right: 10px;
-//   bottom: 10px;
-//   z-index: 100;
-// `;
+const StyledLink = styled(Link)`
+  text-align: center;
+  margin-top: 25px;
+`;
 
 export default function HomePage({ activities }) {
-  return <h1>Hallo Activity App</h1>;
+  const randomActivity =
+    activities[Math.floor(Math.random() * activities.length)];
+
+  return (
+    <>
+      <Headline>Activity App</Headline>
+      <Spotlight randomActivity={randomActivity} />
+      <Div>
+        <StyledLink href={"/activityList"}>List of Activities</StyledLink>
+        <StyledLink href={"/create"}>Add New Activity</StyledLink>
+      </Div>
+    </>
+  );
 }
