@@ -10,7 +10,7 @@ const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  padding: 0 0 65px 0;
+  padding: 0 0 80px 0;
   margin: 0 2rem 0 2rem;
 `;
 
@@ -35,21 +35,6 @@ const StyledLi = styled.li`
   padding: 20px 0 20px 0;
 `;
 
-const StyledLinkAddActivity = styled(Link)`
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  color: #2c3752;
-  background-color: #faa62f;
-  border: 8px solid #faa62f;
-  border-radius: 5px;
-  position: fixed;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  z-index: 100;
-`;
-
 export default function HomePage({ activities }) {
   return (
     <>
@@ -70,9 +55,6 @@ export default function HomePage({ activities }) {
           </>
         ))}
       </StyledUl>
-      <StyledLinkAddActivity href="/create">
-        Add new Activity →
-      </StyledLinkAddActivity>
     </>
   );
 }

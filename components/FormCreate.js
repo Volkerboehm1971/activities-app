@@ -53,6 +53,7 @@ const StyledButton = styled.button`
   border: 7px solid #4caf50;
   border-radius: 5px;
   font-size: 18px;
+  margin-bottom: 70px;
 `;
 
 export default function FormCreate({ onAddActivity }) {

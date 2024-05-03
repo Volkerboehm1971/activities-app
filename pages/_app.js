@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
 import { v4 as uuid } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
@@ -39,13 +40,15 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component
-        onAddActivity={handleAddActivity}
-        onEditActivity={handleEditActivity}
-        onDeleteActivity={handleDeleteActivity}
-        activities={activities}
-        {...pageProps}
-      />
+      <Layout>
+        <Component
+          onAddActivity={handleAddActivity}
+          onEditActivity={handleEditActivity}
+          onDeleteActivity={handleDeleteActivity}
+          activities={activities}
+          {...pageProps}
+        />
+      </Layout>
     </>
   );
 }

@@ -63,6 +63,7 @@ const StyledButtonContainer = styled.section`
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 1rem;
+  margin-bottom: 70px;
 `;
 
 const StyledButtonDelete = styled.button`
