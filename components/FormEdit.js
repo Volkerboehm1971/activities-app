@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import Link from "next/link";
 
 const StyledForm = styled.form`
   margin: 10px;
@@ -40,7 +41,8 @@ const StyledButtonContainer = styled.section`
   margin-top: 1rem;
 `;
 
-const StyledButtonCancel = styled.button`
+const StyledLinkCancel = styled(Link)`
+  text-decoration: none;
   color: #ffffff;
   background-color: #3e407d;
   border: 7px solid #3e407d;
@@ -167,9 +169,10 @@ export default function FormEdit({ onEditActivity, id, activities }) {
           />
         </StyledSection>
         <StyledButtonContainer>
-          <StyledButtonCancel onClick={() => router.push(`/${id}`)}>
+          <StyledLinkCancel href={`/${id}`}>Cancel</StyledLinkCancel>
+          {/* <StyledButtonCancel onClick={() => router.push(`/${id}`)}>
             Cancel
-          </StyledButtonCancel>
+          </StyledButtonCancel> */}
           <StyledButtonSave type="submit">Save</StyledButtonSave>
         </StyledButtonContainer>
       </StyledForm>
