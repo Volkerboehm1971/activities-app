@@ -1,60 +1,39 @@
-import ActivityCard from "@/components/ActivityCard";
-import styled from "styled-components";
 import Link from "next/link";
+import styled from "styled-components";
+import dynamic from "next/dynamic";
 
-const StyledHeadline = styled.h1`
+const Spotlight = dynamic(() => import("@/components/Spotlight"), {
+  ssr: false,
+});
+
+const Headline = styled.h1`
   text-align: center;
 `;
 
-const StyledUl = styled.ul`
+const Div = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding: 0 0 80px 0;
-  margin: 0 2rem 0 2rem;
+  justify-content: center;
+  margin-top: 100px;
 `;
 
-const StyledLinkDetailsPage = styled(Link)`
-  text-decoration: none;
-  color: black;
-
-  &:active {
-    color: black;
-  }
-`;
-
-const StyledLi = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  padding: 20px 0 20px 0;
+const StyledLink = styled(Link)`
+  text-align: center;
+  margin-top: 25px;
 `;
 
 export default function HomePage({ activities }) {
+  const randomActivity =
+    activities[Math.floor(Math.random() * activities.length)];
+
   return (
     <>
-      <StyledHeadline>List of Activities</StyledHeadline>
-      <StyledUl>
-        {activities.map((activity) => (
-          <>
-            <StyledLinkDetailsPage href={`/${activity.id}`}>
-              <StyledLi key={activity.id}>
-                <ActivityCard
-                  id={activity.id}
-                  image={activity.image}
-                  title={activity.title}
-                  area={activity.area}
-                />
-              </StyledLi>
-            </StyledLinkDetailsPage>
-          </>
-        ))}
-      </StyledUl>
+      <Headline>Activity App</Headline>
+      <Spotlight randomActivity={randomActivity} />
+      <Div>
+        <StyledLink href={"/activityList"}>List of Activities</StyledLink>
+        <StyledeLink hrf={"/create"}>Add New Activity</StyledLink>
+      </Div>
     </>
   );
 }
