@@ -32,7 +32,7 @@ export default function HomePage({ activities }) {
       <Spotlight randomActivity={randomActivity} />
       <Div>
         <StyledLink href={"/activityList"}>List of Activities</StyledLink>
-        <StyledLink href={"/create"}>Add New Activity</StyledLink>
+        <StyledeLink hrf={"/create"}>Add New Activity</StyledLink>
       </Div>
     </>
   );

@@ -60,9 +60,9 @@ const StyledArticle = styled.p`
 
 const StyledButtonContainer = styled.section`
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 1rem;
+  margin-top: 16px;
+  margin-bottom: 70px;
 `;
 
 const StyledButtonDelete = styled.button`
