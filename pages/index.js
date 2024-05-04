@@ -10,16 +10,12 @@ const Headline = styled.h1`
   text-align: center;
 `;
 
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 100px;
-`;
-
-const StyledLink = styled(Link)`
+const TextUpdate = styled.p`
   text-align: center;
-  margin-top: 25px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+  font-weight: bold;
+  font-size: medium;
 `;
 
 export default function HomePage({ activities }) {
@@ -29,11 +25,8 @@ export default function HomePage({ activities }) {
   return (
     <>
       <Headline>Activity App</Headline>
+      <TextUpdate>Weather function is coming...</TextUpdate>
       <Spotlight randomActivity={randomActivity} />
-      <Div>
-        <StyledLink href={"/activityList"}>List of Activities</StyledLink>
-        <StyledeLink hrf={"/create"}>Add New Activity</StyledLink>
-      </Div>
     </>
   );
 }
