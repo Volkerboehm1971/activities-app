@@ -3,7 +3,6 @@ import styled from "styled-components";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 
-// We had a problem with serverside and clientside rendering, so we had to disable serverside rendering for the spotlight component to make the code work
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
