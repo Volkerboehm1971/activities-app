@@ -17,19 +17,14 @@ const H2 = styled.h2`
   text-align: center;
 `;
 
-export default function Spotlight({ randomActivity }) {
+export default function Spotlight({ title, area, image }) {
   return (
     <>
       <StyledArticle>
         <H2>Activity of the day</H2>
-        <p>{randomActivity.title}</p>
-        <Image
-          src={randomActivity.image}
-          width={281.25}
-          height={210.75}
-          alt=""
-        />
-        <p>{randomActivity.area}</p>
+        <p>{title}</p>
+        <Image src={image} width={281.25} height={210.75} alt="" />
+        <p>{area}</p>
       </StyledArticle>
     </>
   );
