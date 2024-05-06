@@ -7,7 +7,7 @@ const WeatherSection = styled.section`
   align-items: center;
   justify-content: space-evenly;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
 const Area = styled.p`
@@ -48,13 +48,14 @@ const StyledSpan = styled.span`
 const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
 export default function WeatherDisplay({ area }) {
-  const { data: weather, error } = useSWR(
+  const { data: weather } = useSWR(
     `https://api.openweathermap.org/data/2.5/weather?q=${area}&units=metric&appid=${API}`
   );
 
   if (!weather) {
     return <p>Loading...</p>;
   }
+  console.log(weather);
 
   return (
     <>

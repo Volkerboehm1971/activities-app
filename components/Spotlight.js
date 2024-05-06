@@ -21,7 +21,7 @@ export default function Spotlight({ title, area, image }) {
   return (
     <>
       <StyledArticle>
-        <H2>Activity of the day</H2>
+        <H2>Random Activity</H2>
         <p>{title}</p>
         <Image src={image} width={281.25} height={210.75} alt="" />
         <p>{area}</p>
