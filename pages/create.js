@@ -9,7 +9,7 @@ const StyledHeadline = styled.h1`
 export default function CreateActivityPage({ onAddActivity }) {
   return (
     <>
-      <StyledHeadline>Create a new activity</StyledHeadline>
+      <StyledHeadline>Create a new Activity</StyledHeadline>
       <FormCreate onAddActivity={onAddActivity} />
     </>
   );

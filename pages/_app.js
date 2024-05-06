@@ -4,6 +4,9 @@ import { v4 as uuid } from "uuid";
 import useLocalStorageState from "use-local-storage-state";
 import { activities as initalActivities } from "@/lib/dummydata";
 import { useRouter } from "next/router";
+import { SWRConfig } from "swr";
+
+const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const [activities, setActivties] = useLocalStorageState("activities", {
@@ -39,16 +42,23 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
-      <Layout>
-        <Component
-          onAddActivity={handleAddActivity}
-          onEditActivity={handleEditActivity}
-          onDeleteActivity={handleDeleteActivity}
-          activities={activities}
-          {...pageProps}
-        />
-      </Layout>
+      <SWRConfig
+        value={{
+          fetcher,
+          refreshInterval: 30000,
+        }}
+      >
+        <GlobalStyle />
+        <Layout>
+          <Component
+            onAddActivity={handleAddActivity}
+            onEditActivity={handleEditActivity}
+            onDeleteActivity={handleDeleteActivity}
+            activities={activities}
+            {...pageProps}
+          />
+        </Layout>
+      </SWRConfig>
     </>
   );
 }
