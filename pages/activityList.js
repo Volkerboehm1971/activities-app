@@ -79,10 +79,6 @@ const ErrorMessage = styled.p`
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleOnChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
   const getFilteredActivities = (searchTerm, activities) => {
     if (!searchTerm) {
       return activities;
@@ -110,7 +106,9 @@ export default function ActivityList({ activities }) {
             name="image"
             type="search"
             value={searchTerm}
-            onChange={handleOnChange}
+            onChange={(event) => {
+              setSearchTerm(event.target.value);
+            }}
             placeholder="Type to filter activities"
             required
           />
