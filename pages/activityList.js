@@ -56,12 +56,13 @@ const WrapperSearchBar = styled.div`
 `;
 
 const InputSearchField = styled.input`
-  padding: 8px;
+  padding: 8px 8px 8px 40px;
   border: 2px solid black;
   border-radius: 0.5rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: calc(100% - 10px) center;
+  // background-position: calc(100% - 10px) center;
+  background-position: 10px center;
   background-size: 20px;
   width: 310px;
   margin-bottom: 25px;
