@@ -42,21 +42,36 @@ const StyledSection = styled.section`
   gap: 0.6rem;
 `;
 
+const LabelSearchField = styled.label`
+  display: block;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+`;
+
 const WrapperSearchBar = styled.div`
-  position: relative;
-  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const InputSearchField = styled.input`
-  padding: 0.5rem 0.5rem 0.5rem 30px;
+  padding: 8px;
   border: 2px solid black;
   border-radius: 0.5rem;
-  width: 100%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 5px center;
   background-size: 20px;
-  margin-bottom: 20px;
+  width: 300px;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 20px 0;
 `;
 
 export default function ActivityList({ activities }) {
@@ -70,6 +85,7 @@ export default function ActivityList({ activities }) {
     if (!searchTerm) {
       return activities;
     }
+
     return activities.filter(
       (activity) =>
         activity.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -82,13 +98,14 @@ export default function ActivityList({ activities }) {
   const filteredActivities = getFilteredActivities(searchTerm, activities);
 
   console.log(searchTerm);
-  console.log(filteredActivities);
+
+  console.log("Filtered Activites: ", filteredActivities);
 
   return (
     <>
       <StyledHeadline>List of Activities</StyledHeadline>
       <StyledSection>
-        <label htmlFor="image">Search Activities</label>
+        <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
         <WrapperSearchBar>
           <InputSearchField
             id="image"
@@ -99,23 +116,45 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
+        <ErrorMessage>
+          There is no matching result for your search! <br /> Please try again!
+        </ErrorMessage>
       </StyledSection>
-      <StyledUl>
-        {filteredActivities.map((activity) => (
-          <>
-            <StyledLinkDetailsPage href={`/${activity.id}`}>
-              <StyledLi key={activity.id}>
-                <ActivityCard
-                  id={activity.id}
-                  image={activity.image}
-                  title={activity.title}
-                  area={activity.area}
-                />
-              </StyledLi>
-            </StyledLinkDetailsPage>
-          </>
-        ))}
-      </StyledUl>
+      {filteredActivities ? (
+        <StyledUl>
+          {filteredActivities.map((activity) => (
+            <>
+              <StyledLinkDetailsPage href={`/${activity.id}`}>
+                <StyledLi key={activity.id}>
+                  <ActivityCard
+                    id={activity.id}
+                    image={activity.image}
+                    title={activity.title}
+                    area={activity.area}
+                  />
+                </StyledLi>
+              </StyledLinkDetailsPage>
+            </>
+          ))}
+        </StyledUl>
+      ) : (
+        <StyledUl>
+          {activities.map((activity) => (
+            <>
+              <StyledLinkDetailsPage href={`/${activity.id}`}>
+                <StyledLi key={activity.id}>
+                  <ActivityCard
+                    id={activity.id}
+                    image={activity.image}
+                    title={activity.title}
+                    area={activity.area}
+                  />
+                </StyledLi>
+              </StyledLinkDetailsPage>
+            </>
+          ))}
+        </StyledUl>
+      )}
     </>
   );
 }
