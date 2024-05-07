@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import IconReload from "../assets/icons/reload.js";
 import { useState } from "react";
 import useSWR from "swr";
 import Image from "next/image";
@@ -83,7 +82,7 @@ const ContainerReloadAndPicture = styled.div`
   justify-content: center;
 `;
 
-const ReloadButton = styled.button`
+const ReloadButton = styled.div`
   margin: 15px 0 15px 0;
   width: 50px;
   height: 50px;
@@ -122,18 +121,13 @@ export default function FormCreate({ onAddActivity }) {
       category: data.category,
       area: data.area,
       country: data.country,
-      image: data.image,
+      image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
     };
 
     onAddActivity(newActivity);
-    /* 
-      router.push("/"); */
+    router.push("/activityList");
   }
-
-  // function handleIncrement(){
-
-  // }
 
   const handleKeyPress = (event) => {
     event.preventDefault();
@@ -145,8 +139,6 @@ export default function FormCreate({ onAddActivity }) {
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
-
-  console.log(increment);
 
   return (
     <>
@@ -229,7 +221,7 @@ export default function FormCreate({ onAddActivity }) {
             <ContainerReloadAndPicture>
               <ReloadButton
                 onClick={() => {
-                  if (increment < 18) {
+                  if (increment < 19) {
                     setIncrement((prevCount) => prevCount + 1);
                   }
                 }}
@@ -247,21 +239,8 @@ export default function FormCreate({ onAddActivity }) {
             </ContainerReloadAndPicture>
           )}
         </StyledSection>
-        <StyledButton type="submit">Add Activity</StyledButton>
+        <StyledButton type="submit" >Add Activity</StyledButton>
       </StyledForm>
     </>
   );
-}
-
-{
-  /* <StyledSection>
-          <label htmlFor="image">Image URL</label>
-          <StyledInput
-            id="image"
-            name="image"
-            type="url"
-            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            required
-          />
-        </StyledSection> */
 }
