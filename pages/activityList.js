@@ -16,8 +16,11 @@ const StyledUl = styled.ul`
 `;
 
 const StyledLinkDetailsPage = styled(Link)`
-  text-decoration: none;
   color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 
   &:active {
     color: black;
@@ -25,15 +28,13 @@ const StyledLinkDetailsPage = styled(Link)`
 `;
 
 const StyledLi = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border-style: solid;
   border-color: black;
   border-width: 1px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   padding: 20px 0 20px 0;
+  list-style-type: none;
 `;
 
 const StyledSection = styled.section`
@@ -117,16 +118,16 @@ export default function ActivityList({ activities }) {
       {filteredActivities && filteredActivities.length > 0 ? (
         <StyledUl>
           {filteredActivities.map((activity) => (
-            <StyledLinkDetailsPage key={activity.id} href={`/${activity.id}`}>
-              <StyledLi>
+            <StyledLi key={activity.id}>
+              <StyledLinkDetailsPage href={`/${activity.id}`}>
                 <ActivityCard
                   id={activity.id}
                   image={activity.image}
                   title={activity.title}
                   area={activity.area}
                 />
-              </StyledLi>
-            </StyledLinkDetailsPage>
+              </StyledLinkDetailsPage>
+            </StyledLi>
           ))}
         </StyledUl>
       ) : (
@@ -137,18 +138,16 @@ export default function ActivityList({ activities }) {
           </ErrorMessage>
           <StyledUl>
             {activities.map((activity) => (
-              <>
+              <StyledLi key={activity.id}>
                 <StyledLinkDetailsPage href={`/${activity.id}`}>
-                  <StyledLi key={activity.id}>
-                    <ActivityCard
-                      id={activity.id}
-                      image={activity.image}
-                      title={activity.title}
-                      area={activity.area}
-                    />
-                  </StyledLi>
+                  <ActivityCard
+                    id={activity.id}
+                    image={activity.image}
+                    title={activity.title}
+                    area={activity.area}
+                  />
                 </StyledLinkDetailsPage>
-              </>
+              </StyledLi>
             ))}
           </StyledUl>
         </div>
