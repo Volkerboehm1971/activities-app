@@ -61,9 +61,10 @@ const InputSearchField = styled.input`
   border-radius: 0.5rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: 5px center;
+  background-position: calc(100% - 10px) center;
   background-size: 20px;
-  width: 300px;
+  width: 310px;
+  margin-bottom: 25px;
 `;
 
 const ErrorMessage = styled.p`
@@ -71,7 +72,7 @@ const ErrorMessage = styled.p`
   font-size: medium;
   font-weight: bold;
   text-align: center;
-  margin: 10px 0 20px 0;
+  margin: 0 0 25px 0;
 `;
 
 export default function ActivityList({ activities }) {
@@ -116,11 +117,8 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <ErrorMessage>
-          There is no matching result for your search! <br /> Please try again!
-        </ErrorMessage>
       </StyledSection>
-      {filteredActivities ? (
+      {filteredActivities && filteredActivities.length > 0 ? (
         <StyledUl>
           {filteredActivities.map((activity) => (
             <>
@@ -138,22 +136,28 @@ export default function ActivityList({ activities }) {
           ))}
         </StyledUl>
       ) : (
-        <StyledUl>
-          {activities.map((activity) => (
-            <>
-              <StyledLinkDetailsPage href={`/${activity.id}`}>
-                <StyledLi key={activity.id}>
-                  <ActivityCard
-                    id={activity.id}
-                    image={activity.image}
-                    title={activity.title}
-                    area={activity.area}
-                  />
-                </StyledLi>
-              </StyledLinkDetailsPage>
-            </>
-          ))}
-        </StyledUl>
+        <div>
+          <ErrorMessage>
+            There is no matching result for your search! <br /> Please try
+            again!
+          </ErrorMessage>
+          <StyledUl>
+            {activities.map((activity) => (
+              <>
+                <StyledLinkDetailsPage href={`/${activity.id}`}>
+                  <StyledLi key={activity.id}>
+                    <ActivityCard
+                      id={activity.id}
+                      image={activity.image}
+                      title={activity.title}
+                      area={activity.area}
+                    />
+                  </StyledLi>
+                </StyledLinkDetailsPage>
+              </>
+            ))}
+          </StyledUl>
+        </div>
       )}
     </>
   );
