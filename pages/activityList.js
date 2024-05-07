@@ -117,18 +117,16 @@ export default function ActivityList({ activities }) {
       {filteredActivities && filteredActivities.length > 0 ? (
         <StyledUl>
           {filteredActivities.map((activity) => (
-            <>
-              <StyledLinkDetailsPage href={`/${activity.id}`}>
-                <StyledLi key={activity.id}>
-                  <ActivityCard
-                    id={activity.id}
-                    image={activity.image}
-                    title={activity.title}
-                    area={activity.area}
-                  />
-                </StyledLi>
-              </StyledLinkDetailsPage>
-            </>
+            <StyledLinkDetailsPage key={activity.id} href={`/${activity.id}`}>
+              <StyledLi>
+                <ActivityCard
+                  id={activity.id}
+                  image={activity.image}
+                  title={activity.title}
+                  area={activity.area}
+                />
+              </StyledLi>
+            </StyledLinkDetailsPage>
           ))}
         </StyledUl>
       ) : (
