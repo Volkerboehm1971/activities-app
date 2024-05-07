@@ -82,19 +82,26 @@ const ContainerReloadAndPicture = styled.div`
   justify-content: center;
 `;
 
-const ReloadButton = styled.div`
+const PlusButton = styled.div`
   margin: 15px 0 15px 0;
   width: 50px;
   height: 50px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
-  border-color: #dbdbdb;
   border-radius: 8px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+
+  &:active {
+    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    background: #ffffff;
+  }
+  &:hover {
+    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    background: #ffffff;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -105,7 +112,7 @@ const ImageContainer = styled.div`
 `;
 
 export default function FormCreate({ onAddActivity }) {
-  const [showContainer, setShowContainer] = useState(true);
+  const [showContainer, setShowContainer] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();
@@ -131,6 +138,7 @@ export default function FormCreate({ onAddActivity }) {
 
   const handleKeyPress = (event) => {
     event.preventDefault();
+    setShowContainer(true);
     setSearchTerm(event.target.value);
   };
 
@@ -219,13 +227,23 @@ export default function FormCreate({ onAddActivity }) {
           </WrapperSearchBar>
           {showContainer && (
             <ContainerReloadAndPicture>
-              <ReloadButton
+              <PlusButton
                 onClick={() => {
                   if (increment < 19) {
                     setIncrement((prevCount) => prevCount + 1);
                   }
                 }}
-              ></ReloadButton>
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
+                >
+                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                </svg>
+              </PlusButton>
               <ImageContainer>
                 {imageSearch?.hits?.length > 0 && (
                   <Image
@@ -239,7 +257,7 @@ export default function FormCreate({ onAddActivity }) {
             </ContainerReloadAndPicture>
           )}
         </StyledSection>
-        <StyledButton type="submit" >Add Activity</StyledButton>
+        <StyledButton type="submit">Add Activity</StyledButton>
       </StyledForm>
     </>
   );
