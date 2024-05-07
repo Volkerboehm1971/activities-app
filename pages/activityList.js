@@ -61,11 +61,11 @@ const InputSearchField = styled.input`
   border-radius: 0.5rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  // background-position: calc(100% - 10px) center;
   background-position: 10px center;
   background-size: 20px;
   width: 310px;
   margin-bottom: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 `;
 
 const ErrorMessage = styled.p`
@@ -99,10 +99,6 @@ export default function ActivityList({ activities }) {
 
   const filteredActivities = getFilteredActivities(searchTerm, activities);
 
-  console.log(searchTerm);
-
-  console.log("Filtered Activites: ", filteredActivities);
-
   return (
     <>
       <StyledHeadline>List of Activities</StyledHeadline>
@@ -115,6 +111,7 @@ export default function ActivityList({ activities }) {
             type="search"
             value={searchTerm}
             onChange={handleOnChange}
+            placeholder="Type to filter activities"
             required
           />
         </WrapperSearchBar>
