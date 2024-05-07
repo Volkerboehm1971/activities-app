@@ -92,6 +92,7 @@ const ReloadButton = styled.button`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   border-color: #dbdbdb;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
@@ -105,6 +106,9 @@ const ImageContainer = styled.div`
 `;
 
 export default function FormCreate({ onAddActivity }) {
+  const [showContainer, setShowContainer] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [increment, setIncrement] = useState(0);
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -127,9 +131,9 @@ export default function FormCreate({ onAddActivity }) {
       router.push("/"); */
   }
 
-  const [showContainer, setShowContainer] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  // function handleIncrement(){
 
+  // }
 
   const handleKeyPress = (event) => {
     event.preventDefault();
@@ -142,6 +146,7 @@ export default function FormCreate({ onAddActivity }) {
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
 
+  console.log(increment);
 
   return (
     <>
@@ -222,13 +227,17 @@ export default function FormCreate({ onAddActivity }) {
           </WrapperSearchBar>
           {showContainer && (
             <ContainerReloadAndPicture>
-              <ReloadButton>
-                <IconReload></IconReload>
-              </ReloadButton>
+              <ReloadButton
+                onClick={() => {
+                  if (increment < 18) {
+                    setIncrement((prevCount) => prevCount + 1);
+                  }
+                }}
+              ></ReloadButton>
               <ImageContainer>
                 {imageSearch?.hits?.length > 0 && (
                   <Image
-                    src={imageSearch.hits[0].largeImageURL}
+                    src={imageSearch.hits[increment].largeImageURL}
                     width={187.5}
                     height={140.5}
                     alt="Pixabay Image"
@@ -237,9 +246,6 @@ export default function FormCreate({ onAddActivity }) {
               </ImageContainer>
             </ContainerReloadAndPicture>
           )}
-          <button type="submit">
-            Search
-          </button>
         </StyledSection>
         <StyledButton type="submit">Add Activity</StyledButton>
       </StyledForm>
