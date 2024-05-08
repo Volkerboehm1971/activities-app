@@ -34,10 +34,9 @@ const StyledDiv = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  display: flex;
-  align-self: flex-start;
   margin-bottom: 2rem;
   border-radius: 13px;
+  object-fit: cover;
 `;
 
 const StyledSubheader = styled.h3`

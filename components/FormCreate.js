@@ -16,6 +16,7 @@ const StyledLinkHomePage = styled(Link)`
   padding-left: 5px;
   padding-right: 5px;
 `;
+
 const StyledForm = styled.form`
   margin: 10px;
   padding-top: 5px;
@@ -23,26 +24,31 @@ const StyledForm = styled.form`
   flex-direction: column;
   gap: 1.1rem;
 `;
+
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 `;
+
 const StyledInput = styled.input`
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
 `;
+
 const StyledSelect = styled.select`
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
 `;
+
 const StyledTextarea = styled.textarea`
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
 `;
+
 const StyledButton = styled.button`
   position: center;
   color: #ffffff;
@@ -52,10 +58,12 @@ const StyledButton = styled.button`
   font-size: 18px;
   margin-bottom: 70px;
 `;
+
 const WrapperSearchBar = styled.div`
   position: relative;
   width: 100%;
 `;
+
 const InputSearchField = styled.input`
   padding: 0.5rem 0.5rem 0.5rem 30px;
   border: 2px solid black;
@@ -66,18 +74,51 @@ const InputSearchField = styled.input`
   background-position: 5px center;
   background-size: 20px;
 `;
+
 const ContainerReloadAndPicture = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 30px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  align-items: center;
+`;
+
 const PlusButton = styled.div`
-  margin: 15px 0 15px 0;
+  // margin: 15px 15px 0px;
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  &:active {
+    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    background: #ffffff;
+  }
+  &:hover {
+    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
+    background: #ffffff;
+  }
+`;
+
+const MinusButton = styled.div`
+  // margin: 15px 0 15px 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
   justify-content: center;
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
@@ -92,20 +133,21 @@ const PlusButton = styled.div`
     background: #ffffff;
   }
 `;
+
 const ImageContainer = styled.div`
   position: relative;
   width: 281.25px;
   height: 210.75px;
-  border: 0px solid black;
-  border-radius: 0px;
+  // border: 0px solid black;
+  // border-radius: 10px;
 `;
 
 const StyledImage = styled(Image)`
   object-fit: cover;
+  border-radius: 10px;
 `;
 
 export default function FormCreate({ onAddActivity }) {
-  // const [showContainer, setShowContainer] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();
@@ -127,26 +169,12 @@ export default function FormCreate({ onAddActivity }) {
   }
   const handleKeyPress = (event) => {
     event.preventDefault();
-    // setShowContainer(true);
     setSearchTerm(event.target.value);
   };
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
-  console.log(imageSearch);
-
-  // const { hits } = imageSearch;
-
-  // console.log(imageSearch.hits);
-  // console.log(increment);
-
-  // console.log("Arraylenght", imageSearch.hits.length);
-
-  if (searchImage.hits) {
-    console.log("Arraylenght", imageSearch.hits.length);
-  }
-
   return (
     <>
       <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
@@ -219,37 +247,62 @@ export default function FormCreate({ onAddActivity }) {
               onChange={handleKeyPress}
             />
           </WrapperSearchBar>
-          {/* {showContainer && ( */}
+
           <ContainerReloadAndPicture>
-            <PlusButton
-              onClick={() => {
-                if (increment < imageSearch.hits.length - 1) {
-                  setIncrement((prevCount) => prevCount + 1);
-                }
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#000000"
+            <ButtonWrapper>
+              <MinusButton
+                onClick={() => {
+                  if (increment >= 1) {
+                    setIncrement((prevCount) => prevCount - 1);
+                    console.log(increment);
+                  }
+                }}
               >
-                <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
-              </svg>
-            </PlusButton>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
+                >
+                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                </svg>
+              </MinusButton>
+              {imageSearch &&
+                imageSearch.hits &&
+                imageSearch.hits.length > 0 && (
+                  <p>
+                    {increment + 1}/{imageSearch.hits.length}
+                  </p>
+                )}
+              <PlusButton
+                onClick={() => {
+                  if (increment < imageSearch.hits.length - 1) {
+                    setIncrement((prevCount) => prevCount + 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
+                >
+                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                </svg>
+              </PlusButton>
+            </ButtonWrapper>
             <ImageContainer>
               {imageSearch?.hits?.length > 0 && (
                 <StyledImage
                   src={imageSearch.hits[increment].largeImageURL}
                   fill
-                  // style={{objectFit: 'cover',}}
                   alt="Pixabay Image"
                 />
               )}
             </ImageContainer>
           </ContainerReloadAndPicture>
-          {/* )} */}
         </StyledSection>
         <StyledButton type="submit">Add Activity</StyledButton>
       </StyledForm>
