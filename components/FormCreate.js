@@ -90,7 +90,7 @@ const PlusButton = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
 
   &:active {
     -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
