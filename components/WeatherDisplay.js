@@ -55,7 +55,6 @@ export default function WeatherDisplay({ area }) {
   if (!weather) {
     return <p>Loading...</p>;
   }
-  console.log(weather);
 
   return (
     <>
