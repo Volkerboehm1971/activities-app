@@ -175,6 +175,7 @@ export default function FormCreate({ onAddActivity }) {
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
+  console.log(API);
   return (
     <>
       <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
