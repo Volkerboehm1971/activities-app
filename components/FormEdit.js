@@ -78,6 +78,8 @@ export default function FormEdit({ onEditActivity, id, activities }) {
       country: data.country,
       image: data.image,
       description: data.description,
+      lng: data.lng,
+      lat: data.lat,
     };
 
     onEditActivity(modifiedActivity, id);
@@ -141,6 +143,30 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             type="text"
             pattern="^(?!.*\s{2,}).+$"
             defaultValue={defaultActivity?.country}
+            required
+          />
+        </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="area">Longitude</label>
+          <StyledInput
+            id="lng"
+            name="lng"
+            type="number"
+            placeholder="133.2051549"
+            pattern="^(?!.*\s{2,}).+$"
+            required
+          />
+        </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="area">Latitude</label>
+          <StyledInput
+            id="lat"
+            name="lat"
+            type="number"
+            placeholder="34.4088519"
+            pattern="^(?!.*\s{2,}).+$"
             required
           />
         </StyledSection>
