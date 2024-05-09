@@ -84,7 +84,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
     onEditActivity(modifiedActivity, id);
 
-    router.push("/");
+    router.push("/activityList");
   }
 
   return (
@@ -153,7 +153,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             id="lng"
             name="lng"
             type="number"
-            placeholder="133.2051549"
+            placeholder="Bsp. 133.2051549"
             pattern="^(?!.*\s{2,}).+$"
             required
           />
@@ -165,7 +165,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             id="lat"
             name="lat"
             type="number"
-            placeholder="34.4088519"
+            placeholder="Bsp. 34.4088519"
             pattern="^(?!.*\s{2,}).+$"
             required
           />
