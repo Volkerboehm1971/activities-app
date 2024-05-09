@@ -85,11 +85,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
         <Row>
           <ContainerIconLabel
             onClick={() => handleIconClick("Water")}
-            // style={{
-            //   color: selectedCategory === "Water" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Water" ? "orange" : "black",
+              color: selectedByIcon.includes("Water") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -100,11 +97,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Mountains")}
-            // style={{
-            //   color: selectedCategory === "Mountains" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Mountains" ? "orange" : "black",
+              color: selectedByIcon.includes("Mountains") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -115,11 +109,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Winter")}
-            // style={{
-            //   color: selectedCategory === "Winter" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Winter" ? "orange" : "black",
+              color: selectedByIcon.includes("Winter") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -130,11 +121,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Biking")}
-            // style={{
-            //   color: selectedCategory === "Biking" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Biking" ? "orange" : "black",
+              color: selectedByIcon.includes("Biking") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -147,11 +135,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
         <Row>
           <ContainerIconLabel
             onClick={() => handleIconClick("Hiking")}
-            // style={{
-            //   color: selectedCategory === "Hiking" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Hiking" ? "orange" : "black",
+              color: selectedByIcon.includes("Hiking") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -162,11 +147,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Extrem")}
-            // style={{
-            //   color: selectedCategory === "Extrem" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Extrem" ? "orange" : "black",
+              color: selectedByIcon.includes("Extrem") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -177,11 +159,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Indoor")}
-            // style={{
-            //   color: selectedCategory === "Indoor" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Indoor" ? "orange" : "black",
+              color: selectedByIcon.includes("Indoor") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -192,11 +171,8 @@ export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
 
           <ContainerIconLabel
             onClick={() => handleIconClick("Others")}
-            // style={{
-            //   color: selectedCategory === "Others" ? "orange" : "black",
-            // }}
             style={{
-              color: selectedByIcon === "Others" ? "orange" : "black",
+              color: selectedByIcon.includes("Others") ? "orange" : "black",
             }}
           >
             <BackgroundIcons>

@@ -81,6 +81,7 @@ const ErrorMessage = styled.p`
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
+  console.log(selectedByIcon);
 
   const getFilteredActivities = () => {
     let filtered = activities.filter(
