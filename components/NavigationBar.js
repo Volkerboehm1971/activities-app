@@ -9,6 +9,7 @@ const Navigation = styled.nav`
   position: fixed;
   padding: 10px;
   background-color: #f0dd89;
+  z-index: 2;
 `;
 
 const List = styled.ul`
