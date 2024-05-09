@@ -2,7 +2,7 @@ import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
-import FilterByCategory from "@/components/FilterCategory";
+import FilterByCategory from "@/components/FilterByCategory";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -80,22 +80,35 @@ const ErrorMessage = styled.p`
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const getFilteredActivities = (searchTerm, activities) => {
-    if (!searchTerm) {
-      return activities;
-    }
-
-    return activities.filter(
+  const getFilteredActivities = () => {
+    let filtered = activities.filter(
       (activity) =>
         activity.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.area.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.country.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if (selectedByIcon.length > 0) {
+      filtered = filtered.filter((activity) =>
+        selectedByIcon.includes(activity.categoryFilter)
+      );
+    }
+
+    return filtered;
   };
 
-  const filteredActivities = getFilteredActivities(searchTerm, activities);
+  const filteredActivities = getFilteredActivities();
+
+  const handleIconClick = (category) => {
+    if (selectedByIcon.includes(category)) {
+      setSelectedByIcon(selectedByIcon.filter((c) => c !== category));
+    } else {
+      setSelectedByIcon([...selectedByIcon, category]);
+    }
+  };
 
   return (
     <>
@@ -115,9 +128,13 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <FilterByCategory activities={activities} />
+        <FilterByCategory
+          handleIconClick={handleIconClick}
+          selectedByIcon={selectedByIcon}
+        />
       </StyledSection>
-      {filteredActivities && filteredActivities.length > 0 ? (
+
+      {filteredActivities.length > 0 ? (
         <StyledUl>
           {filteredActivities.map((activity) => (
             <StyledLi key={activity.id}>

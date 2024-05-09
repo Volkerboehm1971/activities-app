@@ -4,8 +4,6 @@ import IconMountains from "./icons/IconsFilterCategory/Mountains";
 import IconWinter from "./icons/IconsFilterCategory/Winter";
 import IconBiking from "./icons/IconsFilterCategory/Biking";
 import IconHiking from "./icons/IconsFilterCategory/Hiking";
-import { useState } from "react";
-import ActivityCard from "@/components/ActivityCard";
 import Link from "next/link";
 import IconIndoor from "./icons/IconsFilterCategory/Indoor";
 import IconOthers from "./icons/IconsFilterCategory/Others";
@@ -80,32 +78,7 @@ const StyledLinkDetailsPage = styled(Link)`
   }
 `;
 
-export default function FilterByCategory({ activities }) {
-  const [selectedByIcon, setSelectedByIcon] = useState([]);
-
-  const getFilteredActivitiesByIcon = (selectedByIcon, activities) => {
-    if (selectedByIcon.length === 0) {
-      return activities;
-    }
-
-    return activities.filter((activity) =>
-      selectedByIcon.includes(activity.categoryFilter)
-    );
-  };
-
-  const handleIconClick = (category) => {
-    if (selectedByIcon.includes(category)) {
-      setSelectedByIcon(selectedByIcon.filter((c) => c !== category));
-    } else {
-      setSelectedByIcon([...selectedByIcon, category]);
-    }
-  };
-
-  const filteredActivitiesByIcon = getFilteredActivitiesByIcon(
-    selectedByIcon,
-    activities
-  );
-
+export default function FilterByCategory({ handleIconClick, selectedByIcon }) {
   return (
     <>
       <IconsContainer>
@@ -233,21 +206,6 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
         </Row>
       </IconsContainer>
-
-      <StyledUl>
-        {filteredActivitiesByIcon.map((activity) => (
-          <StyledLi key={activity.id}>
-            <StyledLinkDetailsPage href={`/${activity.id}`}>
-              <ActivityCard
-                id={activity.id}
-                image={activity.image}
-                title={activity.title}
-                area={activity.area}
-              />
-            </StyledLinkDetailsPage>
-          </StyledLi>
-        ))}
-      </StyledUl>
     </>
   );
 }
