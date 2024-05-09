@@ -11,19 +11,17 @@ const StyledMapContainer = styled(MapContainer)`
   z-index: 1;
 `;
 
-export default function MapDetail() {
+export default function DetailMap({ longitude, latitude }) {
+  console.log(longitude, latitude);
   const customIcon = new Icon({
-    iconUrl: require,
-    iconSize: [38, 38],
+    iconUrl:
+      "https://icons.iconarchive.com/icons/steve/zondicons/512/Location-icon.png",
+    iconSize: [30, 30],
   });
 
-  const geocode = [38.646806, 34.8491554];
+  const geocode = [latitude, longitude];
   return (
-    <StyledMapContainer
-      center={[38.646806, 34.8491554]}
-      zoom={10}
-      zoomControl={false}
-    >
+    <StyledMapContainer center={geocode} zoom={10} zoomControl={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

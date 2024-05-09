@@ -113,6 +113,7 @@ export default function DetailsViewActivity({
   id,
 }) {
   const router = useRouter();
+  console.log(detailActivity);
   return (
     <>
       <StyledHeadline>Details of Activity</StyledHeadline>
@@ -140,7 +141,10 @@ export default function DetailsViewActivity({
             </StyledInfo>
           </StyledDiv>
         </StyledAreaCountyContainer>
-        <DetailMap></DetailMap>
+        <DetailMap
+          longitude={detailActivity.lng}
+          latitude={detailActivity.lat}
+        ></DetailMap>
       </StyledSection>
       <StyledButtonContainer>
         <StyledButtonEdit
