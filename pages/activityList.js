@@ -2,6 +2,7 @@ import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
+import FilterByCategory from "@/components/FilterCategory";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -114,6 +115,7 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
+        <FilterByCategory activities={activities} />
       </StyledSection>
       {filteredActivities && filteredActivities.length > 0 ? (
         <StyledUl>
