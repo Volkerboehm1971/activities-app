@@ -81,24 +81,28 @@ const StyledLinkDetailsPage = styled(Link)`
 `;
 
 export default function FilterByCategory({ activities }) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const getFilteredActivities = (selectedCategory, activities) => {
-    if (!selectedCategory) {
+  const getFilteredActivitiesByIcon = (selectedByIcon, activities) => {
+    if (selectedByIcon.length === 0) {
       return activities;
     }
 
-    return activities.filter(
-      (activity) => activity.categoryFilter === selectedCategory
+    return activities.filter((activity) =>
+      selectedByIcon.includes(activity.categoryFilter)
     );
   };
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
+  const handleIconClick = (category) => {
+    if (selectedByIcon.includes(category)) {
+      setSelectedByIcon(selectedByIcon.filter((c) => c !== category));
+    } else {
+      setSelectedByIcon([...selectedByIcon, category]);
+    }
   };
 
-  const filteredActivities = getFilteredActivities(
-    selectedCategory,
+  const filteredActivitiesByIcon = getFilteredActivitiesByIcon(
+    selectedByIcon,
     activities
   );
 
@@ -107,9 +111,12 @@ export default function FilterByCategory({ activities }) {
       <IconsContainer>
         <Row>
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Water")}
+            onClick={() => handleIconClick("Water")}
+            // style={{
+            //   color: selectedCategory === "Water" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Water" ? "orange" : "black",
+              color: selectedByIcon === "Water" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -119,9 +126,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Mountains")}
+            onClick={() => handleIconClick("Mountains")}
+            // style={{
+            //   color: selectedCategory === "Mountains" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Mountains" ? "orange" : "black",
+              color: selectedByIcon === "Mountains" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -131,9 +141,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Winter")}
+            onClick={() => handleIconClick("Winter")}
+            // style={{
+            //   color: selectedCategory === "Winter" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Winter" ? "orange" : "black",
+              color: selectedByIcon === "Winter" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -143,9 +156,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Biking")}
+            onClick={() => handleIconClick("Biking")}
+            // style={{
+            //   color: selectedCategory === "Biking" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Biking" ? "orange" : "black",
+              color: selectedByIcon === "Biking" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -157,9 +173,12 @@ export default function FilterByCategory({ activities }) {
 
         <Row>
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Hiking")}
+            onClick={() => handleIconClick("Hiking")}
+            // style={{
+            //   color: selectedCategory === "Hiking" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Hiking" ? "orange" : "black",
+              color: selectedByIcon === "Hiking" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -169,9 +188,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Extrem")}
+            onClick={() => handleIconClick("Extrem")}
+            // style={{
+            //   color: selectedCategory === "Extrem" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Extrem" ? "orange" : "black",
+              color: selectedByIcon === "Extrem" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -181,9 +203,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Indoor")}
+            onClick={() => handleIconClick("Indoor")}
+            // style={{
+            //   color: selectedCategory === "Indoor" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Indoor" ? "orange" : "black",
+              color: selectedByIcon === "Indoor" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -193,9 +218,12 @@ export default function FilterByCategory({ activities }) {
           </ContainerIconLabel>
 
           <ContainerIconLabel
-            onClick={() => handleCategoryClick("Others")}
+            onClick={() => handleIconClick("Others")}
+            // style={{
+            //   color: selectedCategory === "Others" ? "orange" : "black",
+            // }}
             style={{
-              color: selectedCategory === "Others" ? "orange" : "black",
+              color: selectedByIcon === "Others" ? "orange" : "black",
             }}
           >
             <BackgroundIcons>
@@ -207,7 +235,7 @@ export default function FilterByCategory({ activities }) {
       </IconsContainer>
 
       <StyledUl>
-        {filteredActivities.map((activity) => (
+        {filteredActivitiesByIcon.map((activity) => (
           <StyledLi key={activity.id}>
             <StyledLinkDetailsPage href={`/${activity.id}`}>
               <ActivityCard
