@@ -65,9 +65,12 @@ export default function FormCreate({ onAddActivity }) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
+    const [categoryFilter, category] = data.category.split("|");
+
     const newActivity = {
       title: data.title,
-      category: data.category,
+      categoryFilter: categoryFilter,
+      category: category,
       area: data.area,
       country: data.country,
       image: data.image,
@@ -100,13 +103,35 @@ export default function FormCreate({ onAddActivity }) {
           <label htmlFor="category">Category of Activity</label>
           <StyledSelect id="category" name="category" required>
             <option value="">--Please select a category--</option>
-            <option value="Surfing">Surfing</option>
-            <option value="Hiking">Hiking</option>
-            <option value="Kayaking">Kayaking</option>
-            <option value="Biking">Biking</option>
-            <option value="Hot Air Ballooning">Hot Air Ballooning</option>
-            <option value="Sailing">Sailing</option>
-            <option value="Others">Others</option>
+            <option value="Water|Surfsport">Surfsport</option>
+            <option value="Water|Sailing">Sailing</option>
+            <option value="Water|Swimming">Swimming</option>
+            <option value="Water|Paddeling">Paddeling</option>
+            <option value="Water|Diving">Diving</option>
+
+            <option value="Winter|Skiing">Skiing</option>
+            <option value="Winter|Tobogganing">Tobogganing</option>
+            <option value="Winter|Ice skating">Ice skating</option>
+            <option value="Winter|Snowboarding">Snowboarding</option>
+
+            <option value="Biking|Mountainbiking">Mountainbiking</option>
+            <option value="Biking|Cycling">Cycling</option>
+
+            <option value="Hiking|Strolling">Strolling</option>
+            <option value="Hiking|(Nordic) Walking">(Nordic) Walking</option>
+            <option value="Hiking|Jogging">Jogging</option>
+            <option value="Hiking|Hiking">Hiking</option>
+
+            <option value="Extrem|Paragliding">Paragliding</option>
+            <option value="Extrem|Bungeejumping">Bungeejumping</option>
+            <option value="Extrem|Motorcross">Motorcross</option>
+            <option value="Extrem|Rafting">Rafting</option>
+
+            <option value="Indoor|Curling">Curling</option>
+            <option value="Indoor|Bouldern">Bouldern</option>
+            <option value="Indoor|Ice Hockey">Ice Hockey</option>
+
+            <option value="Others|Others">Others</option>
           </StyledSelect>
         </StyledSection>
 
