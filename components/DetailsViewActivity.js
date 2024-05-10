@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -26,7 +29,19 @@ const StyledSection = styled.section`
   margin-left: 1.8rem;
   margin-right: 1.8rem;
   margin-top: 2rem;
-  max-height: 500px;
+  max-height: 1000px;
+`;
+
+const StyledImageDiv = styled.div`
+  position: relative;
+  margin-top: 0.5rem;
+  height: 200px;
+`;
+
+const StyledTitle = styled.h3`
+  font-size: large;
+  margin-top: 13px;
+  margin-bottom: 0;
 `;
 
 const StyledDiv = styled.div`
@@ -34,14 +49,13 @@ const StyledDiv = styled.div`
 `;
 
 const StyledImage = styled(Image)`
-  margin-bottom: 2rem;
   border-radius: 13px;
   object-fit: cover;
 `;
 
 const StyledSubheader = styled.h3`
-  font-size: medium;
-  margin-top: 0;
+  font-size: 15px;
+  margin-top: 8px;
   margin-bottom: 0;
 `;
 
@@ -55,6 +69,12 @@ const StyledArticle = styled.p`
   font-size: small;
   margin-top: 0.7rem;
   padding-right: 1.5rem;
+`;
+
+const StyledAreaCountyContainer = styled.div`
+  display: flex;
+  color: grey;
+  font-weight: 400;
 `;
 
 const StyledButtonContainer = styled.section`
@@ -93,36 +113,38 @@ export default function DetailsViewActivity({
   id,
 }) {
   const router = useRouter();
+  console.log(detailActivity);
   return (
     <>
       <StyledHeadline>Details of Activity</StyledHeadline>
       <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
       <StyledSection>
-        <StyledDiv>
+        <StyledImageDiv>
           <StyledImage
             src={detailActivity.image}
-            width={187.5}
-            height={140.5}
+            fill
             alt="hiker on a mountain"
           />
-          <StyledSubheader>Type of Activity</StyledSubheader>
-          <StyledInfo>{detailActivity.title}</StyledInfo>
-        </StyledDiv>
+        </StyledImageDiv>
 
-        <StyledDiv>
-          <StyledSubheader>Area</StyledSubheader>
-          <StyledInfo> {detailActivity.area}</StyledInfo>
-        </StyledDiv>
-
-        <StyledDiv>
-          <StyledSubheader>Country</StyledSubheader>
-          <StyledInfo> {detailActivity.country}</StyledInfo>
-        </StyledDiv>
+        <StyledTitle>{detailActivity.title}</StyledTitle>
 
         <StyledDiv>
           <StyledSubheader>Description</StyledSubheader>
           <StyledArticle>{detailActivity.description}</StyledArticle>
         </StyledDiv>
+
+        <StyledAreaCountyContainer>
+          <StyledDiv>
+            <StyledInfo>
+              {detailActivity.area}, {detailActivity.country}
+            </StyledInfo>
+          </StyledDiv>
+        </StyledAreaCountyContainer>
+        <DetailMap
+          longitude={detailActivity.lng}
+          latitude={detailActivity.lat}
+        ></DetailMap>
       </StyledSection>
       <StyledButtonContainer>
         <StyledButtonEdit

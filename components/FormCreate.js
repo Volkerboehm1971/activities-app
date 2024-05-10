@@ -163,8 +163,11 @@ export default function FormCreate({ onAddActivity }) {
       country: data.country,
       image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
+      lng: data.lng,
+      lat: data.lat,
     };
     onAddActivity(newActivity);
+
     router.push("/activityList");
   }
   const handleKeyPress = (event) => {
@@ -225,6 +228,42 @@ export default function FormCreate({ onAddActivity }) {
             required
           />
         </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="area">Longitude</label>
+          <StyledInput
+            id="lng"
+            name="lng"
+            type="number"
+            placeholder="Bsp: 133.2051549"
+            pattern="^(?!.*\s{2,}).+$"
+            required
+          />
+        </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="area">Latitude</label>
+          <StyledInput
+            id="lat"
+            name="lat"
+            type="number"
+            placeholder="Bsp: 34.4088519"
+            pattern="^(?!.*\s{2,}).+$"
+            required
+          />
+        </StyledSection>
+
+        <StyledSection>
+          <label htmlFor="image">Image URL</label>
+          <StyledInput
+            id="image"
+            name="image"
+            type="url"
+            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            required
+          />
+        </StyledSection>
+
         <StyledSection>
           <label htmlFor="description">Description</label>
           <StyledTextarea
