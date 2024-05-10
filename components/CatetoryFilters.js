@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { IconsContainer, ContainerIconLabel, BackgroundIcons, LabelIcons } from "./styledComponents/CatetoryFilters.styles"
 import IconWater from "./icons/IconsFilterCategory/Water";
 import IconMountains from "./icons/IconsFilterCategory/Mountains";
 import IconWinter from "./icons/IconsFilterCategory/Winter";
@@ -8,45 +8,7 @@ import IconIndoor from "./icons/IconsFilterCategory/Indoor";
 import IconOthers from "./icons/IconsFilterCategory/Others";
 import IconExtreme from "./icons/IconsFilterCategory/Extreme";
 
-const IconsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  row-count: 2;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 30px;
-  margin-top: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-`;
 
-const ContainerIconLabel = styled.button`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  border: 0px;
-  padding: 10px;
-  color: ${(props) => (props.selected ? "orange" : "black")};
-`;
-
-const BackgroundIcons = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: 2px solid;
-  border-radius: 10px;
-  width: 50px;
-  height: 50px;
-`;
-
-const LabelIcons = styled.label`
-  font-size: small;
-  margin-top: 3px;
-`;
 
 const categories = [
   { name: "Water", icon: <IconWater /> },

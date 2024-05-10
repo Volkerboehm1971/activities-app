@@ -182,7 +182,6 @@ export default function FormCreate({ onAddActivity }) {
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
-  console.log(API);
   return (
     <>
       <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
@@ -320,7 +319,6 @@ export default function FormCreate({ onAddActivity }) {
                 onClick={() => {
                   if (increment >= 1) {
                     setIncrement((prevCount) => prevCount - 1);
-                    console.log(increment);
                   }
                 }}
               >
@@ -360,12 +358,14 @@ export default function FormCreate({ onAddActivity }) {
               </PlusButton>
             </ButtonWrapper>
             <ImageContainer>
-              {imageSearch?.hits?.length > 0 && (
+              {(imageSearch?.hits?.length > 0) & (searchTerm.length > 0) ? (
                 <StyledImage
                   src={imageSearch.hits[increment].largeImageURL}
                   fill
                   alt="Pixabay Image"
                 />
+              ) : (
+                ""
               )}
             </ImageContainer>
           </ContainerReloadAndPicture>

@@ -1,63 +1,5 @@
 import { useRouter } from "next/router";
-import styled from "styled-components";
-import Link from "next/link";
-
-const StyledForm = styled.form`
-  margin: 10px;
-  padding-top: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-`;
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-`;
-
-const StyledInput = styled.input`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledSelect = styled.select`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledTextarea = styled.textarea`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledButtonContainer = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-  margin-bottom: 70px;
-`;
-
-const StyledLinkCancel = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
-  border-radius: 5px;
-  font-size: 18px;
-`;
-
-const StyledButtonSave = styled.button`
-  position: center;
-  color: #ffffff;
-  background-color: #4caf50;
-  border: 7px solid #4caf50;
-  border-radius: 5px;
-  font-size: 18px;
-`;
+import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave } from "./styledComponents/FormEdit.styles";
 
 export default function FormEdit({ onEditActivity, id, activities }) {
   const router = useRouter();
@@ -89,10 +31,10 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledSection>
+      <Form onSubmit={handleSubmit}>
+        <Section>
           <label htmlFor="title">Activity Name</label>
-          <StyledInput
+          <Input
             id="title"
             name="title"
             type="text"
@@ -102,11 +44,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             defaultValue={defaultActivity?.title}
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="category">Category of Activity</label>
-          <StyledSelect
+          <Select
             id="category"
             name="category"
             defaultValue={defaultActivity?.category}
@@ -120,12 +62,12 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             <option value="Hot Air Ballooning">Hot Air Ballooning</option>
             <option value="Sailing">Sailing</option>
             <option value="Others">Others</option>
-          </StyledSelect>
-        </StyledSection>
+          </Select>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="area">Area</label>
-          <StyledInput
+          <Input
             id="area"
             name="area"
             type="text"
@@ -133,11 +75,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             defaultValue={defaultActivity?.area}
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="country">Country</label>
-          <StyledInput
+          <Input
             id="country"
             name="country"
             type="text"
@@ -145,11 +87,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             defaultValue={defaultActivity?.country}
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="area">Longitude</label>
-          <StyledInput
+          <Input
             id="lng"
             name="lng"
             type="number"
@@ -157,11 +99,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="area">Latitude</label>
-          <StyledInput
+          <Input
             id="lat"
             name="lat"
             type="number"
@@ -169,22 +111,22 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="image">Image URL</label>
-          <StyledInput
+          <Input
             id="image"
             name="image"
             type="url"
             defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="description">Description</label>
-          <StyledTextarea
+          <Textarea
             id="description"
             rows="8"
             name="description"
@@ -193,12 +135,12 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             defaultValue={defaultActivity?.description}
             required
           />
-        </StyledSection>
-        <StyledButtonContainer>
-          <StyledLinkCancel href={`/${id}`}>Cancel</StyledLinkCancel>
-          <StyledButtonSave type="submit">Save</StyledButtonSave>
-        </StyledButtonContainer>
-      </StyledForm>
+        </Section>
+        <ButtonContainer>
+          <LinkCancel href={`/${id}`}>Cancel</LinkCancel>
+          <ButtonSave type="submit">Save</ButtonSave>
+        </ButtonContainer>
+      </Form>
     </>
   );
 }
