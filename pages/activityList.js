@@ -2,7 +2,7 @@ import ActivityCard from "@/components/ActivityCard";
 import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
-import FilterByCategory from "@/components/FilterByCategory";
+import CatetoryFilters from "@/components/CatetoryFilters";
 
 const StyledHeadline = styled.h1`
   text-align: center;
@@ -66,7 +66,6 @@ const InputSearchField = styled.input`
   background-position: 10px center;
   background-size: 20px;
   width: 310px;
-  margin-bottom: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 `;
 
@@ -81,7 +80,6 @@ const ErrorMessage = styled.p`
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
-  console.log(selectedByIcon);
 
   const getFilteredActivities = () => {
     let filtered = activities.filter(
@@ -105,7 +103,11 @@ export default function ActivityList({ activities }) {
 
   const handleIconClick = (category) => {
     if (selectedByIcon.includes(category)) {
-      setSelectedByIcon(selectedByIcon.filter((c) => c !== category));
+      setSelectedByIcon(
+        selectedByIcon.filter(
+          (categoryParameter) => categoryParameter !== category
+        )
+      );
     } else {
       setSelectedByIcon([...selectedByIcon, category]);
     }
@@ -129,7 +131,7 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <FilterByCategory
+        <CatetoryFilters
           handleIconClick={handleIconClick}
           selectedByIcon={selectedByIcon}
         />
