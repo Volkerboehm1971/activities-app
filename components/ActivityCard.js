@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-
-
-
 const StyledImage = styled(Image)`
-      border-radius: 13px;
+  border-radius: 10px;
+  object-fit: cover;
 `;
 
 const StyledDiv = styled.div`
@@ -32,16 +30,13 @@ const StyledArea = styled.p`
 `;
 
 export default function ActivityCard({ image, title, area }) {
-
   return (
     <>
-  
       <StyledImage src={image} width={187.5} height={140.5} alt="" />
       <StyledDiv>
         <StyledTitle>{title}</StyledTitle>
         <StyledArea>{area}</StyledArea>
       </StyledDiv>
-   
     </>
   );
 }

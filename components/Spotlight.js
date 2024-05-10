@@ -13,6 +13,11 @@ const StyledArticle = styled.article`
   margin: 0px 20px 0 20px;
 `;
 
+const StyledImage = styled(Image)`
+  border-radius: 10px;
+  object-fit: cover;
+`;
+
 const H2 = styled.h2`
   text-align: center;
 `;
@@ -23,7 +28,7 @@ export default function Spotlight({ title, area, image }) {
       <StyledArticle>
         <H2>Random Activity</H2>
         <p>{title}</p>
-        <Image src={image} width={281.25} height={210.75} alt="" />
+        <StyledImage src={image} width={281.25} height={210.75} alt="" />
         <p>{area}</p>
       </StyledArticle>
     </>
