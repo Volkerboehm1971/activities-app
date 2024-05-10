@@ -112,18 +112,6 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-
-        <Section>
-          <label htmlFor="image">Image URL</label>
-          <Input
-            id="image"
-            name="image"
-            type="url"
-            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            required
-          />
-        </Section>
-
         <Section>
           <label htmlFor="description">Description</label>
           <Textarea
