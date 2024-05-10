@@ -55,7 +55,7 @@ export default function FormCreate({ onAddActivity }) {
   );
   return (
     <>
-      <LinkHomePage href="/">← Back</LinkHomePage>
+      {/* <LinkHomePage href="/">← Back</LinkHomePage> */} 
       <Form onSubmit={handleSubmit}>
         <Section>
           <label htmlFor="title">Activity Name</label>
@@ -148,18 +148,6 @@ export default function FormCreate({ onAddActivity }) {
             required
           />
         </Section>
-
-        <Section>
-          <label htmlFor="image">Image URL</label>
-          <Input
-            id="image"
-            name="image"
-            type="url"
-            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            required
-          />
-        </Section>
-
         <Section>
           <label htmlFor="description">Description</label>
           <Textarea
@@ -229,14 +217,12 @@ export default function FormCreate({ onAddActivity }) {
               </PlusButton>
             </ButtonWrapper>
             <ImageContainer>
-              {(imageSearch?.hits?.length > 0) & (searchTerm.length > 0) ? (
+              {(imageSearch?.hits?.length > 0) && (
                 <SearchImage
                   src={imageSearch.hits[increment].largeImageURL}
                   fill
                   alt="Pixabay Image"
                 />
-              ) : (
-                ""
               )}
             </ImageContainer>
           </ContainerReloadAndPicture>

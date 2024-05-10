@@ -16,7 +16,7 @@ export default function DetailsViewActivity({
   return (
     <>
       <Headline>Details of Activity</Headline>
-      <LinkHomePage href="/">← Back</LinkHomePage>
+      <LinkHomePage href="/activityList">← Back</LinkHomePage>
       <Section>
         <ImageDiv>
           <DetailImage
