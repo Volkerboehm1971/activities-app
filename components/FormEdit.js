@@ -1,8 +1,12 @@
+import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerReloadAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage } from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave } from "./styledComponents/FormEdit.styles";
+import { useState } from "react";
+import useSWR from "swr";
 
 export default function FormEdit({ onEditActivity, id, activities }) {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [increment, setIncrement] = useState(0);
 
   const defaultActivity = activities.find((activity) => activity.id === id);
 
@@ -12,23 +16,34 @@ export default function FormEdit({ onEditActivity, id, activities }) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    const modifiedActivity = {
-      id: id,
+    const [categoryFilter, category] = data.category.split("-");
+
+    const newActivity = {
       title: data.title,
-      category: data.category,
+      categoryFilter: categoryFilter,
+      category: category,
       area: data.area,
       country: data.country,
-      image: data.image,
+      image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
       lng: data.lng,
       lat: data.lat,
     };
 
-    onEditActivity(modifiedActivity, id);
+    onEditActivity(newActivity);
 
     router.push("/activityList");
   }
+  const handleKeyPress = (event) => {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
+  };
+  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
+  const { data: imageSearch } = useSWR(
+    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
+  );
 
+  
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -124,6 +139,77 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
+
+        <Section>
+          <label htmlFor="image">Search Activity Image</label>
+          <WrapperSearchBar>
+            <InputSearchField
+              id="image"
+              name="image"
+              type="text"
+              value={searchTerm}
+              required
+              onChange={handleKeyPress}
+            />
+          </WrapperSearchBar>
+
+          <ContainerReloadAndPicture>
+            <ButtonWrapper>
+              <MinusButton
+                onClick={() => {
+                  if (increment >= 1) {
+                    setIncrement((prevCount) => prevCount - 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
+                >
+                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                </svg>
+              </MinusButton>
+              {imageSearch &&
+                imageSearch.hits &&
+                imageSearch.hits.length > 0 && (
+                  <p>
+                    {increment + 1}/{imageSearch.hits.length}
+                  </p>
+                )}
+              <PlusButton
+                onClick={() => {
+                  if (increment < imageSearch.hits.length - 1) {
+                    setIncrement((prevCount) => prevCount + 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
+                >
+                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                </svg>
+              </PlusButton>
+            </ButtonWrapper>
+
+            <ImageContainer>
+              {(imageSearch?.hits?.length > 0) && (
+                <SearchImage
+                  src={imageSearch.hits[increment].largeImageURL}
+                  fill
+                  alt="Pixabay Image"
+                />
+              )}
+            </ImageContainer>
+          </ContainerReloadAndPicture>
+        </Section>
+        
         <ButtonContainer>
           <LinkCancel href={`/${id}`}>Cancel</LinkCancel>
           <ButtonSave type="submit">Save</ButtonSave>
