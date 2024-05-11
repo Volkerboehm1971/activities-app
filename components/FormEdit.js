@@ -1,4 +1,4 @@
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerReloadAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage } from "./styledComponents/FormEdit.styles";
+import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerSwitchesAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage } from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
@@ -37,12 +37,16 @@ export default function FormEdit({ onEditActivity, id, activities }) {
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
+    setIncrement(0);
   };
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
 
+  const typingInSearchbar =
+    (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
+    (searchTerm.length > 0);
   
   return (
     <>
@@ -153,7 +157,8 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             />
           </WrapperSearchBar>
 
-          <ContainerReloadAndPicture>
+          {typingInSearchbar ? (
+          <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
                 onClick={() => {
@@ -172,13 +177,9 @@ export default function FormEdit({ onEditActivity, id, activities }) {
                   <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
                 </svg>
               </MinusButton>
-              {imageSearch &&
-                imageSearch.hits &&
-                imageSearch.hits.length > 0 && (
-                  <p>
-                    {increment + 1}/{imageSearch.hits.length}
-                  </p>
-                )}
+              <p>
+                {increment + 1}/{imageSearch.hits.length}
+              </p>
               <PlusButton
                 onClick={() => {
                   if (increment < imageSearch.hits.length - 1) {
@@ -197,17 +198,17 @@ export default function FormEdit({ onEditActivity, id, activities }) {
                 </svg>
               </PlusButton>
             </ButtonWrapper>
-
             <ImageContainer>
-              {(imageSearch?.hits?.length > 0) && (
-                <SearchImage
-                  src={imageSearch.hits[increment].largeImageURL}
-                  fill
-                  alt="Pixabay Image"
-                />
-              )}
+              <SearchImage
+                src={imageSearch.hits[increment].largeImageURL}
+                fill
+                alt="Pixabay Image"
+              />
             </ImageContainer>
-          </ContainerReloadAndPicture>
+          </ContainerSwitchesAndPicture>
+        ) : (
+          ""
+        )}
         </Section>
         
         <ButtonContainer>

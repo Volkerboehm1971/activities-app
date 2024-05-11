@@ -79,7 +79,7 @@ export const InputSearchField = styled.input`
   background-size: 20px;
 `;
 
-export const ContainerReloadAndPicture = styled.div`
+export const ContainerSwitchesAndPicture = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
