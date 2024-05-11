@@ -6,7 +6,7 @@ export const Navigation = styled.nav`
   position: fixed;
   padding: 10px;
   background-color: #f0dd89;
-  z-index: 2;
+  z-index: 10000;
 `;
 
 export const List = styled.ul`
