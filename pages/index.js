@@ -1,15 +1,11 @@
 import dynamic from "next/dynamic";
-import styled from "styled-components";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
+import { Headline } from "../components/styledComponents/index.styles";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
-
-const Headline = styled.h1`
-  text-align: center;
-`;
 
 export default function HomePage({ activities }) {
   const [randomActivity, setRandomActivity] = useState(null);

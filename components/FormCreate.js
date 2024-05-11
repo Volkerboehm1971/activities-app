@@ -1,151 +1,22 @@
-import Link from "next/link";
+import {
+  LinkHomePage,
+  Form,
+  Section,
+  Input,
+  Select,
+  Textarea,
+  Button,
+  WrapperSearchBar,
+  InputSearchField,
+  ContainerReloadAndPicture,
+  ButtonWrapper,
+  PlusButton,
+  MinusButton,
+  ImageContainer,
+  SearchImage } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import { useState } from "react";
 import useSWR from "swr";
-import Image from "next/image";
-
-const StyledLinkHomePage = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #3e407d;
-  border: 5px solid #3e407d;
-  border-radius: 5px;
-  margin-left: 10px;
-  font-size: 17px;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
-
-const StyledForm = styled.form`
-  margin: 10px;
-  padding-top: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-`;
-
-const StyledSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-`;
-
-const StyledInput = styled.input`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledSelect = styled.select`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledTextarea = styled.textarea`
-  padding: 0.5rem;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-`;
-
-const StyledButton = styled.button`
-  position: center;
-  color: #ffffff;
-  background-color: #4caf50;
-  border: 7px solid #4caf50;
-  border-radius: 5px;
-  font-size: 18px;
-  margin-bottom: 70px;
-`;
-
-const WrapperSearchBar = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-const InputSearchField = styled.input`
-  padding: 0.5rem 0.5rem 0.5rem 30px;
-  border: 2px solid black;
-  border-radius: 0.5rem;
-  width: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: 5px center;
-  background-size: 20px;
-`;
-
-const ContainerReloadAndPicture = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-  margin-top: 20px;
-  align-items: center;
-`;
-
-const PlusButton = styled.div`
-  // margin: 15px 15px 0px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid black;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-  &:active {
-    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    background: #ffffff;
-  }
-  &:hover {
-    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    background: #ffffff;
-  }
-`;
-
-const MinusButton = styled.div`
-  // margin: 15px 0 15px 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border: 2px solid black;
-  justify-content: center;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-  &:active {
-    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    background: #ffffff;
-  }
-  &:hover {
-    -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
-    background: #ffffff;
-  }
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 281.25px;
-  height: 210.75px;
-  // border: 0px solid black;
-  // border-radius: 10px;
-`;
-
-const StyledImage = styled(Image)`
-  object-fit: cover;
-  border-radius: 10px;
-`;
 
 export default function FormCreate({ onAddActivity }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -182,14 +53,13 @@ export default function FormCreate({ onAddActivity }) {
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
-  console.log(API);
   return (
     <>
-      <StyledLinkHomePage href="/">← Back</StyledLinkHomePage>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledSection>
+      {/* <LinkHomePage href="/">← Back</LinkHomePage> */} 
+      <Form onSubmit={handleSubmit}>
+        <Section>
           <label htmlFor="title">Activity Name</label>
-          <StyledInput
+          <Input
             id="title"
             name="title"
             type="text"
@@ -198,10 +68,10 @@ export default function FormCreate({ onAddActivity }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
-        <StyledSection>
+        </Section>
+        <Section>
           <label htmlFor="category">Category of Activity</label>
-          <StyledSelect id="category" name="category" required>
+          <Select id="category" name="category" required>
             <option value="">--Please select a category--</option>
             <option value="Water-Surfsport">Surfsport</option>
             <option value="Water-Sailing">Sailing</option>
@@ -232,32 +102,32 @@ export default function FormCreate({ onAddActivity }) {
             <option value="Indoor-Ice Hockey">Ice Hockey</option>
 
             <option value="Others-Others">Others</option>
-          </StyledSelect>
-        </StyledSection>
-        <StyledSection>
+          </Select>
+        </Section>
+        <Section>
           <label htmlFor="area">Area</label>
-          <StyledInput
+          <Input
             id="area"
             name="area"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
-        <StyledSection>
+        </Section>
+        <Section>
           <label htmlFor="country">Country</label>
-          <StyledInput
+          <Input
             id="country"
             name="country"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="area">Longitude</label>
-          <StyledInput
+          <Input
             id="lng"
             name="lng"
             type="number"
@@ -265,11 +135,11 @@ export default function FormCreate({ onAddActivity }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
+        </Section>
 
-        <StyledSection>
+        <Section>
           <label htmlFor="area">Latitude</label>
-          <StyledInput
+          <Input
             id="lat"
             name="lat"
             type="number"
@@ -277,22 +147,10 @@ export default function FormCreate({ onAddActivity }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
-
-        <StyledSection>
-          <label htmlFor="image">Image URL</label>
-          <StyledInput
-            id="image"
-            name="image"
-            type="url"
-            defaultValue="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            required
-          />
-        </StyledSection>
-
-        <StyledSection>
+        </Section>
+        <Section>
           <label htmlFor="description">Description</label>
-          <StyledTextarea
+          <Textarea
             id="description"
             rows="8"
             name="description"
@@ -300,8 +158,8 @@ export default function FormCreate({ onAddActivity }) {
             pattern="^(?!.*\s{2,}).+$"
             required
           />
-        </StyledSection>
-        <StyledSection>
+        </Section>
+        <Section>
           <label htmlFor="image">Search Activity Image</label>
           <WrapperSearchBar>
             <InputSearchField
@@ -320,7 +178,6 @@ export default function FormCreate({ onAddActivity }) {
                 onClick={() => {
                   if (increment >= 1) {
                     setIncrement((prevCount) => prevCount - 1);
-                    console.log(increment);
                   }
                 }}
               >
@@ -360,8 +217,8 @@ export default function FormCreate({ onAddActivity }) {
               </PlusButton>
             </ButtonWrapper>
             <ImageContainer>
-              {imageSearch?.hits?.length > 0 && (
-                <StyledImage
+              {(imageSearch?.hits?.length > 0) && (
+                <SearchImage
                   src={imageSearch.hits[increment].largeImageURL}
                   fill
                   alt="Pixabay Image"
@@ -369,9 +226,9 @@ export default function FormCreate({ onAddActivity }) {
               )}
             </ImageContainer>
           </ContainerReloadAndPicture>
-        </StyledSection>
-        <StyledButton type="submit">Add Activity</StyledButton>
-      </StyledForm>
+        </Section>
+        <Button type="submit">Add Activity</Button>
+      </Form>
     </>
   );
 }

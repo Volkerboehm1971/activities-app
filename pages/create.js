@@ -1,15 +1,10 @@
 import FormCreate from "@/components/FormCreate";
-import styled from "styled-components";
-import React from "react";
-
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
+import { Headline } from "../components/styledComponents/create.styles";
 
 export default function CreateActivityPage({ onAddActivity }) {
   return (
     <>
-      <StyledHeadline>Create a new Activity</StyledHeadline>
+      <Headline>Create a new Activity</Headline>
       <FormCreate onAddActivity={onAddActivity} />
     </>
   );
