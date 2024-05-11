@@ -2,10 +2,8 @@ import styled from "styled-components";
 import React from "react";
 import FormEdit from "@/components/FormEdit";
 import { useRouter } from "next/router";
+import { Headline } from "@/components/styledComponents/create.styles";
 
-const StyledHeadline = styled.h1`
-  text-align: center;
-`;
 
 export default function EditActivityPage({ onEditActivity, activities }) {
   const router = useRouter();
@@ -13,7 +11,7 @@ export default function EditActivityPage({ onEditActivity, activities }) {
 
   return (
     <>
-      <StyledHeadline>Edit Activity</StyledHeadline>
+      <Headline>Edit Activity</Headline>
       <FormEdit
         onEditActivity={onEditActivity}
         id={id}
