@@ -1,4 +1,4 @@
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerSwitchesAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage } from "./styledComponents/FormEdit.styles";
+import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerSwitchesAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage, TinyInput, TinyInputsWrapper } from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
@@ -9,8 +9,19 @@ export default function FormEdit({ onEditActivity, id, activities }) {
   const [increment, setIncrement] = useState(0);
 
   const defaultActivity = activities.find((activity) => activity.id === id);
-  console.log(defaultActivity);
 
+  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
+  const { data: imageSearch } = useSWR(
+    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`, {
+      keepPreviousData: true
+    }
+  );
+
+  const typingInSearchbar =
+    imageSearch && imageSearch.hits && imageSearch.hits.length > 0;
+
+  const defaultOrSearchedImage = searchTerm.length > 0 & typingInSearchbar ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
+  
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -26,7 +37,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
       category: category,
       area: data.area,
       country: data.country,
-      image: imageSearch.hits[increment].largeImageURL,
+      image: defaultOrSearchedImage,
       description: data.description,
       lng: data.lng,
       lat: data.lat,
@@ -34,25 +45,17 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
     onEditActivity(modifiedActivity, id);
 
-    router.push("/activityList");
+    router.push(`/${id}`);
   }
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
   };
-  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
-  const { data: imageSearch } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`, {
-      keepPreviousData: true
-    }
-  );
 
-  const typingInSearchbar =
-    imageSearch && imageSearch.hits && imageSearch.hits.length > 0;
+console.log("default", defaultActivity);
+console.log("fresh Data", imageSearch);
 
-  const defaultAndSearchedImage = searchTerm.length > 0 & typingInSearchbar ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
-  
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -69,11 +72,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-
+        
         <Section>
           <label htmlFor="category">Category of Activity</label>
-          <Select id="category" name="category" required >
-            <option value="" >{defaultActivity?.category}</option>
+          <Select id="category" name="category" defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}>
+            <option defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}>--change category here--</option>
             <option value="Water-Surfsport">Surfsport</option>
             <option value="Water-Sailing">Sailing</option>
             <option value="Water-Swimming">Swimming</option>
@@ -106,9 +109,10 @@ export default function FormEdit({ onEditActivity, id, activities }) {
           </Select>
         </Section>
 
+        <TinyInputsWrapper>
         <Section>
           <label htmlFor="area">Area</label>
-          <Input
+          <TinyInput
             id="area"
             name="area"
             type="text"
@@ -117,10 +121,9 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-
         <Section>
           <label htmlFor="country">Country</label>
-          <Input
+          <TinyInput
             id="country"
             name="country"
             type="text"
@@ -129,10 +132,9 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-
         <Section>
           <label htmlFor="area">Longitude</label>
-          <Input
+          <TinyInput
             id="lng"
             name="lng"
             type="number"
@@ -142,10 +144,9 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-
         <Section>
           <label htmlFor="area">Latitude</label>
-          <Input
+          <TinyInput
             id="lat"
             name="lat"
             type="number"
@@ -155,6 +156,8 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
+        </TinyInputsWrapper>
+
         <Section>
           <label htmlFor="description">Description</label>
           <Textarea
@@ -167,6 +170,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
+        
 
         <Section>
           <label htmlFor="image">Search Activity Image</label>
@@ -176,7 +180,6 @@ export default function FormEdit({ onEditActivity, id, activities }) {
               name="image"
               type="text"
               value={searchTerm}
-              required
               onChange={handleKeyPress}
             />
           </WrapperSearchBar>
@@ -224,7 +227,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             </ButtonWrapper>
             <ImageContainer>
               <SearchImage
-                src={defaultAndSearchedImage}
+                src={defaultOrSearchedImage}
                 fill
                 alt="Pixabay Image"
               />

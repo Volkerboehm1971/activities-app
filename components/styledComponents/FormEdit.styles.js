@@ -28,6 +28,21 @@ export const Select = styled.select`
   border-radius: 0.5rem;
 `;
 
+export const TinyInputsWrapper = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+`;
+
+export const TinyInput = styled.input`
+display: flex;
+width: 125px;
+  margin-right: 25px;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+`;
+
 export const Textarea = styled.textarea`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0.5rem;
@@ -69,14 +84,16 @@ export const WrapperSearchBar = styled.div`
 `;
 
 export const InputSearchField = styled.input`
+  display: flex;
+  width: 125px;
+  margin-right: 25px;
   padding: 0.5rem 0.5rem 0.5rem 30px;
   border: 2px solid black;
   border-radius: 0.5rem;
-  width: 100%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 5px center;
-  background-size: 20px;
+  background-size: 15px;
 `;
 
 export const ContainerSwitchesAndPicture = styled.div`
@@ -138,8 +155,17 @@ export const MinusButton = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
+  display: block;
   width: 281.25px;
   height: 210.75px;
+
+  &:hover{
+  border: 2px solid orange;
+  border-radius: 10px;}
+  &:active{
+  border: 2px solid orange;
+  border-radius: 10px;
+  }
 `;
 
 export const SearchImage = styled(Image)`
