@@ -25,7 +25,7 @@ const MapOverviewContainer = styled.div`
 const StyledMapContainer = styled(MapContainer)`
   width: 350px;
   height: 380px;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -53,11 +53,11 @@ export default function MapOverview({ onClickClose, activities }) {
       "https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Left_Pink.png",
     iconSize: [30, 30],
   });
-  //https://cdn2.iconfinder.com/data/icons/iconslandgps/PNG/256x256/Pinpoints/Flag3RightBlue2.png
+  //cdn2.iconfinder.com/data/icons/iconslandgps/PNG/256x256/Pinpoints/Flag3RightBlue2.png
   //https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Right_Chartreuse.png
   //https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/flag-256.png
   //https://cdn3.iconfinder.com/data/icons/pin-maps-1/120/Pin_Maps_7-256.png
-  return (
+  https: return (
     <>
       <Overlay>
         <MapOverviewContainer>

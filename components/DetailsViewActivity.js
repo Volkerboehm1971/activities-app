@@ -1,10 +1,33 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { Headline, LinkHomePage, Section, ImageDiv, Title, Div, DetailImage, Subheader, Info, Article, AreaCountyContainer, ButtonContainer, ButtonDelete, ButtonEdit } from "./styledComponents/DetailsViewActivity.styles"
-
+import {
+  Headline,
+  LinkHomePage,
+  Section,
+  ImageDiv,
+  Title,
+  Div,
+  Subheader,
+  Info,
+  Article,
+  AreaCountyContainer,
+  ButtonContainer,
+  ButtonDelete,
+  ButtonEdit,
+} from "./styledComponents/DetailsViewActivity.styles";
+import styled from "styled-components";
+import Image from "next/image";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
+const DetailImageContainer = styled.div`
+  border-radius: 13px;
+  overflow: hidden;
+`;
+
+const DetailImage = styled(Image)`
+  object-fit: cover;
+`;
 
 export default function DetailsViewActivity({
   detailActivity,
@@ -18,13 +41,14 @@ export default function DetailsViewActivity({
       <Headline>Details of Activity</Headline>
       <LinkHomePage href="/activityList">← Back</LinkHomePage>
       <Section>
-        <ImageDiv>
+        <DetailImageContainer>
           <DetailImage
             src={detailActivity.image}
-            fill
-            alt="hiker on a mountain"
+            width={400}
+            height={150}
+            alt="Image of Activity"
           />
-        </ImageDiv>
+        </DetailImageContainer>
 
         <Title>{detailActivity.title}</Title>
 
@@ -46,10 +70,7 @@ export default function DetailsViewActivity({
         ></DetailMap>
       </Section>
       <ButtonContainer>
-        <ButtonEdit
-          type="button"
-          onClick={() => router.push(`/${id}/edit`)}
-        >
+        <ButtonEdit type="button" onClick={() => router.push(`/${id}/edit`)}>
           Edit
         </ButtonEdit>
         <ButtonDelete

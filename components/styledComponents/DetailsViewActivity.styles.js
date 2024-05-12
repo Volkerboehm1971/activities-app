@@ -30,7 +30,8 @@ export const Section = styled.section`
 
 export const ImageDiv = styled.div`
   position: relative;
-  margin-top: 0.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
   height: 200px;
 `;
 
