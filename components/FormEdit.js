@@ -1,4 +1,4 @@
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ContainerSwitchesAndPicture, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage, TinyInput, TinyInputsWrapper } from "./styledComponents/FormEdit.styles";
+import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage, TinyInput, TinyInputsWrapper, WrapperSearchAndSwitch } from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
@@ -173,8 +173,10 @@ console.log("fresh Data", imageSearch);
         
 
         <Section>
-          <label htmlFor="image">Search Activity Image</label>
+        
+          <WrapperSearchAndSwitch> 
           <WrapperSearchBar>
+          <label htmlFor="image">Search Activity Image</label>
             <InputSearchField
               id="image"
               name="image"
@@ -184,8 +186,6 @@ console.log("fresh Data", imageSearch);
             />
           </WrapperSearchBar>
 
-          {typingInSearchbar ? (
-          <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
                 onClick={() => {
@@ -225,6 +225,7 @@ console.log("fresh Data", imageSearch);
                 </svg>
               </PlusButton>
             </ButtonWrapper>
+            </WrapperSearchAndSwitch>
             <ImageContainer>
               <SearchImage
                 src={defaultOrSearchedImage}
@@ -232,10 +233,6 @@ console.log("fresh Data", imageSearch);
                 alt="Pixabay Image"
               />
             </ImageContainer>
-          </ContainerSwitchesAndPicture>
-        ) : (
-          ""
-        )}
         </Section>
         
         <ButtonContainer>

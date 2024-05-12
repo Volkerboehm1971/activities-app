@@ -96,9 +96,16 @@ export const InputSearchField = styled.input`
   background-size: 15px;
 `;
 
-export const ContainerSwitchesAndPicture = styled.div`
+// export const ContainerSwitchesAndPicture = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
+export const WrapperSearchAndSwitch = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 `;
