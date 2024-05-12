@@ -9,6 +9,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
   const [increment, setIncrement] = useState(0);
 
   const defaultActivity = activities.find((activity) => activity.id === id);
+  console.log(defaultActivity);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,7 +19,8 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
     const [categoryFilter, category] = data.category.split("-");
 
-    const newActivity = {
+    const modifiedActivity = {
+      id: id,
       title: data.title,
       categoryFilter: categoryFilter,
       category: category,
@@ -30,7 +32,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
       lat: data.lat,
     };
 
-    onEditActivity(newActivity);
+    onEditActivity(modifiedActivity, id);
 
     router.push("/activityList");
   }
@@ -67,20 +69,37 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
         <Section>
           <label htmlFor="category">Category of Activity</label>
-          <Select
-            id="category"
-            name="category"
-            defaultValue={defaultActivity?.category}
-            required
-          >
+          <Select id="category" name="category" required>
             <option value="">--Please select a category--</option>
-            <option value="Surfing">Surfing</option>
-            <option value="Hiking">Hiking</option>
-            <option value="Kayaking">Kayaking</option>
-            <option value="Biking">Biking</option>
-            <option value="Hot Air Ballooning">Hot Air Ballooning</option>
-            <option value="Sailing">Sailing</option>
-            <option value="Others">Others</option>
+            <option value="Water-Surfsport">Surfsport</option>
+            <option value="Water-Sailing">Sailing</option>
+            <option value="Water-Swimming">Swimming</option>
+            <option value="Water-Paddeling">Paddeling</option>
+            <option value="Water-Diving">Diving</option>
+
+            <option value="Winter-Skiing">Skiing</option>
+            <option value="Winter-Tobogganing">Tobogganing</option>
+            <option value="Winter-Ice skating">Ice skating</option>
+            <option value="Winter-Snowboarding">Snowboarding</option>
+
+            <option value="Biking-Mountainbiking">Mountainbiking</option>
+            <option value="Biking-Cycling">Cycling</option>
+
+            <option value="Hiking-Strolling">Strolling</option>
+            <option value="Hiking-(Nordic) Walking">(Nordic) Walking</option>
+            <option value="Hiking-Jogging">Jogging</option>
+            <option value="Hiking-Hiking">Hiking</option>
+
+            <option value="Extrem-Paragliding">Paragliding</option>
+            <option value="Extrem-Bungeejumping">Bungeejumping</option>
+            <option value="Extrem-Motorcross">Motorcross</option>
+            <option value="Extrem-Rafting">Rafting</option>
+
+            <option value="Indoor-Curling">Curling</option>
+            <option value="Indoor-Bouldern">Bouldern</option>
+            <option value="Indoor-Ice Hockey">Ice Hockey</option>
+
+            <option value="Others-Others">Others</option>
           </Select>
         </Section>
 
@@ -178,7 +197,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
                 </svg>
               </MinusButton>
               <p>
-                {increment + 1}/{imageSearch.hits.length}
+                {increment + 1}/{typingInSearchbar ? imageSearch.hits.length : ""}
               </p>
               <PlusButton
                 onClick={() => {
@@ -203,6 +222,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
                 src={imageSearch.hits[increment].largeImageURL}
                 fill
                 alt="Pixabay Image"
+                // placeholder={defaultActivity?.image}
               />
             </ImageContainer>
           </ContainerSwitchesAndPicture>
