@@ -1,7 +1,18 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
 import CatetoryFilters from "@/components/CatetoryFilters";
-import { Headline, Ul, LinkDetailsPage, Li, Section, LabelSearchField, WrapperSearchBar, InputSearchField, ErrorMessage } from "../components/styledComponents/activityList.styles";
+import {
+  Headline,
+  Ul,
+  LinkDetailsPage,
+  Li,
+  Section,
+  LabelSearchField,
+  WrapperSearchBar,
+  InputSearchField,
+  ErrorMessage,
+} from "../components/styledComponents/activityList.styles";
+import MapIcon from "@/components/MapIcon";
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,6 +52,10 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
+      <MapIcon
+        filteredActivities={filteredActivities}
+        activities={activities}
+      ></MapIcon>
       <Headline>List of Activities</Headline>
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>

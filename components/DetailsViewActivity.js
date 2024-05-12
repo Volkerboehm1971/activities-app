@@ -4,7 +4,8 @@ import {
   Headline,
   LinkHomePage,
   Section,
-  ImageDiv,
+  DetailImageContainer,
+  DetailImage,
   Title,
   Div,
   Subheader,
@@ -15,19 +16,8 @@ import {
   ButtonDelete,
   ButtonEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
-import styled from "styled-components";
-import Image from "next/image";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
-
-const DetailImageContainer = styled.div`
-  border-radius: 13px;
-  overflow: hidden;
-`;
-
-const DetailImage = styled(Image)`
-  object-fit: cover;
-`;
 
 export default function DetailsViewActivity({
   detailActivity,
@@ -45,7 +35,7 @@ export default function DetailsViewActivity({
           <DetailImage
             src={detailActivity.image}
             width={400}
-            height={150}
+            height={200}
             alt="Image of Activity"
           />
         </DetailImageContainer>

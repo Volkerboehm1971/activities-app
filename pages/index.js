@@ -24,6 +24,7 @@ export default function HomePage({ activities }) {
 
   return (
     <>
+      <MapIcon activities={activities}></MapIcon>
       <Headline>Activity App</Headline>
       {randomActivity && (
         <>
