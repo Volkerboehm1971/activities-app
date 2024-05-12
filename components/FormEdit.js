@@ -1,5 +1,14 @@
 import { useRouter } from "next/router";
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave } from "./styledComponents/FormEdit.styles";
+import {
+  Form,
+  Section,
+  Input,
+  Select,
+  Textarea,
+  ButtonContainer,
+  LinkCancel,
+  ButtonSave,
+} from "./styledComponents/FormEdit.styles";
 
 export default function FormEdit({ onEditActivity, id, activities }) {
   const router = useRouter();

@@ -7,6 +7,10 @@ const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
 
+const MapIcon = dynamic(() => import("@/components/MapIcon"), {
+  ssr: false,
+});
+
 export default function HomePage({ activities }) {
   const [randomActivity, setRandomActivity] = useState(null);
 
@@ -20,6 +24,7 @@ export default function HomePage({ activities }) {
 
   return (
     <>
+      <MapIcon></MapIcon>
       <Headline>Activity App</Headline>
       {randomActivity && (
         <>
