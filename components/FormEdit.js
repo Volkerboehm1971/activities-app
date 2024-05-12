@@ -43,12 +43,15 @@ export default function FormEdit({ onEditActivity, id, activities }) {
   };
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
+    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`, {
+      keepPreviousData: true
+    }
   );
 
   const typingInSearchbar =
-    (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
-    (searchTerm.length > 0);
+    imageSearch && imageSearch.hits && imageSearch.hits.length > 0;
+
+  const defaultAndSearchedImage = searchTerm.length > 0 & typingInSearchbar ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
   
   return (
     <>
@@ -69,8 +72,8 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
         <Section>
           <label htmlFor="category">Category of Activity</label>
-          <Select id="category" name="category" required>
-            <option value="">--Please select a category--</option>
+          <Select id="category" name="category" required >
+            <option value="" >{defaultActivity?.category}</option>
             <option value="Water-Surfsport">Surfsport</option>
             <option value="Water-Sailing">Sailing</option>
             <option value="Water-Swimming">Swimming</option>
@@ -135,6 +138,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             type="number"
             placeholder="Bsp. 133.2051549"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.lng}
             required
           />
         </Section>
@@ -147,6 +151,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             type="number"
             placeholder="Bsp. 34.4088519"
             pattern="^(?!.*\s{2,}).+$"
+            defaultValue={defaultActivity?.lat}
             required
           />
         </Section>
@@ -219,10 +224,9 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             </ButtonWrapper>
             <ImageContainer>
               <SearchImage
-                src={imageSearch.hits[increment].largeImageURL}
+                src={defaultAndSearchedImage}
                 fill
                 alt="Pixabay Image"
-                // placeholder={defaultActivity?.image}
               />
             </ImageContainer>
           </ContainerSwitchesAndPicture>
