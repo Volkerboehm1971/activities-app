@@ -1,14 +1,14 @@
 import { useState } from "react";
 import MapOverview from "./MapOverview";
 import styled from "styled-components";
-import Image from "next/image";
+import { actionAsyncStorage } from "next/dist/client/components/action-async-storage";
 
-const MapButton = styled.button`
+const MapButton = styled.div`
   position: fixed;
   right: 25px;
 `;
 
-export default function MapIcon() {
+export default function MapIcon({ activities }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
@@ -16,6 +16,7 @@ export default function MapIcon() {
       {showModal && (
         <MapOverview
           onClickClose={() => setShowModal(!showModal)}
+          activities={activities}
         ></MapOverview>
       )}
     </>

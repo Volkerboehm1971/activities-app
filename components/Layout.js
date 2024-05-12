@@ -4,10 +4,10 @@ const MapIcon = dynamic(() => import("@/components/MapIcon"), {
   ssr: false,
 });
 
-export default function Layout({ children }) {
+export default function Layout({ children, activities }) {
   return (
     <>
-      <MapIcon></MapIcon>
+      <MapIcon activities={activities}></MapIcon>
       <main>{children}</main>
       <NavigationBar />
     </>

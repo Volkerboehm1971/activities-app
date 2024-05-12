@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import { X } from "lucide-react";
+import { Icon } from "leaflet";
 
 const Overlay = styled.section`
   position: fixed;
@@ -44,8 +45,18 @@ const MapOverviewButton = styled.button`
   z-index: 999;
 `;
 
-export default function MapOverview({ onClickClose }) {
-  const geocode = [50, 10];
+export default function MapOverview({ onClickClose, activities }) {
+  const geocode = [52.3, 9.7];
+
+  const customIcon = new Icon({
+    iconUrl:
+      "https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Left_Pink.png",
+    iconSize: [30, 30],
+  });
+  //https://cdn2.iconfinder.com/data/icons/iconslandgps/PNG/256x256/Pinpoints/Flag3RightBlue2.png
+  //https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Right_Chartreuse.png
+  //https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/flag-256.png
+  //https://cdn3.iconfinder.com/data/icons/pin-maps-1/120/Pin_Maps_7-256.png
   return (
     <>
       <Overlay>
@@ -56,6 +67,13 @@ export default function MapOverview({ onClickClose }) {
 
           <StyledMapContainer center={geocode} zoom={5} zoomControl={false}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {activities.map((activity) => (
+              <Marker
+                key={activity.id}
+                position={[activity.lat, activity.lng]}
+                icon={customIcon}
+              ></Marker>
+            ))}
           </StyledMapContainer>
         </MapOverviewContainer>
       </Overlay>
