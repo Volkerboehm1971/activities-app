@@ -1,5 +1,4 @@
 import {
-  LinkHomePage,
   Form,
   Section,
   Input,
@@ -8,12 +7,13 @@ import {
   Button,
   WrapperSearchBar,
   InputSearchField,
-  ContainerReloadAndPicture,
+  ContainerSwitchesAndPicture,
   ButtonWrapper,
   PlusButton,
   MinusButton,
   ImageContainer,
-  SearchImage } from "./styledComponents/FormCreate.styles";
+  SearchImage,
+} from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
@@ -22,6 +22,7 @@ export default function FormCreate({ onAddActivity }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -48,14 +49,19 @@ export default function FormCreate({ onAddActivity }) {
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
+    setIncrement(0);
   };
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
+
+  const typingInSearchbar =
+    (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
+    (searchTerm.length > 0);
+
   return (
     <>
-      {/* <LinkHomePage href="/">← Back</LinkHomePage> */} 
       <Form onSubmit={handleSubmit}>
         <Section>
           <label htmlFor="title">Activity Name</label>
@@ -159,20 +165,19 @@ export default function FormCreate({ onAddActivity }) {
             required
           />
         </Section>
-        <Section>
-          <label htmlFor="image">Search Activity Image</label>
-          <WrapperSearchBar>
-            <InputSearchField
-              id="image"
-              name="image"
-              type="text"
-              value={searchTerm}
-              required
-              onChange={handleKeyPress}
-            />
-          </WrapperSearchBar>
-
-          <ContainerReloadAndPicture>
+        <label htmlFor="image">Search Activity Image</label>
+        <WrapperSearchBar>
+          <InputSearchField
+            id="image"
+            name="image"
+            type="text"
+            value={searchTerm}
+            required
+            onChange={handleKeyPress}
+          />
+        </WrapperSearchBar>
+        {typingInSearchbar ? (
+          <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
                 onClick={() => {
@@ -191,13 +196,9 @@ export default function FormCreate({ onAddActivity }) {
                   <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
                 </svg>
               </MinusButton>
-              {imageSearch &&
-                imageSearch.hits &&
-                imageSearch.hits.length > 0 && (
-                  <p>
-                    {increment + 1}/{imageSearch.hits.length}
-                  </p>
-                )}
+              <p>
+                {increment + 1}/{imageSearch.hits.length}
+              </p>
               <PlusButton
                 onClick={() => {
                   if (increment < imageSearch.hits.length - 1) {
@@ -217,18 +218,20 @@ export default function FormCreate({ onAddActivity }) {
               </PlusButton>
             </ButtonWrapper>
             <ImageContainer>
-              {(imageSearch?.hits?.length > 0) && (
-                <SearchImage
-                  src={imageSearch.hits[increment].largeImageURL}
-                  fill
-                  alt="Pixabay Image"
-                />
-              )}
+              <SearchImage
+                src={imageSearch.hits[increment].largeImageURL}
+                fill
+                alt="Pixabay Image"
+              />
             </ImageContainer>
-          </ContainerReloadAndPicture>
-        </Section>
+          </ContainerSwitchesAndPicture>
+        ) : (
+          ""
+        )}
+
         <Button type="submit">Add Activity</Button>
       </Form>
     </>
   );
 }
+

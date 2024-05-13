@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { Headline, LinkHomePage, Section, ImageDiv, Title, Div, DetailImage, Subheader, Info, Article, AreaCountyContainer, ButtonContainer, ButtonDelete, ButtonEdit } from "./styledComponents/DetailsViewActivity.styles"
+import { Headline, LinkActivityList, Section, ImageDiv, Title, Div, DetailImage, Subheader, Info, Article, AreaCountyContainer, ButtonContainer, ButtonDelete, ButtonEdit } from "./styledComponents/DetailsViewActivity.styles"
 
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
@@ -16,7 +16,7 @@ export default function DetailsViewActivity({
   return (
     <>
       <Headline>Details of Activity</Headline>
-      <LinkHomePage href="/activityList">← Back</LinkHomePage>
+      <LinkActivityList href="/activityList">← Back</LinkActivityList>
       <Section>
         <ImageDiv>
           <DetailImage
