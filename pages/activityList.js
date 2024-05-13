@@ -12,6 +12,7 @@ import {
   InputSearchField,
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
+import dynamic from "next/dynamic";
 
 const ShowMapOverview = dynamic(() => import("@/components/ShowMapOverview"), {
   ssr: false,
