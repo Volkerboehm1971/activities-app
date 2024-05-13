@@ -40,6 +40,7 @@ export const StyledMapContainer = styled(MapContainer)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 10px;
 `;
 
 export const TextPopUp = styled(Popup)`
@@ -48,7 +49,7 @@ export const TextPopUp = styled(Popup)`
   background-color: black;
 `;
 
-export const PopUpListe = styled.ul`
+export const PopUpUl = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;

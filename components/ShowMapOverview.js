@@ -1,9 +1,9 @@
 import { useState } from "react";
 import MapOverview from "./MapOverview";
 import { MapButton } from "./styledComponents/MapIcon.styles";
-import Image from "next/image";
+import IconMap from "./icons/Map";
 
-export default function MapIcon({ activities, filteredActivities }) {
+export default function ShowMapOverview({ activities, filteredActivities }) {
   const [showModal, setShowModal] = useState(false);
 
   showModal
@@ -12,7 +12,7 @@ export default function MapIcon({ activities, filteredActivities }) {
   return (
     <>
       <MapButton onClick={() => setShowModal(!showModal)}>
-        <span style={{ fontSize: "30px" }}>🌏</span>
+        <IconMap />
       </MapButton>
       {showModal && (
         <MapOverview

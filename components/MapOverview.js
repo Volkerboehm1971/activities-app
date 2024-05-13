@@ -9,7 +9,7 @@ import {
   MapOverviewContainer,
   StyledMapContainer,
   TextPopUp,
-  PopUpListe,
+  PopUpUl,
   PopUpLi,
 } from "./styledComponents/MapOverview.styles";
 
@@ -41,14 +41,13 @@ export default function MapOverview({
                     icon={customIcon}
                   >
                     <TextPopUp>
-                      <PopUpListe>
+                      <PopUpUl>
                         <PopUpLi>
                           <strong>{`"${activity.title}"`}</strong>
                         </PopUpLi>
-
                         <PopUpLi>Activity: {activity.category}</PopUpLi>
                         <PopUpLi>Area: {activity.area}</PopUpLi>
-                      </PopUpListe>
+                      </PopUpUl>
                     </TextPopUp>
                   </Marker>
                 ))
@@ -59,14 +58,14 @@ export default function MapOverview({
                     icon={customIcon}
                   >
                     <TextPopUp>
-                      <PopUpListe>
+                      <PopUpUl>
                         <PopUpLi>
                           <strong>{`"${activity.title}"`}</strong>
                         </PopUpLi>
 
                         <PopUpLi>Activity: {activity.category}</PopUpLi>
                         <PopUpLi>Area: {activity.area}</PopUpLi>
-                      </PopUpListe>
+                      </PopUpUl>
                     </TextPopUp>
                   </Marker>
                 ))}

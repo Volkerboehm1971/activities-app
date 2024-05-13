@@ -2,13 +2,12 @@ import dynamic from "next/dynamic";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 import { Headline } from "../components/styledComponents/index.styles";
-import { act } from "react";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
 
-const MapIcon = dynamic(() => import("@/components/MapIcon"), {
+const ShowMapOverview = dynamic(() => import("@/components/ShowMapOverview"), {
   ssr: false,
 });
 
@@ -25,7 +24,7 @@ export default function HomePage({ activities }) {
 
   return (
     <>
-      <MapIcon activities={activities}></MapIcon>
+      <ShowMapOverview activities={activities}></ShowMapOverview>
       <Headline>Activity App</Headline>
       {randomActivity && (
         <>

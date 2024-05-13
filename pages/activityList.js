@@ -12,7 +12,7 @@ import {
   InputSearchField,
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
-import MapIcon from "@/components/MapIcon";
+import ShowMapOverview from "@/components/ShowMapOverview";
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -52,10 +52,10 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
-      <MapIcon
+      <ShowMapOverview
         filteredActivities={filteredActivities}
         activities={activities}
-      ></MapIcon>
+      ></ShowMapOverview>
       <Headline>List of Activities</Headline>
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
