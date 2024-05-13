@@ -13,6 +13,7 @@ export const Form = styled.form`
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
+  padding-top: 0.7rem;
   gap: 0.6rem;
 `;
 
@@ -93,6 +94,7 @@ export const InputSearchField = styled.input`
   display: flex;
   width: 100%;
   margin-right: 25px;
+  margin-top: 0.7rem;
   padding: 0.5rem 0.5rem 0.5rem 30px;
   border: 2px solid black;
   border-radius: 0.5rem;
