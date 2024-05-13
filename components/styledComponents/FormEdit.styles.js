@@ -31,13 +31,12 @@ export const Select = styled.select`
 export const TinyInputsWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 export const TinyInput = styled.input`
-display: flex;
-width: 125px;
-  margin-right: 25px;
+  display: flex;
+  width: 165px;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
@@ -83,9 +82,16 @@ export const WrapperSearchBar = styled.div`
   width: 100%;
 `;
 
+export const WrapperSearchAndSwitch = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const InputSearchField = styled.input`
   display: flex;
-  width: 125px;
+  width: 100%;
   margin-right: 25px;
   padding: 0.5rem 0.5rem 0.5rem 30px;
   border: 2px solid black;
@@ -94,20 +100,6 @@ export const InputSearchField = styled.input`
   background-repeat: no-repeat;
   background-position: 5px center;
   background-size: 15px;
-`;
-
-// export const ContainerSwitchesAndPicture = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-export const WrapperSearchAndSwitch = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -162,8 +154,8 @@ export const MinusButton = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
-  display: block;
-  width: 281.25px;
+  transform: translate(22px);
+  width: 310px;
   height: 210.75px;
 
   &:hover{

@@ -17,10 +17,11 @@ export default function FormEdit({ onEditActivity, id, activities }) {
     }
   );
 
-  const typingInSearchbar =
-    imageSearch && imageSearch.hits && imageSearch.hits.length > 0;
+  const defaultImage =
+    imageSearch && imageSearch.hits && imageSearch.hits.length > 0 && searchTerm.length > 0;
+  const typingInSearchbar = searchTerm.length;
 
-  const defaultOrSearchedImage = searchTerm.length > 0 & typingInSearchbar ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
+  const defaultOrSearchedImage = defaultImage ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
   
   function handleSubmit(event) {
     event.preventDefault();
@@ -185,7 +186,7 @@ console.log("fresh Data", imageSearch);
               onChange={handleKeyPress}
             />
           </WrapperSearchBar>
-
+          {typingInSearchbar ? (
             <ButtonWrapper>
               <MinusButton
                 onClick={() => {
@@ -205,7 +206,7 @@ console.log("fresh Data", imageSearch);
                 </svg>
               </MinusButton>
               <p>
-                {increment + 1}/{typingInSearchbar ? imageSearch.hits.length : ""}
+                {increment + 1}/{typingInSearchbar & imageSearch.hits.length !== 0 ? imageSearch.hits.length : "1" }
               </p>
               <PlusButton
                 onClick={() => {
@@ -225,6 +226,7 @@ console.log("fresh Data", imageSearch);
                 </svg>
               </PlusButton>
             </ButtonWrapper>
+              ) : ("")}
             </WrapperSearchAndSwitch>
             <ImageContainer>
               <SearchImage
