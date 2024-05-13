@@ -12,7 +12,7 @@ export const Overlay = styled.section`
 
 export const MapOverviewContainer = styled.div`
   width: 350px;
-  height: 380px;
+  height: 450px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,8 +21,8 @@ export const MapOverviewContainer = styled.div`
 
 export const MapOverviewButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   background-color: #ffffff;
   border: none;
   border-radius: 50%;
@@ -43,10 +43,11 @@ export const StyledMapContainer = styled(MapContainer)`
 `;
 
 export const TextPopUp = styled(Popup)`
-  max-width: 200px;
-  display: flex;
-  flex-direction: column;
+  max-width: 220px;
+  color: white;
+  background-color: black;
 `;
+
 export const PopUpListe = styled.ul`
   list-style-type: none;
   margin: 0;
@@ -54,5 +55,5 @@ export const PopUpListe = styled.ul`
 `;
 
 export const PopUpLi = styled.li`
-  margin: 5px 0 5px 0;
+  margin: 5px 0;
 `;

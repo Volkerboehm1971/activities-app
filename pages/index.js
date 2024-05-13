@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 import { Headline } from "../components/styledComponents/index.styles";
+import { act } from "react";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,

@@ -1,5 +1,12 @@
 import useSWR from "swr";
-import { WeatherSection, Area, Temperature, WeatherIcon, Error, Span } from "./styledComponents/WeatherDisplay.styles";
+import {
+  WeatherSection,
+  Area,
+  Temperature,
+  WeatherIcon,
+  Error,
+  Span,
+} from "./styledComponents/WeatherDisplay.styles";
 
 const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
