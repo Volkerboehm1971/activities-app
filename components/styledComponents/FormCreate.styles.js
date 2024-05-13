@@ -1,18 +1,5 @@
-import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
-
-export const LinkHomePage = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #3e407d;
-  border: 5px solid #3e407d;
-  border-radius: 5px;
-  margin-left: 10px;
-  font-size: 17px;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
 
 export const Form = styled.form`
   margin: 10px;
@@ -46,16 +33,6 @@ export const Textarea = styled.textarea`
   border-radius: 0.5rem;
 `;
 
-export const Button = styled.button`
-  position: center;
-  color: #ffffff;
-  background-color: #4caf50;
-  border: 7px solid #4caf50;
-  border-radius: 5px;
-  font-size: 18px;
-  margin-bottom: 70px;
-`;
-
 export const WrapperSearchBar = styled.div`
   position: relative;
   width: 100%;
@@ -69,10 +46,10 @@ export const InputSearchField = styled.input`
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z' fill='black'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 5px center;
-  background-size: 20px;
+  background-size: 14px;
 `;
 
-export const ContainerReloadAndPicture = styled.div`
+export const ContainerSwitchesAndPicture = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,6 +73,7 @@ export const PlusButton = styled.div`
   border: 2px solid black;
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+
   &:active {
     -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
@@ -105,6 +83,7 @@ export const PlusButton = styled.div`
     -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     background: #ffffff;
+    cursor: pointer;
   }
 `;
 
@@ -113,29 +92,57 @@ export const MinusButton = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
-  border: 2px solid black;
   justify-content: center;
+  border: 2px solid black;
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+
   &:active {
     -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     background: #ffffff;
   }
+
   &:hover {
     -webkit-box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     box-shadow: inset -1px 1px 12px -3px rgba(0, 0, 0, 0.09);
     background: #ffffff;
+    cursor: pointer;
   }
 `;
 
 export const ImageContainer = styled.div`
   position: relative;
+  display: block;
   width: 281.25px;
   height: 210.75px;
+
+  &:hover{
+  border: 2px solid orange;
+  border-radius: 10px;}
+  &:active{
+  border: 2px solid orange;
+  border-radius: 10px;
+  }
 `;
 
 export const SearchImage = styled(Image)`
   object-fit: cover;
-  border-radius: 10px;
+  box-sizing: content-box;
+  border: 0px solid white;
+  border-radius: 9px;
+`;
+
+export const Button = styled.button`
+  position: center;
+  color: #ffffff;
+  background-color: #4caf50;
+  border: 7px solid #4caf50;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 70px;
+
+  &:hover {
+    cursor: pointer;
+  };
 `;

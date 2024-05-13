@@ -3,24 +3,36 @@ import {
   List,
   ListItem,
 } from "./styledComponents/NavigationBar.styles";
+import { useState } from "react";
 import IconAdd from "./icons/Add";
 import IconHome from "./icons/Home";
 import IconActivityList from "./icons/ActivityList";
 
 export default function NavigationBar() {
+  const [selectedIcon, setSelectedIcon] = useState("home");
+
   return (
     <Navigation>
       <List>
-        <ListItem key="home">
-          <IconHome />
+        <ListItem>
+          <IconHome
+            onSelect={() => setSelectedIcon("home")}
+            fillColor={selectedIcon === "home" ? "#fff" : "#151b54"}
+          />
         </ListItem>
 
-        <ListItem key="activityList">
-          <IconActivityList />
+        <ListItem>
+          <IconActivityList
+            onSelect={() => setSelectedIcon("activityList")}
+            fillColor={selectedIcon === "activityList" ? "#fff" : "#151b54"}
+          />
         </ListItem>
 
-        <ListItem key="add">
-          <IconAdd />
+        <ListItem>
+          <IconAdd
+            onSelect={() => setSelectedIcon("add")}
+            fillColor={selectedIcon === "add" ? "#fff" : "#151b54"}
+          />
         </ListItem>
       </List>
     </Navigation>

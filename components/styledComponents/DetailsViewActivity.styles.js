@@ -6,7 +6,7 @@ export const Headline = styled.h1`
   text-align: center;
 `;
 
-export const LinkHomePage = styled(Link)`
+export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;
   background-color: #3e407d;
@@ -87,6 +87,10 @@ export const ButtonDelete = styled.button`
   border-radius: 5px;
   font-size: 18px;
   width: 75px;
+
+  &:hover {
+    cursor: pointer;
+  };
 `;
 
 export const ButtonEdit = styled.button`
@@ -98,4 +102,7 @@ export const ButtonEdit = styled.button`
   border-radius: 5px;
   font-size: 18px;
   width: 75px;
+  &:hover {
+    cursor: pointer;
+  };
 `;
