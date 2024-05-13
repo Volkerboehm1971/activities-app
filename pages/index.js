@@ -7,7 +7,7 @@ const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
 
-const ShowMapOverview = dynamic(() => import("@/components/ShowMapOverview"), {
+const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
 });
 
@@ -24,7 +24,7 @@ export default function HomePage({ activities }) {
 
   return (
     <>
-      <ShowMapOverview activities={activities}></ShowMapOverview>
+      <MapModal activities={activities}></MapModal>
       <Headline>Activity App</Headline>
       {randomActivity && (
         <>

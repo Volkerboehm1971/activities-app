@@ -14,7 +14,7 @@ import {
   AreaCountyContainer,
   ButtonContainer,
   ButtonDelete,
-  ButtonEdit,
+  LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
@@ -60,9 +60,7 @@ export default function DetailsViewActivity({
         ></DetailMap>
       </Section>
       <ButtonContainer>
-        <ButtonEdit type="button" onClick={() => router.push(`/${id}/edit`)}>
-          Edit
-        </ButtonEdit>
+        <LinkEdit href={`/${id}/edit`}>Edit</LinkEdit>
         <ButtonDelete
           type="button"
           onClick={() => setIsDeleteMode(!isDeleteMode)}

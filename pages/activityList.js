@@ -14,7 +14,7 @@ import {
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 
-const ShowMapOverview = dynamic(() => import("@/components/ShowMapOverview"), {
+const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
 });
 
@@ -56,10 +56,10 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
-      <ShowMapOverview
+      <MapModal
         filteredActivities={filteredActivities}
         activities={activities}
-      ></ShowMapOverview>
+      ></MapModal>
       <Headline>List of Activities</Headline>
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>

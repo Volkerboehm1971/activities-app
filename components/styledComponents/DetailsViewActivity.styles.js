@@ -90,10 +90,10 @@ export const ButtonDelete = styled.button`
 
   &:hover {
     cursor: pointer;
-  };
+  }
 `;
 
-export const ButtonEdit = styled.button`
+export const LinkEdit = styled(Link)`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
@@ -102,7 +102,8 @@ export const ButtonEdit = styled.button`
   border-radius: 5px;
   font-size: 18px;
   width: 75px;
+  text-align: center;
   &:hover {
     cursor: pointer;
-  };
+  }
 `;
