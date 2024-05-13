@@ -1,6 +1,6 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
-import CatetoryFilters from "@/components/CatetoryFilters";
+import CategoryFilters from "@/components/CategoryFilters";
 import {
   Ul,
   LinkDetailsPage,
@@ -67,7 +67,7 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <CatetoryFilters
+        <CategoryFilters
           handleIconClick={handleIconClick}
           selectedByIcon={selectedByIcon}
         />
