@@ -1,10 +1,23 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { Headline, LinkActivityList, Section, ImageDiv, Title, Div, DetailImage, Subheader, Info, Article, AreaCountyContainer, ButtonContainer, ButtonDelete, ButtonEdit } from "./styledComponents/DetailsViewActivity.styles"
-
+import {
+  LinkActivityList,
+  Section,
+  ImageDiv,
+  Title,
+  Div,
+  DetailImage,
+  Subheader,
+  Info,
+  Article,
+  AreaCountyContainer,
+  ButtonContainer,
+  ButtonDelete,
+  ButtonEdit,
+} from "./styledComponents/DetailsViewActivity.styles";
+import Header from "./Header";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
-
 
 export default function DetailsViewActivity({
   detailActivity,
@@ -15,7 +28,7 @@ export default function DetailsViewActivity({
   const router = useRouter();
   return (
     <>
-      <Headline>Details of Activity</Headline>
+      <Header>Details of Activity</Header>
       <LinkActivityList href="/activityList">← Back</LinkActivityList>
       <Section>
         <ImageDiv>
@@ -46,10 +59,7 @@ export default function DetailsViewActivity({
         ></DetailMap>
       </Section>
       <ButtonContainer>
-        <ButtonEdit
-          type="button"
-          onClick={() => router.push(`/${id}/edit`)}
-        >
+        <ButtonEdit type="button" onClick={() => router.push(`/${id}/edit`)}>
           Edit
         </ButtonEdit>
         <ButtonDelete

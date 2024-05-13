@@ -1,10 +1,10 @@
 import FormCreate from "@/components/FormCreate";
-import { Headline } from "../components/styledComponents/create.styles";
+import Header from "@/components/Header";
 
 export default function CreateActivityPage({ onAddActivity }) {
   return (
     <>
-      <Headline>Create a new Activity</Headline>
+      <Header>Create a new Activity</Header>
       <FormCreate onAddActivity={onAddActivity} />
     </>
   );

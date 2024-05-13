@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
-import { Headline } from "../components/styledComponents/index.styles";
+import Header from "@/components/Header";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
@@ -20,7 +20,7 @@ export default function HomePage({ activities }) {
 
   return (
     <>
-      <Headline>Activity App</Headline>
+      <Header>Activity App</Header>
       {randomActivity && (
         <>
           <WeatherDisplay area={randomActivity.area} />
