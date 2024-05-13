@@ -1,5 +1,4 @@
 import {
-  // LinkHomePage,
   Form,
   Section,
   Input,
@@ -63,7 +62,6 @@ export default function FormCreate({ onAddActivity }) {
 
   return (
     <>
-      {/* <LinkHomePage href="/">← Back</LinkHomePage> */}
       <Form onSubmit={handleSubmit}>
         <Section>
           <label htmlFor="title">Activity Name</label>

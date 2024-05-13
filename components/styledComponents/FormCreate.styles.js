@@ -1,18 +1,5 @@
-// import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
-
-// export const LinkHomePage = styled(Link)`
-//   text-decoration: none;
-//   color: #ffffff;
-//   background-color: #3e407d;
-//   border: 5px solid #3e407d;
-//   border-radius: 5px;
-//   margin-left: 10px;
-//   font-size: 17px;
-//   padding-left: 5px;
-//   padding-right: 5px;
-// `;
 
 export const Form = styled.form`
   margin: 10px;
