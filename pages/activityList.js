@@ -12,7 +12,10 @@ import {
   InputSearchField,
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
-import ShowMapOverview from "@/components/ShowMapOverview";
+
+const ShowMapOverview = dynamic(() => import("@/components/ShowMapOverview"), {
+  ssr: false,
+});
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
