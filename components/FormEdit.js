@@ -12,17 +12,17 @@ export default function FormEdit({ onEditActivity, id, activities }) {
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`, {
-      keepPreviousData: true
-    }
+    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
 
   const defaultImage =
     imageSearch && imageSearch.hits && imageSearch.hits.length > 0 && searchTerm.length > 0;
-  const typingInSearchbar = searchTerm.length;
 
   const defaultOrSearchedImage = defaultImage ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
+
+  const typingInSearchbar = searchTerm.length > 0;
   
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -45,7 +45,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
     };
 
     onEditActivity(modifiedActivity, id);
-
+    
     router.push(`/${id}`);
   }
   const handleKeyPress = (event) => {
@@ -53,9 +53,6 @@ export default function FormEdit({ onEditActivity, id, activities }) {
     setSearchTerm(event.target.value);
     setIncrement(0);
   };
-
-console.log("default", defaultActivity);
-console.log("fresh Data", imageSearch);
 
   return (
     <>
@@ -206,7 +203,7 @@ console.log("fresh Data", imageSearch);
                 </svg>
               </MinusButton>
               <p>
-                {increment + 1}/{typingInSearchbar & imageSearch.hits.length !== 0 ? imageSearch.hits.length : "1" }
+                {increment + 1}/{typingInSearchbar & defaultImage ? imageSearch.hits.length : "1" }
               </p>
               <PlusButton
                 onClick={() => {
