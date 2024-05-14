@@ -56,11 +56,13 @@ export default function ActivityList({ activities }) {
   };
 
   return (
-    <>      
-    <Header>List of Activities</Header>
+    <>
       <MapModal
-        filteredActivities={filteredActivities.length > 0 ? filteredActivities : activities}
+        filteredActivities={
+          filteredActivities.length > 0 ? filteredActivities : activities
+        }
       ></MapModal>
+      <Header>List of Activities</Header>
 
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
