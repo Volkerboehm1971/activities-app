@@ -15,6 +15,7 @@ import {
   LinkEdit
   
 } from "./styledComponents/DetailsViewActivity.styles";
+import Header from "./Header";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
