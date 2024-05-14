@@ -14,8 +14,10 @@ export const Article = styled.article`
 `;
 
 export const SpotlightImage = styled(Image)`
-  border-radius: 10px;
   object-fit: cover;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
 `;
 
 export const Title = styled.h2`
