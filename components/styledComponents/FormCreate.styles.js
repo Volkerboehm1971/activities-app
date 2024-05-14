@@ -28,6 +28,7 @@ export const Select = styled.select`
 `;
 
 export const Textarea = styled.textarea`
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
