@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Headline = styled.h1`
-  text-align: center;
-`;
-
 export const Article = styled.p`
   line-height: 1.4;
   font-size: medium;

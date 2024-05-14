@@ -2,10 +2,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
-export const Headline = styled.h1`
-  text-align: center;
-`;
-
 export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;

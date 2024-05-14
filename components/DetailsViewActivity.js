@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import {
-  Headline,
   LinkActivityList,
   Section,
-  DetailImageContainer,
-  DetailImage,
+  ImageDiv,
   Title,
   Div,
+  DetailImage,
   Subheader,
   Info,
   Article,
@@ -28,7 +27,7 @@ export default function DetailsViewActivity({
   const router = useRouter();
   return (
     <>
-      <Headline>Details of Activity</Headline>
+      <Header>Details of Activity</Header>
       <LinkActivityList href="/activityList">← Back</LinkActivityList>
       <Section>
         <DetailImageContainer>
