@@ -18,7 +18,7 @@ import {
 const customIcon = new Icon({
   iconUrl:
     "https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Left_Pink.png",
-  iconSize: [30, 30],
+  iconSize: [31, 31],
 });
 
 export default function MapOverview({
@@ -57,3 +57,4 @@ export default function MapOverview({
     </Overlay>
   );
 }
+
