@@ -1,7 +1,17 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
-import CatetoryFilters from "@/components/CatetoryFilters";
-import { Headline, Ul, LinkDetailsPage, Li, Section, LabelSearchField, WrapperSearchBar, InputSearchField, ErrorMessage } from "../components/styledComponents/activityList.styles";
+import CategoryFilters from "@/components/CategoryFilters";
+import {
+  Ul,
+  LinkDetailsPage,
+  Li,
+  Section,
+  LabelSearchField,
+  WrapperSearchBar,
+  InputSearchField,
+  ErrorMessage,
+} from "../components/styledComponents/activityList.styles";
+import Header from "@/components/Header";
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,7 +51,7 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
-      <Headline>List of Activities</Headline>
+      <Header>List of Activities</Header>
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
         <WrapperSearchBar>
@@ -57,7 +67,7 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <CatetoryFilters
+        <CategoryFilters
           handleIconClick={handleIconClick}
           selectedByIcon={selectedByIcon}
         />

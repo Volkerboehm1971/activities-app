@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-export const Headline = styled.h1`
-  text-align: center;
-`;
-
 export const Ul = styled.ul`
   display: flex;
   flex-direction: column;

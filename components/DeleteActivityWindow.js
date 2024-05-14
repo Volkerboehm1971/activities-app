@@ -1,4 +1,10 @@
-import { Headline, Article, Section, ButtonCancel, ButtonDelete } from "./styledComponents/DeleteActivityWindow.styles"
+import Header from "./Header";
+import {
+  Article,
+  Section,
+  ButtonCancel,
+  ButtonDelete,
+} from "./styledComponents/DeleteActivityWindow.styles";
 
 export default function DeleteActivityWindow({
   onDeleteActivity,
@@ -7,7 +13,7 @@ export default function DeleteActivityWindow({
 }) {
   return (
     <>
-      <Headline>Delete activity</Headline>
+      <Header>Delete activity</Header>
       <Article>
         Do you really want <br />
         to delete the Activity?
@@ -16,9 +22,7 @@ export default function DeleteActivityWindow({
         <ButtonCancel onClick={() => setIsDeleteMode(!isDeleteMode)}>
           Cancel
         </ButtonCancel>
-        <ButtonDelete onClick={onDeleteActivity}>
-          Delete
-        </ButtonDelete>
+        <ButtonDelete onClick={onDeleteActivity}>Delete</ButtonDelete>
       </Section>
     </>
   );

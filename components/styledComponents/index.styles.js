@@ -1,9 +1,5 @@
-import styled from "styled-components";
 import Link from "next/link";
-
-export const Headline = styled.h1`
-  text-align: center;
-`;
+import styled from "styled-components";
 
 export const LinkDetailsPage = styled(Link)`
   color: black;

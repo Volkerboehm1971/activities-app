@@ -1,4 +1,9 @@
-import { IconsContainer, ContainerIconLabel, BackgroundIcons, LabelIcons } from "./styledComponents/CatetoryFilters.styles"
+import {
+  IconsContainer,
+  ContainerIconLabel,
+  BackgroundIcons,
+  LabelIcons,
+} from "./styledComponents/CatetoryFilters.styles";
 import IconWater from "./icons/IconsFilterCategory/Water";
 import IconMountains from "./icons/IconsFilterCategory/Mountains";
 import IconWinter from "./icons/IconsFilterCategory/Winter";
@@ -7,8 +12,6 @@ import IconHiking from "./icons/IconsFilterCategory/Hiking";
 import IconIndoor from "./icons/IconsFilterCategory/Indoor";
 import IconOthers from "./icons/IconsFilterCategory/Others";
 import IconExtreme from "./icons/IconsFilterCategory/Extreme";
-
-
 
 const categories = [
   { name: "Water", icon: <IconWater /> },
@@ -21,7 +24,7 @@ const categories = [
   { name: "Others", icon: <IconOthers /> },
 ];
 
-export default function CatetoryFilters({ handleIconClick, selectedByIcon }) {
+export default function CategoryFilters({ handleIconClick, selectedByIcon }) {
   return (
     <IconsContainer>
       {categories.map((category) => (
