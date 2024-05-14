@@ -9,8 +9,10 @@ import {
   MapOverviewContainer,
   StyledMapContainer,
   TextPopUp,
-  PopUpUl,
-  PopUpLi,
+  PopUpTitle,
+  PopUpCategory,
+  PopUpArea,
+  PopUpContainer
 } from "./styledComponents/MapOverview.styles";
 
 const customIcon = new Icon({
@@ -21,7 +23,6 @@ const customIcon = new Icon({
 
 export default function MapOverview({
   onClickClose,
-  activities,
   filteredActivities,
 }) {
   return (
@@ -33,42 +34,24 @@ export default function MapOverview({
 
         <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {filteredActivities
-            ? filteredActivities.map((activity) => (
+          {filteredActivities.map((activity) => (
                 <Marker
                   key={activity.id}
                   position={[activity.lat, activity.lng]}
                   icon={customIcon}
                 >
                   <TextPopUp>
-                    <PopUpUl>
-                      <PopUpLi>
-                        <strong>{`"${activity.title}"`}</strong>
-                      </PopUpLi>
-                      <PopUpLi>Activity: {activity.category}</PopUpLi>
-                      <PopUpLi>Area: {activity.area}</PopUpLi>
-                    </PopUpUl>
-                  </TextPopUp>
-                </Marker>
-              ))
-            : activities.map((activity) => (
-                <Marker
-                  key={activity.id}
-                  position={[activity.lat, activity.lng]}
-                  icon={customIcon}
-                >
-                  <TextPopUp>
-                    <PopUpUl>
-                      <PopUpLi>
-                        <strong>{`"${activity.title}"`}</strong>
-                      </PopUpLi>
-
-                      <PopUpLi>Activity: {activity.category}</PopUpLi>
-                      <PopUpLi>Area: {activity.area}</PopUpLi>
-                    </PopUpUl>
+                    <PopUpContainer>
+                      <PopUpTitle>
+                        {`"${activity.title}"`}
+                      </PopUpTitle>
+                      <PopUpCategory>Activity: {activity.category}</PopUpCategory>
+                      <PopUpArea>Area: {activity.area}</PopUpArea>
+                    </PopUpContainer>
                   </TextPopUp>
                 </Marker>
               ))}
+
         </StyledMapContainer>
       </MapOverviewContainer>
     </Overlay>

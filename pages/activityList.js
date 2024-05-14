@@ -57,8 +57,7 @@ export default function ActivityList({ activities }) {
   return (
     <>
       <MapModal
-        filteredActivities={filteredActivities}
-        activities={activities}
+        filteredActivities={filteredActivities.length > 0 ? filteredActivities : activities}
       ></MapModal>
       <Headline>List of Activities</Headline>
       <Section>

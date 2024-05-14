@@ -49,12 +49,19 @@ export const TextPopUp = styled(Popup)`
   background-color: black;
 `;
 
-export const PopUpUl = styled.ul`
+export const PopUpContainer = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
 `;
+export const PopUpTitle = styled.h2`
+  margin: 5px 0;
+`;
 
-export const PopUpLi = styled.li`
+export const PopUpCategory = styled.p`
+  margin: 5px 0;
+`;
+
+export const PopUpArea = styled.p`
   margin: 5px 0;
 `;

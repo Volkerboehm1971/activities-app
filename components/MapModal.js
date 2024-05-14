@@ -3,7 +3,7 @@ import MapOverview from "./MapOverview";
 import { MapSign } from "./styledComponents/MapModal.styles";
 import IconMap from "./icons/Map";
 
-export default function MapModal({ activities, filteredActivities }) {
+export default function MapModal({ filteredActivities }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function MapModal({ activities, filteredActivities }) {
         <MapOverview
           onClickClose={() => setShowModal(!showModal)}
           filteredActivities={filteredActivities}
-          activities={activities}
         />
       )}
     </>
