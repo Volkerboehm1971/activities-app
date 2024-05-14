@@ -1,11 +1,9 @@
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import {
-  Headline,
   LinkActivityList,
-  Section,
   DetailImageContainer,
   DetailImage,
+  Section,
   Title,
   Div,
   Subheader,
@@ -14,7 +12,8 @@ import {
   AreaCountyContainer,
   ButtonContainer,
   ButtonDelete,
-  LinkEdit,
+  LinkEdit
+  
 } from "./styledComponents/DetailsViewActivity.styles";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
@@ -25,10 +24,9 @@ export default function DetailsViewActivity({
   setIsDeleteMode,
   id,
 }) {
-  const router = useRouter();
   return (
     <>
-      <Headline>Details of Activity</Headline>
+      <Header>Details of Activity</Header>
       <LinkActivityList href="/activityList">← Back</LinkActivityList>
       <Section>
         <DetailImageContainer>

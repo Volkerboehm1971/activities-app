@@ -1,9 +1,7 @@
-import styled from "styled-components";
 import React from "react";
 import FormEdit from "@/components/FormEdit";
 import { useRouter } from "next/router";
-import { Headline } from "@/components/styledComponents/create.styles";
-
+import Header from "@/components/Header";
 
 export default function EditActivityPage({ onEditActivity, activities }) {
   const router = useRouter();
@@ -11,7 +9,7 @@ export default function EditActivityPage({ onEditActivity, activities }) {
 
   return (
     <>
-      <Headline>Edit Activity</Headline>
+      <Header>Edit Activity</Header>
       <FormEdit
         onEditActivity={onEditActivity}
         id={id}

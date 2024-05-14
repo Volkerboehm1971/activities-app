@@ -1,8 +1,8 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
-import CatetoryFilters from "@/components/CatetoryFilters";
+
+import CategoryFilters from "@/components/CategoryFilters";
 import {
-  Headline,
   Ul,
   LinkDetailsPage,
   Li,
@@ -17,6 +17,7 @@ import dynamic from "next/dynamic";
 const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
 });
+import Header from "@/components/Header";
 
 export default function ActivityList({ activities }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -55,11 +56,12 @@ export default function ActivityList({ activities }) {
   };
 
   return (
-    <>
+    <>      
+    <Header>List of Activities</Header>
       <MapModal
         filteredActivities={filteredActivities.length > 0 ? filteredActivities : activities}
       ></MapModal>
-      <Headline>List of Activities</Headline>
+
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
         <WrapperSearchBar>
@@ -75,7 +77,7 @@ export default function ActivityList({ activities }) {
             required
           />
         </WrapperSearchBar>
-        <CatetoryFilters
+        <CategoryFilters
           handleIconClick={handleIconClick}
           selectedByIcon={selectedByIcon}
         />
