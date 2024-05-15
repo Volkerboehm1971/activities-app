@@ -1,4 +1,23 @@
-import { Form, Section, Input, Select, Textarea, ButtonContainer, LinkCancel, ButtonSave, WrapperSearchBar, InputSearchField, ButtonWrapper, MinusButton, PlusButton, ImageContainer, SearchImage, TinyInput, TinyInputsWrapper, WrapperSearchAndSwitch } from "./styledComponents/FormEdit.styles";
+import {
+  Form,
+  Section,
+  Input,
+  Select,
+  Textarea,
+  ButtonContainer,
+  LinkCancel,
+  ButtonSave,
+  WrapperSearchBar,
+  InputSearchField,
+  ButtonWrapper,
+  MinusButton,
+  PlusButton,
+  ImageContainer,
+  SearchImage,
+  TinyInput,
+  TinyInputsWrapper,
+  WrapperSearchAndSwitch,
+} from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
@@ -16,14 +35,20 @@ export default function FormEdit({ onEditActivity, id, activities }) {
   );
 
   const defaultImage =
-    imageSearch && imageSearch.hits && imageSearch.hits.length > 0 && searchTerm.length > 0;
+    imageSearch &&
+    imageSearch.hits &&
+    imageSearch.hits.length > 0 &&
+    searchTerm.length > 0;
 
-  const defaultOrSearchedImage = defaultImage ? imageSearch.hits[increment].largeImageURL : defaultActivity?.image;
+  const defaultOrSearchedImage = defaultImage
+    ? imageSearch.hits[increment].largeImageURL
+    : defaultActivity?.image;
 
   const typingInSearchbar = searchTerm.length > 0;
-  
 
-  function handleSubmit(event) {
+  const { data, isLoading, mutate } = useSWR(`/api/activities/${id}`);
+
+  async function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -44,9 +69,20 @@ export default function FormEdit({ onEditActivity, id, activities }) {
       lat: data.lat,
     };
 
-    onEditActivity(modifiedActivity, id);
-    
-    router.push(`/${id}`);
+    // onEditActivity(modifiedActivity, id);
+
+    const response = await fetch(`/api/activities/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(modifiedActivity),
+    });
+
+    if (response.ok) {
+      mutate();
+      router.push(`/${id}`);
+    }
   }
   const handleKeyPress = (event) => {
     event.preventDefault();
@@ -70,11 +106,19 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-        
+
         <Section>
           <label htmlFor="category">Category of Activity</label>
-          <Select id="category" name="category" defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}>
-            <option defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}>--change category here--</option>
+          <Select
+            id="category"
+            name="category"
+            defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}
+          >
+            <option
+              defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}
+            >
+              --change category here--
+            </option>
             <option value="Water-Surfsport">Surfsport</option>
             <option value="Water-Sailing">Sailing</option>
             <option value="Water-Swimming">Swimming</option>
@@ -108,52 +152,52 @@ export default function FormEdit({ onEditActivity, id, activities }) {
         </Section>
 
         <TinyInputsWrapper>
-        <Section>
-          <label htmlFor="area">Area</label>
-          <TinyInput
-            id="area"
-            name="area"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.area}
-            required
-          />
-        </Section>
-        <Section>
-          <label htmlFor="country">Country</label>
-          <TinyInput
-            id="country"
-            name="country"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.country}
-            required
-          />
-        </Section>
-        <Section>
-          <label htmlFor="area">Longitude</label>
-          <TinyInput
-            id="lng"
-            name="lng"
-            type="number"
-            placeholder="Bsp. 133.2051549"
-            pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.lng}
-            required
-          />
-        </Section>
-        <Section>
-          <label htmlFor="area">Latitude</label>
-          <TinyInput
-            id="lat"
-            name="lat"
-            type="number"
-            placeholder="Bsp. 34.4088519"
-            pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.lat}
-            required
-          />
-        </Section>
+          <Section>
+            <label htmlFor="area">Area</label>
+            <TinyInput
+              id="area"
+              name="area"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              defaultValue={defaultActivity?.area}
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="country">Country</label>
+            <TinyInput
+              id="country"
+              name="country"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              defaultValue={defaultActivity?.country}
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="area">Longitude</label>
+            <TinyInput
+              id="lng"
+              name="lng"
+              type="number"
+              placeholder="Bsp. 133.2051549"
+              pattern="^(?!.*\s{2,}).+$"
+              defaultValue={defaultActivity?.lng}
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="area">Latitude</label>
+            <TinyInput
+              id="lat"
+              name="lat"
+              type="number"
+              placeholder="Bsp. 34.4088519"
+              pattern="^(?!.*\s{2,}).+$"
+              defaultValue={defaultActivity?.lat}
+              required
+            />
+          </Section>
         </TinyInputsWrapper>
 
         <Section>
@@ -168,72 +212,75 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             required
           />
         </Section>
-        
 
         <Section>
-        
-          <WrapperSearchAndSwitch> 
-          <WrapperSearchBar>
-          <label htmlFor="image">Search Activity Image</label>
-            <InputSearchField
-              id="image"
-              name="image"
-              type="text"
-              value={searchTerm}
-              onChange={handleKeyPress}
-            />
-          </WrapperSearchBar>
-          {typingInSearchbar ? (
-            <ButtonWrapper>
-              <MinusButton
-                onClick={() => {
-                  if (increment >= 1) {
-                    setIncrement((prevCount) => prevCount - 1);
-                  }
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#000000"
-                >
-                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                </svg>
-              </MinusButton>
-              <p>
-                {increment + 1}/{typingInSearchbar & defaultImage ? imageSearch.hits.length : "1" }
-              </p>
-              <PlusButton
-                onClick={() => {
-                  if (increment < imageSearch.hits.length - 1) {
-                    setIncrement((prevCount) => prevCount + 1);
-                  }
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#000000"
-                >
-                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
-                </svg>
-              </PlusButton>
-            </ButtonWrapper>
-              ) : ("")}
-            </WrapperSearchAndSwitch>
-            <ImageContainer>
-              <SearchImage
-                src={defaultOrSearchedImage}
-                fill
-                alt="Pixabay Image"
+          <WrapperSearchAndSwitch>
+            <WrapperSearchBar>
+              <label htmlFor="image">Search Activity Image</label>
+              <InputSearchField
+                id="image"
+                name="image"
+                type="text"
+                value={searchTerm}
+                onChange={handleKeyPress}
               />
-            </ImageContainer>
+            </WrapperSearchBar>
+            {typingInSearchbar ? (
+              <ButtonWrapper>
+                <MinusButton
+                  onClick={() => {
+                    if (increment >= 1) {
+                      setIncrement((prevCount) => prevCount - 1);
+                    }
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#000000"
+                  >
+                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                  </svg>
+                </MinusButton>
+                <p>
+                  {increment + 1}/
+                  {typingInSearchbar & defaultImage
+                    ? imageSearch.hits.length
+                    : "1"}
+                </p>
+                <PlusButton
+                  onClick={() => {
+                    if (increment < imageSearch.hits.length - 1) {
+                      setIncrement((prevCount) => prevCount + 1);
+                    }
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#000000"
+                  >
+                    <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                  </svg>
+                </PlusButton>
+              </ButtonWrapper>
+            ) : (
+              ""
+            )}
+          </WrapperSearchAndSwitch>
+          <ImageContainer>
+            <SearchImage
+              src={defaultOrSearchedImage}
+              fill
+              alt="Pixabay Image"
+            />
+          </ImageContainer>
         </Section>
-        
+
         <ButtonContainer>
           <LinkCancel href={`/${id}`}>Cancel</LinkCancel>
           <ButtonSave type="submit">Save</ButtonSave>
@@ -242,4 +289,3 @@ export default function FormEdit({ onEditActivity, id, activities }) {
     </>
   );
 }
-

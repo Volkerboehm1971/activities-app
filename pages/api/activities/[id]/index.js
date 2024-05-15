@@ -16,4 +16,11 @@ export default async function handler(request, response) {
     }
     response.status(200).json(activity);
   }
+
+  if (request.method === "PUT") {
+    const updatedActivity = request.body;
+    await Activity.findByIdAndUpdate(id, updatedActivity);
+    response.status(200).json({ status: "Activity updated!" });
+    return;
+  }
 }
