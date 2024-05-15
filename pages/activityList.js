@@ -2,8 +2,9 @@ import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
 import useSWR from "swr";
 import CategoryFilters from "@/components/CategoryFilters";
-import biking from "@/assets/icons/biking.gif";
+import Biking from "@/assets/icons/biking.gif";
 import {
+  LoadingAnimation,
   Ul,
   LinkDetailsPage,
   Li,
@@ -29,10 +30,10 @@ export default function ActivityList() {
 
   if (isLoading) {
     return (
-      <>
-        <Image src={biking} alt="Biking-Gif" width="256" height="142" />
+      <LoadingAnimation>
+        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
         <p>is Loading</p>
-      </>
+      </LoadingAnimation>
     );
   }
 
