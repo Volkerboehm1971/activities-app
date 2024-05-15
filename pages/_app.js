@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <GlobalStyle />
-        <Layout>
+        <Layout activities={activities}>
           <Component
             onAddActivity={handleAddActivity}
             onEditActivity={handleEditActivity}

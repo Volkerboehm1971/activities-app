@@ -18,7 +18,6 @@ export default function HomePage({ activities }) {
       setRandomActivity(randomActivity);
     }
   }, [activities, randomActivity]);
-
   return (
     <>
       <Header>Activity App</Header>

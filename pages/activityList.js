@@ -1,5 +1,6 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
+
 import CategoryFilters from "@/components/CategoryFilters";
 import {
   Ul,
@@ -11,6 +12,11 @@ import {
   InputSearchField,
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
+import dynamic from "next/dynamic";
+
+const MapModal = dynamic(() => import("@/components/MapModal"), {
+  ssr: false,
+});
 import Header from "@/components/Header";
 
 export default function ActivityList({ activities }) {
@@ -51,7 +57,13 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
+      <MapModal
+        filteredActivities={
+          filteredActivities.length > 0 ? filteredActivities : activities
+        }
+      ></MapModal>
       <Header>List of Activities</Header>
+
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
         <WrapperSearchBar>
