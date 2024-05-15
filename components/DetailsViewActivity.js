@@ -12,8 +12,7 @@ import {
   AreaCountyContainer,
   ButtonContainer,
   ButtonDelete,
-  LinkEdit
-  
+  LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
 

@@ -2,17 +2,22 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import DeleteActivityWindow from "@/components/DeleteActivityWindow";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
+import useSWR from "swr";
 
-export default function ActivityCardDetails({ activities, onDeleteActivity }) {
+export default function ActivityCardDetails({ onDeleteActivity }) {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
 
-  const detailActivity = activities.find((activity) => activity.id === id);
+  const { data: activity, error, isLoading } = useSWR(`/api/activities/${id}`);
 
-  if (!detailActivity) {
-    return null;
+  if (error) {
+    return <h1>Oops! Something went wrong.</h1>;
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
 
   return (
@@ -25,7 +30,7 @@ export default function ActivityCardDetails({ activities, onDeleteActivity }) {
         />
       ) : (
         <DetailsViewActivity
-          detailActivity={detailActivity}
+          detailActivity={activity}
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           id={id}
