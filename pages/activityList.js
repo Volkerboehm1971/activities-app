@@ -1,6 +1,6 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
-
+import useSWR from "swr";
 import CategoryFilters from "@/components/CategoryFilters";
 import {
   Ul,
@@ -13,15 +13,25 @@ import {
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
+import Header from "@/components/Header";
 
 const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
 });
-import Header from "@/components/Header";
 
-export default function ActivityList({ activities }) {
+export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
+
+  const { data: activities, isLoading, error } = useSWR("/api/activities");
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>Oops! Something went wrong..</h1>;
+  }
 
   const getFilteredActivities = () => {
     let filtered = activities.filter(
@@ -88,10 +98,10 @@ export default function ActivityList({ activities }) {
       {filteredActivities.length > 0 ? (
         <Ul>
           {filteredActivities.map((activity) => (
-            <Li key={activity.id}>
-              <LinkDetailsPage href={`/${activity.id}`}>
+            <Li key={activity._id}>
+              <LinkDetailsPage href={`/${activity._id}`}>
                 <ActivityCard
-                  id={activity.id}
+                  id={activity._id}
                   image={activity.image}
                   title={activity.title}
                   area={activity.area}
@@ -108,10 +118,10 @@ export default function ActivityList({ activities }) {
           </ErrorMessage>
           <Ul>
             {activities.map((activity) => (
-              <Li key={activity.id}>
-                <LinkDetailsPage href={`/${activity.id}`}>
+              <Li key={activity._id}>
+                <LinkDetailsPage href={`/${activity._id}`}>
                   <ActivityCard
-                    id={activity.id}
+                    id={activity._id}
                     image={activity.image}
                     title={activity.title}
                     area={activity.area}
