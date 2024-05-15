@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
-export default function FormEdit({ onEditActivity, id, activities }) {
+export default function FormEdit({ id, activities }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
@@ -69,8 +69,6 @@ export default function FormEdit({ onEditActivity, id, activities }) {
       lat: data.lat,
     };
 
-    // onEditActivity(modifiedActivity, id);
-
     const response = await fetch(`/api/activities/${id}`, {
       method: "PUT",
       headers: {
@@ -102,7 +100,7 @@ export default function FormEdit({ onEditActivity, id, activities }) {
             minLength="1"
             maxLength="150"
             pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.title}
+            defaultValue={modifiedActivity?.title}
             required
           />
         </Section>
