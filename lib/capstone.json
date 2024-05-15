@@ -1,0 +1,290 @@
+[
+  {
+    "title": "Windsurfing at the North",
+    "category": "Surfsport",
+    "categoryFilter": "Water",
+    "area": "Sylt",
+    "country": "Germany",
+    "description": "Embark on a windsurfing odyssey at Sylt, the birthplace of German surf culture. Feel the Atlantic's pulse beneath your board as you ride the waves of the North Sea. Sylt's windswept beauty offers an unrivaled playground for surfers of all levels. Join the dance of wind and water, and immerse yourself in the artistry of windsurfing on Sylt's pristine shores.",
+    "image": "https://images.unsplash.com/photo-1520765333005-1966cab37761?q=80&w=1744&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 54.8999964,
+    "lng": 8.333332
+  },
+  {
+    "title": "Chiemsee Sailing Serenity",
+    "category": "Sailing",
+    "categoryFilter": "Water",
+    "area": "Chiemsee",
+    "country": "Germany",
+    "description": "Embark on a serene sailing adventure at Chiemsee. Feel the gentle breeze guiding your vessel across the shimmering waters of Bavaria's largest lake. Chiemsee's tranquil beauty and expansive horizons provide the perfect backdrop for an unforgettable sailing experience. Join the voyage and immerse yourself in the peaceful charm of this idyllic lake setting.",
+    "image": "https://images.unsplash.com/photo-1501771924607-209f42a6e7e4?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 47.887329784,
+    "lng": 12.468664792
+  },
+  {
+    "title": "In the crater of the volcano",
+    "category": "Swimming",
+    "categoryFilter": "Water",
+    "area": "Vulkaneifel",
+    "country": "Germany",
+    "description": "Dive into the crystalline waters of Pulvermaar for a refreshing swimming experience. Surrounded by lush greenery and the rugged beauty of the Eifel region, Pulvermaar offers a tranquil oasis for water enthusiasts. Immerse yourself in the clear, azure depths and feel the cares of the world melt away as you swim in this natural gem nestled in the heart of Germany.",
+    "image": "https://images.unsplash.com/photo-1536652305665-613afc81d9a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 50.2833322,
+    "lng": 7.0
+  },
+  {
+    "title": "Paradise: Kayaking Adventure",
+    "category": "Paddeling",
+    "categoryFilter": "Water",
+    "area": "Hamburg",
+    "country": "Germany",
+    "description": "Embark on a serene journey through the heart of Hamburg on the Alster, where the tranquil waters of the Alster beckon you to paddle away into a world of tranquility and wonder. As you glide along the glassy surface, the citys skyline stands tall, mirrored perfectly in the gentle ripples below, a breathtaking symphony of architecture and nature.",
+    "image": "https://images.unsplash.com/photo-1523287281576-5b596107a6ae?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.57532,
+    "lng": 10.01534
+  },
+  {
+    "title": "Exploring life underwater",
+    "category": "Diving",
+    "categoryFilter": "Water",
+    "area": "Hemmoor",
+    "country": "Germany",
+    "description": "Explore the depths of tranquility beneath the surface at Kreidesee Hemmoor. Dive into an underwater realm teeming with life and wonder, where sunken treasures and vibrant marine ecosystems await discovery. Kreidesee Hemmoor, with its clear waters and intriguing submerged landscapes, beckons divers to immerse themselves in a world of enchantment. Join the expedition and uncover the secrets of this captivating dive site nestled in the heart of Hemmoor, Germany.",
+    "image": "https://images.unsplash.com/photo-1583364493238-248032147fbd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.68702,
+    "lng": 9.15492
+  },
+
+  {
+    "title": "Alpine Majesty: Conquer Peaks",
+    "category": "Skiing",
+    "categoryFilter": "Winter",
+    "area": "Oberstdorf",
+    "country": "Germany",
+    "description": "Experience the exhilaration of skiing amidst the stunning landscapes of Oberstdorf. Carve through powdery slopes and majestic peaks, surrounded by the breathtaking beauty of the Bavarian Alps. Oberstdorf's world-class ski resorts and diverse terrain cater to skiers of all levels, offering an unforgettable alpine adventure. Join the excitement and embrace the thrill of skiing in this picturesque winter wonderland nestled in the heart of Germany.",
+    "image": "https://images.unsplash.com/photo-1596473535762-ce7f43470748?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 47.40724,
+    "lng": 10.27939
+  },
+  {
+    "title": "Descend Adventure",
+    "category": "Tobogganing",
+    "categoryFilter": "Winter",
+    "area": "Torfhaus",
+    "country": "Germany",
+    "description": "Embark on an exhilarating toboggan adventure in the heart of the Harz region. Feel the rush as you race down snowy slopes, surrounded by the enchanting winter wonderland of the German mountains. Harz's toboggan runs offer excitement for all ages, with twists, turns, and scenic views that will leave you breathless. Join the thrill-seekers and experience the joy of tobogganing in this snowy paradise nestled amidst the natural beauty of the Harz Mountains.",
+    "image": "https://images.unsplash.com/photo-1643152958578-ba118712f148?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 51.802203,
+    "lng": 10.53635
+  },
+  {
+    "title": "Glacial Grace: Winter Wonderland",
+    "category": "Ice skating",
+    "categoryFilter": "Winter",
+    "area": "Hamburg",
+    "country": "Germany",
+    "description": "Glide into a world of winter wonder at Planten un Blomen in Hamburg. Feel the crisp air as you gracefully skate across the glistening ice, surrounded by the enchanting beauty of the park's scenic landscape. Planten un Blomen's ice skating rink offers a serene escape where skaters of all levels can twirl and glide amidst the tranquil setting of one of Hamburg's most beloved green spaces. Join the magic and experience the joy of ice skating in this picturesque urban oasis.",
+    "image": "https://images.unsplash.com/photo-1575808433605-aafc277c4d19?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.55666444,
+    "lng": 9.9833294
+  },
+  {
+    "title": "Slide down the Zugspitze",
+    "category": "Snowboarding",
+    "categoryFilter": "Winter",
+    "area": "Grainau",
+    "country": "Germany",
+    "description": "Experience the thrill of snowboarding down Zugspitze, Germany's highest peak. Glide through pristine snow as you carve your path down majestic slopes. Zugspitze's breathtaking vistas and challenging terrain create the perfect playground for snowboarders. Join the adventure and carve your mark on the snowy slopes of this iconic mountain.",
+    "image": "https://images.unsplash.com/photo-1599405653894-8a595f692abf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 47.4833,
+    "lng": 11.0167
+  },
+  {
+    "title": "Peak Pursuit",
+    "category": "Climbing",
+    "categoryFilter": "Mountains",
+    "area": "Sebnitz",
+    "country": "Germany",
+    "description": "Embark on an exhilarating alpine climbing adventure amidst the rugged splendor of Elbe Sandstone Mountains. Feel the thrill as you scale towering peaks and traverse dramatic rock formations, surrounded by the breathtaking beauty of this unique sandstone mountain range. Elbsandsteingebirge's challenging cliffs and awe-inspiring vistas offer a playground for climbers of all levels, where each ascent becomes a triumph of skill and determination. Join the ascent and discover the unparalleled joy of alpine climbing in this majestic natural wonderland.",
+    "image": "https://images.unsplash.com/photo-1691617167581-7bf6565219ce?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 50.9754,
+    "lng": 14.27579
+  },
+  {
+    "title": "Enjoy Summit Sojourn",
+    "category": "Mountaineering",
+    "categoryFilter": "Mountains",
+    "area": "Elend",
+    "country": "Germany",
+    "description": "Embark on an epic mountaineering expedition amidst the rugged beauty of the Harz Mountains. Feel the thrill of conquering towering peaks and traversing challenging terrain as you explore this storied mountain range. The Harz offers a playground for mountaineers of all levels, with its diverse landscapes and breathtaking vistas inspiring awe at every turn. Join the journey and experience the exhilaration of mountaineering in this enchanting natural wonderland.",
+    "image": "https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 51.7333,
+    "lng": 10.6833
+  },
+  {
+    "title": "Climbing upside down",
+    "category": "Abseiling",
+    "categoryFilter": "Mountains",
+    "area": "Oberelsbach",
+    "country": "Germany",
+    "description": "Embark on an adrenaline-fueled abseiling journey down the rugged stone walls of the Rhön region. Feel the rush as you descend into the heart of nature, surrounded by the breathtaking scenery of this unspoiled wilderness. The Röhn's dramatic cliffs and rocky outcrops provide the perfect backdrop for an unforgettable abseiling experience. Join the adventure and discover the thrill of defying gravity amidst the stunning landscapes of this hidden gem in Germany.",
+    "image": "https://images.unsplash.com/photo-1621752047924-67a414a24c36?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 50.44118,
+    "lng": 10.11692
+  },
+  {
+    "title": "Biking in the heart of nature",
+    "category": "Mountainbiking",
+    "categoryFilter": "Biking",
+    "area": "Leimen",
+    "country": "Germany",
+    "description": "Embark on a mountain biking adventure in the heart of nature at Palatinate Forest. Feel the rush as you navigate through lush forests and scenic trails. Palatinate Forest's natural beauty and diverse terrain offer an unforgettable experience for riders of all levels. Join the thrill and explore the stunning landscapes of this pristine mountain biking paradise.",
+    "image": "https://images.unsplash.com/photo-1633707167682-9068729bc84c?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 49.34737,
+    "lng": 8.68733
+  },
+  {
+    "title": "Racing Bike Excursion",
+    "category": "Cycling",
+    "categoryFilter": "Biking",
+    "area": "Fehmarn",
+    "country": "Germany",
+    "description": "Pedal into the wind on a racing bike excursion across the picturesque island of Fehmarn. Feel the exhilarating rush as you navigate scenic coastal roads and charming villages, surrounded by the breathtaking vistas of the Baltic Sea. Fehmarn's flat terrain and well-maintained bike paths offer the perfect setting for an unforgettable cycling adventure. Join the ride and immerse yourself in the beauty and tranquility of this coastal paradise, where every turn of the pedal is a journey of discovery.",
+    "image": "https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 54.4378,
+    "lng": 11.19352
+  },
+
+  {
+    "title": "On the trail of Hanseatic League",
+    "category": "Strolling",
+    "categoryFilter": "Hiking",
+    "area": "Lübeck",
+    "country": "Germany",
+    "description": "Embark on a historical journey through Lübeck, tracing the footsteps of the Hanseatic League. Wander through charming streets and centuries-old alleyways, immersing yourself in the city's rich maritime heritage. Lübeck's timeless beauty and storied past offer a captivating stroll for history enthusiasts and curious travelers alike. Join the trail and uncover the secrets of this UNESCO World Heritage site.",
+    "image": "https://images.unsplash.com/photo-1581183854398-7b8f6ecabb51?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.86893,
+    "lng": 10.68729
+  },
+  {
+    "title": "Heathland Stride",
+    "category": "Nordic Walking",
+    "categoryFilter": "Hiking",
+    "area": "Lüneburger Heide",
+    "country": "Germany",
+    "description": "Embark on a rejuvenating Nordic walking journey through the captivating landscapes of Lüneburg Heath. Feel the rhythm of your stride harmonize with the gentle rustle of heather and the sweet scent of wildflowers. Lüneburg Heath's expansive trails and rolling hills provide the perfect terrain for an invigorating workout amidst nature's tranquility. Join the stroll and immerse yourself in the serene beauty of this unique heathland, where every step brings you closer to inner peace and vitality.",
+    "image": "https://images.unsplash.com/photo-1635745488837-ffa006eaf9cf?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.1678343287,
+    "lng": 9.9371462514
+  },
+  {
+    "title": "Breezy Run",
+    "category": "Jogging",
+    "categoryFilter": "Hiking",
+    "area": "Borkum",
+    "country": "Germany",
+    "description": "Embark on a refreshing jogging adventure amidst the invigorating sea breeze of Borkum Island. Feel the rhythm of your stride as you traverse sandy beaches and scenic coastal paths, surrounded by the soothing sound of waves crashing against the shore. Borkum's wide-open spaces and pristine natural beauty offer the perfect backdrop for an energizing run. Join the jog and experience the joy of exploring this idyllic island paradise on foot, where each step brings you closer to a renewed sense of well-being and serenity.",
+    "image": "https://images.unsplash.com/photo-1496163668521-39614a16b23f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.58094,
+    "lng": 6.69153
+  },
+  {
+    "title": "Hiking Deluxe",
+    "category": "Hiking",
+    "categoryFilter": "Hiking",
+    "area": "Oberau",
+    "country": "Germany",
+    "description": "Embark on a journey through the majestic Bavarian Alps, where every step unveils alpine splendor. Traverse ancient forests, ascend towering peaks, and inhale the pure mountain air as you explore trails revealing panoramic vistas. The Bavarian Alps, a tapestry of emerald meadows and cascading waterfalls, invites hikers to embrace the embrace of nature's wonder.",
+    "image": "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 47.5607,
+    "lng": 11.131
+  },
+  {
+    "title": "Skyward Soar",
+    "category": "Paragliding",
+    "categoryFilter": "Extrem",
+    "area": "Müritz",
+    "country": "Germany",
+    "description": "Embark on an exhilarating paragliding adventure above the stunning landscapes of Müritz. Feel the wind lift you high above the shimmering waters of Germany's largest lake, offering panoramic views of lush forests and picturesque villages. Müritz's expansive skies and gentle thermals provide the perfect playground for an unforgettable flying experience. Join the ascent and immerse yourself in the freedom of flight amidst the breathtaking beauty of this pristine natural haven.",
+    "image": "https://images.unsplash.com/photo-1592208128295-5aaa34f1d72b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.416665,
+    "lng": 12.6833306
+  },
+  {
+    "title": "Urban Plunge",
+    "category": "Bungeejumping",
+    "categoryFilter": "Extrem",
+    "area": "Berlin",
+    "country": "Germany",
+    "description": "Experience the ultimate adrenaline rush with bungee jumping in the heart of Berlin. Feel the anticipation build as you stand on the edge, overlooking the city's iconic skyline. With a leap of faith, plunge into the exhilarating freefall, surrounded by the energy of Germany's vibrant capital. Berlin's urban landscape provides a dramatic backdrop for this daring adventure, offering a unique perspective of the city from above. Join the thrill-seekers and embrace the exhilaration of bungee jumping amidst the bustling metropolis.",
+    "image": "https://images.unsplash.com/photo-1595778039451-58a7c2946e7d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 52.52437,
+    "lng": 13.41053
+  },
+  {
+    "title": "Dirt Thrills",
+    "category": "Motorcross",
+    "categoryFilter": "Extrem",
+    "area": "Münster",
+    "country": "Germany",
+    "description": "Gear up for an adrenaline-fueled motocross adventure in Münster. Feel the roar of the engine as you navigate rugged terrain and conquer challenging obstacles. Münster's dynamic landscape offers the perfect playground for off-road enthusiasts, with winding trails and exhilarating jumps to test your skills. Join the ride and experience the exhilaration of motocross in this vibrant city setting, where every twist and turn brings a new level of excitement.",
+    "image": "https://images.unsplash.com/photo-1435244837924-21c508f9db25?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 51.96236,
+    "lng": 7.62571
+  },
+  {
+    "title": "Rapid Rush",
+    "category": "Rafting",
+    "categoryFilter": "Extrem",
+    "area": "Soltau",
+    "country": "Germany",
+    "description": "Prepare for an adrenaline-charged rafting expedition in Soltau. Feel the rush as you navigate through exhilarating rapids and scenic stretches of river. Soltau's dynamic waterways offer the perfect playground for adventurers, with thrilling twists and turns around every bend. Join the expedition and experience the exhilaration of rafting in this picturesque natural setting, where teamwork and adrenaline combine for an unforgettable adventure.",
+    "image": "https://images.unsplash.com/photo-1627920417441-08aae3a5a3aa?q=80&w=1736&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 52.98638,
+    "lng": 9.84338
+  },
+  {
+    "title": "Curling Quest",
+    "category": "Curling",
+    "categoryFilter": "Indoor",
+    "area": "Köln",
+    "country": "Germany",
+    "description": "Experience the icy excitement of curling in the heart of Cologne. Glide gracefully across the slick surface, sending stones gliding with precision and strategy. Cologne's urban chill zone transforms into a haven for curling enthusiasts, where camaraderie and competition converge on the ice. Join the fun and embrace the chill as you curl your way to victory in this cool cityscape setting.",
+    "image": "https://images.unsplash.com/photo-1576720488416-cb0dc4735870?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 50.93333,
+    "lng": 6.95
+  },
+  {
+    "title": "Cliff Challenge",
+    "category": "Bouldern",
+    "categoryFilter": "Indoor",
+    "area": "Osnabrück",
+    "country": "Germany",
+    "description": "Embark on an exciting bouldering adventure, where every ascent is a test of strength and agility. Feel the exhilaration as you conquer challenging rock formations and navigate intricate routes. Bouldering offers a thrilling experience for climbers of all levels, with Soltau's rugged terrain providing the perfect backdrop for your vertical conquests. Join the climb and unleash your inner adventurer amidst the scenic beauty of this bouldering paradise.",
+    "image": "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?q=80&w=1844&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 52.27264,
+    "lng": 8.0498
+  },
+  {
+    "title": "Frozen Frenzy",
+    "category": "Ice Hockey",
+    "categoryFilter": "Indoor",
+    "area": "Bremen",
+    "country": "Germany",
+    "description": "Prepare for heart-pounding action as you hit the ice for an exhilarating game of hockey. Glide across the rink with skill and determination, ready to face off against opponents in any city. Ice hockey is a sport that brings excitement to players and spectators alike, with fast-paced gameplay and intense competition. Join the game and experience the thrill of hockey, no matter where you are, as you battle it out on the ice for victory.",
+    "image": "https://images.unsplash.com/photo-1580670759122-71ec87c409ad?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 53.07516,
+    "lng": 8.80777
+  },
+  {
+    "title": "Sky Ballet",
+    "category": "Hot Air Ballooning",
+    "categoryFilter": "Others",
+    "area": "Kiel",
+    "country": "Germany",
+    "description": "Embark on a breathtaking hot air ballooning adventure above the picturesque landscapes of Kiel. Drift serenely through the clouds, marveling at panoramic views of the city's coastal beauty and charming countryside. Kiel's gentle winds and stunning vistas create the perfect backdrop for an unforgettable aerial experience. Join the journey and elevate your perspective as you soar high above the city, embraced by the tranquility and wonder of the sky.",
+    "image": "https://images.unsplash.com/photo-1663336310553-b1c33977221e?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "lat": 54.32133,
+    "lng": 10.13489
+  }
+]
