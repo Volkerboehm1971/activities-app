@@ -2,6 +2,7 @@ import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
 import useSWR from "swr";
 import CategoryFilters from "@/components/CategoryFilters";
+import biking from "@/assets/icons/biking.gif";
 import {
   Ul,
   LinkDetailsPage,
@@ -14,6 +15,7 @@ import {
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Image from "next/image";
 
 const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
@@ -26,7 +28,12 @@ export default function ActivityList() {
   const { data: activities, isLoading, error } = useSWR("/api/activities");
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <>
+        <Image src={biking} alt="Biking-Gif" width="256" height="142" />
+        <p>is Loading</p>
+      </>
+    );
   }
 
   if (error) {

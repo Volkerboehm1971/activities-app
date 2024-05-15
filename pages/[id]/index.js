@@ -10,24 +10,14 @@ export default function ActivityCardDetails({ onDeleteActivity }) {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data: activity, error } = useSWR(`/api/activities/${id}`);
+  const { data: activity, error, isLoading } = useSWR(`/api/activities/${id}`);
 
   if (error) {
     return <h1>Oops! Something went wrong.</h1>;
   }
 
-  if (!activity) {
+  if (isLoading) {
     return <h1>Loading...</h1>;
-  }
-
-  const detailActivity = activity;
-
-  if (!detailActivity) {
-    return null;
-  }
-
-  if (!detailActivity) {
-    return null;
   }
 
   return (
@@ -40,7 +30,7 @@ export default function ActivityCardDetails({ onDeleteActivity }) {
         />
       ) : (
         <DetailsViewActivity
-          detailActivity={detailActivity}
+          detailActivity={activity}
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           id={id}
