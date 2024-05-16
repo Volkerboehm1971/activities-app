@@ -3,6 +3,7 @@ import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import { LinkDetailsPage } from "../components/styledComponents/index.styles";
+import Login from "@/components/Login";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
@@ -24,7 +25,7 @@ export default function HomePage({ activities }) {
       <Header>Activity App</Header>
       {randomActivity && (
         <>
-          
+          <Login />
           <WeatherDisplay area={randomActivity.area} />
           <LinkDetailsPage href={`/${randomActivity.id}`}>
             <Spotlight

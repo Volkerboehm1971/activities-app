@@ -1,20 +1,18 @@
 import Header from "./Header";
 import NavigationBar from "./NavigationBar";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]";
+import { authOptions } from "../pages/api/auth/[...nextauth]";
 
-export async function Layout({ children }) {
-  const session = await getServerSession(request, response, authOptions);
+// const session = await getServerSession(request, response, authOptions);
+
+export default function Layout({ children }) {
   return (
     <>
       <Header />
-      {session ? <p>You are logged in</p> : <p>You are not logged in</p>
-      }
+      {/* {session ? <p>You are logged in</p> : <p>You are not logged in</p>
+      } */}
       <main>{children}</main>
       <NavigationBar />
     </>
   );
 }
-
-
-
