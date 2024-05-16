@@ -7,6 +7,7 @@ import IconAdd from "./icons/Add";
 import IconHome from "./icons/Home";
 import IconActivityList from "./icons/ActivityList";
 import { useRouter } from "next/router";
+
 export default function NavigationBar() {
   const router = useRouter();
 
