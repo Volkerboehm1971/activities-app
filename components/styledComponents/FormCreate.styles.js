@@ -41,6 +41,17 @@ export const TinyInput = styled.input`
   border-radius: 0.5rem;
 `;
 
+export const ModalContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  width: 175px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background-color: #f0f0f0;
+`;
+
 export const Textarea = styled.textarea`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;

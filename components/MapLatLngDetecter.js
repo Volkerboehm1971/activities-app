@@ -3,33 +3,65 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MapEvents from "./MapEvents";
 import { useState } from "react";
+import { Icon } from "leaflet";
+import { StyledMapContainer } from "./styledComponents/DetailMap.styles";
 
-const StyledSection = styled.section`
+const Overlay = styled.section`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+`;
+
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 330px;
-  height: 450px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(200, 200, 200, 5);
-  z-index: 999;
-`;
-
-const StylMapContainer = styled(MapContainer)`
-  width: 350px;
+  width: 250px;
   height: 450px;
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
 `;
 
-export default function MapLatLngDetecter() {
+const SpanContainer = styled.div`
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
+
+const SelectedLatLng = styled.div`
+  width: 230px;
+  font-size: 12px;
+  margin: 5px;
+`;
+
+const MapDetectButton = styled.div`
+  background-color: #ffffff;
+  width: 50px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+`;
+
+const StylMapContainer = styled(MapContainer)`
+  width: 250px;
+  height: 350px;
+  border-radius: 10px;
+`;
+
+export default function MapLatLngDetecter({ onClickClose }) {
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [clickedPosition, setClickedPosition] = useState(null);
@@ -44,8 +76,12 @@ export default function MapLatLngDetecter() {
   console.log(lat);
   console.log(lng);
   return (
-    <>
-      <StyledSection>
+    <Overlay>
+      <Container>
+        <SpanContainer>
+          <SelectedLatLng>Selected Latitude: </SelectedLatLng>
+          <SelectedLatLng>Selected Longitude: </SelectedLatLng>
+        </SpanContainer>
         <StylMapContainer center={[52.3, 9.7]} zoom={5}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -54,7 +90,8 @@ export default function MapLatLngDetecter() {
           <MapEvents onClick={handleClick} />
           {clickedPosition && <Marker position={clickedPosition}></Marker>}
         </StylMapContainer>
-      </StyledSection>
-    </>
+        <MapDetectButton onClick={onClickClose}>Save</MapDetectButton>
+      </Container>
+    </Overlay>
   );
 }

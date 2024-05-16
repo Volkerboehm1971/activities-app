@@ -15,9 +15,10 @@ import {
   SearchImage,
   TinyInputsWrapper,
   TinyInput,
+  ModalContainer,
 } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
@@ -70,11 +71,17 @@ export default function FormCreate() {
 
     router.push("/activityList");
   }
+
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
+
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
@@ -179,13 +186,17 @@ export default function FormCreate() {
           </Section>
         </TinyInputsWrapper>
 
-        <Section>
+        <ModalContainer>
           <div onClick={() => setShowModal(!showModal)}>
             Ermittle deine LatLong
           </div>
-        </Section>
+        </ModalContainer>
 
-        {showModal && <MapLatLngDetecter></MapLatLngDetecter>}
+        {showModal && (
+          <MapLatLngDetecter
+            onClickClose={() => setShowModal(!showModal)}
+          ></MapLatLngDetecter>
+        )}
 
         <Section>
           <label htmlFor="description">Description</label>
