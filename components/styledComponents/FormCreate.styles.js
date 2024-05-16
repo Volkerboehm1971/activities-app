@@ -50,6 +50,8 @@ export const ModalContainer = styled.section`
   margin-right: auto;
   padding: 10px;
   background-color: #f0f0f0;
+  font-size: 14px;
+  font-weight: 600;
 `;
 
 export const Textarea = styled.textarea`

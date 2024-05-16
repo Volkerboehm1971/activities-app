@@ -22,17 +22,17 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-const MapLatLngDetecter = dynamic(
-  () => import("../components/MapLatLngDetecter"),
-  {
-    ssr: false,
-  }
-);
+const MapGeodata = dynamic(() => import("./MapGeodata"), {
+  ssr: false,
+});
 
 export default function FormCreate() {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [clickedPosition, setClickedPosition] = useState(null);
   const router = useRouter();
 
   const { mutate } = useSWR("/api/activities");
@@ -72,15 +72,22 @@ export default function FormCreate() {
     router.push("/activityList");
   }
 
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
+
+  function handleClick(e) {
+    const { lat, lng } = e.latlng;
+    setLat(lat.toFixed(10));
+    setLng(lng.toFixed(10));
+    setClickedPosition([lat, lng]);
+  }
+
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
   };
-
-  useEffect(() => {
-    document.body.style.overflow = showModal ? "hidden" : "auto";
-  }, [showModal]);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
@@ -91,9 +98,16 @@ export default function FormCreate() {
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
     (searchTerm.length > 0);
 
+  function showAlert(event) {
+    event.preventDefault();
+    window.alert(
+      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
+    );
+  }
+
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={lat !== null ? handleSubmit : showAlert}>
         <Section>
           <label htmlFor="title">Activity Name</label>
           <Input
@@ -168,9 +182,11 @@ export default function FormCreate() {
               id="lng"
               name="lng"
               type="number"
-              placeholder="Bsp. 133.2051549"
+              placeholder="Your Selected Geodata"
+              value={lng}
               pattern="^(?!.*\s{2,}).+$"
               required
+              disabled
             />
           </Section>
           <Section>
@@ -179,23 +195,26 @@ export default function FormCreate() {
               id="lat"
               name="lat"
               type="number"
-              placeholder="Bsp. 34.4088519"
+              placeholder="Your Selected Geodata"
+              value={lat}
               pattern="^(?!.*\s{2,}).+$"
-              required
+              disabled
             />
           </Section>
         </TinyInputsWrapper>
 
         <ModalContainer>
-          <div onClick={() => setShowModal(!showModal)}>
-            Ermittle deine LatLong
-          </div>
+          <div onClick={() => setShowModal(!showModal)}>Select Geodata</div>
         </ModalContainer>
 
         {showModal && (
-          <MapLatLngDetecter
+          <MapGeodata
             onClickClose={() => setShowModal(!showModal)}
-          ></MapLatLngDetecter>
+            onHandleClick={handleClick}
+            lat={lat}
+            lng={lng}
+            clickedPosition={clickedPosition}
+          ></MapGeodata>
         )}
 
         <Section>
