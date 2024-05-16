@@ -1,19 +1,20 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import { LoginNoutButton, LoginStatus } from "./styledComponents/Login.styles"
 
 export default function Login() {
     const { data: session } = useSession()
     if (session) {
       return (
         <>
-          Signed in as {session.user.email} <br />
-          <button type="button" onClick={() => signOut()}>Sign out</button>
+            <LoginStatus>Signed in as {session.user.email}</LoginStatus>
+          <LoginNoutButton type="button" onClick={() => signOut()}>Sign out</LoginNoutButton>
         </>
       )
     }
     return (
       <>
-        Not signed in <br />
-        <button type="button" onClick={() => signIn()}>Sign in</button>
+        <LoginStatus>Not signed in</LoginStatus>
+        <LoginNoutButton type="button" onClick={() => signIn()}>Sign in</LoginNoutButton>
       </>
     )
   }
