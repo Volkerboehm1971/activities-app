@@ -5,12 +5,24 @@ import {
   ButtonCancel,
   ButtonDelete,
 } from "./styledComponents/DeleteActivityWindow.styles";
+import { useRouter } from "next/router";
 
 export default function DeleteActivityWindow({
-  onDeleteActivity,
   isDeleteMode,
   setIsDeleteMode,
+  currentActivity,
 }) {
+  const router = useRouter();
+
+  async function handleDelete() {
+    const response = await fetch(`/api/activities/${currentActivity._id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      router.push("/");
+    }
+  }
+
   return (
     <>
       <Header>Delete activity</Header>
@@ -22,7 +34,7 @@ export default function DeleteActivityWindow({
         <ButtonCancel onClick={() => setIsDeleteMode(!isDeleteMode)}>
           Cancel
         </ButtonCancel>
-        <ButtonDelete onClick={onDeleteActivity}>Delete</ButtonDelete>
+        <ButtonDelete onClick={handleDelete}>Delete</ButtonDelete>
       </Section>
     </>
   );
