@@ -19,8 +19,17 @@ import {
 import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
+import dynamic from "next/dynamic";
+
+const MapLatLngDetecter = dynamic(
+  () => import("../components/MapLatLngDetecter"),
+  {
+    ssr: false,
+  }
+);
 
 export default function FormCreate() {
+  const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();
@@ -171,8 +180,12 @@ export default function FormCreate() {
         </TinyInputsWrapper>
 
         <Section>
-          <button>Ermittle deine LatLong</button>
+          <div onClick={() => setShowModal(!showModal)}>
+            Ermittle deine LatLong
+          </div>
         </Section>
+
+        {showModal && <MapLatLngDetecter></MapLatLngDetecter>}
 
         <Section>
           <label htmlFor="description">Description</label>
