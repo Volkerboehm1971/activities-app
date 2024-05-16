@@ -22,12 +22,10 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
-export default function FormEdit({ id, activities }) {
+export default function FormEdit({ id, activityToEdit }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
-
-  const defaultActivity = activities.find((activity) => activity.id === id);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
@@ -42,11 +40,11 @@ export default function FormEdit({ id, activities }) {
 
   const defaultOrSearchedImage = defaultImage
     ? imageSearch.hits[increment].largeImageURL
-    : defaultActivity?.image;
+    : activityToEdit?.image;
 
   const typingInSearchbar = searchTerm.length > 0;
 
-  const { data, isLoading, mutate } = useSWR(`/api/activities/${id}`);
+  const { mutate } = useSWR(`/api/activities/${id}`);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -82,6 +80,7 @@ export default function FormEdit({ id, activities }) {
       router.push(`/${id}`);
     }
   }
+
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
@@ -100,7 +99,7 @@ export default function FormEdit({ id, activities }) {
             minLength="1"
             maxLength="150"
             pattern="^(?!.*\s{2,}).+$"
-            defaultValue={modifiedActivity?.title}
+            defaultValue={activityToEdit?.title}
             required
           />
         </Section>
@@ -110,10 +109,10 @@ export default function FormEdit({ id, activities }) {
           <Select
             id="category"
             name="category"
-            defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}
+            defaultValue={`${activityToEdit?.categoryFilter}-${activityToEdit?.category}`}
           >
             <option
-              defaultValue={`${defaultActivity?.categoryFilter}-${defaultActivity?.category}`}
+              defaultValue={`${activityToEdit?.categoryFilter}-${activityToEdit?.category}`}
             >
               --change category here--
             </option>
@@ -157,7 +156,7 @@ export default function FormEdit({ id, activities }) {
               name="area"
               type="text"
               pattern="^(?!.*\s{2,}).+$"
-              defaultValue={defaultActivity?.area}
+              defaultValue={activityToEdit?.area}
               required
             />
           </Section>
@@ -168,7 +167,7 @@ export default function FormEdit({ id, activities }) {
               name="country"
               type="text"
               pattern="^(?!.*\s{2,}).+$"
-              defaultValue={defaultActivity?.country}
+              defaultValue={activityToEdit?.country}
               required
             />
           </Section>
@@ -180,7 +179,7 @@ export default function FormEdit({ id, activities }) {
               type="number"
               placeholder="Bsp. 133.2051549"
               pattern="^(?!.*\s{2,}).+$"
-              defaultValue={defaultActivity?.lng}
+              defaultValue={activityToEdit?.lng}
               required
             />
           </Section>
@@ -192,7 +191,7 @@ export default function FormEdit({ id, activities }) {
               type="number"
               placeholder="Bsp. 34.4088519"
               pattern="^(?!.*\s{2,}).+$"
-              defaultValue={defaultActivity?.lat}
+              defaultValue={activityToEdit?.lat}
               required
             />
           </Section>
@@ -206,7 +205,7 @@ export default function FormEdit({ id, activities }) {
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
-            defaultValue={defaultActivity?.description}
+            defaultValue={activityToEdit?.description}
             required
           />
         </Section>
