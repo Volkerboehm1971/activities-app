@@ -1,39 +1,42 @@
 import {
   Navigation,
+  LinkElement,
   List,
-  ListItem,
 } from "./styledComponents/NavigationBar.styles";
-import { useState } from "react";
 import IconAdd from "./icons/Add";
 import IconHome from "./icons/Home";
 import IconActivityList from "./icons/ActivityList";
+import { useRouter } from "next/router";
 
 export default function NavigationBar() {
-  const [selectedIcon, setSelectedIcon] = useState("home");
+  const router = useRouter();
+
+  const isActive = (path) => {
+    return router.pathname === path;
+  };
 
   return (
     <Navigation>
       <List>
-        <ListItem>
-          <IconHome
-            onSelect={() => setSelectedIcon("home")}
-            fillColor={selectedIcon === "home" ? "#fff" : "#151b54"}
-          />
-        </ListItem>
+        <LinkElement onClick={() => router.push("/")} active={isActive("/")}>
+          <IconHome fillColor={isActive("/") ? "#fff" : "#151b54"} />
+        </LinkElement>
 
-        <ListItem>
+        <LinkElement
+          onClick={() => router.push("/activityList")}
+          active={isActive("/activityList")}
+        >
           <IconActivityList
-            onSelect={() => setSelectedIcon("activityList")}
-            fillColor={selectedIcon === "activityList" ? "#fff" : "#151b54"}
+            fillColor={isActive("/activityList") ? "#fff" : "#151b54"}
           />
-        </ListItem>
+        </LinkElement>
 
-        <ListItem>
-          <IconAdd
-            onSelect={() => setSelectedIcon("add")}
-            fillColor={selectedIcon === "add" ? "#fff" : "#151b54"}
-          />
-        </ListItem>
+        <LinkElement
+          onClick={() => router.push("/create")}
+          active={isActive("/create")}
+        >
+          <IconAdd fillColor={isActive("/create") ? "#fff" : "#151b54"} />
+        </LinkElement>
       </List>
     </Navigation>
   );
