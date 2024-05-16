@@ -1,43 +1,27 @@
 import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
-import { v4 as uuid } from "uuid";
-import useLocalStorageState from "use-local-storage-state";
-import { activities as initalActivities } from "@/lib/dummydata";
-import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
+import useSWR from "swr";
+import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
+import Image from "next/image";
+import Biking from "@/assets/icons/biking.gif";
 
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
-  const [activities, setActivties] = useLocalStorageState("activities", {
-    defaultValue: initalActivities,
-  });
+  const { data: activities, error } = useSWR("/api/activities", fetcher);
 
-  const router = useRouter();
-
-  function handleAddActivity(newActivity) {
-    const newActivitiyWithID = { ...newActivity, id: uuid() };
-    setActivties([newActivitiyWithID, ...activities]);
-  }
-
-  function handleEditActivity(modifiedActivity, id) {
-    const modifiedState = activities.map((activity) => {
-      if (activity.id !== id) {
-        return activity;
-      }
-      return modifiedActivity;
-    });
-    setActivties(modifiedState);
-  }
-
-  function handleDeleteActivity(id) {
-    const updatedActivities = activities.filter(
-      (activity) => activity.id !== id
+  if (!activities) {
+    return (
+      <LoadingAnimation>
+        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
+        <p>is Loading</p>
+      </LoadingAnimation>
     );
+  }
 
-    setActivties(updatedActivities);
-
-    router.push("/");
+  if (error) {
+    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
   return (
@@ -48,14 +32,8 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <GlobalStyle />
-        <Layout activities={activities}>
-          <Component
-            onAddActivity={handleAddActivity}
-            onEditActivity={handleEditActivity}
-            onDeleteActivity={handleDeleteActivity}
-            activities={activities}
-            {...pageProps}
-          />
+        <Layout>
+          <Component activities={activities} {...pageProps} />
         </Layout>
       </SWRConfig>
     </>

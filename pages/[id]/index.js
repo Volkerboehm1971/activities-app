@@ -3,30 +3,38 @@ import { useState } from "react";
 import DeleteActivityWindow from "@/components/DeleteActivityWindow";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
+import Biking from "@/assets/icons/biking.gif";
+import Image from "next/image";
+import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 
-export default function ActivityCardDetails({ onDeleteActivity }) {
+export default function ActivityCardDetails() {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
 
-  const { data: activity, error, isLoading } = useSWR(`/api/activities/${id}`);
+  const { data: activity, error } = useSWR(`/api/activities/${id}`);
 
-  if (error) {
-    return <h1>Oops! Something went wrong.</h1>;
+  if (!activity) {
+    return (
+      <LoadingAnimation>
+        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
+        <p>is Loading</p>
+      </LoadingAnimation>
+    );
   }
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
+  if (error) {
+    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
   return (
     <>
       {isDeleteMode ? (
         <DeleteActivityWindow
-          onDeleteActivity={() => onDeleteActivity(id)}
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
+          currentActivity={activity}
         />
       ) : (
         <DetailsViewActivity
