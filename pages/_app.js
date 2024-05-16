@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
   }
 
   if (error) {
-    return <h1>Oops! Something went wrong..</h1>;
+    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
   return (
