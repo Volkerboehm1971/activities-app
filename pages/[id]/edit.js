@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Header from "@/components/Header";
 
-export default function EditActivityPage({ onEditActivity, activities }) {
+export default function EditActivityPage({ activities }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -26,7 +26,6 @@ export default function EditActivityPage({ onEditActivity, activities }) {
     <>
       <Header>Edit Activity</Header>
       <FormEdit
-        onEditActivity={onEditActivity}
         id={id}
         activities={activities}
         activityToEdit={currentActivity}

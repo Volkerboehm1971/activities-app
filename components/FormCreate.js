@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
-export default function FormCreate({ onAddActivity }) {
+export default function FormCreate() {
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();

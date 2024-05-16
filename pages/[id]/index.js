@@ -4,7 +4,7 @@ import DeleteActivityWindow from "@/components/DeleteActivityWindow";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
 
-export default function ActivityCardDetails({ onDeleteActivity }) {
+export default function ActivityCardDetails() {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
 
   const router = useRouter();
@@ -24,7 +24,6 @@ export default function ActivityCardDetails({ onDeleteActivity }) {
     <>
       {isDeleteMode ? (
         <DeleteActivityWindow
-          onDeleteActivity={() => onDeleteActivity(id)}
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           currentActivity={activity}
