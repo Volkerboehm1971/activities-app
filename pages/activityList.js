@@ -1,7 +1,10 @@
 import ActivityCard from "@/components/ActivityCard";
 import { useState } from "react";
+import useSWR from "swr";
 import CategoryFilters from "@/components/CategoryFilters";
+import Biking from "@/assets/icons/biking.gif";
 import {
+  LoadingAnimation,
   Ul,
   LinkDetailsPage,
   Li,
@@ -11,11 +14,32 @@ import {
   InputSearchField,
   ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
+import Image from "next/image";
 
-export default function ActivityList({ activities }) {
+const MapModal = dynamic(() => import("@/components/MapModal"), {
+  ssr: false,
+});
+
+export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
+
+  const { data: activities, error } = useSWR("/api/activities");
+
+  if (!activities) {
+    return (
+      <LoadingAnimation>
+        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
+        <p>is Loading</p>
+      </LoadingAnimation>
+    );
+  }
+
+  if (error) {
+    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
+  }
 
   const getFilteredActivities = () => {
     let filtered = activities.filter(
@@ -51,7 +75,13 @@ export default function ActivityList({ activities }) {
 
   return (
     <>
+      <MapModal
+        filteredActivities={
+          filteredActivities.length > 0 ? filteredActivities : activities
+        }
+      ></MapModal>
       <Header>List of Activities</Header>
+
       <Section>
         <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
         <WrapperSearchBar>
@@ -76,10 +106,10 @@ export default function ActivityList({ activities }) {
       {filteredActivities.length > 0 ? (
         <Ul>
           {filteredActivities.map((activity) => (
-            <Li key={activity.id}>
-              <LinkDetailsPage href={`/${activity.id}`}>
+            <Li key={activity._id}>
+              <LinkDetailsPage href={`/${activity._id}`}>
                 <ActivityCard
-                  id={activity.id}
+                  id={activity._id}
                   image={activity.image}
                   title={activity.title}
                   area={activity.area}
@@ -96,10 +126,10 @@ export default function ActivityList({ activities }) {
           </ErrorMessage>
           <Ul>
             {activities.map((activity) => (
-              <Li key={activity.id}>
-                <LinkDetailsPage href={`/${activity.id}`}>
+              <Li key={activity._id}>
+                <LinkDetailsPage href={`/${activity._id}`}>
                   <ActivityCard
-                    id={activity.id}
+                    id={activity._id}
                     image={activity.image}
                     title={activity.title}
                     area={activity.area}

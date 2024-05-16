@@ -24,10 +24,13 @@ export const Section = styled.section`
   max-height: 1000px;
 `;
 
-export const ImageDiv = styled.div`
-  position: relative;
-  margin-top: 0.5rem;
-  height: 200px;
+export const DetailImageContainer = styled.div`
+  border-radius: 13px;
+  overflow: hidden;
+`;
+
+export const DetailImage = styled(Image)`
+  object-fit: cover;
 `;
 
 export const Title = styled.h3`
@@ -38,11 +41,6 @@ export const Title = styled.h3`
 
 export const Div = styled.div`
   margin-top: 0.5rem;
-`;
-
-export const DetailImage = styled(Image)`
-  border-radius: 13px;
-  object-fit: cover;
 `;
 
 export const Subheader = styled.h3`
@@ -91,7 +89,7 @@ export const ButtonDelete = styled.button`
   }
 `;
 
-export const ButtonEdit = styled.button`
+export const LinkEdit = styled(Link)`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
@@ -100,7 +98,7 @@ export const ButtonEdit = styled.button`
   border-radius: 5px;
   font-size: 18px;
   width: 75px;
-
+  text-align: center;
   &:hover {
     cursor: pointer;
   }

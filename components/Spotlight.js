@@ -1,4 +1,8 @@
-import { Article, SpotlightImage, Title } from "./styledComponents/Spotlight.styles";
+import {
+  Article,
+  SpotlightImage,
+  Title,
+} from "./styledComponents/Spotlight.styles";
 
 export default function Spotlight({ title, area, image }) {
   return (

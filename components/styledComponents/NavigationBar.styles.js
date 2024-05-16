@@ -17,6 +17,6 @@ export const List = styled.ul`
   justify-content: space-around;
 `;
 
-export const ListItem = styled.li`
-  list-style-type: none;
+export const LinkElement = styled.a`
+  ${(props) => props.active}
 `;

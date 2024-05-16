@@ -19,7 +19,6 @@ export default function HomePage({ activities }) {
       setRandomActivity(randomActivity);
     }
   }, [activities, randomActivity]);
-
   return (
     <>
       <Header>Activity App</Header>
@@ -27,7 +26,7 @@ export default function HomePage({ activities }) {
         <>
           <Login />
           <WeatherDisplay area={randomActivity.area} />
-          <LinkDetailsPage href={`/${randomActivity.id}`}>
+          <LinkDetailsPage href={`/${randomActivity._id}`}>
             <Spotlight
               title={randomActivity.title}
               image={randomActivity.image}

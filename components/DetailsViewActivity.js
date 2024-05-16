@@ -1,19 +1,18 @@
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import {
   LinkActivityList,
+  DetailImageContainer,
+  DetailImage,
   Section,
-  ImageDiv,
   Title,
   Div,
-  DetailImage,
   Subheader,
   Info,
   Article,
   AreaCountyContainer,
   ButtonContainer,
   ButtonDelete,
-  ButtonEdit,
+  LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
 
@@ -25,19 +24,19 @@ export default function DetailsViewActivity({
   setIsDeleteMode,
   id,
 }) {
-  const router = useRouter();
   return (
     <>
       <Header>Details of Activity</Header>
       <LinkActivityList href="/activityList">← Back</LinkActivityList>
       <Section>
-        <ImageDiv>
+        <DetailImageContainer>
           <DetailImage
             src={detailActivity.image}
-            fill
-            alt="hiker on a mountain"
+            width={400}
+            height={200}
+            alt="Image of Activity"
           />
-        </ImageDiv>
+        </DetailImageContainer>
 
         <Title>{detailActivity.title}</Title>
 
@@ -59,9 +58,7 @@ export default function DetailsViewActivity({
         ></DetailMap>
       </Section>
       <ButtonContainer>
-        <ButtonEdit type="button" onClick={() => router.push(`/${id}/edit`)}>
-          Edit
-        </ButtonEdit>
+        <LinkEdit href={`/${id}/edit`}>Edit</LinkEdit>
         <ButtonDelete
           type="button"
           onClick={() => setIsDeleteMode(!isDeleteMode)}

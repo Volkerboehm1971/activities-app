@@ -18,12 +18,14 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
-export default function FormCreate({ onAddActivity }) {
+export default function FormCreate() {
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
   const router = useRouter();
 
-  function handleSubmit(event) {
+  const { mutate } = useSWR("/api/activities");
+
+  async function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -42,7 +44,18 @@ export default function FormCreate({ onAddActivity }) {
       lng: data.lng,
       lat: data.lat,
     };
-    onAddActivity(newActivity);
+
+    const response = await fetch("/api/activities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newActivity),
+    });
+
+    if (response.ok) {
+      mutate();
+    }
 
     router.push("/activityList");
   }
@@ -234,4 +247,3 @@ export default function FormCreate({ onAddActivity }) {
     </>
   );
 }
-
