@@ -13,6 +13,8 @@ import {
   MinusButton,
   ImageContainer,
   SearchImage,
+  TinyInputsWrapper,
+  TinyInput,
 } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -123,50 +125,55 @@ export default function FormCreate() {
             <option value="Others-Others">Others</option>
           </Select>
         </Section>
-        <Section>
-          <label htmlFor="area">Area</label>
-          <Input
-            id="area"
-            name="area"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
-        <Section>
-          <label htmlFor="country">Country</label>
-          <Input
-            id="country"
-            name="country"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
+        <TinyInputsWrapper>
+          <Section>
+            <label htmlFor="area">Area</label>
+            <TinyInput
+              id="area"
+              name="area"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="country">Country</label>
+            <TinyInput
+              id="country"
+              name="country"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="area">Longitude</label>
+            <TinyInput
+              id="lng"
+              name="lng"
+              type="number"
+              placeholder="Bsp. 133.2051549"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="area">Latitude</label>
+            <TinyInput
+              id="lat"
+              name="lat"
+              type="number"
+              placeholder="Bsp. 34.4088519"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
+        </TinyInputsWrapper>
 
         <Section>
-          <label htmlFor="area">Longitude</label>
-          <Input
-            id="lng"
-            name="lng"
-            type="number"
-            placeholder="Bsp: 133.2051549"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
+          <button>Ermittle deine LatLong</button>
         </Section>
 
-        <Section>
-          <label htmlFor="area">Latitude</label>
-          <Input
-            id="lat"
-            name="lat"
-            type="number"
-            placeholder="Bsp: 34.4088519"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
         <Section>
           <label htmlFor="description">Description</label>
           <Textarea

@@ -195,6 +195,10 @@ export default function FormEdit({ id, activityToEdit }) {
               required
             />
           </Section>
+
+          <Section>
+            <button>Ermittle deine LatLong</button>
+          </Section>
         </TinyInputsWrapper>
 
         <Section>
