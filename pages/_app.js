@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <GlobalStyle />
-        <Layout activities={activities}>
+        <Layout>
           <Component activities={activities} {...pageProps} />
         </Layout>
       </SWRConfig>
