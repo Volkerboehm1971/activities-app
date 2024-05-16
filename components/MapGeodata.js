@@ -9,7 +9,6 @@ import {
   StylMapContainer,
 } from "./styledComponents/MapGeodata.styled";
 import MapEvents from "./MapEvents";
-import { useState } from "react";
 
 export default function MapGeodata({
   onClickClose,

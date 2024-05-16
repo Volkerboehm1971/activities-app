@@ -182,11 +182,10 @@ export default function FormCreate() {
               id="lng"
               name="lng"
               type="number"
-              placeholder="Your Selected Geodata"
+              placeholder="Click Select Geodata"
               value={lng}
               pattern="^(?!.*\s{2,}).+$"
               required
-              disabled
             />
           </Section>
           <Section>
@@ -195,10 +194,9 @@ export default function FormCreate() {
               id="lat"
               name="lat"
               type="number"
-              placeholder="Your Selected Geodata"
+              placeholder="Clixk Select Geodata"
               value={lat}
               pattern="^(?!.*\s{2,}).+$"
-              disabled
             />
           </Section>
         </TinyInputsWrapper>
