@@ -26,9 +26,9 @@ export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const { data: activities, isLoading, error } = useSWR("/api/activities");
+  const { data: activities, error } = useSWR("/api/activities");
 
-  if (isLoading) {
+  if (!activities) {
     return (
       <LoadingAnimation>
         <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
@@ -38,7 +38,7 @@ export default function ActivityList() {
   }
 
   if (error) {
-    return <h1>Oops! Something went wrong..</h1>;
+    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
   const getFilteredActivities = () => {
