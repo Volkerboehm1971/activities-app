@@ -5,6 +5,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { activities as initalActivities } from "@/lib/dummydata";
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
+import { SessionProvider } from "next-auth/react"
 
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
@@ -42,6 +43,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <SessionProvider session={pageProps.session}>
       <SWRConfig
         value={{
           fetcher,
@@ -58,6 +60,7 @@ export default function App({ Component, pageProps }) {
           />
         </Layout>
       </SWRConfig>
+    </SessionProvider>;
     </>
   );
 }

@@ -24,6 +24,7 @@ export default function HomePage({ activities }) {
       <Header>Activity App</Header>
       {randomActivity && (
         <>
+          
           <WeatherDisplay area={randomActivity.area} />
           <LinkDetailsPage href={`/${randomActivity.id}`}>
             <Spotlight
