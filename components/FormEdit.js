@@ -74,8 +74,8 @@ export default function FormEdit({ id, activityToEdit }) {
       country: data.country,
       image: defaultOrSearchedImage,
       description: data.description,
-      lng: data.lng,
-      lat: data.lat,
+      lng: lng,
+      lat: lat,
     };
 
     const response = await fetch(`/api/activities/${id}`, {
