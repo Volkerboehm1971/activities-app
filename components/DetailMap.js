@@ -2,7 +2,6 @@ import { TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { StyledMapContainer } from "./styledComponents/DetailMap.styles";
 import { Icon } from "leaflet";
-import { useState, useEffect } from "react";
 
 export default function DetailMap({ latitude, longitude }) {
   const customIcon = new Icon({

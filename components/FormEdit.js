@@ -34,8 +34,8 @@ export default function FormEdit({ id, activityToEdit }) {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [clickedPosition, setClickedPosition] = useState(null);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
@@ -74,8 +74,8 @@ export default function FormEdit({ id, activityToEdit }) {
       country: data.country,
       image: defaultOrSearchedImage,
       description: data.description,
-      lng: lng,
-      lat: lat,
+      lng: longitude,
+      lat: latitude,
     };
 
     const response = await fetch(`/api/activities/${id}`, {
@@ -98,17 +98,9 @@ export default function FormEdit({ id, activityToEdit }) {
 
   function handleClick(e) {
     const { lat, lng } = e.latlng;
-    setLat(lat.toFixed(10));
-    setLng(lng.toFixed(10));
+    setLatitude(lat.toFixed(10));
+    setLongitude(lng.toFixed(10));
     setClickedPosition([lat, lng]);
-  }
-
-  // these solution is for the moment, we will build a Modal solution next week
-  function showAlert(event) {
-    event.preventDefault();
-    window.alert(
-      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
-    );
   }
 
   const handleKeyPress = (event) => {
@@ -204,14 +196,14 @@ export default function FormEdit({ id, activityToEdit }) {
 
           <Section>
             <label htmlFor="area">Longitude</label>
-            <TinyDiv id="lng" name="lng">
-              {lng !== null ? lng : activityToEdit?.lng}
+            <TinyDiv>
+              {longitude !== null ? longitude : activityToEdit?.lng}
             </TinyDiv>
           </Section>
           <Section>
             <label htmlFor="area">Latitude</label>
-            <TinyDiv id="lat" name="lat">
-              {lat !== null ? lat : activityToEdit?.lat}
+            <TinyDiv>
+              {latitude !== null ? latitude : activityToEdit?.lat}
             </TinyDiv>
           </Section>
         </TinyInputsWrapper>
@@ -224,11 +216,11 @@ export default function FormEdit({ id, activityToEdit }) {
           <MapGeodata
             onClickClose={() => setShowModal(!showModal)}
             onHandleClick={handleClick}
-            lat={lat}
-            lng={lng}
+            latitude={latitude}
+            longitude={longitude}
             clickedPosition={clickedPosition}
-            defaultLat={activityToEdit?.lat}
-            defaultLng={activityToEdit?.lng}
+            defaultLatitude={activityToEdit?.lat}
+            defaultLongitude={activityToEdit?.lng}
           ></MapGeodata>
         )}
 

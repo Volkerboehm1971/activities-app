@@ -23,20 +23,28 @@ export default function MapGeodata({
   latitude,
   longitude,
   clickedPosition,
-  defaultLat,
-  defaultLng,
+  defaultLatitude,
+  defaultLongitude,
 }) {
   return (
     <Overlay>
       <Container>
         <InformationDisplay>
           <SelectedLatLng>
-            Selected Longitude:{" "}
-            {longitude !== null ? longitude : defaultLng ? defaultLng : ""}
+            Selected Longitude:
+            {longitude !== null
+              ? longitude
+              : defaultLongitude
+              ? defaultLongitude
+              : ""}
           </SelectedLatLng>
           <SelectedLatLng>
-            Selected Latitude:{" "}
-            {latitude !== null ? latitude : defaultLat ? defaultLat : ""}
+            Selected Latitude:
+            {latitude !== null
+              ? latitude
+              : defaultLatitude
+              ? defaultLatitude
+              : ""}
           </SelectedLatLng>
         </InformationDisplay>
         <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>
@@ -45,10 +53,10 @@ export default function MapGeodata({
           {clickedPosition ? (
             <Marker position={clickedPosition} icon={customIcon}></Marker>
           ) : (
-            defaultLat &&
-            defaultLng && (
+            defaultLatitude &&
+            defaultLongitude && (
               <Marker
-                position={[defaultLat, defaultLng]}
+                position={[defaultLatitude, defaultLongitude]}
                 icon={customIcon}
               ></Marker>
             )
