@@ -9,8 +9,6 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      {/* {session ? <p>You are logged in</p> : <p>You are not logged in</p>
-      } */}
       <main>{children}</main>
       <NavigationBar />
     </>
