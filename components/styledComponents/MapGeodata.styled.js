@@ -24,7 +24,7 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
-export const SpanContainer = styled.div`
+export const InformationDisplay = styled.div`
   background-color: #ffffff;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -36,7 +36,7 @@ export const SelectedLatLng = styled.div`
   margin: 5px;
 `;
 
-export const MapDetectButton = styled.div`
+export const SaveDiv = styled.div`
   background-color: #ffffff;
   width: 50px;
   padding: 10px 40px 10px 40px;
@@ -50,7 +50,7 @@ export const MapDetectButton = styled.div`
   justify-content: center;
 `;
 
-export const StylMapContainer = styled(MapContainer)`
+export const StyledMapContainer = styled(MapContainer)`
   width: 250px;
   height: 350px;
   border-radius: 10px;
