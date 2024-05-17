@@ -20,8 +20,8 @@ const customIcon = new Icon({
 export default function MapGeodata({
   onClickClose,
   onHandleClick,
-  lat,
-  lng,
+  latitude,
+  longitude,
   clickedPosition,
   defaultLat,
   defaultLng,
@@ -32,11 +32,11 @@ export default function MapGeodata({
         <InformationDisplay>
           <SelectedLatLng>
             Selected Longitude:{" "}
-            {lng !== null ? lng : defaultLng ? defaultLng : ""}
+            {longitude !== null ? longitude : defaultLng ? defaultLng : ""}
           </SelectedLatLng>
           <SelectedLatLng>
             Selected Latitude:{" "}
-            {lat !== null ? lat : defaultLat ? defaultLat : ""}
+            {latitude !== null ? latitude : defaultLat ? defaultLat : ""}
           </SelectedLatLng>
         </InformationDisplay>
         <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>

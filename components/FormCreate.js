@@ -31,8 +31,8 @@ export default function FormCreate() {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [clickedPosition, setClickedPosition] = useState(null);
   const router = useRouter();
 
@@ -54,8 +54,8 @@ export default function FormCreate() {
       country: data.country,
       image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
-      lng: lng,
-      lat: lat,
+      lng: longitude,
+      lat: latitude,
     };
 
     const response = await fetch("/api/activities", {
@@ -79,8 +79,8 @@ export default function FormCreate() {
 
   function handleClick(e) {
     const { lat, lng } = e.latlng;
-    setLat(lat.toFixed(10));
-    setLng(lng.toFixed(10));
+    setLatitude(lat.toFixed(10));
+    setLongitude(lng.toFixed(10));
     setClickedPosition([lat, lng]);
   }
 
@@ -109,7 +109,9 @@ export default function FormCreate() {
 
   return (
     <>
-      <Form onSubmit={lat !== null ? handleSubmit : showAlert}>
+      <Form
+        onSubmit={latitude && longitude !== null ? handleSubmit : showAlert}
+      >
         <Section>
           <label htmlFor="title">Activity Name</label>
           <Input
@@ -179,19 +181,15 @@ export default function FormCreate() {
             />
           </Section>
 
-          {lat && lng && !showModal && (
+          {longitude && latitude && !showModal && (
             <>
               <Section>
                 <label htmlFor="area">Longitude</label>
-                <TinyDiv id="lng" name="lng">
-                  {lng === null ? "Please Select Geodata" : lng}
-                </TinyDiv>
+                <TinyDiv id="lng">{longitude}</TinyDiv>
               </Section>
               <Section>
                 <label htmlFor="area">Latitude</label>
-                <TinyDiv id="lat" name="lat">
-                  {lat === null ? "Please Select Geodata" : lat}
-                </TinyDiv>
+                <TinyDiv id="lat">{latitude}</TinyDiv>
               </Section>
             </>
           )}
@@ -205,8 +203,8 @@ export default function FormCreate() {
           <MapGeodata
             onClickClose={() => setShowModal(!showModal)}
             onHandleClick={handleClick}
-            lat={lat}
-            lng={lng}
+            latitude={latitude}
+            longitude={longitude}
             clickedPosition={clickedPosition}
           ></MapGeodata>
         )}
