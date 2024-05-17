@@ -15,6 +15,7 @@ import {
   SearchImage,
   TinyInputsWrapper,
   TinyInput,
+  TinyDiv,
   ModalContainer,
 } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
@@ -53,8 +54,8 @@ export default function FormCreate() {
       country: data.country,
       image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
-      lng: data.lng,
-      lat: data.lat,
+      lng: lng,
+      lat: lat,
     };
 
     const response = await fetch("/api/activities", {
@@ -98,6 +99,7 @@ export default function FormCreate() {
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
     (searchTerm.length > 0);
 
+  // these solution is for the moment, we will build a Modal solution next week
   function showAlert(event) {
     event.preventDefault();
     window.alert(
@@ -176,29 +178,23 @@ export default function FormCreate() {
               required
             />
           </Section>
-          <Section>
-            <label htmlFor="area">Longitude</label>
-            <TinyInput
-              id="lng"
-              name="lng"
-              type="number"
-              placeholder="Click Select Geodata"
-              value={lng}
-              pattern="^(?!.*\s{2,}).+$"
-              required
-            />
-          </Section>
-          <Section>
-            <label htmlFor="area">Latitude</label>
-            <TinyInput
-              id="lat"
-              name="lat"
-              type="number"
-              placeholder="Clixk Select Geodata"
-              value={lat}
-              pattern="^(?!.*\s{2,}).+$"
-            />
-          </Section>
+
+          {lat && lng && !showModal && (
+            <>
+              <Section>
+                <label htmlFor="area">Longitude</label>
+                <TinyDiv id="lng" name="lng">
+                  {lng === null ? "Please Select Geodata" : lng}
+                </TinyDiv>
+              </Section>
+              <Section>
+                <label htmlFor="area">Latitude</label>
+                <TinyDiv id="lat" name="lat">
+                  {lat === null ? "Please Select Geodata" : lat}
+                </TinyDiv>
+              </Section>
+            </>
+          )}
         </TinyInputsWrapper>
 
         <ModalContainer>

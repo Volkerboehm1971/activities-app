@@ -1,5 +1,3 @@
-import { TileLayer, Marker } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import {
   Overlay,
   Container,
@@ -8,8 +6,10 @@ import {
   SaveDiv,
   StyledMapContainer,
 } from "./styledComponents/MapGeodata.styled";
-import MapEvents from "./MapEvents";
+import { TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
+import MapEvents from "./MapEvents";
 
 const customIcon = new Icon({
   iconUrl:
@@ -23,24 +23,35 @@ export default function MapGeodata({
   lat,
   lng,
   clickedPosition,
+  defaultLat,
+  defaultLng,
 }) {
-  console.log(lat);
-  console.log(lng);
   return (
     <Overlay>
       <Container>
         <InformationDisplay>
-          <SelectedLatLng>Selected Longitude: {lng}</SelectedLatLng>
-          <SelectedLatLng>Selected Latitude: {lat} </SelectedLatLng>
+          <SelectedLatLng>
+            Selected Longitude:{" "}
+            {lng !== null ? lng : defaultLng ? defaultLng : ""}
+          </SelectedLatLng>
+          <SelectedLatLng>
+            Selected Latitude:{" "}
+            {lat !== null ? lat : defaultLat ? defaultLat : ""}
+          </SelectedLatLng>
         </InformationDisplay>
-        <StyledMapContainer center={[52.3, 9.7]} zoom={5}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+        <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MapEvents onClick={onHandleClick} />
-          {clickedPosition && (
+          {clickedPosition ? (
             <Marker position={clickedPosition} icon={customIcon}></Marker>
+          ) : (
+            defaultLat &&
+            defaultLng && (
+              <Marker
+                position={[defaultLat, defaultLng]}
+                icon={customIcon}
+              ></Marker>
+            )
           )}
         </StyledMapContainer>
         <SaveDiv onClick={onClickClose}>Save</SaveDiv>

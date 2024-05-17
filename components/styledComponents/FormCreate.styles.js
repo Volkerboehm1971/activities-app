@@ -41,6 +41,15 @@ export const TinyInput = styled.input`
   border-radius: 0.5rem;
 `;
 
+export const TinyDiv = styled.div`
+  display: flex;
+  width: 165px;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  align-items: center;
+`;
+
 export const ModalContainer = styled.section`
   display: flex;
   justify-content: center;
