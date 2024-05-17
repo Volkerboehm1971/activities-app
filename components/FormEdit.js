@@ -16,16 +16,27 @@ import {
   SearchImage,
   TinyInput,
   TinyInputsWrapper,
+  TinyDiv,
+  ModalContainer,
   WrapperSearchAndSwitch,
 } from "./styledComponents/FormEdit.styles";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
+import dynamic from "next/dynamic";
+
+const MapGeodata = dynamic(() => import("./MapGeodata"), {
+  ssr: false,
+});
 
 export default function FormEdit({ id, activityToEdit }) {
   const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [clickedPosition, setClickedPosition] = useState(null);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
@@ -63,8 +74,8 @@ export default function FormEdit({ id, activityToEdit }) {
       country: data.country,
       image: defaultOrSearchedImage,
       description: data.description,
-      lng: data.lng,
-      lat: data.lat,
+      lng: longitude,
+      lat: latitude,
     };
 
     const response = await fetch(`/api/activities/${id}`, {
@@ -79,6 +90,17 @@ export default function FormEdit({ id, activityToEdit }) {
       mutate();
       router.push(`/${id}`);
     }
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
+
+  function handleClick(e) {
+    const { lat, lng } = e.latlng;
+    setLatitude(lat.toFixed(10));
+    setLongitude(lng.toFixed(10));
+    setClickedPosition([lat, lng]);
   }
 
   const handleKeyPress = (event) => {
@@ -171,31 +193,36 @@ export default function FormEdit({ id, activityToEdit }) {
               required
             />
           </Section>
+
           <Section>
             <label htmlFor="area">Longitude</label>
-            <TinyInput
-              id="lng"
-              name="lng"
-              type="number"
-              placeholder="Bsp. 133.2051549"
-              pattern="^(?!.*\s{2,}).+$"
-              defaultValue={activityToEdit?.lng}
-              required
-            />
+            <TinyDiv>
+              {longitude !== null ? longitude : activityToEdit?.lng}
+            </TinyDiv>
           </Section>
           <Section>
             <label htmlFor="area">Latitude</label>
-            <TinyInput
-              id="lat"
-              name="lat"
-              type="number"
-              placeholder="Bsp. 34.4088519"
-              pattern="^(?!.*\s{2,}).+$"
-              defaultValue={activityToEdit?.lat}
-              required
-            />
+            <TinyDiv>
+              {latitude !== null ? latitude : activityToEdit?.lat}
+            </TinyDiv>
           </Section>
         </TinyInputsWrapper>
+
+        <ModalContainer>
+          <div onClick={() => setShowModal(!showModal)}>Select Geodata</div>
+        </ModalContainer>
+
+        {showModal && (
+          <MapGeodata
+            onClickClose={() => setShowModal(!showModal)}
+            onHandleClick={handleClick}
+            latitude={latitude}
+            longitude={longitude}
+            clickedPosition={clickedPosition}
+            defaultLatitude={activityToEdit?.lat}
+            defaultLongitude={activityToEdit?.lng}
+          ></MapGeodata>
+        )}
 
         <Section>
           <label htmlFor="description">Description</label>

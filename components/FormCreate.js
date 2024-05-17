@@ -13,14 +13,27 @@ import {
   MinusButton,
   ImageContainer,
   SearchImage,
+  TinyInputsWrapper,
+  TinyInput,
+  TinyDiv,
+  ModalContainer,
 } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
+import dynamic from "next/dynamic";
+
+const MapGeodata = dynamic(() => import("./MapGeodata"), {
+  ssr: false,
+});
 
 export default function FormCreate() {
+  const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [clickedPosition, setClickedPosition] = useState(null);
   const router = useRouter();
 
   const { mutate } = useSWR("/api/activities");
@@ -41,8 +54,8 @@ export default function FormCreate() {
       country: data.country,
       image: imageSearch.hits[increment].largeImageURL,
       description: data.description,
-      lng: data.lng,
-      lat: data.lat,
+      lng: longitude,
+      lat: latitude,
     };
 
     const response = await fetch("/api/activities", {
@@ -59,11 +72,24 @@ export default function FormCreate() {
 
     router.push("/activityList");
   }
+
+  useEffect(() => {
+    document.body.style.overflow = showModal ? "hidden" : "auto";
+  }, [showModal]);
+
+  function handleClick(e) {
+    const { lat, lng } = e.latlng;
+    setLatitude(lat.toFixed(10));
+    setLongitude(lng.toFixed(10));
+    setClickedPosition([lat, lng]);
+  }
+
   const handleKeyPress = (event) => {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
   };
+
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
   const { data: imageSearch } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
@@ -73,9 +99,19 @@ export default function FormCreate() {
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
     (searchTerm.length > 0);
 
+  // these solution is for the moment, we will build a Modal solution next week
+  function showAlert(event) {
+    event.preventDefault();
+    window.alert(
+      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
+    );
+  }
+
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={latitude && longitude !== null ? handleSubmit : showAlert}
+      >
         <Section>
           <label htmlFor="title">Activity Name</label>
           <Input
@@ -123,50 +159,56 @@ export default function FormCreate() {
             <option value="Others-Others">Others</option>
           </Select>
         </Section>
-        <Section>
-          <label htmlFor="area">Area</label>
-          <Input
-            id="area"
-            name="area"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
-        <Section>
-          <label htmlFor="country">Country</label>
-          <Input
-            id="country"
-            name="country"
-            type="text"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
+        <TinyInputsWrapper>
+          <Section>
+            <label htmlFor="area">Area</label>
+            <TinyInput
+              id="area"
+              name="area"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
+          <Section>
+            <label htmlFor="country">Country</label>
+            <TinyInput
+              id="country"
+              name="country"
+              type="text"
+              pattern="^(?!.*\s{2,}).+$"
+              required
+            />
+          </Section>
 
-        <Section>
-          <label htmlFor="area">Longitude</label>
-          <Input
-            id="lng"
-            name="lng"
-            type="number"
-            placeholder="Bsp: 133.2051549"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
+          {longitude && latitude && !showModal && (
+            <>
+              <Section>
+                <label htmlFor="area">Longitude</label>
+                <TinyDiv id="lng">{longitude}</TinyDiv>
+              </Section>
+              <Section>
+                <label htmlFor="area">Latitude</label>
+                <TinyDiv id="lat">{latitude}</TinyDiv>
+              </Section>
+            </>
+          )}
+        </TinyInputsWrapper>
 
-        <Section>
-          <label htmlFor="area">Latitude</label>
-          <Input
-            id="lat"
-            name="lat"
-            type="number"
-            placeholder="Bsp: 34.4088519"
-            pattern="^(?!.*\s{2,}).+$"
-            required
-          />
-        </Section>
+        <ModalContainer>
+          <div onClick={() => setShowModal(!showModal)}>Select Geodata</div>
+        </ModalContainer>
+
+        {showModal && (
+          <MapGeodata
+            onClickClose={() => setShowModal(!showModal)}
+            onHandleClick={handleClick}
+            latitude={latitude}
+            longitude={longitude}
+            clickedPosition={clickedPosition}
+          ></MapGeodata>
+        )}
+
         <Section>
           <label htmlFor="description">Description</label>
           <Textarea

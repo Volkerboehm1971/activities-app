@@ -43,8 +43,31 @@ export const TinyInput = styled.input`
   border-radius: 0.5rem;
 `;
 
+export const TinyDiv = styled.div`
+  display: flex;
+  width: 165px;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  align-items: center;
+`;
+
+export const ModalContainer = styled.section`
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  width: 175px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-size: 14px;
+  font-weight: 600;
+`;
+
 export const Textarea = styled.textarea`
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
@@ -74,7 +97,6 @@ export const ButtonSave = styled.button`
   border-radius: 5px;
   font-size: 18px;
 `;
-
 
 //SEARCHBAR AND IMAGE SELECTOR BELOW
 
@@ -160,12 +182,13 @@ export const ImageContainer = styled.div`
   width: 310px;
   height: 210.75px;
 
-  &:hover{
-  border: 2px solid orange;
-  border-radius: 10px;}
-  &:active{
-  border: 2px solid orange;
-  border-radius: 10px;
+  &:hover {
+    border: 2px solid orange;
+    border-radius: 10px;
+  }
+  &:active {
+    border: 2px solid orange;
+    border-radius: 10px;
   }
 `;
 
