@@ -12,7 +12,8 @@ import {
   LabelSearchField,
   WrapperSearchBar,
   InputSearchField,
-  ErrorMessage,
+  ErrorMessage, 
+  ImageSkeleton
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
@@ -26,7 +27,7 @@ export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const { data: activities, error } = useSWR("/api/activities");
+  const { data: activities, error, isLoading } = useSWR("/api/activities");
 
   if (!activities) {
     return (
@@ -37,8 +38,12 @@ export default function ActivityList() {
     );
   }
 
+  // if (isLoading){
+  //     return null;
+  // }
+
   if (error) {
-    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
+    return <h1>Oh, sorry something went wrong.</h1>;
   }
 
   const getFilteredActivities = () => {
@@ -79,7 +84,7 @@ export default function ActivityList() {
         filteredActivities={
           filteredActivities.length > 0 ? filteredActivities : activities
         }
-      ></MapModal>
+      />
       <Header>List of Activities</Header>
 
       <Section>
@@ -102,7 +107,6 @@ export default function ActivityList() {
           selectedByIcon={selectedByIcon}
         />
       </Section>
-
       {filteredActivities.length > 0 ? (
         <Ul>
           {filteredActivities.map((activity) => (
@@ -114,6 +118,7 @@ export default function ActivityList() {
                   title={activity.title}
                   area={activity.area}
                 />
+                 <ImageSkeleton/>
               </LinkDetailsPage>
             </Li>
           ))}
