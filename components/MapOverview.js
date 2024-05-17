@@ -12,19 +12,16 @@ import {
   PopUpTitle,
   PopUpCategory,
   PopUpArea,
-  PopUpContainer
+  PopUpContainer,
 } from "./styledComponents/MapOverview.styles";
 
 const customIcon = new Icon({
   iconUrl:
-    "https://cdn2.iconfinder.com/data/icons/IconsLandVistaMapMarkersIconsDemo/256/MapMarker_Flag_Left_Pink.png",
+    "https://cdn2.iconfinder.com/data/icons/social-media-8/512/pointer.png",
   iconSize: [31, 31],
 });
 
-export default function MapOverview({
-  onClickClose,
-  filteredActivities,
-}) {
+export default function MapOverview({ onClickClose, filteredActivities }) {
   return (
     <Overlay>
       <MapOverviewContainer>
@@ -35,26 +32,22 @@ export default function MapOverview({
         <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {filteredActivities.map((activity) => (
-                <Marker
-                  key={activity.id}
-                  position={[activity.lat, activity.lng]}
-                  icon={customIcon}
-                >
-                  <TextPopUp>
-                    <PopUpContainer>
-                      <PopUpTitle>
-                        {`"${activity.title}"`}
-                      </PopUpTitle>
-                      <PopUpCategory>Activity: {activity.category}</PopUpCategory>
-                      <PopUpArea>Area: {activity.area}</PopUpArea>
-                    </PopUpContainer>
-                  </TextPopUp>
-                </Marker>
-              ))}
-
+            <Marker
+              key={activity.id}
+              position={[activity.lat, activity.lng]}
+              icon={customIcon}
+            >
+              <TextPopUp>
+                <PopUpContainer>
+                  <PopUpTitle>{`"${activity.title}"`}</PopUpTitle>
+                  <PopUpCategory>Activity: {activity.category}</PopUpCategory>
+                  <PopUpArea>Area: {activity.area}</PopUpArea>
+                </PopUpContainer>
+              </TextPopUp>
+            </Marker>
+          ))}
         </StyledMapContainer>
       </MapOverviewContainer>
     </Overlay>
   );
 }
-

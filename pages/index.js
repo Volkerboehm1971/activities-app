@@ -25,7 +25,11 @@ export default function HomePage({ activities }) {
       {randomActivity && (
         <>
           <Login />
-          <WeatherDisplay area={randomActivity.area} />
+          <WeatherDisplay
+            area={randomActivity.area}
+            lat={randomActivity.lat}
+            lng={randomActivity.lng}
+          />
           <LinkDetailsPage href={`/${randomActivity._id}`}>
             <Spotlight
               title={randomActivity.title}
