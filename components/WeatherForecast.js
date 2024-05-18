@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
 import WeekdayFromDateString from "./WeekdayFromDateString";
+import WeatherForecastModal from "./WeatherForecastDetailModal";
 
-export const Overlay = styled.section`
+const Overlay = styled.section`
   position: fixed;
   top: 0;
   left: 0;
@@ -11,6 +12,17 @@ export const Overlay = styled.section`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+`;
+
+const StyledDiv = styled.div`
+  width: 350px;
+  height: 550px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: white;
 `;
 
 const WeatherForecastField = styled.section`
@@ -35,7 +47,11 @@ const DayContainer = styled.div`
 const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
 export default function WeatherForecast({ detailActivity }) {
-  const [filteredWeather, setFilteredWeather] = useState([]);
+  const [filteredWeatherMorning, setFilteredWeatherMorning] = useState([]);
+  const [filteredWeatherAfternoon, setFilteredWeatherAfternoon] = useState([]);
+  const [filteredWeatherEvening, setFilteredWeatherEvening] = useState([]);
+  const [showWeatherForecastModal, setShowWeatherForecastModal] =
+    useState(false);
 
   const { data: weather } = useSWR(
     detailActivity.lat &&
@@ -44,71 +60,77 @@ export default function WeatherForecast({ detailActivity }) {
 
   useEffect(() => {
     if (weather && weather.list) {
-      filterWeatherByTime();
+      // becauce of the structure of the weatherObjectArray, it is necessary to detect an starting Point. Ansonsten would the weathjer data be consistend
+      const filteredWeather = filterWeatherData(weather.list);
+      setFilteredWeatherMorning(
+        filterWeatherByTime(filteredWeather, "06:00:00")
+      );
+      setFilteredWeatherAfternoon(
+        filterWeatherByTime(filteredWeather, "12:00:00")
+      );
+      setFilteredWeatherEvening(
+        filterWeatherByTime(filteredWeather, "18:00:00")
+      );
     }
   }, [weather]);
+
+  // Due to the structure of the weatherObjectArray(the starting point index [0] can vary, for example it can start with a 08:00:00 weather forecast or with a 21:00:00 weather forecast), it is necessary to filter the weatherObjectArray to ensure that the new data includes complete daily weather information. Otherwise, the weather display would lack consistency.
+  function filterWeatherData(weatherList) {
+    const startIndex = weatherList.findIndex((weatherStartingDay) =>
+      weatherStartingDay.dt_txt.endsWith("06:00:00")
+    );
+    return weatherList.slice(startIndex);
+  }
+
+  function filterWeatherByTime(weatherList, time) {
+    return weatherList.filter((weatherItem) =>
+      weatherItem.dt_txt.endsWith(time)
+    );
+  }
 
   if (!weather) {
     return <p>Loading...</p>;
   }
 
-  const filterWeatherByTime = () => {
-    const filteredData = weather.list.filter((weatherItem) =>
-      weatherItem.dt_txt.endsWith("15:00:00")
-    );
-    setFilteredWeather(filteredData);
-  };
-  console.log(filteredWeather);
-
   return (
-    filteredWeather.length > 0 && (
+    filteredWeatherAfternoon.length > 0 && (
       <>
         <WeatherForecastField>
           <h2>Weather Forecast</h2>
           <ContainerContainer>
-            <DayContainer>
-              <WeekdayFromDateString dateString={filteredWeather[0].dt_txt} />
-              <StyledImage
-                alt="WeatherToday"
-                src={`weatherIcons/${filteredWeather[0].weather[0].icon}.png`}
-              />
-              <p>{Math.round(filteredWeather[0].main.temp)}°C</p>
-              <p></p>
-            </DayContainer>
-            <DayContainer>
-              <WeekdayFromDateString dateString={filteredWeather[1].dt_txt} />
-              <StyledImage
-                alt="WeatherToday"
-                src={`weatherIcons/${filteredWeather[1].weather[0].icon}.png`}
-              />
-              <p>{Math.round(filteredWeather[1].main.temp)}°C</p>
-            </DayContainer>
-            <DayContainer>
-              <WeekdayFromDateString dateString={filteredWeather[2].dt_txt} />
-              <StyledImage
-                alt="WeatherToday"
-                src={`weatherIcons/${filteredWeather[2].weather[0].icon}.png`}
-              />
-              <p>{Math.round(filteredWeather[2].main.temp)}°C</p>
-            </DayContainer>
-            <DayContainer>
-              <WeekdayFromDateString dateString={filteredWeather[3].dt_txt} />
-              <StyledImage
-                alt="WeatherToday"
-                src={`weatherIcons/${filteredWeather[3].weather[0].icon}.png`}
-              />
-              <p>{Math.round(filteredWeather[3].main.temp)}°C</p>
-            </DayContainer>
-            <DayContainer>
-              <WeekdayFromDateString dateString={filteredWeather[4].dt_txt} />
-              <StyledImage
-                alt="WeatherToday"
-                src={`weatherIcons/${filteredWeather[4].weather[0].icon}.png`}
-              />
-              <p>{Math.round(filteredWeather[4].main.temp)}°C</p>
-            </DayContainer>
+            {filteredWeatherAfternoon.map((weather, index) => (
+              <DayContainer key={index}>
+                <WeekdayFromDateString dateString={weather.dt_txt} />
+                <StyledImage
+                  alt="WeatherToday"
+                  src={`weatherIcons/${weather.weather[0].icon}.png`}
+                />
+                <p>{Math.round(weather.main.temp)}°C</p>
+              </DayContainer>
+            ))}
           </ContainerContainer>
+          <button
+            onClick={() =>
+              setShowWeatherForecastModal(!showWeatherForecastModal)
+            }
+          >
+            More Weather Information
+          </button>
         </WeatherForecastField>
+        {showWeatherForecastModal && (
+          <Overlay>
+            <StyledDiv>
+              <WeatherForecastModal
+                filteredWeatherAfternoon={filteredWeatherAfternoon}
+                filteredWeatherMorning={filteredWeatherMorning}
+                filteredWeatherEvening={filteredWeatherEvening}
+                onClickButton={() =>
+                  setShowWeatherForecastModal(!showWeatherForecastModal)
+                }
+              />
+            </StyledDiv>
+          </Overlay>
+        )}
       </>
     )
   );

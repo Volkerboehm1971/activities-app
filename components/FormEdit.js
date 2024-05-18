@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-const MapGeodataFormEdit = dynamic(() => import("./MapGeodata"), {
+const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
 });
 
@@ -213,7 +213,7 @@ export default function FormEdit({ id, activityToEdit }) {
         </ModalContainer>
 
         {showModal && (
-          <MapGeodataFormEdit
+          <MapGeodata
             onClickClose={() => setShowModal(!showModal)}
             onHandleClick={handleClick}
             latitude={latitude}
@@ -221,7 +221,7 @@ export default function FormEdit({ id, activityToEdit }) {
             clickedPosition={clickedPosition}
             defaultLatitude={activityToEdit?.lat}
             defaultLongitude={activityToEdit?.lng}
-          ></MapGeodataFormEdit>
+          ></MapGeodata>
         )}
 
         <Section>
