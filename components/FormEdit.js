@@ -25,7 +25,7 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-const MapGeodata = dynamic(() => import("./MapGeodata"), {
+const MapGeodataFormEdit = dynamic(() => import("./MapGeodata"), {
   ssr: false,
 });
 
@@ -34,8 +34,8 @@ export default function FormEdit({ id, activityToEdit }) {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState(activityToEdit.lat);
+  const [longitude, setLongitude] = useState(activityToEdit.lng);
   const [clickedPosition, setClickedPosition] = useState(null);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
@@ -213,7 +213,7 @@ export default function FormEdit({ id, activityToEdit }) {
         </ModalContainer>
 
         {showModal && (
-          <MapGeodata
+          <MapGeodataFormEdit
             onClickClose={() => setShowModal(!showModal)}
             onHandleClick={handleClick}
             latitude={latitude}
@@ -221,7 +221,7 @@ export default function FormEdit({ id, activityToEdit }) {
             clickedPosition={clickedPosition}
             defaultLatitude={activityToEdit?.lat}
             defaultLongitude={activityToEdit?.lng}
-          ></MapGeodata>
+          ></MapGeodataFormEdit>
         )}
 
         <Section>

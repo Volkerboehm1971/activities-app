@@ -9,13 +9,13 @@ export default function WeekdayFromDateString({ dateString }) {
     const dateObject = new Date(datePart);
 
     const weekdays = [
-      "Sonntag",
-      "Montag",
-      "Dienstag",
-      "Mittwoch",
-      "Donnerstag",
-      "Freitag",
-      "Samstag",
+      "Sonday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
     ];
     const weekdayIndex = dateObject.getDay();
     const weekday = weekdays[weekdayIndex];
