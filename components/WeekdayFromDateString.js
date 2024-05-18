@@ -23,5 +23,5 @@ export default function WeekdayFromDateString({ dateString }) {
     setWeekday(weekday);
   }, [dateString]);
 
-  return <h3>{weekday}</h3>;
+  return <h2>{weekday}</h2>;
 }

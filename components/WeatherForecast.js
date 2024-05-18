@@ -91,14 +91,13 @@ export default function WeatherForecast({ detailActivity }) {
   if (!weather) {
     return <p>Loading...</p>;
   }
-
+  console.log(weather);
   return (
     filteredWeatherAfternoon.length > 0 && (
       <>
         <WeatherForecastField>
-          <h2>Weather Forecast</h2>
           <ContainerContainer>
-            {filteredWeatherAfternoon.map((weather, index) => (
+            {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
               <DayContainer key={index}>
                 <WeekdayFromDateString dateString={weather.dt_txt} />
                 <StyledImage
