@@ -15,6 +15,7 @@ import {
   LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
+import WeatherForecast from "./WeatherForecast";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
@@ -57,6 +58,7 @@ export default function DetailsViewActivity({
           latitude={detailActivity.lat}
         ></DetailMap>
       </Section>
+      <WeatherForecast detailActivity={detailActivity}></WeatherForecast>
       <ButtonContainer>
         <LinkEdit href={`/${id}/edit`}>Edit</LinkEdit>
         <ButtonDelete

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeleteActivityWindow from "@/components/DeleteActivityWindow";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
