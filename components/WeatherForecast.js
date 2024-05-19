@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
 import WeekdayFromDateString from "./WeekdayFromDateString";
-import WeatherForecastModal from "./WeatherForecastDetailModal";
+import WeatherForecastModal from "./WeatherForecastModal";
 
 const Overlay = styled.section`
   position: fixed;
@@ -75,10 +75,10 @@ export default function WeatherForecast({ detailActivity }) {
 
   // Due to the structure of the weatherObjectArray(the starting point index [0] can vary, for example it can start with a 08:00:00 weather forecast or with a 21:00:00 weather forecast), it is necessary to filter the weatherObjectArray to ensure that the new data includes complete daily weather information. Otherwise, the weather display would lack consistency.
   function filterWeatherData(weatherList) {
-    const startIndex = weatherList.findIndex((weatherStartingDay) =>
-      weatherStartingDay.dt_txt.endsWith("06:00:00")
+    const StartingDay = weatherList.findIndex((weatherItem) =>
+      weatherItem.dt_txt.endsWith("06:00:00")
     );
-    return weatherList.slice(startIndex);
+    return weatherList.slice(StartingDay);
   }
 
   function filterWeatherByTime(weatherList, time) {
@@ -90,7 +90,7 @@ export default function WeatherForecast({ detailActivity }) {
   if (!weather) {
     return <p>Loading...</p>;
   }
-  console.log(weather);
+
   return (
     filteredWeatherAfternoon.length > 0 && (
       <>

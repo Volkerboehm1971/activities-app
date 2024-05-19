@@ -9,7 +9,7 @@ import {
   WeatherIcon,
   Temperature,
   Windspeed,
-} from "./styledComponents/WeatherForecastDetailModal.styles";
+} from "./styledComponents/WeatherForecasModal.styles";
 import WeekdayFromDateString from "./WeekdayFromDateString";
 import ArrowIcon from "./icons/ArrowWeatherIcon";
 
