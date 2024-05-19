@@ -3,9 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-
-//process.env.VERCEL_ENV !== "preview" && 
-
 export const authOptions = {
   providers: [
     GoogleProvider({
@@ -32,16 +29,7 @@ export const authOptions = {
               name: "Max",
               email: "test@example.com",
             };
-          } if (
-            credentials.username === "person" &&
-            credentials.password === "person"
-          ) {
-            return {
-              name: "User",
-              email: "user@example.com",
-            };
           }
-          return null;
         },
       }),
     ],
