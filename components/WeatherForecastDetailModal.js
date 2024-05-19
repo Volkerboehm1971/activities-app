@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import WeekdayFromDateString from "./WeekdayFromDateString";
+import ArrowIcon from "./icons/ArrowWeatherIcon";
 
 const WeatherForecastField = styled.section`
   margin: 12px;
@@ -96,7 +97,9 @@ export default function WeatherForecastModal({
                   <StyledP>
                     <strong>{Math.round(weather.main.temp)}°C</strong>
                   </StyledP>
-                  <StyledP>Wind</StyledP>
+
+                  <ArrowIcon deg={weather.wind.deg} />
+
                   <StyledP>{weather.wind.speed} m/s</StyledP>
                 </Column>
               </Td>
@@ -114,7 +117,9 @@ export default function WeatherForecastModal({
                   <StyledP>
                     <strong>{Math.round(weather.main.temp)}°C</strong>
                   </StyledP>
-                  <StyledP>Wind</StyledP>
+
+                  <ArrowIcon deg={weather.wind.deg} />
+
                   <StyledP>{weather.wind.speed} m/s</StyledP>
                 </Column>
               </Td>
@@ -122,7 +127,6 @@ export default function WeatherForecastModal({
           </tr>
         </tbody>
       </Table>
-      <button onClick={onClickButton}>More Weather Information</button>
     </WeatherForecastField>
   );
 }

@@ -55,7 +55,7 @@ export default function WeatherForecast({ detailActivity }) {
 
   const { data: weather } = useSWR(
     detailActivity.lat &&
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${detailActivity.lat}&lon=${detailActivity.lng}&units=metric&lang=de&appid=${API}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${detailActivity.lat}&lon=${detailActivity.lng}&units=metric&appid=${API}`
   );
 
   useEffect(() => {
@@ -117,7 +117,11 @@ export default function WeatherForecast({ detailActivity }) {
           </button>
         </WeatherForecastField>
         {showWeatherForecastModal && (
-          <Overlay>
+          <Overlay
+            onClick={() =>
+              setShowWeatherForecastModal(!showWeatherForecastModal)
+            }
+          >
             <StyledDiv>
               <WeatherForecastModal
                 filteredWeatherAfternoon={filteredWeatherAfternoon}
