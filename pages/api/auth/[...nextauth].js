@@ -3,13 +3,16 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+
+//process.env.VERCEL_ENV !== "preview" && 
+
 export const authOptions = {
   providers: [
-    process.env.VERCEL_ENV !== "preview" && GoogleProvider({
+    GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
-    process.env.VERCEL_ENV !== "preview" && GithubProvider({
+    GithubProvider({
         clientId: process.env.AUTH_GITHUB_ID,
         clientSecret: process.env.AUTH_GITHUB_SECRET,
       }),
