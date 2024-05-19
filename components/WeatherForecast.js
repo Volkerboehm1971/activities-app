@@ -60,7 +60,6 @@ export default function WeatherForecast({ detailActivity }) {
 
   useEffect(() => {
     if (weather && weather.list) {
-      // becauce of the structure of the weatherObjectArray, it is necessary to detect an starting Point. Ansonsten would the weathjer data be consistend
       const filteredWeather = filterWeatherData(weather.list);
       setFilteredWeatherMorning(
         filterWeatherByTime(filteredWeather, "06:00:00")

@@ -12,11 +12,24 @@ const StyledWeekendDays = styled.p`
   font-weight: 600;
 `;
 
+const Date = styled.p`
+  margin: 0;
+  font-weight: 600;
+  font-size: 12px;
+`;
+
 const WeekendDiv = styled.div`
   height: 175px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const StyledHeadline = styled.p`
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
 `;
 
 const Column = styled.div`
@@ -24,6 +37,7 @@ const Column = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 15px;
+  border-bottom: 1px solid black;
 `;
 
 const StyledImage = styled.img`
@@ -62,6 +76,12 @@ export default function WeatherForecastModal({
   filteredWeatherEvening,
   onClickButton,
 }) {
+  const dates = filteredWeatherMorning
+    .filter((date) => date.dt_txt.endsWith("06:00:00"))
+    .map((date) => date.dt_txt.split(" ")[0]);
+
+  console.log(dates);
+
   //   return (
   //     <WeatherForecastField>
   //       <Table>
@@ -143,22 +163,17 @@ export default function WeatherForecastModal({
       <Table>
         <tbody>
           <td>
-            <WeekendDiv>
-              <StyledWeekendDays>Monday</StyledWeekendDays>
-            </WeekendDiv>
-
-            <WeekendDiv>
-              <StyledWeekendDays>Monday</StyledWeekendDays>
-            </WeekendDiv>
-
-            <WeekendDiv>
-              <StyledWeekendDays>Monday</StyledWeekendDays>
-            </WeekendDiv>
+            {filteredWeatherMorning.slice(0, 3).map((weekday, index) => (
+              <WeekendDiv key={index}>
+                <StyledWeekendDays>
+                  <WeekdayFromDateString dateString={weekday.dt_txt} />
+                </StyledWeekendDays>
+                <Date>{dates[index]}</Date>
+              </WeekendDiv>
+            ))}
           </td>
           <td>
-            <StyledP>
-              <strong>6am</strong>
-            </StyledP>
+            <StyledHeadline>6am</StyledHeadline>
             {filteredWeatherMorning.slice(0, 3).map((weather, index) => (
               <>
                 <Column key={index}>
@@ -172,14 +187,11 @@ export default function WeatherForecastModal({
                   <ArrowIcon deg={weather.wind.deg} />
                   <StyledP>{weather.wind.speed} m/s</StyledP>
                 </Column>
-                <hr></hr>
               </>
             ))}
           </td>
           <td>
-            <StyledP>
-              <strong>12am</strong>
-            </StyledP>
+            <StyledHeadline>12am</StyledHeadline>
             {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
               <>
                 <Column key={index}>
@@ -193,14 +205,11 @@ export default function WeatherForecastModal({
                   <ArrowIcon deg={weather.wind.deg} />
                   <StyledP>{weather.wind.speed} m/s</StyledP>
                 </Column>
-                <hr></hr>
               </>
             ))}
           </td>
           <td>
-            <StyledP>
-              <strong>18pm</strong>
-            </StyledP>
+            <StyledHeadline>18pm</StyledHeadline>
             {filteredWeatherEvening.slice(0, 3).map((weather, index) => (
               <>
                 <Column key={index}>
@@ -214,7 +223,6 @@ export default function WeatherForecastModal({
                   <ArrowIcon deg={weather.wind.deg} />
                   <StyledP>{weather.wind.speed} m/s</StyledP>
                 </Column>
-                <hr></hr>
               </>
             ))}
           </td>
