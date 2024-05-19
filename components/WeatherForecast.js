@@ -25,8 +25,14 @@ const StyledDiv = styled.div`
   background-color: white;
 `;
 
+const DisplayedDay = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+`;
+
 const WeatherForecastField = styled.section`
-  margin: 32px;
+  margin: 25px 32px 32px 32px;
 `;
 
 const ContainerContainer = styled.div`
@@ -35,13 +41,35 @@ const ContainerContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-  width: 50px;
+  width: 65px;
 `;
 
 const DayContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const ModalContainer = styled.section`
+  margin-top: 25px;
+  border-radius: 5px;
+  width: 175px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+`;
+
+const StyledTemperature = styled.p`
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+`;
+
+const WeatherHeadline = styled.h2`
+  margin-left: 5px;
+  margin-bottom: 0;
 `;
 
 const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
@@ -95,25 +123,32 @@ export default function WeatherForecast({ detailActivity }) {
     filteredWeatherAfternoon.length > 0 && (
       <>
         <WeatherForecastField>
+          <WeatherHeadline>3-Day Weather Forecast</WeatherHeadline>
           <ContainerContainer>
             {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
               <DayContainer key={index}>
-                <WeekdayFromDateString dateString={weather.dt_txt} />
+                <DisplayedDay>
+                  <WeekdayFromDateString dateString={weather.dt_txt} />
+                </DisplayedDay>
                 <StyledImage
                   alt="WeatherToday"
                   src={`weatherIcons/${weather.weather[0].icon}.png`}
                 />
-                <p>{Math.round(weather.main.temp)}°C</p>
+                <StyledTemperature>
+                  {Math.round(weather.main.temp)}°C
+                </StyledTemperature>
               </DayContainer>
             ))}
           </ContainerContainer>
-          <button
-            onClick={() =>
-              setShowWeatherForecastModal(!showWeatherForecastModal)
-            }
-          >
-            More Weather Information
-          </button>
+          <ModalContainer>
+            <div
+              onClick={() =>
+                setShowWeatherForecastModal(!showWeatherForecastModal)
+              }
+            >
+              More Weather Information
+            </div>
+          </ModalContainer>
         </WeatherForecastField>
         {showWeatherForecastModal && (
           <Overlay

@@ -1,5 +1,6 @@
 import {
-  WeatherForecastField,
+  WeatherForecastModalField,
+  ModalCloseButton,
   Table,
   DisplayedDaysContainer,
   DisplayedDay,
@@ -25,64 +26,67 @@ export default function WeatherForecastModal({
     .map((date) => date.dt_txt.split(" ")[0]);
 
   return (
-    <WeatherForecastField>
-      <Table>
-        <tbody>
-          <td>
-            {/*because of space issues and of the everchanging WeatherArray, the filteredWeatherArrays will only be mapped to the third day  */}
-            {filteredWeatherMorning.slice(0, 3).map((weekday, index) => (
-              <DisplayedDaysContainer key={index}>
-                <DisplayedDay>
-                  <WeekdayFromDateString dateString={weekday.dt_txt} />
-                </DisplayedDay>
-                <Date>{dates[index]}</Date>
-              </DisplayedDaysContainer>
-            ))}
-          </td>
-          <td>
-            <Daytime>6am</Daytime>
-            {filteredWeatherMorning.slice(0, 3).map((weather, index) => (
-              <WeatherDataContainer key={index}>
-                <WeatherIcon
-                  alt="Weatherdata for Morning"
-                  src={`weatherIcons/${weather.weather[0].icon}.png`}
-                />
-                <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                <ArrowIcon deg={weather.wind.deg} />
-                <Windspeed>{weather.wind.speed} m/s</Windspeed>
-              </WeatherDataContainer>
-            ))}
-          </td>
-          <td>
-            <Daytime>12am</Daytime>
-            {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
-              <WeatherDataContainer key={index}>
-                <WeatherIcon
-                  alt="Weatherdata for Afternoon"
-                  src={`weatherIcons/${weather.weather[0].icon}.png`}
-                />
-                <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                <ArrowIcon deg={weather.wind.deg} />
-                <Windspeed>{weather.wind.speed} m/s</Windspeed>
-              </WeatherDataContainer>
-            ))}
-          </td>
-          <td>
-            <Daytime>18pm</Daytime>
-            {filteredWeatherEvening.slice(0, 3).map((weather, index) => (
-              <WeatherDataContainer key={index}>
-                <WeatherIcon
-                  alt="Weatherdata for Evening"
-                  src={`weatherIcons/${weather.weather[0].icon}.png`}
-                />
-                <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                <ArrowIcon deg={weather.wind.deg} />
-                <Windspeed>{weather.wind.speed} m/s</Windspeed>
-              </WeatherDataContainer>
-            ))}
-          </td>
-        </tbody>
-      </Table>
-    </WeatherForecastField>
+    <>
+      <WeatherForecastModalField>
+        <ModalCloseButton onClick={onClickButton}>x</ModalCloseButton>
+        <Table>
+          <tbody>
+            <td>
+              {/*because of space issues and of the everchanging WeatherArray, the filteredWeatherArrays will only be mapped to the third day  */}
+              {filteredWeatherMorning.slice(0, 3).map((weekday, index) => (
+                <DisplayedDaysContainer key={index}>
+                  <DisplayedDay>
+                    <WeekdayFromDateString dateString={weekday.dt_txt} />
+                  </DisplayedDay>
+                  <Date>{dates[index]}</Date>
+                </DisplayedDaysContainer>
+              ))}
+            </td>
+            <td>
+              <Daytime>6am</Daytime>
+              {filteredWeatherMorning.slice(0, 3).map((weather, index) => (
+                <WeatherDataContainer key={index}>
+                  <WeatherIcon
+                    alt="Weatherdata for Morning"
+                    src={`weatherIcons/${weather.weather[0].icon}.png`}
+                  />
+                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
+                  <ArrowIcon deg={weather.wind.deg} />
+                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
+                </WeatherDataContainer>
+              ))}
+            </td>
+            <td>
+              <Daytime>12am</Daytime>
+              {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
+                <WeatherDataContainer key={index}>
+                  <WeatherIcon
+                    alt="Weatherdata for Afternoon"
+                    src={`weatherIcons/${weather.weather[0].icon}.png`}
+                  />
+                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
+                  <ArrowIcon deg={weather.wind.deg} />
+                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
+                </WeatherDataContainer>
+              ))}
+            </td>
+            <td>
+              <Daytime>18pm</Daytime>
+              {filteredWeatherEvening.slice(0, 3).map((weather, index) => (
+                <WeatherDataContainer key={index}>
+                  <WeatherIcon
+                    alt="Weatherdata for Evening"
+                    src={`weatherIcons/${weather.weather[0].icon}.png`}
+                  />
+                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
+                  <ArrowIcon deg={weather.wind.deg} />
+                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
+                </WeatherDataContainer>
+              ))}
+            </td>
+          </tbody>
+        </Table>
+      </WeatherForecastModalField>
+    </>
   );
 }

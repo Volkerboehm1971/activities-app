@@ -1,7 +1,16 @@
 import styled from "styled-components";
 
-export const WeatherForecastField = styled.section`
+export const WeatherForecastModalField = styled.section`
   margin: 12px;
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
 `;
 
 export const Table = styled.table`
