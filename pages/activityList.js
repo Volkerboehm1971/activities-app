@@ -13,10 +13,12 @@ import {
   WrapperSearchBar,
   InputSearchField,
   ErrorMessage,
+  BookmarkContainer,
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Image from "next/image";
+import Bookmark from "@/components/Bookmark";
 
 const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
@@ -107,6 +109,13 @@ export default function ActivityList() {
         <Ul>
           {filteredActivities.map((activity) => (
             <Li key={activity._id}>
+              <BookmarkContainer>
+                <Bookmark
+                  onHandleBookmark={onHandleBookmark}
+                  bookmarkedActivities={bookmarkedActivities}
+                  activity={activity}
+                />
+              </BookmarkContainer>
               <LinkDetailsPage href={`/${activity._id}`}>
                 <ActivityCard
                   id={activity._id}
