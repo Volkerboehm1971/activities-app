@@ -50,7 +50,7 @@ export default function FormEdit({ id, activityToEdit }) {
     searchTerm.length > 0;
 
   const defaultOrSearchedImage = defaultImage
-    ? imageSearch.hits[increment].largeImageURL
+    ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
 
   const typingInSearchbar = searchTerm.length > 0;
@@ -107,6 +107,7 @@ export default function FormEdit({ id, activityToEdit }) {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
+    window.scroll({ top: 500, left: 0, behavior: 'smooth' });
   };
 
   return (

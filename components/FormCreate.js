@@ -101,7 +101,6 @@ export default function FormCreate() {
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
     (searchTerm.length > 0);
 
-
   // these solution is for the moment, we will build a Modal solution next week
   function showAlert(event) {
     event.preventDefault();
@@ -277,7 +276,7 @@ export default function FormCreate() {
             {isLoading ? <ImageSkeleton/> :
             <ImageContainer>
               <SearchImage
-                src={imageSearch.hits[increment].largeImageURL}
+                src={imageSearch.hits[increment].webformatURL}
                 fill
                 alt="Pixabay Image"
               />

@@ -26,7 +26,7 @@ export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const { data: activities, error, isLoading } = useSWR("/api/activities");
+  const { data: activities, error } = useSWR("/api/activities");
 
   if (!activities) {
     return (
