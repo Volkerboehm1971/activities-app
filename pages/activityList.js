@@ -24,7 +24,10 @@ const MapModal = dynamic(() => import("@/components/MapModal"), {
   ssr: false,
 });
 
-export default function ActivityList() {
+export default function ActivityList({
+  onHandleBookmark,
+  bookmarkedActivities,
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
