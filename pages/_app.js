@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
+import { SessionProvider } from "next-auth/react"
 import useSWR from "swr";
 import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 import Image from "next/image";
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <SessionProvider session={pageProps.session}>
       <SWRConfig
         value={{
           fetcher,
@@ -36,6 +38,7 @@ export default function App({ Component, pageProps }) {
           <Component activities={activities} {...pageProps} />
         </Layout>
       </SWRConfig>
+    </SessionProvider>;
     </>
   );
 }
