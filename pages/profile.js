@@ -1,5 +1,8 @@
 import Header from "@/components/Header";
 import {
+  HeaderArea,
+  LoginDataContainer,
+  ProfileImage,
   UserGreeting,
   HeadingBookmarkedActivities,
   Ul,
@@ -10,6 +13,8 @@ import {
 import Bookmark from "@/components/Bookmark";
 import { BookmarkContainer } from "@/components/styledComponents/activityList.styles";
 import ActivityCard from "@/components/ActivityCard";
+import Login from "@/components/Login";
+import { useSession } from "next-auth/react";
 
 export default function ProfilePage({
   onHandleBookmark,
@@ -20,10 +25,28 @@ export default function ProfilePage({
     bookmarkedActivities.includes(activity._id)
   );
 
+  const { data: session } = useSession();
+
+  if (!session || !session.user) {
+    return null;
+  }
+
   return (
     <>
       <Header>Profile</Header>
-      <UserGreeting>Hello, Username!</UserGreeting>
+      <HeaderArea>
+        <Login />
+        <LoginDataContainer>
+          <ProfileImage
+            src={session.user.image}
+            width={"100"}
+            height={"100"}
+            alt="user-image"
+          />
+          <UserGreeting>Hello, {session.user.name}!</UserGreeting>
+        </LoginDataContainer>
+      </HeaderArea>
+
       <HeadingBookmarkedActivities>
         Your saved activities
       </HeadingBookmarkedActivities>

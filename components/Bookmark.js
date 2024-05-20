@@ -11,10 +11,12 @@ export default function Bookmark({
     onHandleBookmark(activity);
   }
 
-  const isBookmarked = bookmarkedActivities.includes(activity._id);
+  const isBookmarked = activity
+    ? bookmarkedActivities.includes(activity._id)
+    : false;
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={() => handleClick()}>
       {isBookmarked ? <IconHeartFilled /> : <IconHeartBorder />}
     </div>
   );

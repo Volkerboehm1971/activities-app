@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import {
   LinkActivityList,
+  LinkAndBookmarkContainer,
   DetailImageContainer,
   DetailImage,
   Section,
@@ -15,6 +16,7 @@ import {
   LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
+import Bookmark from "./Bookmark";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
@@ -27,7 +29,9 @@ export default function DetailsViewActivity({
   return (
     <>
       <Header>Details of Activity</Header>
-      <LinkActivityList href="/activityList">← Back</LinkActivityList>
+      <LinkAndBookmarkContainer>
+        <LinkActivityList href="/activityList">← Back</LinkActivityList>
+      </LinkAndBookmarkContainer>
       <Section>
         <DetailImageContainer>
           <DetailImage

@@ -1,5 +1,23 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
+
+export const HeaderArea = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const LoginDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+`;
+
+export const ProfileImage = styled(Image)`
+  border-radius: 50px;
+`;
 
 export const UserGreeting = styled.h2`
   font-size: large;
@@ -10,6 +28,7 @@ export const UserGreeting = styled.h2`
 export const HeadingBookmarkedActivities = styled.h3`
   text-align: center;
   font-size: medium;
+  margin: 0 0 16px 0;
 `;
 
 export const Ul = styled.ul`
