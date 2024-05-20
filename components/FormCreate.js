@@ -17,6 +17,7 @@ import {
   TinyInput,
   TinyDiv,
   ModalContainer,
+  ImageSkeleton,
 } from "./styledComponents/FormCreate.styles";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
@@ -91,7 +92,7 @@ export default function FormCreate() {
   };
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
-  const { data: imageSearch } = useSWR(
+  const { data: imageSearch, isLoading } = useSWR(
     `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
   );
 
@@ -272,13 +273,14 @@ export default function FormCreate() {
                 </svg>
               </PlusButton>
             </ButtonWrapper>
+            {isLoading ? <ImageSkeleton/> :
             <ImageContainer>
               <SearchImage
                 src={imageSearch.hits[increment].largeImageURL}
                 fill
                 alt="Pixabay Image"
               />
-            </ImageContainer>
+            </ImageContainer>}
           </ContainerSwitchesAndPicture>
         ) : (
           ""

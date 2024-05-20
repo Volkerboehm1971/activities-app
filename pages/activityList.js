@@ -13,7 +13,6 @@ import {
   WrapperSearchBar,
   InputSearchField,
   ErrorMessage, 
-  ImageSkeleton
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
@@ -29,14 +28,14 @@ export default function ActivityList() {
 
   const { data: activities, error, isLoading } = useSWR("/api/activities");
 
-  // if (!activities) {
-  //   return (
-  //     <LoadingAnimation>
-  //       <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
-  //       <p>is Loading</p>
-  //     </LoadingAnimation>
-  //   );
-  // }
+  if (!activities) {
+    return (
+      <LoadingAnimation>
+        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
+        <p>is Loading</p>
+      </LoadingAnimation>
+    );
+  }
 
   if (error) {
     return <h1>Oh, sorry something went wrong.</h1>;
@@ -106,7 +105,6 @@ export default function ActivityList() {
       {filteredActivities.length > 0 ? (
         <Ul>
           {filteredActivities.map((activity) => (
-            {isLoading ? (<ImageSkeleton/>) : (
             <Li key={activity._id}>
               <LinkDetailsPage href={`/${activity._id}`}>
                 <ActivityCard
@@ -115,10 +113,9 @@ export default function ActivityList() {
                   title={activity.title}
                   area={activity.area}
                 />
-          
               </LinkDetailsPage>
             </Li>
-          )}
+  
           ))}
         </Ul>
       ) : (

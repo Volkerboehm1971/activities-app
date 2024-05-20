@@ -2,19 +2,19 @@ import styled from "styled-components";
 import Image from "next/image";
 
 
-
-
 export const ActivityImage = styled(Image)`
   border-radius: 10px;
   object-fit: cover;
+  z-index: 15;
 `;
 
 export const ImageSkeleton = styled.div`
-  height: 140.5;
-  width: 187.5;
-  position: relative;
-  overflow: hidden;
+  height: 140.5px;
+  width: 187.5px;
+  position: absolute;
+  z-index: 1;
   background-color: #949294;
+  border-radius: 10px;
 
 &::after {
   position: absolute;
