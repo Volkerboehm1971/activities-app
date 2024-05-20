@@ -89,6 +89,7 @@ export default function FormCreate() {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
+    window.scroll({ top: 500, left: 0, behavior: 'smooth' });
   };
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
@@ -100,6 +101,7 @@ export default function FormCreate() {
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
     (searchTerm.length > 0);
 
+
   // these solution is for the moment, we will build a Modal solution next week
   function showAlert(event) {
     event.preventDefault();
@@ -107,7 +109,6 @@ export default function FormCreate() {
       "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
     );
   }
-
   return (
     <>
       <Form
@@ -232,7 +233,7 @@ export default function FormCreate() {
             onChange={handleKeyPress}
           />
         </WrapperSearchBar>
-        {typingInSearchbar ? (
+        {typingInSearchbar ?  (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
