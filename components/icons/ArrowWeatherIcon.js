@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function ArrowIcon({ deg = 0 }) {
-  const calculateRotation = (deg) => `rotate(${deg} 12 12)`;
+export default function ArrowIcon({ degree = 0 }) {
+  const calculateRotation = (degree) => `rotate(${degree} 12 12)`;
 
   return (
     <svg
@@ -17,7 +17,7 @@ export default function ArrowIcon({ deg = 0 }) {
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
-        transform={calculateRotation(deg)}
+        transform={calculateRotation(degree)}
       />
     </svg>
   );

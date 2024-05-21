@@ -25,6 +25,8 @@ export default function WeatherForecastModal({
     .filter((date) => date.dt_txt.endsWith("06:00:00"))
     .map((date) => date.dt_txt.split(" ")[0]);
 
+  console.log(filteredWeatherAfternoon);
+
   return (
     <>
       <WeatherForecastModalField>
@@ -34,7 +36,7 @@ export default function WeatherForecastModal({
             <td>
               {/*because of space issues and of the everchanging WeatherArray, the filteredWeatherArrays will only be mapped to the third day  */}
               {filteredWeatherMorning.slice(0, 3).map((weekday, index) => (
-                <DisplayedDaysContainer key={index}>
+                <DisplayedDaysContainer key={weekday.dt_txt}>
                   <DisplayedDay>
                     <WeekdayFromDateString dateString={weekday.dt_txt} />
                   </DisplayedDay>
@@ -44,42 +46,42 @@ export default function WeatherForecastModal({
             </td>
             <td>
               <Daytime>6am</Daytime>
-              {filteredWeatherMorning.slice(0, 3).map((weather, index) => (
-                <WeatherDataContainer key={index}>
+              {filteredWeatherMorning.slice(0, 3).map((weather) => (
+                <WeatherDataContainer key={weather.dt_txt}>
                   <WeatherIcon
                     alt="Weatherdata for Morning"
                     src={`weatherIcons/${weather.weather[0].icon}.png`}
                   />
                   <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon deg={weather.wind.deg} />
+                  <ArrowIcon degree={weather.wind.deg} />
                   <Windspeed>{weather.wind.speed} m/s</Windspeed>
                 </WeatherDataContainer>
               ))}
             </td>
             <td>
               <Daytime>12am</Daytime>
-              {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
-                <WeatherDataContainer key={index}>
+              {filteredWeatherAfternoon.slice(0, 3).map((weather) => (
+                <WeatherDataContainer key={weather.dt_txt}>
                   <WeatherIcon
                     alt="Weatherdata for Afternoon"
                     src={`weatherIcons/${weather.weather[0].icon}.png`}
                   />
                   <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon deg={weather.wind.deg} />
+                  <ArrowIcon degree={weather.wind.deg} />
                   <Windspeed>{weather.wind.speed} m/s</Windspeed>
                 </WeatherDataContainer>
               ))}
             </td>
             <td>
               <Daytime>18pm</Daytime>
-              {filteredWeatherEvening.slice(0, 3).map((weather, index) => (
-                <WeatherDataContainer key={index}>
+              {filteredWeatherEvening.slice(0, 3).map((weather) => (
+                <WeatherDataContainer key={weather.dt_txt}>
                   <WeatherIcon
                     alt="Weatherdata for Evening"
                     src={`weatherIcons/${weather.weather[0].icon}.png`}
                   />
                   <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon deg={weather.wind.deg} />
+                  <ArrowIcon degree={weather.wind.deg} />
                   <Windspeed>{weather.wind.speed} m/s</Windspeed>
                 </WeatherDataContainer>
               ))}
