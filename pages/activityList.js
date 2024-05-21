@@ -32,7 +32,7 @@ export default function ActivityList({
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
   const { data: activities, error, isloading } = useSWR("/api/activities");
-  console.log(isloading);
+
   if (!activities) {
     return (
       <LoadingAnimation>

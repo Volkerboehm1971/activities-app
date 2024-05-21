@@ -257,7 +257,7 @@ export default function FormCreate() {
               <PlusButton
                 onClick={() => {
                   if (increment < imageSearch.hits.length - 1) {
-                    setIncrement((nextCount) => nextCount + 1);
+                    setIncrement((prevCount) => prevCount + 1);
                   }
                 }}
               >

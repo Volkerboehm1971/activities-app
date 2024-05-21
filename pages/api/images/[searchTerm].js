@@ -5,7 +5,7 @@ export default async function searchTerm(request, response) {
     return;
   }
 
-  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
+  const API = process.env.IMAGE_API_KEY;
 
   if (request.method === "GET") {
     const apiResponse = await fetch(
