@@ -6,13 +6,9 @@ import {
   DisplayedDay,
   Date,
   Daytime,
-  WeatherDataContainer,
-  WeatherIcon,
-  Temperature,
-  Windspeed,
 } from "./styledComponents/WeatherForecasModal.styles";
 import WeekdayFromDateString from "./WeekdayFromDateString";
-import ArrowIcon from "./icons/ArrowWeatherIcon";
+import WeekdayWeather from "./WeekdayWeather";
 
 export default function WeatherForecastModal({
   filteredWeatherMorning,
@@ -25,7 +21,7 @@ export default function WeatherForecastModal({
     .filter((date) => date.dt_txt.endsWith("06:00:00"))
     .map((date) => date.dt_txt.split(" ")[0]);
 
-  console.log(filteredWeatherAfternoon);
+  console.log(filteredWeatherEvening);
 
   return (
     <>
@@ -46,45 +42,17 @@ export default function WeatherForecastModal({
             </td>
             <td>
               <Daytime>6am</Daytime>
-              {filteredWeatherMorning.slice(0, 3).map((weather) => (
-                <WeatherDataContainer key={weather.dt_txt}>
-                  <WeatherIcon
-                    alt="Weatherdata for Morning"
-                    src={`weatherIcons/${weather.weather[0].icon}.png`}
-                  />
-                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon degree={weather.wind.deg} />
-                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
-                </WeatherDataContainer>
-              ))}
+              <WeekdayWeather filteredWeatherWeekday={filteredWeatherMorning} />
             </td>
             <td>
               <Daytime>12am</Daytime>
-              {filteredWeatherAfternoon.slice(0, 3).map((weather) => (
-                <WeatherDataContainer key={weather.dt_txt}>
-                  <WeatherIcon
-                    alt="Weatherdata for Afternoon"
-                    src={`weatherIcons/${weather.weather[0].icon}.png`}
-                  />
-                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon degree={weather.wind.deg} />
-                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
-                </WeatherDataContainer>
-              ))}
+              <WeekdayWeather
+                filteredWeatherWeekday={filteredWeatherAfternoon}
+              />
             </td>
             <td>
               <Daytime>18pm</Daytime>
-              {filteredWeatherEvening.slice(0, 3).map((weather) => (
-                <WeatherDataContainer key={weather.dt_txt}>
-                  <WeatherIcon
-                    alt="Weatherdata for Evening"
-                    src={`weatherIcons/${weather.weather[0].icon}.png`}
-                  />
-                  <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
-                  <ArrowIcon degree={weather.wind.deg} />
-                  <Windspeed>{weather.wind.speed} m/s</Windspeed>
-                </WeatherDataContainer>
-              ))}
+              <WeekdayWeather filteredWeatherWeekday={filteredWeatherEvening} />
             </td>
           </tbody>
         </Table>
