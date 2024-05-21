@@ -34,8 +34,8 @@ export default function FormEdit({ id, activityToEdit }) {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [increment, setIncrement] = useState(0);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState(activityToEdit.lat);
+  const [longitude, setLongitude] = useState(activityToEdit.lng);
   const [clickedPosition, setClickedPosition] = useState(null);
 
   const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
