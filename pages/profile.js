@@ -32,7 +32,7 @@ export default function ProfilePage({
     return (
       <>
         <ErrorMessageNotSignedIn>
-          Sie sind nicht eingeloggt <br /> - bitte einloggen!
+          You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
         <Login />
       </>
