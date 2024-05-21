@@ -1,9 +1,10 @@
 export default async function Weather(request, response) {
   const { lat, lng } = request.query;
   if (!lat || !lng) {
-    return response
+    response
       .status(400)
       .json({ error: "Latitude and longitude are required." });
+    return;
   }
 
   const WEATHER_API_KEY = process.env.WEATHER_API_KEY;

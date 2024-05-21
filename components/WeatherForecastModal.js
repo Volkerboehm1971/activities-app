@@ -21,8 +21,6 @@ export default function WeatherForecastModal({
     .filter((date) => date.dt_txt.endsWith("06:00:00"))
     .map((date) => date.dt_txt.split(" ")[0]);
 
-  console.log(filteredWeatherEvening);
-
   return (
     <>
       <WeatherForecastModalField>

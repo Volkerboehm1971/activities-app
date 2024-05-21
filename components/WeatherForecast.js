@@ -31,7 +31,7 @@ export default function WeatherForecast({ detailActivity }) {
   );
 
   if (isLoading) {
-    return "loading...";
+    return <p>Loading...</p>;
   }
 
   const filteredWeather = filterWeatherData(weather.list);
@@ -47,10 +47,6 @@ export default function WeatherForecast({ detailActivity }) {
     filteredWeather,
     "18:00:00"
   );
-
-  if (!weather) {
-    return <p>Loading...</p>;
-  }
 
   return (
     filteredWeatherAfternoon.length > 0 && (
