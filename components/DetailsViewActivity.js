@@ -25,12 +25,20 @@ export default function DetailsViewActivity({
   isDeleteMode,
   setIsDeleteMode,
   id,
+  onHandleBookmark,
+  bookmarkedActivities,
+  activityForBookmark,
 }) {
   return (
     <>
       <Header>Details of Activity</Header>
       <LinkAndBookmarkContainer>
         <LinkActivityList href="/activityList">← Back</LinkActivityList>
+        <Bookmark
+          onHandleBookmark={onHandleBookmark}
+          bookmarkedActivities={bookmarkedActivities}
+          activity={detailActivity}
+        />
       </LinkAndBookmarkContainer>
       <Section>
         <DetailImageContainer>

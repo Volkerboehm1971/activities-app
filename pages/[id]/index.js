@@ -7,7 +7,10 @@ import Biking from "@/assets/icons/biking.gif";
 import Image from "next/image";
 import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 
-export default function ActivityCardDetails() {
+export default function ActivityCardDetails({
+  onHandleBookmark,
+  bookmarkedActivities,
+}) {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
 
   const router = useRouter();
@@ -42,6 +45,9 @@ export default function ActivityCardDetails() {
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           id={id}
+          onHandleBookmark={onHandleBookmark}
+          bookmarkedActivities={bookmarkedActivities}
+          activityForBookmark={activity._id}
         />
       )}
     </>

@@ -16,7 +16,7 @@ export default function Bookmark({
     : false;
 
   return (
-    <div onClick={() => handleClick()}>
+    <div onClick={() => handleClick()} isBookmarked={isBookmarked}>
       {isBookmarked ? <IconHeartFilled /> : <IconHeartBorder />}
     </div>
   );

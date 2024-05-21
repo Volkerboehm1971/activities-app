@@ -2,6 +2,14 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
+export const ErrorMessageNotSignedIn = styled.p`
+  color: red;
+  font-size: medium;
+  font-weight: bold;
+  text-align: center;
+  margin: 250px 0 0 0;
+`;
+
 export const HeaderArea = styled.div`
   display: flex;
   flex-direction: column;

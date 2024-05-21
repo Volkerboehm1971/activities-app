@@ -17,6 +17,7 @@ const nextConfig = {
       "images.unsplash.com",
       "pixabay.com",
       "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
     ],
     // remotePatterns: [
     //   {

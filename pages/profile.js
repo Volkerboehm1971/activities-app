@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import {
+  ErrorMessageNotSignedIn,
   HeaderArea,
   LoginDataContainer,
   ProfileImage,
@@ -28,7 +29,14 @@ export default function ProfilePage({
   const { data: session } = useSession();
 
   if (!session || !session.user) {
-    return null;
+    return (
+      <>
+        <ErrorMessageNotSignedIn>
+          Sie sind nicht eingeloggt <br /> - bitte einloggen!
+        </ErrorMessageNotSignedIn>
+        <Login />
+      </>
+    );
   }
 
   return (
@@ -73,10 +81,7 @@ export default function ProfilePage({
           ))}
         </Ul>
       ) : (
-        <ErrorMessage>
-          Sorry there is no saved <br />
-          Activity available at the moment!
-        </ErrorMessage>
+        <ErrorMessage>You have no Activities bookmarked yet!</ErrorMessage>
       )}
     </>
   );
