@@ -284,7 +284,6 @@ export default function FormCreate() {
               </ImageContainer>
             )}
           </ContainerSwitchesAndPicture>
-        ) : null}
 
         <Button type="submit">Add Activity</Button>
       </Form>
