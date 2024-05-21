@@ -39,7 +39,7 @@ export default function FormEdit({ id, activityToEdit }) {
 	const [longitude, setLongitude] = useState(null);
 	const [clickedPosition, setClickedPosition] = useState(null);
 
-	const { data: imageSearch, isLoading } = useSWR(`/api/images/${searchTerm}`);
+	const { data: imageSearch, isLoading } = useSWR(searchTerm.length > 0 ? `/api/images/${searchTerm}` : null);
 
 	const defaultImage =
 		imageSearch &&

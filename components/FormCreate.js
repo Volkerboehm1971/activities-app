@@ -92,16 +92,14 @@ export default function FormCreate() {
 		window.scroll({ top: 500, left: 0, behavior: "smooth" });
 	};
 
-	const { data: imageSearch, isLoading } = useSWR(`/api/images/${searchTerm}`);
 
-	if (!imageSearch) {
-		return null;
-	}
+
+	const { data: imageSearch, isLoading } = useSWR(searchTerm.length > 0 ? `/api/images/${searchTerm}` : null);
 
 	const typingInSearchbar =
-		(imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
-		(searchTerm.length > 0);
-
+	(imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
+	(searchTerm.length > 0);
+	
 	// these solution is for the moment, we will build a Modal solution next week
 	function showAlert(event) {
 		event.preventDefault();
