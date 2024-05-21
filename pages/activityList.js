@@ -12,7 +12,7 @@ import {
   LabelSearchField,
   WrapperSearchBar,
   InputSearchField,
-  ErrorMessage, 
+  ErrorMessage,
 } from "../components/styledComponents/activityList.styles";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
@@ -47,12 +47,12 @@ export default function ActivityList() {
         activity.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.area.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        activity.country.toLowerCase().includes(searchTerm.toLowerCase())
+        activity.country.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     if (selectedByIcon.length > 0) {
       filtered = filtered.filter((activity) =>
-        selectedByIcon.includes(activity.categoryFilter)
+        selectedByIcon.includes(activity.categoryFilter),
       );
     }
 
@@ -65,8 +65,8 @@ export default function ActivityList() {
     if (selectedByIcon.includes(category)) {
       setSelectedByIcon(
         selectedByIcon.filter(
-          (categoryParameter) => categoryParameter !== category
-        )
+          (categoryParameter) => categoryParameter !== category,
+        ),
       );
     } else {
       setSelectedByIcon([...selectedByIcon, category]);
@@ -116,7 +116,6 @@ export default function ActivityList() {
                 />
               </LinkDetailsPage>
             </Li>
-  
           ))}
         </Ul>
       ) : (

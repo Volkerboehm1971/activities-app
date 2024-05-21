@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-
 export const Wrapper = styled.div`
   position: relative;
   height: 140.5px;
@@ -15,7 +14,6 @@ export const ActivityImage = styled(Image)`
   object-fit: cover;
   z-index: 10;
 `;
-
 
 export const Div = styled.div`
   display: flex;

@@ -12,7 +12,7 @@ const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
 
 export default function WeatherDisplay({ area, lat, lng }) {
   const { data: weather } = useSWR(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API}`,
   );
 
   if (!weather) {
