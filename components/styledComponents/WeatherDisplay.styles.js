@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const WeatherSection = styled.section`
-  margin: 40px 20px 50px;
+  margin: 70px 20px 50px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;

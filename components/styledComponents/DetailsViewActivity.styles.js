@@ -14,6 +14,13 @@ export const LinkActivityList = styled(Link)`
   padding-right: 5px;
 `;
 
+export const LinkAndBookmarkContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 26px;
+`;
+
 export const Section = styled.section`
   display: flex;
   flex-direction: column;

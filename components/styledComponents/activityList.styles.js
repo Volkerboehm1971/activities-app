@@ -78,3 +78,15 @@ export const ErrorMessage = styled.p`
   text-align: center;
   margin: 0 0 25px 0;
 `;
+
+export const BookmarkContainer = styled.div`
+  display: flex;
+  position: absolute;
+  margin-left: 260px;
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+`;

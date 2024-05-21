@@ -6,7 +6,11 @@ export default function Login() {
   if (session) {
     return (
       <>
-        <LoginStatus>Signed in as {session.user.email}</LoginStatus>
+        <LoginStatus>
+          Signed in as <br />
+          {session.user.email}
+        </LoginStatus>
+
         <LoginNoutButton type="button" onClick={() => signOut()}>
           Sign out
         </LoginNoutButton>

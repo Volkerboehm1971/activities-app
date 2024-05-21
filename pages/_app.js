@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 import useSWR from "swr";
+import { useState } from "react";
 import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 import Image from "next/image";
 import Biking from "@/assets/icons/biking.gif";
@@ -10,6 +11,8 @@ import Biking from "@/assets/icons/biking.gif";
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
+  const [bookmarkedActivities, setBookmarkedActivities] = useState([]);
+
   const { data: activities, error } = useSWR("/api/activities", fetcher);
 
   if (!activities) {
@@ -25,6 +28,27 @@ export default function App({ Component, pageProps }) {
     return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
+  function checkIfActivityIsBookmarked(id) {
+    return bookmarkedActivities.includes(id);
+  }
+
+  function addActivityToBookmarks(id) {
+    setBookmarkedActivities([...bookmarkedActivities, id]);
+  }
+
+  function removeActivityFromBookmarks(id) {
+    setBookmarkedActivities(
+      bookmarkedActivities.filter((activityId) => activityId !== id)
+    );
+  }
+
+  function onHandleBookmark(activity) {
+    const id = activity._id;
+    checkIfActivityIsBookmarked(id)
+      ? removeActivityFromBookmarks(id)
+      : addActivityToBookmarks(id);
+  }
+
   return (
     <>
       <SessionProvider session={pageProps.session}>
@@ -35,7 +59,12 @@ export default function App({ Component, pageProps }) {
         >
           <GlobalStyle />
           <Layout>
-            <Component activities={activities} {...pageProps} />
+            <Component
+              {...pageProps}
+              activities={activities}
+              onHandleBookmark={onHandleBookmark}
+              bookmarkedActivities={bookmarkedActivities}
+            />
           </Layout>
         </SWRConfig>
       </SessionProvider>

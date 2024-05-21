@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import {
   LinkActivityList,
+  LinkAndBookmarkContainer,
   DetailImageContainer,
   DetailImage,
   Section,
@@ -16,6 +17,11 @@ import {
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
 
+import WeatherForecast from "./WeatherForecast";
+
+import Bookmark from "./Bookmark";
+
+
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
 export default function DetailsViewActivity({
@@ -23,11 +29,21 @@ export default function DetailsViewActivity({
   isDeleteMode,
   setIsDeleteMode,
   id,
+  onHandleBookmark,
+  bookmarkedActivities,
+  activityForBookmark,
 }) {
   return (
     <>
       <Header>Details of Activity</Header>
-      <LinkActivityList href="/activityList">← Back</LinkActivityList>
+      <LinkAndBookmarkContainer>
+        <LinkActivityList href="/activityList">← Back</LinkActivityList>
+        <Bookmark
+          onHandleBookmark={onHandleBookmark}
+          bookmarkedActivities={bookmarkedActivities}
+          activity={detailActivity}
+        />
+      </LinkAndBookmarkContainer>
       <Section>
         <DetailImageContainer>
           <DetailImage
@@ -57,6 +73,7 @@ export default function DetailsViewActivity({
           latitude={detailActivity.lat}
         ></DetailMap>
       </Section>
+      <WeatherForecast detailActivity={detailActivity} />
       <ButtonContainer>
         <LinkEdit href={`/${id}/edit`}>Edit</LinkEdit>
         <ButtonDelete

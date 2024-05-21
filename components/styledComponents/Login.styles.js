@@ -1,31 +1,33 @@
 import styled from "styled-components";
 
 export const LoginNoutButton = styled.button`
-    position: fixed;
-    top: 30px;
-    right: 50px;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #3e407d;
-    border: 5px solid #3e407d;
-    border-radius: 5px;
-    font-size: 17px;
-    padding-left: 5px;
-    padding-right: 5px;
+  position: absolute;
+  top: 40px;
+  right: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3e407d;
+  border: 5px solid #3e407d;
+  border-radius: 5px;
+  font-size: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 25px;
 
-    &:hover{
-        background-color: #232AEB;
-        border-color: #232AEB;
-    }
+  &:hover {
+    background-color: #232aeb;
+    border-color: #232aeb;
+  }
 
-    &:active{
-        background-color: #232AEB;
-        border-color: #232AEB;
-    }
+  &:active {
+    background-color: #232aeb;
+    border-color: #232aeb;
+  }
 `;
 
 export const LoginStatus = styled.p`
-    position: fixed;
-    top: 1px;
-    right: 55px;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  text-align: right;
 `;
