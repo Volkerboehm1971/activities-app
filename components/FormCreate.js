@@ -231,7 +231,7 @@ export default function FormCreate() {
             onChange={handleKeyPress}
           />
         </WrapperSearchBar>
-        {typingInSearchbar ? (
+        {typingInSearchbar && (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
