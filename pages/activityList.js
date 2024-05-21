@@ -26,8 +26,8 @@ export default function ActivityList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const { data: activities, error } = useSWR("/api/activities");
-
+  const { data: activities, error, isloading } = useSWR("/api/activities");
+  console.log(isloading);
   if (!activities) {
     return (
       <LoadingAnimation>
@@ -112,6 +112,7 @@ export default function ActivityList() {
                   image={activity.image}
                   title={activity.title}
                   area={activity.area}
+                  isloading={isloading}
                 />
               </LinkDetailsPage>
             </Li>
@@ -133,6 +134,7 @@ export default function ActivityList() {
                     image={activity.image}
                     title={activity.title}
                     area={activity.area}
+                    isloading={isloading}
                   />
                 </LinkDetailsPage>
               </Li>
