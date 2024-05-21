@@ -29,7 +29,7 @@ export default function WeatherForecastModal({
           <tbody>
             <td>
               {/*because of space issues and of the everchanging WeatherArray, the filteredWeatherArrays will only be mapped to the third day  */}
-              {filteredWeatherMorning.slice(0, 3).map((weekday, index) => (
+              {filteredWeatherMorning.map((weekday, index) => (
                 <DisplayedDaysContainer key={weekday.dt_txt}>
                   <DisplayedDay>
                     <WeekdayFromDateString dateString={weekday.dt_txt} />

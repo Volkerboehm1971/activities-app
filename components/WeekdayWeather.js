@@ -9,7 +9,7 @@ import ArrowIcon from "./icons/ArrowWeatherIcon";
 export default function WeekdayWeather({ filteredWeatherWeekday }) {
   return (
     <>
-      {filteredWeatherWeekday.slice(0, 3).map((weather) => (
+      {filteredWeatherWeekday.map((weather) => (
         <WeatherDataContainer key={weather.dt_txt}>
           <WeatherIcon
             alt="Weatherdata for Afternoon"

@@ -35,18 +35,19 @@ export default function WeatherForecast({ detailActivity }) {
   }
 
   const filteredWeather = filterWeatherData(weather.list);
+
   const filteredWeatherMorning = filterWeatherByTime(
     filteredWeather,
     "06:00:00"
-  );
+  ).slice(0, 3);
   const filteredWeatherAfternoon = filterWeatherByTime(
     filteredWeather,
     "12:00:00"
-  );
+  ).slice(0, 3);
   const filteredWeatherEvening = filterWeatherByTime(
     filteredWeather,
     "18:00:00"
-  );
+  ).slice(0, 3);
 
   return (
     filteredWeatherAfternoon.length > 0 && (
@@ -54,7 +55,7 @@ export default function WeatherForecast({ detailActivity }) {
         <WeatherForecastField>
           <WeatherHeadline>3-Day Weather Forecast</WeatherHeadline>
           <ThreeDaysContainer>
-            {filteredWeatherAfternoon.slice(0, 3).map((weather, index) => (
+            {filteredWeatherAfternoon.map((weather, index) => (
               <DayContainer key={index}>
                 <DisplayedDayDetailsPage>
                   <WeekdayFromDateString dateString={weather.dt_txt} />
