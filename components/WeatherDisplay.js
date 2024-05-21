@@ -8,11 +8,9 @@ import {
   Span,
 } from "./styledComponents/WeatherDisplay.styles";
 
-const API = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-
 export default function WeatherDisplay({ area, lat, lng }) {
   const { data: weather } = useSWR(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API}`
+    lat && lng && `/api/weather/?lat=${lat}&lng=${lng}`
   );
 
   if (!weather) {
@@ -21,14 +19,14 @@ export default function WeatherDisplay({ area, lat, lng }) {
 
   return (
     <>
-      {weather.weather ? (
+      {weather.list ? (
         <WeatherSection>
           <Area>{area}</Area>
           <WeatherIcon
             alt="weather"
-            src={`weatherIcons/${weather.weather[0].icon}.png`}
+            src={`weatherIcons/${weather.list[0].weather[0].icon}.png`}
           />
-          <Temperature>{Math.round(weather.main.temp)}°C</Temperature>
+          <Temperature>{Math.round(weather.list[0].main.temp)}°C</Temperature>
         </WeatherSection>
       ) : (
         <Error>
