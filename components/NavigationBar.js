@@ -7,6 +7,7 @@ import IconAdd from "./icons/Add";
 import IconHome from "./icons/Home";
 import IconActivityList from "./icons/ActivityList";
 import { useRouter } from "next/router";
+import IconProfile from "./icons/Profile";
 
 export default function NavigationBar() {
   const router = useRouter();
@@ -36,6 +37,13 @@ export default function NavigationBar() {
           active={isActive("/create")}
         >
           <IconAdd fillColor={isActive("/create") ? "#fff" : "#151b54"} />
+        </LinkElement>
+
+        <LinkElement
+          onClick={() => router.push("/profile")}
+          active={isActive("/profile")}
+        >
+          <IconProfile fillColor={isActive("/profile") ? "#fff" : "#151b54"} />
         </LinkElement>
       </List>
     </Navigation>
