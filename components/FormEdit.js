@@ -250,7 +250,7 @@ export default function FormEdit({ id, activityToEdit }) {
                 onChange={handleKeyPress}
               />
             </WrapperSearchBar>
-            {typingInSearchbar ? (
+            {typingInSearchbar && (
               <ButtonWrapper>
                 <MinusButton
                   onClick={() => {
@@ -293,8 +293,6 @@ export default function FormEdit({ id, activityToEdit }) {
                   </svg>
                 </PlusButton>
               </ButtonWrapper>
-            ) : (
-              ""
             )}
           </WrapperSearchAndSwitch>
           <ImageContainer>

@@ -70,7 +70,7 @@ export default function FormCreate() {
     if (response.ok) {
       mutate();
     }
-
+    
     router.push("/activityList");
   }
 
@@ -92,10 +92,7 @@ export default function FormCreate() {
     window.scroll({ top: 500, left: 0, behavior: 'smooth' });
   };
 
-  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
-  const { data: imageSearch, isLoading } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
-  );
+  const { data: imageSearch, isLoading } = useSWR(`/api/images/${searchTerm}`);
 
   const typingInSearchbar =
     (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
@@ -232,7 +229,7 @@ export default function FormCreate() {
             onChange={handleKeyPress}
           />
         </WrapperSearchBar>
-        {typingInSearchbar ?  (
+        {typingInSearchbar &&  (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
@@ -282,8 +279,6 @@ export default function FormCreate() {
               />
             </ImageContainer>}
           </ContainerSwitchesAndPicture>
-        ) : (
-          ""
         )}
 
         <Button type="submit">Add Activity</Button>
