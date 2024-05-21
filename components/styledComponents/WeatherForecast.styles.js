@@ -67,3 +67,7 @@ export const StyledDiv = styled.div`
   border-radius: 10px;
   background-color: white;
 `;
+
+export const ModalOpenButton = styled.button`
+  all: unset;
+`;

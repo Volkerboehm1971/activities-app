@@ -58,7 +58,7 @@ export default function DetailsViewActivity({
           latitude={detailActivity.lat}
         ></DetailMap>
       </Section>
-      <WeatherForecast detailActivity={detailActivity}></WeatherForecast>
+      <WeatherForecast detailActivity={detailActivity} />
       <ButtonContainer>
         <LinkEdit href={`/${id}/edit`}>Edit</LinkEdit>
         <ButtonDelete
