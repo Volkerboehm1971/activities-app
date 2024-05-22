@@ -231,7 +231,7 @@ export default function FormCreate() {
             onChange={handleKeyPress}
           />
         </WrapperSearchBar>
-        {typingInSearchbar && (
+        {typingInSearchbar ? (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
@@ -284,7 +284,7 @@ export default function FormCreate() {
               </ImageContainer>
             )}
           </ContainerSwitchesAndPicture>
-        )}
+        ) : null}
         <Button type="submit">Add Activity</Button>
       </Form>
     </>
