@@ -7,13 +7,19 @@ import { useState } from "react";
 import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 import Image from "next/image";
 import Biking from "@/assets/icons/biking.gif";
+import { Roboto_Flex } from "@next/font/google";
 
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
+
+const roboto = Roboto_Flex({
+  subsets: ['latin'],
+}) 
 
 export default function App({ Component, pageProps }) {
   const [bookmarkedActivities, setBookmarkedActivities] = useState([]);
 
   const { data: activities, error } = useSWR("/api/activities", fetcher);
+
 
   if (!activities) {
     return (
@@ -51,6 +57,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <main className={roboto.className}>
       <SessionProvider session={pageProps.session}>
         <SWRConfig
           value={{
@@ -68,6 +75,7 @@ export default function App({ Component, pageProps }) {
           </Layout>
         </SWRConfig>
       </SessionProvider>
+      </main>
     </>
   );
 }
