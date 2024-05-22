@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import DeleteActivityWindow from "@/components/DeleteActivityWindow";
+import { useState, useEffect } from "react";
+import DeleteActivityModal from "@/components/DeleteActivityModal";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
 import Biking from "@/assets/icons/biking.gif";
@@ -12,6 +12,10 @@ export default function ActivityCardDetails({
   bookmarkedActivities,
 }) {
   const [isDeleteMode, setIsDeleteMode] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isDeleteMode ? "hidden" : "auto";
+  }, [isDeleteMode]);
 
   const router = useRouter();
   const { id } = router.query;
@@ -33,23 +37,23 @@ export default function ActivityCardDetails({
 
   return (
     <>
-      {isDeleteMode ? (
-        <DeleteActivityWindow
+      {isDeleteMode && (
+        <DeleteActivityModal
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           currentActivity={activity}
         />
-      ) : (
-        <DetailsViewActivity
-          detailActivity={activity}
-          isDeleteMode={isDeleteMode}
-          setIsDeleteMode={setIsDeleteMode}
-          id={id}
-          onHandleBookmark={onHandleBookmark}
-          bookmarkedActivities={bookmarkedActivities}
-          activityForBookmark={activity._id}
-        />
       )}
+
+      <DetailsViewActivity
+        detailActivity={activity}
+        isDeleteMode={isDeleteMode}
+        setIsDeleteMode={setIsDeleteMode}
+        id={id}
+        onHandleBookmark={onHandleBookmark}
+        bookmarkedActivities={bookmarkedActivities}
+        activityForBookmark={activity._id}
+      />
     </>
   );
 }
