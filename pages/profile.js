@@ -69,7 +69,7 @@ export default function ProfilePage({
                   activity={activity}
                 />
               </BookmarkContainer>
-              <LinkDetailsPage href={`/${activity.id}`}>
+              <LinkDetailsPage href={`/${activity._id}`}>
                 <ActivityCard
                   id={activity.id}
                   image={activity.image}

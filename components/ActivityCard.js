@@ -7,7 +7,7 @@ import {
 } from "./styledComponents/ActivityCard.styles";
 import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
-export default function ActivityCard({ image, title, area, isloading }) {
+export default function ActivityCard({ image, title, area }) {
   return (
     <>
       <Wrapper>
