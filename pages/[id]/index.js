@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import DeleteActivityWindow from "@/components/DeleteActivityWindow";
+import DeleteActivityModal from "@/components/DeleteActivityModal";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
 import Biking from "@/assets/icons/biking.gif";
@@ -38,7 +38,7 @@ export default function ActivityCardDetails({
   return (
     <>
       {isDeleteMode && (
-        <DeleteActivityWindow
+        <DeleteActivityModal
           isDeleteMode={isDeleteMode}
           setIsDeleteMode={setIsDeleteMode}
           currentActivity={activity}
