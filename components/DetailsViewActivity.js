@@ -21,7 +21,6 @@ import WeatherForecast from "./WeatherForecast";
 
 import Bookmark from "./Bookmark";
 
-
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });
 
 export default function DetailsViewActivity({
@@ -31,7 +30,6 @@ export default function DetailsViewActivity({
   id,
   onHandleBookmark,
   bookmarkedActivities,
-  activityForBookmark,
 }) {
   return (
     <>
