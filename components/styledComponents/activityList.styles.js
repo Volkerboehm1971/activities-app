@@ -27,6 +27,7 @@ export const LinkDetailsPage = styled(Link)`
   &:active {
     color: black;
   }
+  
 `;
 
 export const Li = styled.li`

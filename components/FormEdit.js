@@ -24,6 +24,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
+import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
@@ -38,9 +39,8 @@ export default function FormEdit({ id, activityToEdit }) {
   const [longitude, setLongitude] = useState(activityToEdit.lng);
   const [clickedPosition, setClickedPosition] = useState(null);
 
-  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
-  const { data: imageSearch } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
+  const { data: imageSearch, isLoading } = useSWR(
+    searchTerm.length > 0 ? `/api/images/${searchTerm}` : null,
   );
 
   const defaultImage =
@@ -50,7 +50,7 @@ export default function FormEdit({ id, activityToEdit }) {
     searchTerm.length > 0;
 
   const defaultOrSearchedImage = defaultImage
-    ? imageSearch.hits[increment].largeImageURL
+    ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
 
   const typingInSearchbar = searchTerm.length > 0;
@@ -96,8 +96,8 @@ export default function FormEdit({ id, activityToEdit }) {
     document.body.style.overflow = showModal ? "hidden" : "auto";
   }, [showModal]);
 
-  function handleClick(e) {
-    const { lat, lng } = e.latlng;
+  function handleClick(event) {
+    const { lat, lng } = event.latlng;
     setLatitude(lat.toFixed(10));
     setLongitude(lng.toFixed(10));
     setClickedPosition([lat, lng]);
@@ -107,6 +107,7 @@ export default function FormEdit({ id, activityToEdit }) {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
+    window.scroll({ top: 500, left: 0, behavior: "smooth" });
   };
 
   return (
@@ -249,7 +250,7 @@ export default function FormEdit({ id, activityToEdit }) {
                 onChange={handleKeyPress}
               />
             </WrapperSearchBar>
-            {typingInSearchbar ? (
+            {typingInSearchbar && (
               <ButtonWrapper>
                 <MinusButton
                   onClick={() => {
@@ -292,17 +293,19 @@ export default function FormEdit({ id, activityToEdit }) {
                   </svg>
                 </PlusButton>
               </ButtonWrapper>
-            ) : (
-              ""
             )}
           </WrapperSearchAndSwitch>
-          <ImageContainer>
-            <SearchImage
-              src={defaultOrSearchedImage}
-              fill
-              alt="Pixabay Image"
-            />
-          </ImageContainer>
+          {isLoading ? (
+            <ImageSkeleton />
+          ) : (
+            <ImageContainer>
+              <SearchImage
+                src={defaultOrSearchedImage}
+                fill
+                alt="Pixabay Image"
+              />
+            </ImageContainer>
+          )}
         </Section>
 
         <ButtonContainer>

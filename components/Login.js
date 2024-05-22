@@ -10,6 +10,7 @@ export default function Login() {
           Signed in as <br />
           {session.user.email}
         </LoginStatus>
+
         <LoginNoutButton type="button" onClick={() => signOut()}>
           Sign out
         </LoginNoutButton>

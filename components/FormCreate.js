@@ -22,6 +22,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
+import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
@@ -77,8 +78,8 @@ export default function FormCreate() {
     document.body.style.overflow = showModal ? "hidden" : "auto";
   }, [showModal]);
 
-  function handleClick(e) {
-    const { lat, lng } = e.latlng;
+  function handleClick(event) {
+    const { lat, lng } = event.latlng;
     setLatitude(lat.toFixed(10));
     setLongitude(lng.toFixed(10));
     setClickedPosition([lat, lng]);
@@ -88,11 +89,11 @@ export default function FormCreate() {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
+    window.scroll({ top: 500, left: 0, behavior: "smooth" });
   };
 
-  const API = process.env.NEXT_PUBLIC_IMAGE_API_KEY;
-  const { data: imageSearch } = useSWR(
-    `https://pixabay.com/api/?key=${API}&q=${searchTerm}&image_type=photo`
+  const { data: imageSearch, isLoading } = useSWR(
+    searchTerm.length > 0 ? `/api/images/${searchTerm}` : null,
   );
 
   const typingInSearchbar =
@@ -103,10 +104,9 @@ export default function FormCreate() {
   function showAlert(event) {
     event.preventDefault();
     window.alert(
-      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
+      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button.",
     );
   }
-
   return (
     <>
       <Form
@@ -231,7 +231,7 @@ export default function FormCreate() {
             onChange={handleKeyPress}
           />
         </WrapperSearchBar>
-        {typingInSearchbar ? (
+        {typingInSearchbar && (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
               <MinusButton
@@ -272,18 +272,19 @@ export default function FormCreate() {
                 </svg>
               </PlusButton>
             </ButtonWrapper>
-            <ImageContainer>
-              <SearchImage
-                src={imageSearch.hits[increment].largeImageURL}
-                fill
-                alt="Pixabay Image"
-              />
-            </ImageContainer>
+            {isLoading ? (
+              <ImageSkeleton />
+            ) : (
+              <ImageContainer>
+                <SearchImage
+                  src={imageSearch.hits[increment].webformatURL}
+                  fill
+                  alt="Pixabay Image"
+                />
+              </ImageContainer>
+            )}
           </ContainerSwitchesAndPicture>
-        ) : (
-          ""
         )}
-
         <Button type="submit">Add Activity</Button>
       </Form>
     </>

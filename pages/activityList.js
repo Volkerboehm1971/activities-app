@@ -31,7 +31,7 @@ export default function ActivityList({
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
 
-  const { data: activities, error } = useSWR("/api/activities");
+  const { data: activities, error, isloading } = useSWR("/api/activities");
 
   if (!activities) {
     return (
@@ -43,7 +43,7 @@ export default function ActivityList({
   }
 
   if (error) {
-    return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
+    return <h1>Oh, sorry something went wrong.</h1>;
   }
 
   const getFilteredActivities = () => {
@@ -52,12 +52,12 @@ export default function ActivityList({
         activity.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.area.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        activity.country.toLowerCase().includes(searchTerm.toLowerCase())
+        activity.country.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     if (selectedByIcon.length > 0) {
       filtered = filtered.filter((activity) =>
-        selectedByIcon.includes(activity.categoryFilter)
+        selectedByIcon.includes(activity.categoryFilter),
       );
     }
 
@@ -70,8 +70,8 @@ export default function ActivityList({
     if (selectedByIcon.includes(category)) {
       setSelectedByIcon(
         selectedByIcon.filter(
-          (categoryParameter) => categoryParameter !== category
-        )
+          (categoryParameter) => categoryParameter !== category,
+        ),
       );
     } else {
       setSelectedByIcon([...selectedByIcon, category]);
@@ -84,7 +84,7 @@ export default function ActivityList({
         filteredActivities={
           filteredActivities.length > 0 ? filteredActivities : activities
         }
-      ></MapModal>
+      />
       <Header>List of Activities</Header>
 
       <Section>
@@ -107,7 +107,6 @@ export default function ActivityList({
           selectedByIcon={selectedByIcon}
         />
       </Section>
-
       {filteredActivities.length > 0 ? (
         <Ul>
           {filteredActivities.map((activity) => (
@@ -125,6 +124,7 @@ export default function ActivityList({
                   image={activity.image}
                   title={activity.title}
                   area={activity.area}
+                  isloading={isloading}
                 />
               </LinkDetailsPage>
             </Li>
@@ -145,6 +145,7 @@ export default function ActivityList({
                     image={activity.image}
                     title={activity.title}
                     area={activity.area}
+                    isloading={isloading}
                   />
                 </LinkDetailsPage>
               </Li>

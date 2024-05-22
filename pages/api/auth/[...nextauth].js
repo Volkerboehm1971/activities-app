@@ -10,29 +10,29 @@ export const authOptions = {
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
     }),
     GithubProvider({
-        clientId: process.env.AUTH_GITHUB_ID,
-        clientSecret: process.env.AUTH_GITHUB_SECRET,
-      }),
-      CredentialsProvider({
-        name: "credentials",
-        credentials: {
-          username: { label: "Username", type: "text", placeholder: "username" },
-          password: { label: "Password", type: "password" },
-        },
+      clientId: process.env.AUTH_GITHUB_ID,
+      clientSecret: process.env.AUTH_GITHUB_SECRET,
+    }),
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "username" },
+        password: { label: "Password", type: "password" },
+      },
 
-        async authorize(credentials) {
-          if (
-            credentials.username === "fisch" &&
-            credentials.password === "fisch"
-          ) {
-            return {
-              name: "Max",
-              email: "test@example.com",
-            };
-          }
-        },
-      }),
-    ],
-  };
+      async authorize(credentials) {
+        if (
+          credentials.username === "fisch" &&
+          credentials.password === "fisch"
+        ) {
+          return {
+            name: "Max",
+            email: "test@example.com",
+          };
+        }
+      },
+    }),
+  ],
+};
 
-export default NextAuth(authOptions)
+export default NextAuth(authOptions);

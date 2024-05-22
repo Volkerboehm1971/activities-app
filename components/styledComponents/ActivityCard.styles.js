@@ -1,9 +1,18 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+export const Wrapper = styled.div`
+  position: relative;
+  height: 140.5px;
+  width: 187.5px;
+  z-index: 2;
+`;
+
 export const ActivityImage = styled(Image)`
   border-radius: 10px;
+  position: relative;
   object-fit: cover;
+  z-index: 10;
 `;
 
 export const Div = styled.div`

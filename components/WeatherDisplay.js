@@ -10,6 +10,8 @@ import {
 
 export default function WeatherDisplay({ area, lat, lng }) {
   const { data: weather } = useSWR(
+
+
     lat && lng && `/api/weather/?lat=${lat}&lng=${lng}`
   );
 
