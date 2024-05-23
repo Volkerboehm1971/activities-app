@@ -4,7 +4,7 @@ import NavigationBar from "./NavigationBar";
 export default function Layout({ children }) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
       <NavigationBar />
     </>
