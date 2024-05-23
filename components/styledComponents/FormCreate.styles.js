@@ -151,7 +151,9 @@ export const MinusButton = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  position: relative;
+  // position: relative;
+  align-items: center;
+  justify-content: center;
   display: block;
   width: 281.25px;
   height: 210.75px;
