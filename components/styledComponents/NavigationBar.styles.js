@@ -5,7 +5,7 @@ export const Navigation = styled.nav`
   bottom: 0;
   position: fixed;
   padding: 10px;
-  background-color: #f0dd89;
+  background-color: #85CCE1;
   z-index: 10000;
 `;
 

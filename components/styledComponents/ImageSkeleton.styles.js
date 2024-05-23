@@ -20,8 +20,8 @@ export const ImageSkeleton = styled.div`
     bottom: 0;
     left: 0;
     z-index: 1;
-    width: 100%; /* Ensure it spans the entire width */
-    height: 100%; /* Ensure it spans the entire height */
+    width: 100%;
+    height: 100%;
     transform: translateX(-100%);
     background-image: linear-gradient(
       90deg,

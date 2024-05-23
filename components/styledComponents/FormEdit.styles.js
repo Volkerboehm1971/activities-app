@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const Form = styled.form`
-  margin: 10px;
+  margin: 30px;
+  width: 310px;
   padding-top: 5px;
   display: flex;
   flex-direction: column;
@@ -37,7 +38,7 @@ export const TinyInputsWrapper = styled.section`
 
 export const TinyInput = styled.input`
   display: flex;
-  width: 165px;
+  width: 135px;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
@@ -45,7 +46,7 @@ export const TinyInput = styled.input`
 
 export const TinyDiv = styled.div`
   display: flex;
-  width: 165px;
+  width: 135px;
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
@@ -83,8 +84,8 @@ export const ButtonContainer = styled.section`
 export const LinkCancel = styled(Link)`
   text-decoration: none;
   color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
+  background-color: #EFDA7F;
+  border: 7px solid #EFDA7F;
   border-radius: 5px;
   font-size: 18px;
 `;
@@ -92,8 +93,8 @@ export const LinkCancel = styled(Link)`
 export const ButtonSave = styled.button`
   position: center;
   color: #ffffff;
-  background-color: #4caf50;
-  border: 7px solid #4caf50;
+  background-color: #85CCE1;
+  border: 7px solid #85CCE1;
   border-radius: 5px;
   font-size: 18px;
 `;
@@ -178,7 +179,6 @@ export const MinusButton = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
-  transform: translate(22px);
   width: 310px;
   height: 210.75px;
 
