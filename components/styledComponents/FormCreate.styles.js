@@ -151,9 +151,7 @@ export const MinusButton = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  // position: relative;
-  align-items: center;
-  justify-content: center;
+ position: relative;
   display: block;
   width: 281.25px;
   height: 210.75px;
@@ -170,7 +168,6 @@ export const ImageContainer = styled.div`
 
 export const SearchImage = styled(Image)`
   object-fit: cover;
-  box-sizing: content-box;
   border: 0px solid white;
   border-radius: 9px;
 `;

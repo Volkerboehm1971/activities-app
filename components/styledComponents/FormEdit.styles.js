@@ -178,8 +178,7 @@ export const MinusButton = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  position: center;
-  transform: translate(22px);
+  position: relative;
   width: 310px;
   height: 210.75px;
 
