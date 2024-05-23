@@ -6,7 +6,7 @@ export const Article = styled.article`
   flex-direction: column;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-radius: 10px;
   border-color: black;
