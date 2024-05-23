@@ -3,37 +3,45 @@ import Image from "next/image";
 
 export const Wrapper = styled.div`
   position: relative;
-  height: 140.5px;
-  width: 187.5px;
-  z-index: 2;
+  height: 234px;
+  width: 311px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+export const ImageContainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
 `;
 
 export const ActivityImage = styled(Image)`
-  border-radius: 10px;
-  position: relative;
   object-fit: cover;
-  z-index: 10;
 `;
 
-export const Div = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
+export const TextOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px;
+  box-sizing: border-box;
+  z-index: 2;
 `;
 
 export const Title = styled.p`
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-  margin-top: 10px;
+  margin: 0 0 0 15px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 `;
 
 export const Area = styled.p`
-  margin: 0;
-  padding: 0;
-  font-size: 10px;
-  margin-top: 10px;
-  padding-top: 2.5px;
+  margin: 7px 0 0 15px;
+  font-size: 13px;
+  font-weight: semibold;
+  letter-spacing: 0.3px;
 `;
