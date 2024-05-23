@@ -10,7 +10,7 @@ export const ImageSkeleton = styled.div`
   width: 187.5px;
   background-color: #949294;
   border-radius: 10px;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
 
   &::after {

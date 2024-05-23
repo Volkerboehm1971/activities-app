@@ -1,6 +1,7 @@
 import React from "react";
-import IconHeartBorder from "./icons/HeartBorder";
-import IconHeartFilled from "./icons/HeartFilled";
+import IconStarBorder from "./icons/StarBorder";
+import IconStarFilled from "./icons/StarFilled";
+import { IconContainer } from "./styledComponents/Bookmark.styled";
 
 export default function Bookmark({
   onHandleBookmark,
@@ -16,8 +17,8 @@ export default function Bookmark({
     : false;
 
   return (
-    <div onClick={() => handleClick()} isBookmarked={isBookmarked}>
-      {isBookmarked ? <IconHeartFilled /> : <IconHeartBorder />}
-    </div>
+    <IconContainer onClick={() => handleClick()} isBookmarked={isBookmarked}>
+      {isBookmarked ? <IconStarFilled /> : <IconStarBorder />}
+    </IconContainer>
   );
 }

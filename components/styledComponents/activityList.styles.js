@@ -27,16 +27,11 @@ export const LinkDetailsPage = styled(Link)`
   &:active {
     color: black;
   }
-  
 `;
 
 export const Li = styled.li`
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  padding: 20px 0 20px 0;
   list-style-type: none;
 `;
 
@@ -83,7 +78,7 @@ export const BookmarkContainer = styled.div`
   display: flex;
   position: absolute;
   margin-left: 260px;
-  margin-top: -10px;
+  margin-top: 5px;
   width: 40px;
   height: 40px;
   align-items: center;
