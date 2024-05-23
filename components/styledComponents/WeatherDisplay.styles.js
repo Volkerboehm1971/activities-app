@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const WeatherContainer = styled.section`
+  min-height: 150px;
+`;
+
+export const WeatherLoadingContainer = styled.div`
+  margin: 70px 20px 50px;
+  height: 90px;
+  width: 89%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
 export const WeatherSection = styled.section`
   margin: 70px 20px 50px;
   display: flex;

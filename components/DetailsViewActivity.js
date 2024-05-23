@@ -16,9 +16,7 @@ import {
   LinkEdit,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
-
 import WeatherForecast from "./WeatherForecast";
-
 import Bookmark from "./Bookmark";
 
 const DetailMap = dynamic(() => import("./DetailMap"), { ssr: false });

@@ -33,18 +33,18 @@ export default function MapGeodata({
           <SelectedLatLng>
             Selected Longitude:
             {longitude !== null
-              ? longitude
+              ? ` ${longitude}`
               : defaultLongitude
-                ? defaultLongitude
-                : ""}
+              ? ` ${defaultLongitude}`
+              : ""}
           </SelectedLatLng>
           <SelectedLatLng>
             Selected Latitude:
             {latitude !== null
-              ? latitude
+              ? ` ${latitude}`
               : defaultLatitude
-                ? defaultLatitude
-                : ""}
+              ? ` ${defaultLatitude}`
+              : ""}
           </SelectedLatLng>
         </InformationDisplay>
         <StyledMapContainer center={[52.3, 9.7]} zoom={5} zoomControl={false}>
