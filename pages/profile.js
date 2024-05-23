@@ -42,6 +42,7 @@ export default function ProfilePage({
 
   return (
     <>
+      <Header>Profile</Header>
       <HeaderArea>
         <Login />
         <LoginDataContainer>

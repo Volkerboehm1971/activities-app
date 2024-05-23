@@ -7,5 +7,4 @@ align-items: center;
 `;
 
 export const Headline = styled.h1`
-  text-align: center;
 `;
