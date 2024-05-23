@@ -12,7 +12,7 @@ export default function ActivityCard({ image, title, area }) {
   return (
     <Wrapper>
       <ImageContainer>
-        <ActivityImage src={image} layout="fill" alt="" />
+        <ActivityImage src={image} layout="fill" alt="Generated pixabay image" />
         <ImageSkeleton />
       </ImageContainer>
       <TextOverlay>

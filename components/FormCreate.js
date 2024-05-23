@@ -94,7 +94,10 @@ export default function FormCreate() {
     event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
-    window.scroll({ top: 500, left: 0, behavior: "smooth" });
+    window.scroll({ 
+      top: 1000, 
+      left: 0, 
+      behavior: "smooth" });
   };
 
   const { data: imageSearch, isLoading } = useSWR(
@@ -272,11 +275,9 @@ export default function FormCreate() {
           (imageSearch !== undefined && imageSearch.total === 0) ? (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
-              <IconMinusButton/>
-              <p>
-                0/0
-              </p>
-              <IconPlusButton/>
+              <IconMinusButton />
+              <p>0/0</p>
+              <IconPlusButton />
             </ButtonWrapper>
             <SkeletonContainer>
               <ImageSkeletonAtCreate />

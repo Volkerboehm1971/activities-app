@@ -8,9 +8,10 @@ export const ImageSkeleton = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  height: 140.5px;
-  width: 187.5px;
-  background-color: #949294;
+  height: 100%;
+  width: 100%;
+
+  background-color: #E8E8E8;
   border-radius: 10px;
   z-index: -1;
   overflow: hidden;
@@ -21,7 +22,7 @@ export const ImageSkeleton = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: -1;
   width: 100%;
   height: 100%;
   transform: translateX(-100%);
@@ -61,7 +62,7 @@ export const ImageSkeletonAtCreate = styled.div`
   left: 0;
   width: 281.25px;
   height: 210.75px;
-  background-color: #949294;
+  background-color: #E8E8E8;
   border-radius: 10px;
   z-index: 1;
   overflow: hidden;
@@ -74,7 +75,7 @@ export const ImageSkeletonAtCreate = styled.div`
   left: 0;
   z-index: 1;
   width: 100%;
-  height: 100%; /* Ensure it spans the entire height */
+  height: 100%;
   transform: translateX(-100%);
   background-image: linear-gradient(
     90deg,
