@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 import DeleteActivityModal from "@/components/DeleteActivityModal";
 import DetailsViewActivity from "@/components/DetailsViewActivity";
 import useSWR from "swr";
-import Biking from "@/assets/icons/biking.gif";
-import Image from "next/image";
-import { LoadingAnimation } from "@/components/styledComponents/activityList.styles";
 
 export default function ActivityCardDetails({
   onHandleBookmark,
@@ -23,12 +20,7 @@ export default function ActivityCardDetails({
   const { data: activity, error } = useSWR(`/api/activities/${id}`);
 
   if (!activity) {
-    return (
-      <LoadingAnimation>
-        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
-        <p>is Loading</p>
-      </LoadingAnimation>
-    );
+    return null;
   }
 
   if (error) {
