@@ -76,7 +76,6 @@ export default function FormCreate() {
     if (response.ok) {
       mutate();
     }
-
     router.push("/activityList");
   }
 
@@ -104,9 +103,6 @@ export default function FormCreate() {
 
   const typingInSearchbar =
     searchTerm.length > 0 && imageSearch && imageSearch.hits.length > 0;
-
-  console.log("fetched array", imageSearch);
-  // console.log("typingInSearchbar", typingInSearchbar);
 
   // these solution is for the moment, we will build a Modal solution next week
   function showAlert(event) {
