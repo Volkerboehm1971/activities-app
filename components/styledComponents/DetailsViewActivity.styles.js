@@ -85,8 +85,8 @@ export const ButtonDelete = styled.button`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
-  background-color: #ed3021;
-  border: 7px solid #ed3021;
+  background-color: #F23E2E;
+  border: 7px solid #F23E2E;
   border-radius: 5px;
   font-size: 18px;
   width: 75px;
@@ -100,8 +100,8 @@ export const LinkEdit = styled(Link)`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
-  background-color: #4caf50;
-  border: 7px solid #4caf50;
+  background-color: #85CCE1;
+  border: 7px solid #85CCE1;
   border-radius: 5px;
   font-size: 18px;
   width: 75px;

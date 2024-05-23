@@ -1,27 +1,29 @@
 import useSWR from "swr";
 import {
+  WeatherContainer,
   WeatherSection,
   Area,
   Temperature,
   WeatherIcon,
   Error,
   Span,
+  WeatherLoadingContainer,
 } from "./styledComponents/WeatherDisplay.styles";
 
 export default function WeatherDisplay({ area, lat, lng }) {
-  const { data: weather } = useSWR(
-
-
+  const { data: weather, error } = useSWR(
     lat && lng && `/api/weather/?lat=${lat}&lng=${lng}`
   );
 
-  if (!weather) {
-    return <p>Loading...</p>;
+  if (error) {
+    return <p>Error</p>;
   }
 
   return (
-    <>
-      {weather.list ? (
+    <WeatherContainer>
+      {!weather ? (
+        <WeatherLoadingContainer />
+      ) : weather.list ? (
         <WeatherSection>
           <Area>{area}</Area>
           <WeatherIcon
@@ -36,6 +38,6 @@ export default function WeatherDisplay({ area, lat, lng }) {
           <Span>{area}</Span>
         </Error>
       )}
-    </>
+    </WeatherContainer>
   );
 }

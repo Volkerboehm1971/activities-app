@@ -12,14 +12,13 @@ import { Roboto_Flex } from "@next/font/google";
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
 const roboto = Roboto_Flex({
-  subsets: ['latin'],
-}) 
+  subsets: ["latin"],
+});
 
 export default function App({ Component, pageProps }) {
   const [bookmarkedActivities, setBookmarkedActivities] = useState([]);
 
   const { data: activities, error } = useSWR("/api/activities", fetcher);
-
 
   if (!activities) {
     return (
@@ -57,24 +56,24 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-    <main className={roboto.className}>
-      <SessionProvider session={pageProps.session}>
-        <SWRConfig
-          value={{
-            fetcher,
-          }}
-        >
-          <GlobalStyle />
-          <Layout>
-            <Component
-              {...pageProps}
-              activities={activities}
-              onHandleBookmark={onHandleBookmark}
-              bookmarkedActivities={bookmarkedActivities}
-            />
-          </Layout>
-        </SWRConfig>
-      </SessionProvider>
+      <main className={roboto.className}>
+        <SessionProvider session={pageProps.session}>
+          <SWRConfig
+            value={{
+              fetcher,
+            }}
+          >
+            <GlobalStyle />
+            <Layout>
+              <Component
+                {...pageProps}
+                activities={activities}
+                onHandleBookmark={onHandleBookmark}
+                bookmarkedActivities={bookmarkedActivities}
+              />
+            </Layout>
+          </SWRConfig>
+        </SessionProvider>
       </main>
     </>
   );

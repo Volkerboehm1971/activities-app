@@ -60,12 +60,8 @@ export const LinkDetailsPage = styled(Link)`
 `;
 
 export const Li = styled.li`
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  padding: 20px 0 20px 0;
   list-style-type: none;
 `;
 

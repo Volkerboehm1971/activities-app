@@ -26,13 +26,30 @@ export const authOptions = {
           credentials.password === "fisch"
         ) {
           return {
-            name: "Max",
+            name: "Kim",
             email: "test@example.com",
+            image:
+              "https://img.freepik.com/free-vector/woman-profile-account-picture_24908-81036.jpg?t=st=1716469905~exp=1716473505~hmac=f79c59b132a80a63c346e9ef697649b7e2e45ce96de9bf89a9f47e2230ec4b02&w=1480",
           };
         }
+        return null;
       },
     }),
   ],
+  callbacks: {
+    async session({ session, token, user }) {
+      if (token) {
+        session.user.image = token.image;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.image = user.image;
+      }
+      return token;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

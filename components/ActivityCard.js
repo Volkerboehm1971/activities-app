@@ -1,6 +1,7 @@
 import {
+  ImageContainer,
   ActivityImage,
-  Div,
+  TextOverlay,
   Title,
   Area,
   Wrapper,
@@ -9,15 +10,15 @@ import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 export default function ActivityCard({ image, title, area }) {
   return (
-    <>
-      <Wrapper>
-        <ActivityImage src={image} width={187.5} height={140.5} alt="" />
+    <Wrapper>
+      <ImageContainer>
+        <ActivityImage src={image} layout="fill" alt="" />
         <ImageSkeleton />
-      </Wrapper>
-      <Div>
+      </ImageContainer>
+      <TextOverlay>
         <Title>{title}</Title>
         <Area>{area}</Area>
-      </Div>
-    </>
+      </TextOverlay>
+    </Wrapper>
   );
 }

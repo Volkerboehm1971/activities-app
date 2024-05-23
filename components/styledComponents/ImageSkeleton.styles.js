@@ -12,7 +12,7 @@ export const ImageSkeleton = styled.div`
   width: 187.5px;
   background-color: #949294;
   border-radius: 10px;
-  z-index: 1;
+  z-index: -1;
   overflow: hidden;
 
 &::after {
@@ -86,10 +86,10 @@ export const ImageSkeletonAtCreate = styled.div`
   animation: shimmer 1.5s infinite;
   content: "";
 
-  @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
+    @keyframes shimmer {
+      100% {
+        transform: translateX(100%);
+      }
+    }
   }
-}
-}
 `;

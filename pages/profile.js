@@ -23,7 +23,7 @@ export default function ProfilePage({
   bookmarkedActivities = [],
 }) {
   const bookmarkedActivitiesDetails = activities.filter((activity) =>
-    bookmarkedActivities.includes(activity._id)
+    bookmarkedActivities.includes(activity._id),
   );
 
   const { data: session } = useSession();
@@ -31,6 +31,7 @@ export default function ProfilePage({
   if (!session || !session.user) {
     return (
       <>
+        <Header>Profile</Header>
         <ErrorMessageNotSignedIn>
           You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
