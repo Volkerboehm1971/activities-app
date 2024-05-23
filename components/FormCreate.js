@@ -18,11 +18,17 @@ import {
   TinyDiv,
   ModalContainer,
 } from "./styledComponents/FormCreate.styles";
+import {
+  ImageSkeleton,
+  SkeletonContainer,
+  ImageSkeletonAtCreate,
+} from "./styledComponents/ImageSkeleton.styles";
+import IconMinusButton from "./icons/MinusButton";
+import IconPlusButton from "./icons/PlusButton";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
-import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
@@ -70,7 +76,6 @@ export default function FormCreate() {
     if (response.ok) {
       mutate();
     }
-
     router.push("/activityList");
   }
 
@@ -97,8 +102,7 @@ export default function FormCreate() {
   );
 
   const typingInSearchbar =
-    (imageSearch && imageSearch.hits && imageSearch.hits.length > 0) &
-    (searchTerm.length > 0);
+    searchTerm.length > 0 && imageSearch && imageSearch.hits.length > 0;
 
   // these solution is for the moment, we will build a Modal solution next week
   function showAlert(event) {
@@ -206,7 +210,7 @@ export default function FormCreate() {
             latitude={latitude}
             longitude={longitude}
             clickedPosition={clickedPosition}
-          ></MapGeodata>
+          />
         )}
 
         <Section>
@@ -234,43 +238,23 @@ export default function FormCreate() {
         {typingInSearchbar ? (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
-              <MinusButton
+              <IconMinusButton
                 onClick={() => {
                   if (increment >= 1) {
                     setIncrement((prevCount) => prevCount - 1);
                   }
                 }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#000000"
-                >
-                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                </svg>
-              </MinusButton>
+              />
               <p>
                 {increment + 1}/{imageSearch.hits.length}
               </p>
-              <PlusButton
+              <IconPlusButton
                 onClick={() => {
                   if (increment < imageSearch.hits.length - 1) {
                     setIncrement((prevCount) => prevCount + 1);
                   }
                 }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#000000"
-                >
-                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
-                </svg>
-              </PlusButton>
+              />
             </ButtonWrapper>
             {isLoading ? (
               <ImageSkeleton />
@@ -283,6 +267,20 @@ export default function FormCreate() {
                 />
               </ImageContainer>
             )}
+          </ContainerSwitchesAndPicture>
+        ) : (searchTerm.length > 0) & (imageSearch === undefined) ||
+          (imageSearch !== undefined && imageSearch.total === 0) ? (
+          <ContainerSwitchesAndPicture>
+            <ButtonWrapper>
+              <IconMinusButton/>
+              <p>
+                0/0
+              </p>
+              <IconPlusButton/>
+            </ButtonWrapper>
+            <SkeletonContainer>
+              <ImageSkeletonAtCreate />
+            </SkeletonContainer>
           </ContainerSwitchesAndPicture>
         ) : null}
         <Button type="submit">Add Activity</Button>
