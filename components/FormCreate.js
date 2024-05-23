@@ -283,7 +283,6 @@ export default function FormCreate() {
               <IconPlusButton/>
             </ButtonWrapper>
             <SkeletonContainer>
-              <p> Type Away!</p>
               <ImageSkeletonAtCreate />
             </SkeletonContainer>
           </ContainerSwitchesAndPicture>
