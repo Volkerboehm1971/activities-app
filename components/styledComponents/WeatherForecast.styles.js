@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const WeatherForecastField = styled.section`
   margin: 25px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const WeatherHeadline = styled.h2`
@@ -18,6 +21,7 @@ export const DayContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 15px 0 15px;
 `;
 
 export const DisplayedDayDetailsPage = styled.p`
