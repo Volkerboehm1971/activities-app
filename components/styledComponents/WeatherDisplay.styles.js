@@ -5,7 +5,7 @@ export const WeatherContainer = styled.section`
 `;
 
 export const WeatherLoadingContainer = styled.div`
-  margin: 70px 20px 50px;
+  margin: 10px 20px 50px;
   height: 90px;
   width: 89%;
   border-radius: 8px;
@@ -13,7 +13,7 @@ export const WeatherLoadingContainer = styled.div`
 `;
 
 export const WeatherSection = styled.section`
-  margin: 70px 20px 50px;
+  margin: 10px 20px 50px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
