@@ -105,7 +105,7 @@ export const WrapperSearchBar = styled.div`
   width: 100%;
 `;
 
-export const WrapperSearchAndSwitch = styled.div`
+export const ContainerSwitchesAndPicture = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -18,13 +18,17 @@ import {
   TinyInputsWrapper,
   TinyDiv,
   ModalContainer,
-  WrapperSearchAndSwitch,
+  ContainerSwitchesAndPicture,
 } from "./styledComponents/FormEdit.styles";
+import {
+  ImageSkeleton,
+  SkeletonContainer,
+  ImageSkeletonAtCreate,
+} from "./styledComponents/ImageSkeleton.styles";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
-import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
@@ -53,7 +57,7 @@ export default function FormEdit({ id, activityToEdit }) {
     ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
 
-  const typingInSearchbar = searchTerm.length > 0;
+  const typingInSearchbar = searchTerm.length >= 0;
 
   const { mutate } = useSWR(`/api/activities/${id}`);
 
@@ -238,8 +242,6 @@ export default function FormEdit({ id, activityToEdit }) {
           />
         </Section>
 
-        <Section>
-          <WrapperSearchAndSwitch>
             <WrapperSearchBar>
               <label htmlFor="image">Search Activity Image</label>
               <InputSearchField
@@ -250,7 +252,8 @@ export default function FormEdit({ id, activityToEdit }) {
                 onChange={handleKeyPress}
               />
             </WrapperSearchBar>
-            {typingInSearchbar && (
+            {typingInSearchbar ? (
+              <ContainerSwitchesAndPicture>
               <ButtonWrapper>
                 <MinusButton
                   onClick={() => {
@@ -293,8 +296,6 @@ export default function FormEdit({ id, activityToEdit }) {
                   </svg>
                 </PlusButton>
               </ButtonWrapper>
-            )}
-          </WrapperSearchAndSwitch>
           {isLoading ? (
             <ImageSkeleton />
           ) : (
@@ -306,7 +307,24 @@ export default function FormEdit({ id, activityToEdit }) {
               />
             </ImageContainer>
           )}
-        </Section>
+          </ContainerSwitchesAndPicture>
+        ) : (
+          searchTerm.length > 0 &&
+          (imageSearch === undefined || imageSearch.total === 0) && (
+            <ContainerSwitchesAndPicture>
+              <ButtonWrapper>
+                <MinusButton />
+                <p>0/0</p>
+                <PlusButton />
+              </ButtonWrapper>
+              <SkeletonContainer>
+                <ImageSkeletonAtCreate />
+              </SkeletonContainer>
+            </ContainerSwitchesAndPicture>
+          )
+        )
+
+          }
 
         <ButtonContainer>
           <LinkCancel href={`/${id}`}>Cancel</LinkCancel>
