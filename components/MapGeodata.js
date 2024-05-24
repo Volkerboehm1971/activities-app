@@ -27,7 +27,7 @@ export default function MapGeodata({
   defaultLongitude,
 }) {
   return (
-    <Overlay>
+    <Overlay onClick={onClickClose}>
       <Container>
         <InformationDisplay>
           <SelectedLatLng>
