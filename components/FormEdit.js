@@ -19,6 +19,7 @@ import {
   TinyDiv,
   ModalContainer,
   ContainerSwitchesAndPicture,
+  Main
 } from "./styledComponents/FormEdit.styles";
 import {
   ImageSkeleton,
@@ -115,7 +116,6 @@ export default function FormEdit({ id, activityToEdit }) {
   };
 
   return (
-    <>
       <Form onSubmit={handleSubmit}>
         <Section>
           <label htmlFor="title">Activity Name</label>
@@ -233,7 +233,7 @@ export default function FormEdit({ id, activityToEdit }) {
           <label htmlFor="description">Description</label>
           <Textarea
             id="description"
-            rows="8"
+            rows="7"
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
@@ -242,71 +242,71 @@ export default function FormEdit({ id, activityToEdit }) {
           />
         </Section>
 
-            <WrapperSearchBar>
-              <label htmlFor="image">Search Activity Image</label>
-              <InputSearchField
-                id="image"
-                name="image"
-                type="text"
-                value={searchTerm}
-                onChange={handleKeyPress}
-              />
-            </WrapperSearchBar>
-            {typingInSearchbar ? (
-              <ContainerSwitchesAndPicture>
-              <ButtonWrapper>
-                <MinusButton
-                  onClick={() => {
-                    if (increment >= 1) {
-                      setIncrement((prevCount) => prevCount - 1);
-                    }
-                  }}
+        <WrapperSearchBar>
+          <label htmlFor="image">Search Activity Image</label>
+          <InputSearchField
+            id="image"
+            name="image"
+            type="text"
+            value={searchTerm}
+            onChange={handleKeyPress}
+          />
+        </WrapperSearchBar>
+        {typingInSearchbar ? (
+          <ContainerSwitchesAndPicture>
+            <ButtonWrapper>
+              <MinusButton
+                onClick={() => {
+                  if (increment >= 1) {
+                    setIncrement((prevCount) => prevCount - 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 700 960"
+                  width="24px"
+                  fill="#000000"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#000000"
-                  >
-                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                  </svg>
-                </MinusButton>
-                <p>
-                  {increment + 1}/
-                  {typingInSearchbar & defaultImage
-                    ? imageSearch.hits.length
-                    : "1"}
-                </p>
-                <PlusButton
-                  onClick={() => {
-                    if (increment < imageSearch.hits.length - 1) {
-                      setIncrement((prevCount) => prevCount + 1);
-                    }
-                  }}
+                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                </svg>
+              </MinusButton>
+              <p>
+                {increment + 1}/
+                {typingInSearchbar & defaultImage
+                  ? imageSearch.hits.length
+                  : "1"}
+              </p>
+              <PlusButton
+                onClick={() => {
+                  if (increment < imageSearch.hits.length - 1) {
+                    setIncrement((prevCount) => prevCount + 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#000000"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#000000"
-                  >
-                    <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
-                  </svg>
-                </PlusButton>
-              </ButtonWrapper>
-          {isLoading ? (
-            <ImageSkeleton />
-          ) : (
-            <ImageContainer>
-              <SearchImage
-                src={defaultOrSearchedImage}
-                fill
-                alt="Pixabay Image"
-              />
-            </ImageContainer>
-          )}
+                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                </svg>
+              </PlusButton>
+            </ButtonWrapper>
+            {isLoading ? (
+              <ImageSkeleton />
+            ) : (
+              <ImageContainer>
+                <SearchImage
+                  src={defaultOrSearchedImage}
+                  fill
+                  alt="Pixabay Image"
+                />
+              </ImageContainer>
+            )}
           </ContainerSwitchesAndPicture>
         ) : (
           searchTerm.length > 0 &&
@@ -322,15 +322,12 @@ export default function FormEdit({ id, activityToEdit }) {
               </SkeletonContainer>
             </ContainerSwitchesAndPicture>
           )
-        )
-
-          }
+        )}
 
         <ButtonContainer>
           <LinkCancel href={`/${id}`}>Cancel</LinkCancel>
           <ButtonSave type="submit">Save</ButtonSave>
         </ButtonContainer>
       </Form>
-    </>
   );
 }

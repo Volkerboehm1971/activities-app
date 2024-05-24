@@ -2,19 +2,19 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
+
 export const Form = styled.form`
-  margin: 5px 30px 30px 30px;
+  margin: 5px 30px 0px 30px;
   width: 310px;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 0.7rem;
 `;
 
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  padding-top: 0.7rem;
-  gap: 0.6rem;
+  gap: 0.27rem;
 `;
 
 export const Input = styled.input`
@@ -33,6 +33,7 @@ export const TinyInputsWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 0.7rem;
 `;
 
 export const TinyInput = styled.input`
@@ -57,6 +58,7 @@ export const ModalContainer = styled.section`
   justify-content: center;
   border-radius: 0.5rem;
   width: 175px;
+  margin-top: 3px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -76,8 +78,8 @@ export const Textarea = styled.textarea`
 export const ButtonContainer = styled.section`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 1rem;
-  margin-bottom: 70px;
+  margin-top: 5px;
+  margin-bottom: 75px;
 `;
 
 export const LinkCancel = styled(Link)`
@@ -116,7 +118,7 @@ export const InputSearchField = styled.input`
   display: flex;
   width: 100%;
   margin-right: 25px;
-  margin-top: 0.7rem;
+  margin-top: 0.27rem;
   padding: 0.5rem 0.5rem 0.5rem 30px;
   border: 2px solid black;
   border-radius: 0.5rem;
@@ -128,15 +130,14 @@ export const InputSearchField = styled.input`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-  margin-top: 20px;
+  gap: 20px;
+  margin-bottom: 10px;
   align-items: center;
 `;
 
 export const PlusButton = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,8 +157,8 @@ export const PlusButton = styled.div`
 `;
 
 export const MinusButton = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   border: 2px solid black;
