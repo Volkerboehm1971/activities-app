@@ -21,7 +21,7 @@ export default function HomePage({ activities }) {
   }, [activities, randomActivity]);
   return (
     <>
-      <Header>Activity App</Header>
+      <Header>Activity Tip</Header>
       {randomActivity && (
         <>
           <WeatherDisplay

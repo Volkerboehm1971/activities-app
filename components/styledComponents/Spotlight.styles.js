@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export const Article = styled.article`
   position: relative;
-  height: 234px;
-  width: 311px;
+  height: 360px;
+  width: 335px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
@@ -29,7 +29,7 @@ export const Title = styled.p`
 `;
 
 export const Area = styled.p`
-  margin: 7px 0 0 15px;
+  margin: 7px 0 10px 15px;
   font-size: 13px;
   font-weight: semibold;
   letter-spacing: 0.3px;
