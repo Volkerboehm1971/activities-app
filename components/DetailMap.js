@@ -6,7 +6,7 @@ import { Icon } from "leaflet";
 export default function DetailMap({ latitude, longitude }) {
   const customIcon = new Icon({
     iconUrl:
-      "https://icons.iconarchive.com/icons/steve/zondicons/512/Location-icon.png",
+      "https://cdn2.iconfinder.com/data/icons/social-media-8/512/pointer.png",
     iconSize: [30, 30],
   });
 
@@ -18,10 +18,7 @@ export default function DetailMap({ latitude, longitude }) {
       zoom={10}
       zoomControl={false}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={[latitude, longitude]} icon={customIcon}></Marker>
     </StyledMapContainer>
   );
