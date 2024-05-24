@@ -2,9 +2,8 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const Form = styled.form`
-  margin: 30px;
+  margin: 5px 30px 30px 30px;
   width: 310px;
-  padding-top: 5px;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
@@ -46,6 +45,7 @@ export const TinyDiv = styled.div`
   display: flex;
   width: 135px;
   padding: 0.5rem;
+  margin: 0;
   border: 2px solid black;
   border-radius: 0.5rem;
   align-items: center;
@@ -151,7 +151,7 @@ export const MinusButton = styled.div`
 `;
 
 export const ImageContainer = styled.div`
- position: relative;
+  position: relative;
   display: block;
   width: 281.25px;
   height: 210.75px;
@@ -175,8 +175,8 @@ export const SearchImage = styled(Image)`
 export const Button = styled.button`
   position: center;
   color: #ffffff;
-  background-color: #85CCE1;
-  border: 7px solid #85CCE1;
+  background-color: #85cce1;
+  border: 7px solid #85cce1;
   border-radius: 5px;
   font-size: 18px;
   margin-bottom: 70px;

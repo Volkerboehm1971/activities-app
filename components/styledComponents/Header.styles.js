@@ -7,7 +7,7 @@ export const StyledHeaderContainer = styled.section`
 `;
 
 export const Headline = styled.h1`
-  margin: 0;
+  margin: 10px 0 10px 0;
   font-size: 18px;
   font-weight: 700;
 `;
