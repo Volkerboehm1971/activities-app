@@ -2,5 +2,6 @@ import styled from "styled-components";
 
 export const MapSign = styled.div`
   position: absolute;
-  right: 25px;
+  right: 30px;
+  top: 8px;
 `;
