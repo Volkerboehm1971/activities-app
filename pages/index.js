@@ -24,7 +24,6 @@ export default function HomePage({ activities }) {
       <Header>Activity App</Header>
       {randomActivity && (
         <>
-          <Login />
           <WeatherDisplay
             area={randomActivity.area}
             lat={randomActivity.lat}
