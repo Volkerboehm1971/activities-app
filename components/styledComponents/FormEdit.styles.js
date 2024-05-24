@@ -3,9 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const Form = styled.form`
-  margin: 30px;
+  margin: 5px 30px 30px 30px;
   width: 310px;
-  padding-top: 5px;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
@@ -84,8 +83,8 @@ export const ButtonContainer = styled.section`
 export const LinkCancel = styled(Link)`
   text-decoration: none;
   color: #ffffff;
-  background-color: #EFDA7F;
-  border: 7px solid #EFDA7F;
+  background-color: #efda7f;
+  border: 7px solid #efda7f;
   border-radius: 5px;
   font-size: 18px;
 `;
@@ -93,8 +92,8 @@ export const LinkCancel = styled(Link)`
 export const ButtonSave = styled.button`
   position: center;
   color: #ffffff;
-  background-color: #85CCE1;
-  border: 7px solid #85CCE1;
+  background-color: #85cce1;
+  border: 7px solid #85cce1;
   border-radius: 5px;
   font-size: 18px;
 `;
