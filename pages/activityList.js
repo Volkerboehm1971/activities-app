@@ -52,12 +52,12 @@ export default function ActivityList({
         activity.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         activity.area.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        activity.country.toLowerCase().includes(searchTerm.toLowerCase()),
+        activity.country.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     if (selectedByIcon.length > 0) {
       filtered = filtered.filter((activity) =>
-        selectedByIcon.includes(activity.categoryFilter),
+        selectedByIcon.includes(activity.categoryFilter)
       );
     }
 
@@ -70,8 +70,8 @@ export default function ActivityList({
     if (selectedByIcon.includes(category)) {
       setSelectedByIcon(
         selectedByIcon.filter(
-          (categoryParameter) => categoryParameter !== category,
-        ),
+          (categoryParameter) => categoryParameter !== category
+        )
       );
     } else {
       setSelectedByIcon([...selectedByIcon, category]);
@@ -88,7 +88,7 @@ export default function ActivityList({
       <Header>List of Activities</Header>
 
       <Section>
-        <LabelSearchField htmlFor="image">Filter Activities</LabelSearchField>
+        <LabelSearchField htmlFor="image"></LabelSearchField>
         <WrapperSearchBar>
           <InputSearchField
             id="image"
@@ -144,7 +144,6 @@ export default function ActivityList({
                     image={activity.image}
                     title={activity.title}
                     area={activity.area}
-                    isloading={isloading}
                   />
                 </LinkDetailsPage>
               </Li>
