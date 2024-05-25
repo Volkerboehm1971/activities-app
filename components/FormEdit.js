@@ -301,11 +301,13 @@ export default function FormEdit({ id, activityToEdit }) {
             )}
           </WrapperSearchAndSwitch>
           {isLoading ? (
-            <ImageContainer>              <SearchImage
+          <ImageContainer>              
+          <SearchImage
             src={defaultOrSearchedImage}
             fill
             alt="Pixabay Image"
-          /></ImageContainer>
+          />
+          </ImageContainer>
           ) : (
             <ImageContainer>
               <SearchImage
