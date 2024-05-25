@@ -43,15 +43,20 @@ export default function FormEdit({ id, activityToEdit }) {
     searchTerm.length > 0 ? `/api/images/${searchTerm}` : null,
   );
 
-  const defaultImage =
+  const searchingForImage =
     imageSearch &&
     imageSearch.hits &&
     imageSearch.hits.length > 0 &&
     searchTerm.length > 0;
 
-  const defaultOrSearchedImage = defaultImage
+
+
+  const defaultOrSearchedImage = searchingForImage
     ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
+
+  // console.log("hits value", );
+  const defaultImage = imageSearch === undefined;
 
   const typingInSearchbar = searchTerm.length > 0;
 
@@ -271,13 +276,13 @@ export default function FormEdit({ id, activityToEdit }) {
                 </MinusButton>
                 <p>
                   {increment + 1}/
-                  {typingInSearchbar & defaultImage
+                  {typingInSearchbar & searchingForImage
                     ? imageSearch.hits.length
                     : "1"}
                 </p>
                 <PlusButton
                   onClick={() => {
-                    if (increment < imageSearch.hits.length - 1) {
+                    if (defaultImage){setIncrement(1)} else if (increment < imageSearch.hits.length - 1) {
                       setIncrement((prevCount) => prevCount + 1);
                     }
                   }}
