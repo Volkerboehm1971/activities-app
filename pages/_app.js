@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }) {
   if (!activities) {
     return (
       <LoadingAnimation>
-        <Image src={Biking} alt="Biking-Gif" width="256" height="142" />
+        <Image src={Biking} alt="Biking-Gif" width="299" height="195" />
         <p>is Loading</p>
       </LoadingAnimation>
     );
@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
 
   function removeActivityFromBookmarks(id) {
     setBookmarkedActivities(
-      bookmarkedActivities.filter((activityId) => activityId !== id)
+      bookmarkedActivities.filter((activityId) => activityId !== id),
     );
   }
 
