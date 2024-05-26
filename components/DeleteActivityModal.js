@@ -26,7 +26,7 @@ export default function DeleteActivityModal({
 
   return (
     <>
-      <OverlayDelete onClick={() => setIsDeleteMode(!isDeleteMode)}>
+      <OverlayDelete>
         <DeleteField>
           <DescriptionContainer>
             <h2>Delete activity</h2>

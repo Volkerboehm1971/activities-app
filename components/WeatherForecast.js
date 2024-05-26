@@ -81,11 +81,7 @@ export default function WeatherForecast({ detailActivity }) {
           </ModalContainer>
         </WeatherForecastField>
         {showWeatherForecastModal && (
-          <Overlay
-            onClick={() =>
-              setShowWeatherForecastModal(!showWeatherForecastModal)
-            }
-          >
+          <Overlay>
             <StyledDiv>
               <WeatherForecastModal
                 filteredWeatherAfternoon={filteredWeatherAfternoon}
