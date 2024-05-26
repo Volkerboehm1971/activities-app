@@ -48,17 +48,20 @@ export default function FormEdit({ id, activityToEdit }) {
     searchTerm.length > 0 ? `/api/images/${searchTerm}` : null,
   );
 
-  const defaultImage =
+  const searchingForImage =
     imageSearch &&
     imageSearch.hits &&
     imageSearch.hits.length > 0 &&
     searchTerm.length > 0;
 
-  const defaultOrSearchedImage = defaultImage
+
+
+  const defaultOrSearchedImage = searchingForImage
     ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
 
-  const typingInSearchbar = searchTerm.length >= 0;
+  const defaultImage = imageSearch === undefined;
+  const typingInSearchbar = searchTerm.length > 0;
 
   const { mutate } = useSWR(`/api/activities/${id}`);
 
@@ -269,28 +272,28 @@ export default function FormEdit({ id, activityToEdit }) {
                   width="24px"
                   fill="#000000"
                 >
-                  <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-                </svg>
-              </MinusButton>
-              <p>
-                {increment + 1}/
-                {typingInSearchbar & defaultImage
-                  ? imageSearch.hits.length
-                  : "1"}
-              </p>
-              <PlusButton
-                onClick={() => {
-                  if (increment < imageSearch.hits.length - 1) {
-                    setIncrement((prevCount) => prevCount + 1);
-                  }
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#000000"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#000000"
+                  >
+                    <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                  </svg>
+                </MinusButton>
+                <p>
+                  {increment + 1}/
+                  {typingInSearchbar & searchingForImage
+                    ? imageSearch.hits.length
+                    : "1"}
+                </p>
+                <PlusButton
+                  onClick={() => {
+                    if (defaultImage){setIncrement(1)} else if (increment < imageSearch.hits.length - 1) {
+                      setIncrement((prevCount) => prevCount + 1);
+                    }
+                  }}
                 >
                   <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
                 </svg>
@@ -307,22 +310,25 @@ export default function FormEdit({ id, activityToEdit }) {
                 />
               </ImageContainer>
             )}
-          </ContainerSwitchesAndPicture>
-        ) : (
-          searchTerm.length > 0 &&
-          (imageSearch === undefined || imageSearch.total === 0) && (
-            <ContainerSwitchesAndPicture>
-              <ButtonWrapper>
-                <MinusButton />
-                <p>0/0</p>
-                <PlusButton />
-              </ButtonWrapper>
-              <SkeletonContainer>
-                <ImageSkeletonAtCreate />
-              </SkeletonContainer>
-            </ContainerSwitchesAndPicture>
-          )
-        )}
+          </WrapperSearchAndSwitch>
+          {isLoading ? (
+          <ImageContainer>              
+          <SearchImage
+            src={defaultOrSearchedImage}
+            fill
+            alt="Pixabay Image"
+          />
+          </ImageContainer>
+          ) : (
+            <ImageContainer>
+              <SearchImage
+                src={defaultOrSearchedImage}
+                fill
+                alt="Pixabay Image"
+              />
+            </ImageContainer>
+          )}
+        </Section>
 
         <ButtonContainer>
           <LinkCancel href={`/${id}`}>Cancel</LinkCancel>

@@ -6,7 +6,7 @@ export const IconsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
@@ -19,7 +19,7 @@ export const ContainerIconLabel = styled.button`
   align-items: center;
   background-color: white;
   border: 0px;
-  padding: 10px;
+  padding: 5px 10px;
   color: ${(props) => (props.selected ? "orange" : "black")};
 `;
 

@@ -6,17 +6,22 @@ import {
   TextOverlay,
   Title,
 } from "./styledComponents/Spotlight.styles";
+import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 export default function Spotlight({ title, area, image }) {
   return (
     <>
       <Article>
         <SpotlightActivityContainer>
-          <SpotlightImage
-            src={image}
-            layout="fill"
-            alt="Image Random Activity"
-          />
+          {!image ? (
+            <ImageSkeleton />
+          ) : (
+            <SpotlightImage
+              src={image}
+              layout="fill"
+              alt="Image Random Activity"
+            />
+          )}
         </SpotlightActivityContainer>
         <TextOverlay>
           <Title>{title}</Title>

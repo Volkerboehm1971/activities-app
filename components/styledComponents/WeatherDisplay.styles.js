@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const WeatherContainer = styled.section`
-  min-height: 150px;
+  min-height: 120px;
 `;
 
 export const WeatherLoadingContainer = styled.div`
@@ -9,7 +9,7 @@ export const WeatherLoadingContainer = styled.div`
   height: 90px;
   width: 89%;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 `;
 
 export const WeatherSection = styled.section`
@@ -18,7 +18,7 @@ export const WeatherSection = styled.section`
   align-items: center;
   justify-content: space-evenly;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 `;
 
 export const Area = styled.p`
