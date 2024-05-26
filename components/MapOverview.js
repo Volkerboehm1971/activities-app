@@ -23,7 +23,7 @@ const customIcon = new Icon({
 
 export default function MapOverview({ onClickClose, filteredActivities }) {
   return (
-    <Overlay onClick={onClickClose}>
+    <Overlay>
       <MapOverviewContainer>
         <MapOverviewButton onClick={onClickClose}>
           <X />
