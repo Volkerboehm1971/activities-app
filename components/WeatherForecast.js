@@ -53,7 +53,7 @@ export default function WeatherForecast({ detailActivity }) {
     filteredWeatherAfternoon.length > 0 && (
       <>
         <WeatherForecastField>
-          <WeatherHeadline>3-Day Weather Forecast</WeatherHeadline>
+          <WeatherHeadline>3 Day Weather Forecast</WeatherHeadline>
           <ThreeDaysContainer>
             {filteredWeatherAfternoon.map((weather, index) => (
               <DayContainer key={index}>

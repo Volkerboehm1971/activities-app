@@ -5,13 +5,14 @@ import Image from "next/image";
 export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;
-  background-color: #3e407d;
-  border: 5px solid #3e407d;
+  background-color: #0079C2;
+  /* border: 5px solid #3e407d; */
   border-radius: 5px;
   margin-left: 30px;
-  font-size: 17px;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 4px 7px 0px 5px;
+  vertical-align: middle;
 `;
 
 export const LinkAndBookmarkContainer = styled.div`
@@ -24,7 +25,6 @@ export const LinkAndBookmarkContainer = styled.div`
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-left: 1.8rem;
   margin-right: 1.8rem;
   margin-top: 2rem;
@@ -34,6 +34,7 @@ export const Section = styled.section`
 export const DetailImageContainer = styled.div`
   border-radius: 13px;
   overflow: hidden;
+  margin-top: 0;
 `;
 
 export const DetailImage = styled(Image)`
@@ -51,21 +52,26 @@ export const Div = styled.div`
 `;
 
 export const Subheader = styled.h3`
-  font-size: 15px;
-  margin-top: 8px;
+  font-size: 1rem;
+  margin-top: 2px;
   margin-bottom: 0;
+  font-weight: 500;
 `;
 
 export const Info = styled.p`
-  font-size: small;
+  font-size: 0.85rem;
+  font-weight: 400;
   margin-top: 0.3rem;
+  margin-bottom: 0;
 `;
 
 export const Article = styled.p`
   line-height: 1.4;
-  font-size: small;
   margin-top: 0.7rem;
   padding-right: 1.5rem;
+  font-weight: 170;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
 `;
 
 export const AreaCountyContainer = styled.div`
@@ -77,7 +83,7 @@ export const AreaCountyContainer = styled.div`
 export const ButtonContainer = styled.section`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 16px;
+  margin-top: 5px;
   margin-bottom: 70px;
 `;
 

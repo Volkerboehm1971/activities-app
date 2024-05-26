@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 export const WeatherForecastField = styled.section`
-  margin: 25px 32px 32px 32px;
+  margin: 25px 32px 10px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const WeatherHeadline = styled.h2`
+  font-weight: 600;
   margin-left: 5px;
   margin-bottom: 0;
+  letter-spacing: 1px;
 `;
 
 export const ThreeDaysContainer = styled.div`
@@ -26,7 +28,7 @@ export const DayContainer = styled.div`
 
 export const DisplayedDayDetailsPage = styled.p`
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 450;
   margin: 0;
 `;
 
@@ -36,7 +38,7 @@ export const WeatherIconDetailsPage = styled.img`
 
 export const TemperatureDetailsPage = styled.p`
   margin: 0;
-  font-weight: 700;
+  font-weight: 450;
   font-size: 14px;
 `;
 
@@ -49,6 +51,13 @@ export const ModalContainer = styled.section`
   font-size: 12px;
   font-weight: 600;
   text-align: center;
+
+
+
+  &:hover{
+    background-color: #D4D4D4;
+    cursor: pointer;
+  }
 `;
 
 export const Overlay = styled.section`
