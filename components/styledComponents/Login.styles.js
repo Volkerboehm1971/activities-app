@@ -6,8 +6,8 @@ export const LoginNoutButton = styled.button`
   right: 15px;
   text-decoration: none;
   color: #ffffff;
-  background-color: #85CCE1;
-  border: 5px solid #85CCE1;
+  background-color: #0079C2;
+  border: 5px solid #0079C2;
   border-radius: 5px;
   font-size: 17px;
   padding-left: 5px;
@@ -15,13 +15,13 @@ export const LoginNoutButton = styled.button`
   margin-top: 25px;
 
   &:hover {
-    background-color: #EFDA7F;
-    border-color: #EFDA7F;
+    background-color: #3e407d;
+    border-color: #3e407d;
   }
 
   &:active {
-    background-color: #EFDA7F;
-    border-color: #EFDA7F;
+    background-color: #3e407d;
+    border-color: #3e407d;
   }
 `;
 

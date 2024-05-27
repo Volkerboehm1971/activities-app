@@ -6,12 +6,11 @@ export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;
   background-color: #0079C2;
-  /* border: 5px solid #3e407d; */
   border-radius: 5px;
   margin-left: 30px;
   font-size: 15px;
   font-weight: 300;
-  padding: 4px 7px 0px 5px;
+  padding: 6px 7px 0px 5px;
   vertical-align: middle;
 `;
 
@@ -106,8 +105,8 @@ export const LinkEdit = styled(Link)`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
-  background-color: #85CCE1;
-  border: 7px solid #85CCE1;
+  background-color: #3e407d;
+  border: 7px solid #3e407d;
   border-radius: 5px;
   font-size: 18px;
   width: 75px;

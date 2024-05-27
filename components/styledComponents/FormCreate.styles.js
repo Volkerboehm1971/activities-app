@@ -175,8 +175,8 @@ export const SearchImage = styled(Image)`
 export const Button = styled.button`
   position: center;
   color: #ffffff;
-  background-color: #85cce1;
-  border: 7px solid #85cce1;
+  background-color: #3e407d;
+  border: 7px solid #3e407d;
   border-radius: 5px;
   font-size: 18px;
   margin-bottom: 70px;
