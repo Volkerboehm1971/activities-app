@@ -67,11 +67,11 @@ export const InputSearchField = styled.input`
 `;
 
 export const ErrorMessage = styled.p`
-  color: red;
-  font-size: medium;
-  font-weight: bold;
+  color: #969A9E;
+  font-size: 1rem;
+  font-weight: 450;
   text-align: center;
-  margin: 0 0 25px 0;
+  margin: 20 0 45 0;
 `;
 
 export const BookmarkContainer = styled.div`

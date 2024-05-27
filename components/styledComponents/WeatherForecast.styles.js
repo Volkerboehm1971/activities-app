@@ -11,7 +11,6 @@ export const WeatherHeadline = styled.h2`
   font-weight: 600;
   margin-left: 5px;
   margin-bottom: 0;
-  letter-spacing: 1px;
 `;
 
 export const ThreeDaysContainer = styled.div`

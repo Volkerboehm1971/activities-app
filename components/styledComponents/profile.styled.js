@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const ErrorMessageNotSignedIn = styled.p`
-  color: red;
+  color: #969A9E;
   font-size: medium;
-  font-weight: bold;
+  font-weight: 400;
   text-align: center;
   margin: 250px 0 0 0;
 `;
@@ -66,9 +66,9 @@ export const Li = styled.li`
 `;
 
 export const ErrorMessage = styled.p`
-  color: red;
+  color: #969A9E;
   font-size: medium;
-  font-weight: bold;
+  font-weight: 400;
   text-align: center;
   margin: 0 0 25px 0;
 `;
