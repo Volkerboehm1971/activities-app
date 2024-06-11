@@ -8,6 +8,15 @@ export const Article = styled.article`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+
+
+  @media only screen and (min-width: 550px){
+    width: 500px;
+    height: 0 auto;}
+
+  @media only screen and (min-width: 1000px){
+    width: 700px;
+  }
 `;
 
 export const SpotlightActivityContainer = styled.div`
