@@ -17,6 +17,7 @@ import {
   TinyInput,
   TinyDiv,
   ModalContainer,
+  Label,
 } from "./styledComponents/FormCreate.styles";
 import {
   ImageSkeleton,
@@ -118,7 +119,7 @@ export default function FormCreate() {
         onSubmit={latitude && longitude !== null ? handleSubmit : showAlert}
       >
         <Section>
-          <label htmlFor="title">Activity Name</label>
+          <Label htmlFor="title">Activity Name</Label>
           <Input
             id="title"
             name="title"
@@ -130,7 +131,7 @@ export default function FormCreate() {
           />
         </Section>
         <Section>
-          <label htmlFor="category">Category of Activity</label>
+          <Label htmlFor="category">Category of Activity</Label>
           <Select id="category" name="category" required>
             <option value="">--Please select a category--</option>
             <option value="Water-Surfsport">Surfsport</option>
@@ -166,7 +167,7 @@ export default function FormCreate() {
         </Section>
         <TinyInputsWrapper>
           <Section>
-            <label htmlFor="area">Area</label>
+            <Label htmlFor="area">Area</Label>
             <TinyInput
               id="area"
               name="area"
@@ -176,7 +177,7 @@ export default function FormCreate() {
             />
           </Section>
           <Section>
-            <label htmlFor="country">Country</label>
+            <Label htmlFor="country">Country</Label>
             <TinyInput
               id="country"
               name="country"
@@ -189,11 +190,11 @@ export default function FormCreate() {
           {longitude && latitude && !showModal && (
             <>
               <Section>
-                <label htmlFor="area">Longitude</label>
+                <Label htmlFor="area">Longitude</Label>
                 <TinyDiv id="lng">{longitude}</TinyDiv>
               </Section>
               <Section>
-                <label htmlFor="area">Latitude</label>
+                <Label htmlFor="area">Latitude</Label>
                 <TinyDiv id="lat">{latitude}</TinyDiv>
               </Section>
             </>
@@ -215,18 +216,18 @@ export default function FormCreate() {
         )}
 
         <Section>
-          <label htmlFor="description">Description</label>
+          <Label htmlFor="description">Description</Label>
           <Textarea
             id="description"
-            rows="8"
+            rows="7"
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
             required
           />
         </Section>
-        <label htmlFor="image">Search Activity Image</label>
-        <WrapperSearchBar>
+        <Section>
+        <Label htmlFor="image">Search Activity Image</Label>
           <InputSearchField
             id="image"
             name="image"
@@ -235,7 +236,7 @@ export default function FormCreate() {
             required
             onChange={handleKeyPress}
           />
-        </WrapperSearchBar>
+        </Section>
         {typingInSearchbar ? (
           <ContainerSwitchesAndPicture>
             <ButtonWrapper>
@@ -249,7 +250,7 @@ export default function FormCreate() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"
-                  viewBox="0 -960 960 960"
+                  viewBox="0 -960 700 960"
                   width="24px"
                   fill="#000000"
                 >

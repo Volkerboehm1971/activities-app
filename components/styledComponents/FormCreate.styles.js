@@ -2,17 +2,21 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const Form = styled.form`
-  margin: 5px 30px 30px 30px;
+  margin: 5px 30px 0px 30px;
   width: 310px;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 0.7rem;
+`;
+
+export const Label = styled.label`
+  padding-left: 3px;
 `;
 
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.27rem;
 `;
 
 export const Input = styled.input`
@@ -25,6 +29,7 @@ export const Select = styled.select`
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
+  appearance: none;
 `;
 
 export const TinyInputsWrapper = styled.section`
@@ -97,15 +102,14 @@ export const ContainerSwitchesAndPicture = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 30px;
-  margin-bottom: 25px;
-  margin-top: 20px;
+  gap: 20px;
+  margin-bottom: 10px;
   align-items: center;
 `;
 
 export const PlusButton = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,8 +131,8 @@ export const PlusButton = styled.div`
 `;
 
 export const MinusButton = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;

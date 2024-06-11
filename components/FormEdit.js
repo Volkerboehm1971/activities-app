@@ -18,13 +18,18 @@ import {
   TinyInputsWrapper,
   TinyDiv,
   ModalContainer,
-  WrapperSearchAndSwitch,
+  ContainerSwitchesAndPicture,
+  Main
 } from "./styledComponents/FormEdit.styles";
+import {
+  ImageSkeleton,
+  SkeletonContainer,
+  ImageSkeletonAtCreate,
+} from "./styledComponents/ImageSkeleton.styles";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
-import { ImageSkeleton } from "./styledComponents/ImageSkeleton.styles";
 
 const MapGeodata = dynamic(() => import("./MapGeodata"), {
   ssr: false,
@@ -55,9 +60,7 @@ export default function FormEdit({ id, activityToEdit }) {
     ? imageSearch.hits[increment].webformatURL
     : activityToEdit?.image;
 
-  // console.log("hits value", );
   const defaultImage = imageSearch === undefined;
-
   const typingInSearchbar = searchTerm.length > 0;
 
   const { mutate } = useSWR(`/api/activities/${id}`);
@@ -116,7 +119,6 @@ export default function FormEdit({ id, activityToEdit }) {
   };
 
   return (
-    <>
       <Form onSubmit={handleSubmit}>
         <Section>
           <label htmlFor="title">Activity Name</label>
@@ -234,7 +236,7 @@ export default function FormEdit({ id, activityToEdit }) {
           <label htmlFor="description">Description</label>
           <Textarea
             id="description"
-            rows="8"
+            rows="7"
             name="description"
             type="text"
             pattern="^(?!.*\s{2,}).+$"
@@ -243,26 +245,32 @@ export default function FormEdit({ id, activityToEdit }) {
           />
         </Section>
 
-        <Section>
-          <WrapperSearchAndSwitch>
-            <WrapperSearchBar>
-              <label htmlFor="image">Search Activity Image</label>
-              <InputSearchField
-                id="image"
-                name="image"
-                type="text"
-                value={searchTerm}
-                onChange={handleKeyPress}
-              />
-            </WrapperSearchBar>
-            {typingInSearchbar && (
-              <ButtonWrapper>
-                <MinusButton
-                  onClick={() => {
-                    if (increment >= 1) {
-                      setIncrement((prevCount) => prevCount - 1);
-                    }
-                  }}
+        <WrapperSearchBar>
+          <label htmlFor="image">Search Activity Image</label>
+          <InputSearchField
+            id="image"
+            name="image"
+            type="text"
+            value={searchTerm}
+            onChange={handleKeyPress}
+          />
+        </WrapperSearchBar>
+        {typingInSearchbar ? (
+          <ContainerSwitchesAndPicture>
+            <ButtonWrapper>
+              <MinusButton
+                onClick={() => {
+                  if (increment >= 1) {
+                    setIncrement((prevCount) => prevCount - 1);
+                  }
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 700 960"
+                  width="24px"
+                  fill="#000000"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -287,17 +295,20 @@ export default function FormEdit({ id, activityToEdit }) {
                     }
                   }}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#000000"
-                  >
-                    <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
-                  </svg>
-                </PlusButton>
-              </ButtonWrapper>
+                  <path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z" />
+                </svg>
+              </PlusButton>
+            </ButtonWrapper>
+            {isLoading ? (
+              <ImageSkeleton />
+            ) : (
+              <ImageContainer>
+                <SearchImage
+                  src={defaultOrSearchedImage}
+                  fill
+                  alt="Pixabay Image"
+                />
+              </ImageContainer>
             )}
           </WrapperSearchAndSwitch>
           {isLoading ? (
@@ -324,6 +335,5 @@ export default function FormEdit({ id, activityToEdit }) {
           <ButtonSave type="submit">Save</ButtonSave>
         </ButtonContainer>
       </Form>
-    </>
   );
 }
