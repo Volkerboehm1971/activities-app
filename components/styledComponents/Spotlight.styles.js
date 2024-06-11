@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { Devices } from "./Devices.styles";
 
 export const Article = styled.article`
   position: relative;
@@ -9,13 +10,9 @@ export const Article = styled.article`
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 
-
-  @media only screen and (min-width: 550px){
+  @media only screen and (${Devices.xs}){
     width: 500px;
-    height: 0 auto;}
-
-  @media only screen and (min-width: 1000px){
-    width: 700px;
+    height: 0 auto;
   }
 `;
 
