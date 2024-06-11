@@ -12,3 +12,10 @@ export const LinkDetailsPage = styled(Link)`
     color: black;
   }
 `;
+
+export const HomepageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

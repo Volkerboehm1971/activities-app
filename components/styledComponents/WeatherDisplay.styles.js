@@ -1,19 +1,25 @@
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
 
-export const WeatherContainer = styled.section`
-  min-height: 120px;
+export const WeatherContainer = styled.div`
+  margin: 10px 20px 30px;
+  width: 90%;
+
+  @media only screen and (${Devices.xl}){
+    width: 700px;
+  }
 `;
 
 export const WeatherLoadingContainer = styled.div`
-  margin: 10px 20px 50px;
-  height: 90px;
-  width: 89%;
+  height: 100%;
+  width: 100%;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 `;
 
 export const WeatherSection = styled.section`
-  margin: 10px 20px 50px;
+  height: 100%;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;

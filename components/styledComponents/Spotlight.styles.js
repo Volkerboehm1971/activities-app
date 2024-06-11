@@ -10,9 +10,9 @@ export const Article = styled.article`
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 
-  @media only screen and (${Devices.xs}){
-    width: 500px;
-    height: 0 auto;
+  @media only screen and (${Devices.md}){
+    width: 700px;
+    height: 500px;
   }
 `;
 
