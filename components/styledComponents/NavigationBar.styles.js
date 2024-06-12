@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
+
 
 export const Navigation = styled.nav`
   width: 100%;
@@ -14,7 +16,7 @@ export const List = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const LinkElement = styled.a`

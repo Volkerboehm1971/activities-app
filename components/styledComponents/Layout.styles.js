@@ -6,10 +6,10 @@ export const Main = styled.main`
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 1000px;
+    height: 100vh;
 
  @media only screen and (min-width: 1260px){
-    border-left: 100px solid #000000;
-    border-right: 100px solid #000000;
+    border-left: 100px solid #DDE8FF;
+    border-right: 100px solid #DDE8FF;
     }
 `;
