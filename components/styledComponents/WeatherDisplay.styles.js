@@ -4,7 +4,6 @@ import { Devices } from "./Devices.styles";
 export const WeatherContainer = styled.div`
   margin: 10px 20px 30px;
   width: 90%;
-
   @media only screen and (${Devices.xl}){
     width: 700px;
   }
