@@ -24,7 +24,6 @@ export default function App({ Component, pageProps }) {
     return (
       <LoadingAnimation>
         <Image src={Biking} alt="Biking-Gif" width="299" height="195" />
-        <p>is Loading</p>
       </LoadingAnimation>
     );
   }

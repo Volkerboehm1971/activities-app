@@ -2,11 +2,10 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const LoadingAnimation = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Ul = styled.ul`
