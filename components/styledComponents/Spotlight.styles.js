@@ -11,8 +11,13 @@ export const Article = styled.article`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 
   @media only screen and (${Devices.md}){
-    width: 700px;
-    height: 500px;
+    min-width: 700px;
+    min-height: 500px;
+  }
+
+  @media only screen and (min-width: 1700px) {
+    min-height: 700px;
+    max-height: 70%;
   }
 `;
 

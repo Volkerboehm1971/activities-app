@@ -1,9 +1,10 @@
 import NavigationBar from "./NavigationBar";
+import { Main } from "./styledComponents/Layout.styles";
 
 export default function Layout({ children }) {
   return (
     <>
-      <main>{children}</main>
+      <Main>{children}</Main>
       <NavigationBar />
     </>
   );
