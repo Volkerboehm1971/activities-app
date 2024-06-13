@@ -15,6 +15,8 @@ import {
   ButtonDelete,
   LinkEdit,
   ResponsiveWrapper,
+  WrapperImage,
+  TextSection,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
 import WeatherForecast from "./WeatherForecast";
@@ -43,21 +45,24 @@ export default function DetailsViewActivity({
         />
       </LinkAndBookmarkContainer>
       <Section>
+        <WrapperImage>
         <DetailImageContainer>
           <DetailImage
             src={detailActivity.image}
-            width={340}
-            height={200}
+            fill
             alt="Image of Activity"
           />
         </DetailImageContainer>
+        </WrapperImage>
 
+
+        <TextSection>
         <Title>{detailActivity.title}</Title>
-
         <Div>
           <Subheader>Description</Subheader>
           <Article>{detailActivity.description}</Article>
         </Div>
+        </TextSection>
 
         <AreaCountyContainer>
           <Div>

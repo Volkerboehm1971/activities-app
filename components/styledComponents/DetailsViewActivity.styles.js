@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import { Devices } from "./Devices.styles";
 
 export const ResponsiveWrapper = styled.div`
   margin-left: 200px;
@@ -27,6 +28,15 @@ export const LinkAndBookmarkContainer = styled.div`
   margin-right: 26px;
 `;
 
+export const WrapperImage = styled.div`
+  position: relative;
+  width: 100%;
+  height: 200px;
+  @media only screen and (${Devices.xl}){
+    height: 360px;}
+`;
+
+
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -37,13 +47,15 @@ export const Section = styled.section`
 `;
 
 export const DetailImageContainer = styled.div`
-  border-radius: 13px;
-  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
   margin-top: 0;
 `;
 
 export const DetailImage = styled(Image)`
   object-fit: cover;
+  border-radius: 13px;
 `;
 
 export const Title = styled.h3`
@@ -54,6 +66,14 @@ export const Title = styled.h3`
 
 export const Div = styled.div`
   margin-top: 0.5rem;
+`;
+
+export const TextSection = styled.section`
+ 
+ @media only screen and (${Devices.xl}){
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Subheader = styled.h3`

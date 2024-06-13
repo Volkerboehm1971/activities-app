@@ -18,8 +18,8 @@ export const Ul = styled.ul`
 
   @media only screen and (${Devices.xl}){
     display: grid;
-    grid-template-columns: repeat(2, 200px);
-    column-gap: 180px;
+    grid-template-columns: repeat(2, 280px);
+    column-gap: 80px;
   }
 `;
 
@@ -46,6 +46,12 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+
+
+  @media only screen and (${Devices.xl}){
+    margin-bottom: 40px;
+  width: 100%;
+  }
 `;
 
 export const LabelSearchField = styled.label`
@@ -91,8 +97,4 @@ export const BookmarkContainer = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 10;
-
-  @media only screen and (${Devices.xl}){
-    left: 197px;
-  }
 `;

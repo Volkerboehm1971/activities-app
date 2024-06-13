@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
 
 export const IconsContainer = styled.div`
   display: flex;
@@ -11,6 +12,13 @@ export const IconsContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 95%;
+
+  @media only screen and (${Devices.xl}){
+    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: none;
+    gap: 12px;
+  }
 `;
 
 export const ContainerIconLabel = styled.button`

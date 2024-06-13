@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   @media only screen and (${Devices.xl}){
     width: 280px;
     height: 211px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   }
 `;
 
