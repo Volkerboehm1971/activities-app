@@ -62,7 +62,6 @@ export default function App({ Component, pageProps }) {
               fetcher,
             }}
           >
-            {/* <GlobalStyle /> */}
             <Layout>
               <Component
                 {...pageProps}

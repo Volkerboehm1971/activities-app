@@ -2,6 +2,11 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
+export const ResponsiveWrapper = styled.div`
+  margin-left: 200px;
+  margin-right: 200px;
+`;
+
 export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;
@@ -18,6 +23,7 @@ export const LinkAndBookmarkContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 95%;
   margin-right: 26px;
 `;
 
@@ -82,6 +88,7 @@ export const AreaCountyContainer = styled.div`
 export const ButtonContainer = styled.section`
   display: flex;
   justify-content: space-evenly;
+  min-width: 210px;
   margin-top: 5px;
   margin-bottom: 70px;
 `;

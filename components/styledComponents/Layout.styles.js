@@ -8,9 +8,11 @@ export const Main = styled.main`
     align-items: center;
     min-height: 100vh;
 
+    
+
 
  @media only screen and (min-width: 1260px){
-    border-left: 20vw solid #DDE8FF;
-    border-right: 20vw solid #DDE8FF;
+    border-left: 18vw solid #DDE8FF;
+    border-right: 18vw solid #DDE8FF;
     }
 `;

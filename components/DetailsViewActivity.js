@@ -14,6 +14,7 @@ import {
   ButtonContainer,
   ButtonDelete,
   LinkEdit,
+  ResponsiveWrapper,
 } from "./styledComponents/DetailsViewActivity.styles";
 import Header from "./Header";
 import WeatherForecast from "./WeatherForecast";
@@ -32,6 +33,7 @@ export default function DetailsViewActivity({
   return (
     <>
       <Header>Details of Activity</Header>
+      <ResponsiveWrapper>
       <LinkAndBookmarkContainer>
         <LinkActivityList href="/activityList">← Back</LinkActivityList>
         <Bookmark
@@ -44,7 +46,7 @@ export default function DetailsViewActivity({
         <DetailImageContainer>
           <DetailImage
             src={detailActivity.image}
-            width={400}
+            width={340}
             height={200}
             alt="Image of Activity"
           />
@@ -79,6 +81,7 @@ export default function DetailsViewActivity({
           Delete
         </ButtonDelete>
       </ButtonContainer>
+      </ResponsiveWrapper>
     </>
   );
 }

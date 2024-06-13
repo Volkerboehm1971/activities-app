@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { Devices } from "./Devices.styles";
 
 export const LoadingAnimation = styled.div`
   position: absolute;
@@ -14,6 +15,12 @@ export const Ul = styled.ul`
   gap: 25px;
   padding: 0 0 85px 0;
   margin: 0 2rem 0 2rem;
+
+  @media only screen and (${Devices.xl}){
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    column-gap: 180px;
+  }
 `;
 
 export const LinkDetailsPage = styled(Link)`
@@ -29,6 +36,7 @@ export const LinkDetailsPage = styled(Link)`
 `;
 
 export const Li = styled.li`
+position: relative;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   list-style-type: none;
@@ -76,11 +84,15 @@ export const ErrorMessage = styled.p`
 export const BookmarkContainer = styled.div`
   display: flex;
   position: absolute;
-  margin-left: 260px;
-  margin-top: 5px;
+  right: 5px;
+  top: 3px;
   width: 40px;
   height: 40px;
   align-items: center;
   justify-content: center;
   z-index: 10;
+
+  @media only screen and (${Devices.xl}){
+    left: 197px;
+  }
 `;
