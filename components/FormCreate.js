@@ -90,11 +90,10 @@ export default function FormCreate() {
   }
 
   const handleKeyPress = (event) => {
-    event.preventDefault();
     setSearchTerm(event.target.value);
     setIncrement(0);
     window.scroll({
-      top: 1000,
+      top: 5000,
       left: 0,
       behavior: "smooth",
     });

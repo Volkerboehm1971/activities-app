@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { Devices } from "./Devices.styles";
 
 export const LoadingAnimation = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Ul = styled.ul`
@@ -15,6 +15,12 @@ export const Ul = styled.ul`
   gap: 25px;
   padding: 0 0 85px 0;
   margin: 0 2rem 0 2rem;
+
+  @media only screen and (${Devices.xl}){
+    display: grid;
+    grid-template-columns: repeat(2, 280px);
+    column-gap: 80px;
+  }
 `;
 
 export const LinkDetailsPage = styled(Link)`
@@ -30,6 +36,7 @@ export const LinkDetailsPage = styled(Link)`
 `;
 
 export const Li = styled.li`
+position: relative;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   list-style-type: none;
@@ -39,6 +46,12 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+
+
+  @media only screen and (${Devices.xl}){
+    margin-bottom: 40px;
+  width: 100%;
+  }
 `;
 
 export const LabelSearchField = styled.label`
@@ -77,8 +90,8 @@ export const ErrorMessage = styled.p`
 export const BookmarkContainer = styled.div`
   display: flex;
   position: absolute;
-  margin-left: 260px;
-  margin-top: 5px;
+  right: 5px;
+  top: 3px;
   width: 40px;
   height: 40px;
   align-items: center;

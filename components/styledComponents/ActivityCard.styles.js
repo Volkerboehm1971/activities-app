@@ -1,13 +1,20 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { Devices } from "./Devices.styles";
 
 export const Wrapper = styled.div`
   position: relative;
-  height: 234px;
   width: 311px;
+  height: 234px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media only screen and (${Devices.xl}){
+    width: 280px;
+    height: 211px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const ImageContainer = styled.div`

@@ -1,5 +1,5 @@
+import "../styles/global.css";
 import Layout from "@/components/Layout";
-import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 import useSWR from "swr";
@@ -24,7 +24,6 @@ export default function App({ Component, pageProps }) {
     return (
       <LoadingAnimation>
         <Image src={Biking} alt="Biking-Gif" width="299" height="195" />
-        <p>is Loading</p>
       </LoadingAnimation>
     );
   }
@@ -63,7 +62,6 @@ export default function App({ Component, pageProps }) {
               fetcher,
             }}
           >
-            <GlobalStyle />
             <Layout>
               <Component
                 {...pageProps}

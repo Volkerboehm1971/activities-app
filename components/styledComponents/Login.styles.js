@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
 
 export const LoginNoutButton = styled.button`
   position: absolute;
@@ -23,6 +24,10 @@ export const LoginNoutButton = styled.button`
     background-color: #3e407d;
     border-color: #3e407d;
   }
+
+  @media screen and (${Devices.xl}){
+    right: 21vw;
+  }
 `;
 
 export const LoginStatus = styled.p`
@@ -30,4 +35,8 @@ export const LoginStatus = styled.p`
   top: 20px;
   right: 15px;
   text-align: right;
+
+  @media screen and (${Devices.xl}){
+    right: 21vw;
+  }
 `;

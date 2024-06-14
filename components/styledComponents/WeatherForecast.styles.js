@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
 
 export const WeatherForecastField = styled.section`
   margin: 25px 32px 10px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (${Devices.xl}){
+    margin-top: 40px;
+    margin-bottom: 40px;
+    transform: scale(1.2);}
 `;
 
 export const WeatherHeadline = styled.h2`

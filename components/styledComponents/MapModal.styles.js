@@ -8,5 +8,9 @@ export const MapSign = styled.div`
   &:hover{
     cursor: pointer;
   }
+
+  @media only screen and (min-width: 1260px){
+    right: 21vw;
+  }
 `;
 

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import { LinkDetailsPage } from "../components/styledComponents/index.styles";
+import { LinkDetailsPage, HomepageContainer } from "../components/styledComponents/index.styles";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
@@ -22,7 +22,7 @@ export default function HomePage({ activities }) {
     <>
       <Header>Activity Tip</Header>
       {randomActivity && (
-        <>
+        <HomepageContainer>
           <WeatherDisplay
             area={randomActivity.area}
             lat={randomActivity.lat}
@@ -35,7 +35,7 @@ export default function HomePage({ activities }) {
               area={randomActivity.area}
             />
           </LinkDetailsPage>
-        </>
+        </HomepageContainer>
       )}
     </>
   );
