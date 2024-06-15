@@ -1,5 +1,6 @@
 import { MapContainer } from "react-leaflet";
 import styled from "styled-components";
+import { Devices } from "./Devices.styles";
 
 export const Overlay = styled.section`
   position: fixed;
@@ -54,4 +55,14 @@ export const StyledMapContainer = styled(MapContainer)`
   width: 250px;
   height: 350px;
   border-radius: 10px;
+
+  @media only screen and (${Devices.md}) {
+    width: 550px;
+    min-height: 500px;
+  }
+
+  @media only screen and (${Devices.xl}) {
+    width: 700px;
+    min-height: 500px;
+  }
 `;
