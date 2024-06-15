@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { Devices } from "./Devices.styles";
 
 export const Form = styled.form`
   margin: 5px 30px 0px 30px;
@@ -7,6 +8,10 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+
+  @media only screen and (${Devices.xl}) {
+    width: 500px;
+  }
 `;
 
 export const Label = styled.label`
@@ -44,6 +49,14 @@ export const TinyInput = styled.input`
   padding: 0.5rem;
   border: 2px solid black;
   border-radius: 0.5rem;
+
+  @media only screen and (${Devices.xl}) {
+    width: 225px;
+  }
+`;
+
+export const GeoLabel = styled.label`
+  margin-top: 6px;
 `;
 
 export const TinyDiv = styled.div`
@@ -54,6 +67,11 @@ export const TinyDiv = styled.div`
   border: 2px solid black;
   border-radius: 0.5rem;
   align-items: center;
+  height: 35px;
+
+  @media only screen and (${Devices.xl}) {
+    width: 225px;
+  }
 `;
 
 export const ModalContainer = styled.section`

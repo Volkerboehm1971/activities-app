@@ -10,13 +10,13 @@ export const Article = styled.article`
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 
-  @media only screen and (${Devices.md}){
+  @media only screen and (${Devices.md}) {
     min-width: 700px;
     min-height: 500px;
   }
 
   @media only screen and (min-width: 1700px) {
-    min-height: 700px;
+    min-height: 650px;
     max-height: 70%;
   }
 `;

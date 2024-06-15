@@ -5,7 +5,6 @@ import {
   Select,
   Textarea,
   Button,
-  WrapperSearchBar,
   InputSearchField,
   ContainerSwitchesAndPicture,
   ButtonWrapper,
@@ -15,6 +14,7 @@ import {
   SearchImage,
   TinyInputsWrapper,
   TinyInput,
+  GeoLabel,
   TinyDiv,
   ModalContainer,
   Label,
@@ -100,7 +100,7 @@ export default function FormCreate() {
   };
 
   const { data: imageSearch, isLoading } = useSWR(
-    searchTerm.length > 0 ? `/api/images/${searchTerm}` : null,
+    searchTerm.length > 0 ? `/api/images/${searchTerm}` : null
   );
 
   const typingInSearchbar =
@@ -109,7 +109,7 @@ export default function FormCreate() {
   function showAlert(event) {
     event.preventDefault();
     window.alert(
-      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button.",
+      "Please ensure that both longitude and latitude values are selected before proceeding. You can easily select them by clicking on the 'Select Geodata' button."
     );
   }
   return (
@@ -189,11 +189,11 @@ export default function FormCreate() {
           {longitude && latitude && !showModal && (
             <>
               <Section>
-                <Label htmlFor="area">Longitude</Label>
+                <GeoLabel htmlFor="area">Longitude</GeoLabel>
                 <TinyDiv id="lng">{longitude}</TinyDiv>
               </Section>
               <Section>
-                <Label htmlFor="area">Latitude</Label>
+                <GeoLabel htmlFor="area">Latitude</GeoLabel>
                 <TinyDiv id="lat">{latitude}</TinyDiv>
               </Section>
             </>
@@ -226,7 +226,7 @@ export default function FormCreate() {
           />
         </Section>
         <Section>
-        <Label htmlFor="image">Search Activity Image</Label>
+          <Label htmlFor="image">Search Activity Image</Label>
           <InputSearchField
             id="image"
             name="image"
