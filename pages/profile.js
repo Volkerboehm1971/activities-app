@@ -16,6 +16,7 @@ import { BookmarkContainer } from "@/components/styledComponents/activityList.st
 import ActivityCard from "@/components/ActivityCard";
 import Login from "@/components/Login";
 import { useSession } from "next-auth/react";
+import DarkModeSwitch from "@/components/DarkModeSwitch";
 
 export default function ProfilePage({
   onHandleBookmark,
@@ -36,6 +37,7 @@ export default function ProfilePage({
           You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
         <Login />
+        <DarkModeSwitch/>
       </>
     );
   }
@@ -45,6 +47,7 @@ export default function ProfilePage({
       <Header>Profile</Header>
       <HeaderArea>
         <Login />
+        <DarkModeSwitch/>
         <LoginDataContainer>
           <ProfileImage
             src={session.user.image}
