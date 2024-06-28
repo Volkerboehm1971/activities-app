@@ -1,13 +1,18 @@
 import Image from "next/image"
 import { useState } from "react"
-import { ImageMoon, ImageSun, ModalContainer, ModalImage } from "./styledComponents/DarkModeSwtich.styles"
+import { Container, ImageMoon, ImageSun, ModalContainer, ModalImage, ToggelOverlay } from "./styledComponents/DarkModeSwtich.styles"
 
 export default function DarkModeSwitch(){
 
 return (
-    <ModalContainer>
-        <ImageSun src="/weatherIcons/01d.png" alt="" height={32} width={32}/>
+    <Container>
+        
+            <ModalContainer>
+            <ImageSun src="/weatherIcons/01d.png" alt="" height={32} width={32}/>
+                <ToggelOverlay>
+                </ToggelOverlay>  
+            </ModalContainer>
         <ImageMoon src="/weatherIcons/01n.png" alt="" height={24} width={24}/>
-    </ModalContainer>
+    </Container>
     );
 }
