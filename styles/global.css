@@ -1,6 +1,13 @@
-/* import { createGlobalStyle } from "styled-components";
+  :root {
+    --bg-color-light: white;
+    --bg-color-dark: rgb(75, 75, 75);
+    --text-color-light: black;
+    --text-color-dark: white;
+    --primary-color-light: #0079C2;
+    --secondary-color-light: #3e407d;
+    --warning-color-light: red;
+  }
 
-export default createGlobalStyle` */
   *,
   *::before,
   *::after {
