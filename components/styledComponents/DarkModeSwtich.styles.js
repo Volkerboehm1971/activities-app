@@ -7,11 +7,13 @@ export const Container = styled.div`
 
 export const ImageSun = styled(Image)`
     display: flex;
+    z-index: 3;
 `;
 
 export const ImageMoon = styled(Image)`
-    display: flex;
-    margin-top: 4px;
+    position: absolute;
+    right: 2px;
+    z-index: 3;
 `;
 
 export const ModalContainer = styled.button`
@@ -27,15 +29,20 @@ export const ModalContainer = styled.button`
     border-radius: 10px;
     background-color: var(--primary-color-light);
 
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 export const ToggelOverlay = styled.div`
-    display: flex;
+    position: absolute;
+    right: 2px;
     background-color: white;
     width: 35px;
     height: 29px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 8px;
     margin-left: 2px;
+    z-index: 2;
 `;
 

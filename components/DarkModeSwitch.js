@@ -4,15 +4,19 @@ import { Container, ImageMoon, ImageSun, ModalContainer, ModalImage, ToggelOverl
 
 export default function DarkModeSwitch(){
 
+function handleClick(){
+    
+}
+
 return (
     <Container>
-        
-            <ModalContainer>
-            <ImageSun src="/weatherIcons/01d.png" alt="" height={32} width={32}/>
-                <ToggelOverlay>
-                </ToggelOverlay>  
+            <ModalContainer onClick={() => handleClick()} >
+                <ImageSun src="/weatherIcons/01d.png" alt="" height={32} width={32}/>
+                    <ToggelOverlay>
+                    </ToggelOverlay>  
+                <ImageMoon src="/weatherIcons/01n.png" alt="" height={29} width={29}/>
             </ModalContainer>
-        <ImageMoon src="/weatherIcons/01n.png" alt="" height={24} width={24}/>
+        
     </Container>
     );
 }
