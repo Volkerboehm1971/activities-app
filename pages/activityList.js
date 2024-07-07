@@ -88,7 +88,7 @@ export default function ActivityList({
       <Header>List of Activities</Header>
 
       <Section>
-        <LabelSearchField htmlFor="image"></LabelSearchField>
+        <LabelSearchField htmlFor="image" />
         <WrapperSearchBar>
           <InputSearchField
             id="image"

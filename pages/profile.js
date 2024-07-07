@@ -22,6 +22,8 @@ export default function ProfilePage({
   onHandleBookmark,
   activities = [],
   bookmarkedActivities = [],
+  toggleDark,
+  toggleDisplay,
 }) {
   const bookmarkedActivitiesDetails = activities.filter((activity) =>
     bookmarkedActivities.includes(activity._id),
@@ -37,7 +39,7 @@ export default function ProfilePage({
           You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
         <Login />
-        <DarkModeSwitch/>
+        <DarkModeSwitch toggleDark={toggleDark} toggleDisplay={toggleDisplay}/>
       </>
     );
   }
@@ -47,7 +49,7 @@ export default function ProfilePage({
       <Header>Profile</Header>
       <HeaderArea>
         <Login />
-        <DarkModeSwitch/>
+        <DarkModeSwitch toggleDark={toggleDark} toggleDisplay={toggleDisplay}/>
         <LoginDataContainer>
           <ProfileImage
             src={session.user.image}
