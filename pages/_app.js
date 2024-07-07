@@ -35,8 +35,8 @@ export default function App({ Component, pageProps }) {
     return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
   }
 
-  function toggleDisplay(toggleDark) {
-    return setToggleDark(!toggleDark);
+  function toggleDisplay() {
+    setToggleDark(!toggleDark);
   }
 
   function checkIfActivityIsBookmarked(id) {
