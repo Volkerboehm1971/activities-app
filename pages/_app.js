@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }) {
               fetcher,
             }}
           >
-            <Layout>
+            <Layout toggleDark={toggleDark}>
               <Component
                 {...pageProps}
                 activities={activities}

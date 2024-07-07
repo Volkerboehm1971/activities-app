@@ -7,7 +7,7 @@ console.log("these are both toggle props", toggleDisplay, toggleDark);
 
 return (
     <Container>
-            <ModalContainer onClick={() => toggleDisplay()} >
+            <ModalContainer onClick={() => toggleDisplay()} $isToggled={toggleDark}>
                 <ImageSun src="/weatherIcons/01d.png" alt="Sun symbol indicating light mode" height={32} width={32} />
                     <ToggelOverlay $isToggled={toggleDark}>
                     </ToggelOverlay>  

@@ -34,8 +34,8 @@ export default function ProfilePage({
   if (!session || !session.user) {
     return (
       <>
-        <Header>Profile</Header>
-        <ErrorMessageNotSignedIn>
+        <Header toggleDark={toggleDark}>Profile</Header>
+        <ErrorMessageNotSignedIn $isToggled={toggleDark}>
           You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
         <Login />

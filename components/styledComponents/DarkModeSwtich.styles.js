@@ -38,7 +38,7 @@ export const ModalContainer = styled.button`
     width: 73px;
     height: 35px;
     padding: 0;
-    border: 1px solid white;
+    border: ${props => props.$isToggled ? "1px solid var(--secondary-color-light)" : "1px solid white" };
     border-radius: 10px;
     background-color: var(--primary-color-light);
 
