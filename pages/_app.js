@@ -15,8 +15,11 @@ const roboto = Roboto_Flex({
   subsets: ["latin"],
 });
 
+export const Darkmode = "whatever";
+
 export default function App({ Component, pageProps }) {
   const [bookmarkedActivities, setBookmarkedActivities] = useState([]);
+  const [toggleDark, setToggleDark] = useState(false);
 
   const { data: activities, error } = useSWR("/api/activities", fetcher);
 
@@ -30,6 +33,10 @@ export default function App({ Component, pageProps }) {
 
   if (error) {
     return <h1>Oh, sorry you must have taken a wrong turn!</h1>;
+  }
+
+  function toggleDisplay() {
+    setToggleDark(!toggleDark);
   }
 
   function checkIfActivityIsBookmarked(id) {
@@ -62,12 +69,14 @@ export default function App({ Component, pageProps }) {
               fetcher,
             }}
           >
-            <Layout>
+            <Layout toggleDark={toggleDark}>
               <Component
                 {...pageProps}
                 activities={activities}
                 onHandleBookmark={onHandleBookmark}
                 bookmarkedActivities={bookmarkedActivities}
+                toggleDark={toggleDark}
+                toggleDisplay={toggleDisplay}
               />
             </Layout>
           </SWRConfig>

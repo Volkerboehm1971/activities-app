@@ -94,8 +94,8 @@ export const LinkCancel = styled(Link)`
 export const ButtonSave = styled.button`
   position: center;
   color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
+  background-color: var(--secondary-color-light);
+  border: 7px solid var(--secondary-color-light);
   border-radius: 5px;
   font-size: 18px;
 `;

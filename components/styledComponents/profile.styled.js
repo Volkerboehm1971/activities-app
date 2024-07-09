@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const ErrorMessageNotSignedIn = styled.p`
-  color: #969A9E;
+  color: ${props => props.$isToggled ? "white" : "#969A9E" };
+  transition: color 250ms ease-in-out;
   font-size: medium;
   font-weight: 400;
   text-align: center;

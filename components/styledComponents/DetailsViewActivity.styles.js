@@ -11,7 +11,7 @@ export const ResponsiveWrapper = styled.div`
 export const LinkActivityList = styled(Link)`
   text-decoration: none;
   color: #ffffff;
-  background-color: #0079C2;
+  background-color: var(--primary-color-light);
   border-radius: 5px;
   margin-left: 30px;
   font-size: 15px;
@@ -132,8 +132,8 @@ export const LinkEdit = styled(Link)`
   margin: 15px 0 15px 0;
   text-decoration: none;
   color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
+  background-color: var(--secondary-color-light);
+  border: 7px solid var(--secondary-color-light);
   border-radius: 5px;
   font-size: 18px;
   width: 75px;

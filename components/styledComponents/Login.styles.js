@@ -7,8 +7,8 @@ export const LoginNoutButton = styled.button`
   right: 15px;
   text-decoration: none;
   color: #ffffff;
-  background-color: #0079C2;
-  border: 5px solid #0079C2;
+  background-color: var(--primary-color-light);
+  border: 5px solid var(--primary-color-light);
   border-radius: 5px;
   font-size: 17px;
   padding-left: 5px;
@@ -16,13 +16,13 @@ export const LoginNoutButton = styled.button`
   margin-top: 25px;
 
   &:hover {
-    background-color: #3e407d;
-    border-color: #3e407d;
+    background-color: var(--secondary-color-light);
+    border-color: var(--secondary-color-light);
   }
 
   &:active {
-    background-color: #3e407d;
-    border-color: #3e407d;
+    background-color: var(--secondary-color-light);
+    border-color: var(--secondary-color-light);
   }
 
   @media screen and (${Devices.xl}){

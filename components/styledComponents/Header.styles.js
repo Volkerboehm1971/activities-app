@@ -4,6 +4,8 @@ export const StyledHeaderContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: ${props => props.$isToggled ? "white" : "black" };
+  transition: color 250ms ease-in-out;
 `;
 
 export const Headline = styled.h1`

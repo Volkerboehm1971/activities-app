@@ -37,8 +37,8 @@ export const ButtonContainer = styled.div`
 
 export const ButtonCancel = styled.button`
   color: #ffffff;
-  background-color: #3e407d;
-  border: 7px solid #3e407d;
+  background-color: var(--secondary-color-light);
+  border: 7px solid var(--secondary-color-light);
   border-radius: 5px;
   font-size: 18px;
   width: 85px;

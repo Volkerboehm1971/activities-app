@@ -1,3 +1,4 @@
+import DarkModeSwitch from "@/components/DarkModeSwitch";
 import FormCreate from "@/components/FormCreate";
 import Header from "@/components/Header";
 

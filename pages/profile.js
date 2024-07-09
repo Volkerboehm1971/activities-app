@@ -16,11 +16,14 @@ import { BookmarkContainer } from "@/components/styledComponents/activityList.st
 import ActivityCard from "@/components/ActivityCard";
 import Login from "@/components/Login";
 import { useSession } from "next-auth/react";
+import DarkModeSwitch from "@/components/DarkModeSwitch";
 
 export default function ProfilePage({
   onHandleBookmark,
   activities = [],
   bookmarkedActivities = [],
+  toggleDark,
+  toggleDisplay,
 }) {
   const bookmarkedActivitiesDetails = activities.filter((activity) =>
     bookmarkedActivities.includes(activity._id),
@@ -31,11 +34,12 @@ export default function ProfilePage({
   if (!session || !session.user) {
     return (
       <>
-        <Header>Profile</Header>
-        <ErrorMessageNotSignedIn>
+        <Header toggleDark={toggleDark}>Profile</Header>
+        <ErrorMessageNotSignedIn $isToggled={toggleDark}>
           You are not logged in <br />- please log in!
         </ErrorMessageNotSignedIn>
         <Login />
+        <DarkModeSwitch toggleDark={toggleDark} toggleDisplay={toggleDisplay}/>
       </>
     );
   }
@@ -45,6 +49,7 @@ export default function ProfilePage({
       <Header>Profile</Header>
       <HeaderArea>
         <Login />
+        <DarkModeSwitch toggleDark={toggleDark} toggleDisplay={toggleDisplay}/>
         <LoginDataContainer>
           <ProfileImage
             src={session.user.image}
