@@ -6,6 +6,9 @@ export const WeatherContainer = styled.div`
   width: 90%;
   max-width: 335px;
   min-width: 240px;
+
+  border-radius: 8px;
+
   @media only screen and (${Devices.md}){
     width: 700px;
     max-width: none;
@@ -27,6 +30,10 @@ export const WeatherSection = styled.section`
   justify-content: space-evenly;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+
+  background-color: ${props => props.$isToggled ? "var(--terciary-color-dark)" : "white"} !important;
+  color: ${props => props.$isToggled ? "black" : "var(--text-color-light)"} !important;
 `;
 
 export const Area = styled.p`

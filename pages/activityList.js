@@ -27,6 +27,7 @@ const MapModal = dynamic(() => import("@/components/MapModal"), {
 export default function ActivityList({
   onHandleBookmark,
   bookmarkedActivities,
+  toggleDark
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
@@ -80,7 +81,7 @@ export default function ActivityList({
 
   return (
     <>
-      <MapModal
+      <MapModal toggleDark={toggleDark}
         filteredActivities={
           filteredActivities.length > 0 ? filteredActivities : activities
         }

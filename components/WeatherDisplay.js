@@ -10,7 +10,7 @@ import {
   WeatherLoadingContainer,
 } from "./styledComponents/WeatherDisplay.styles";
 
-export default function WeatherDisplay({ area, lat, lng }) {
+export default function WeatherDisplay({ area, lat, lng, toggleDark }) {
   const { data: weather, error } = useSWR(
     lat && lng && `/api/weather/?lat=${lat}&lng=${lng}`
   );
@@ -24,7 +24,7 @@ export default function WeatherDisplay({ area, lat, lng }) {
       {!weather ? (
         <WeatherLoadingContainer />
       ) : weather.list ? (
-        <WeatherSection>
+        <WeatherSection $isToggled={toggleDark}>
           <Area>{area}</Area>
           <WeatherIcon
             alt="weather"
