@@ -8,6 +8,7 @@ export const Main = styled.main`
     align-items: center;
     min-height: 100vh;
     background-color: ${props => props.$isToggled ? "var(--secondary-color-light)" : "white"};
+    color: ${props => props.$isToggled ? "var(--text-color-dark)" : "var(--text-color-light)"};
     transition: background-color 250ms ease-in-out;
 
  @media only screen and (min-width: 1260px){

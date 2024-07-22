@@ -25,7 +25,7 @@ export const ContainerIconLabel = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   border: 0px;
   padding: 5px 10px;
   color: ${(props) => (props.selected ? "orange" : "black")};

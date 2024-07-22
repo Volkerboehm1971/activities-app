@@ -8,7 +8,7 @@ const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
 });
 
-export default function HomePage({ activities }) {
+export default function HomePage({ activities, toggleDark }) {
   const [randomActivity, setRandomActivity] = useState(null);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function HomePage({ activities }) {
             area={randomActivity.area}
             lat={randomActivity.lat}
             lng={randomActivity.lng}
+            toggleDark={toggleDark}
           />
           <LinkDetailsPage href={`/${randomActivity._id}`}>
             <Spotlight
