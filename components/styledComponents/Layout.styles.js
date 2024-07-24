@@ -5,7 +5,7 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100.1vh;
   background-color: ${(props) =>
     props.$isToggled ? "var(--secondary-color-light)" : "white"};
   color: ${(props) =>
