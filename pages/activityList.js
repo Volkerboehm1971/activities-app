@@ -27,7 +27,7 @@ const MapModal = dynamic(() => import("@/components/MapModal"), {
 export default function ActivityList({
   onHandleBookmark,
   bookmarkedActivities,
-  toggleDark
+  toggleDark,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedByIcon, setSelectedByIcon] = useState([]);
@@ -81,64 +81,46 @@ export default function ActivityList({
 
   return (
     <>
-      <MapModal toggleDark={toggleDark}
-        filteredActivities={
-          filteredActivities.length > 0 ? filteredActivities : activities
-        }
-      />
-      <Header>List of Activities</Header>
-
-      <Section>
-        <LabelSearchField htmlFor="image" />
-        <WrapperSearchBar>
-          <InputSearchField
-            id="image"
-            name="image"
-            type="search"
-            value={searchTerm}
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-            }}
-            placeholder="Type to filter activities"
-            required
-          />
-        </WrapperSearchBar>
-        <CategoryFilters
-          handleIconClick={handleIconClick}
-          selectedByIcon={selectedByIcon}
+      <div>
+        <MapModal
+          toggleDark={toggleDark}
+          filteredActivities={
+            filteredActivities.length > 0 ? filteredActivities : activities
+          }
         />
-      </Section>
-      {filteredActivities.length > 0 ? (
-        <Ul>
-          {filteredActivities.map((activity) => (
-            <Li key={activity._id}>
-              <BookmarkContainer>
-                <Bookmark
-                  onHandleBookmark={onHandleBookmark}
-                  bookmarkedActivities={bookmarkedActivities}
-                  activity={activity}
-                />
-              </BookmarkContainer>
-              <LinkDetailsPage href={`/${activity._id}`}>
-                <ActivityCard
-                  id={activity._id}
-                  image={activity.image}
-                  title={activity.title}
-                  area={activity.area}
-                />
-              </LinkDetailsPage>
-            </Li>
-          ))}
-        </Ul>
-      ) : (
-        <div>
-          <ErrorMessage>
-            There is no matching result for your search! <br /> Please try
-            again!
-          </ErrorMessage>
+        <Header>List of Activities</Header>
+
+        <Section>
+          <LabelSearchField htmlFor="image" />
+          <WrapperSearchBar>
+            <InputSearchField
+              id="image"
+              name="image"
+              type="search"
+              value={searchTerm}
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
+              placeholder="Type to filter activities"
+              required
+            />
+          </WrapperSearchBar>
+          <CategoryFilters
+            handleIconClick={handleIconClick}
+            selectedByIcon={selectedByIcon}
+          />
+        </Section>
+        {filteredActivities.length > 0 ? (
           <Ul>
-            {activities.map((activity) => (
+            {filteredActivities.map((activity) => (
               <Li key={activity._id}>
+                <BookmarkContainer>
+                  <Bookmark
+                    onHandleBookmark={onHandleBookmark}
+                    bookmarkedActivities={bookmarkedActivities}
+                    activity={activity}
+                  />
+                </BookmarkContainer>
                 <LinkDetailsPage href={`/${activity._id}`}>
                   <ActivityCard
                     id={activity._id}
@@ -150,8 +132,29 @@ export default function ActivityList({
               </Li>
             ))}
           </Ul>
-        </div>
-      )}
+        ) : (
+          <div>
+            <ErrorMessage>
+              There is no matching result for your search! <br /> Please try
+              again!
+            </ErrorMessage>
+            <Ul>
+              {activities.map((activity) => (
+                <Li key={activity._id}>
+                  <LinkDetailsPage href={`/${activity._id}`}>
+                    <ActivityCard
+                      id={activity._id}
+                      image={activity.image}
+                      title={activity.title}
+                      area={activity.area}
+                    />
+                  </LinkDetailsPage>
+                </Li>
+              ))}
+            </Ul>
+          </div>
+        )}
+      </div>
     </>
   );
 }
