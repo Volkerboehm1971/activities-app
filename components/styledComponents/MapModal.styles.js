@@ -5,12 +5,11 @@ export const MapSign = styled.div`
   right: 30px;
   top: 8px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 
-  @media only screen and (min-width: 1260px){
+  @media only screen and (min-width: 1260px) {
     right: 21vw;
   }
 `;
-
