@@ -16,7 +16,7 @@ export const Ul = styled.ul`
   padding: 0 0 85px 0;
   margin: 0 2rem 0 2rem;
 
-  @media only screen and (${Devices.xl}){
+  @media only screen and (${Devices.xl}) {
     display: grid;
     grid-template-columns: repeat(2, 280px);
     column-gap: 80px;
@@ -36,7 +36,7 @@ export const LinkDetailsPage = styled(Link)`
 `;
 
 export const Li = styled.li`
-position: relative;
+  position: relative;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
   list-style-type: none;
@@ -47,10 +47,9 @@ export const Section = styled.section`
   flex-direction: column;
   gap: 0.6rem;
 
-
-  @media only screen and (${Devices.xl}){
+  @media only screen and (${Devices.xl}) {
     margin-bottom: 40px;
-  width: 100%;
+    width: 100%;
   }
 `;
 
@@ -80,7 +79,7 @@ export const InputSearchField = styled.input`
 `;
 
 export const ErrorMessage = styled.p`
-  color: #969A9E;
+  color: #969a9e;
   font-size: 1rem;
   font-weight: 450;
   text-align: center;
