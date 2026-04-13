@@ -1,5 +1,4 @@
 import "../styles/global.css";
-import Layout from "@/components/Layout";
 import { SWRConfig } from "swr";
 import { SessionProvider } from "next-auth/react";
 import useSWR from "swr";
@@ -8,6 +7,7 @@ import { LoadingAnimation } from "@/components/styledComponents/activityList.sty
 import Image from "next/image";
 import Biking from "@/assets/icons/biking.gif";
 import { Roboto_Flex } from "@next/font/google";
+import Layout from "../components/Layout";
 
 const fetcher = (arr) => fetch(arr).then((res) => res.json());
 
@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }) {
 
   function removeActivityFromBookmarks(id) {
     setBookmarkedActivities(
-      bookmarkedActivities.filter((activityId) => activityId !== id),
+      bookmarkedActivities.filter((activityId) => activityId !== id)
     );
   }
 

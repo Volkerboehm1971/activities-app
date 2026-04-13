@@ -16,7 +16,7 @@ import {
   WeatherHeadline,
 } from "./styledComponents/WeatherForecast.styles";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import WeekdayFromDateString from "./WeekdayFromDateString";
 import WeatherForecastModal from "./WeatherForecastModal";

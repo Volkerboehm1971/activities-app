@@ -2,7 +2,10 @@ import dynamic from "next/dynamic";
 import WeatherDisplay from "@/components/WeatherDisplay";
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
-import { LinkDetailsPage, HomepageContainer } from "../components/styledComponents/index.styles";
+import {
+  LinkDetailsPage,
+  HomepageContainer,
+} from "../components/styledComponents/index.styles";
 
 const Spotlight = dynamic(() => import("@/components/Spotlight"), {
   ssr: false,
@@ -18,6 +21,7 @@ export default function HomePage({ activities, toggleDark }) {
       setRandomActivity(randomActivity);
     }
   }, [activities, randomActivity]);
+
   return (
     <>
       <Header>Activity Tip</Header>
