@@ -4,7 +4,7 @@ import {
   Table,
   DisplayedDaysContainer,
   DisplayedDay,
-  Date,
+  DateW,
   Daytime,
 } from "./styledComponents/WeatherForecasModal.styles";
 import WeekdayFromDateString from "./WeekdayFromDateString";
@@ -16,45 +16,45 @@ export default function WeatherForecastModal({
   filteredWeatherEvening,
   onClickButton,
 }) {
-  // extracting the dates from the date-time-String with help of the static end value "06:00:00"
-  const dates = filteredWeatherMorning
-    .filter((date) => date.dt_txt.endsWith("06:00:00"))
-    .map((date) => date.dt_txt.split(" ")[0]);
+  const dates = filteredWeatherMorning.map((item) =>
+    new Date(item.dt * 1000).toLocaleDateString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+  );
 
   return (
-    <>
-      <WeatherForecastModalField>
-        <ModalCloseButton onClick={onClickButton}>x</ModalCloseButton>
-        <Table>
-          <tbody>
-            <td>
-              {/*because of space issues and of the everchanging WeatherArray, the filteredWeatherArrays will only be mapped to the third day  */}
-              {filteredWeatherMorning.map((weekday, index) => (
-                <DisplayedDaysContainer key={weekday.dt_txt}>
-                  <DisplayedDay>
-                    <WeekdayFromDateString dateString={weekday.dt_txt} />
-                  </DisplayedDay>
-                  <Date>{dates[index]}</Date>
-                </DisplayedDaysContainer>
-              ))}
-            </td>
-            <td>
-              <Daytime>6am</Daytime>
-              <WeekdayWeather filteredWeatherWeekday={filteredWeatherMorning} />
-            </td>
-            <td>
-              <Daytime>12am</Daytime>
-              <WeekdayWeather
-                filteredWeatherWeekday={filteredWeatherAfternoon}
-              />
-            </td>
-            <td>
-              <Daytime>18pm</Daytime>
-              <WeekdayWeather filteredWeatherWeekday={filteredWeatherEvening} />
-            </td>
-          </tbody>
-        </Table>
-      </WeatherForecastModalField>
-    </>
+    <WeatherForecastModalField>
+      <ModalCloseButton onClick={onClickButton}>x</ModalCloseButton>
+      <Table>
+        <tbody>
+          <td>
+            {filteredWeatherMorning.map((item, index) => (
+              <DisplayedDaysContainer key={item.dt}>
+                <DisplayedDay>
+                  <WeekdayFromDateString
+                    dateString={new Date(item.dt * 1000).toISOString()}
+                  />
+                </DisplayedDay>
+                <DateW>{dates[index]}</DateW>
+              </DisplayedDaysContainer>
+            ))}
+          </td>
+          <td>
+            <Daytime>6am</Daytime>
+            <WeekdayWeather filteredWeatherWeekday={filteredWeatherMorning} />
+          </td>
+          <td>
+            <Daytime>12pm</Daytime>
+            <WeekdayWeather filteredWeatherWeekday={filteredWeatherAfternoon} />
+          </td>
+          <td>
+            <Daytime>6pm</Daytime>
+            <WeekdayWeather filteredWeatherWeekday={filteredWeatherEvening} />
+          </td>
+        </tbody>
+      </Table>
+    </WeatherForecastModalField>
   );
 }

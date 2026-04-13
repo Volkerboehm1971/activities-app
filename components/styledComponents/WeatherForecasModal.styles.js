@@ -32,7 +32,7 @@ export const DisplayedDay = styled.p`
   font-weight: 600;
 `;
 
-export const Date = styled.p`
+export const DateW = styled.p`
   margin: 0;
   font-weight: 600;
   font-size: 12px;
