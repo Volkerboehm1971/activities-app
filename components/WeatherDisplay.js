@@ -23,14 +23,14 @@ export default function WeatherDisplay({ area, lat, lng, toggleDark }) {
     <WeatherContainer>
       {!weather ? (
         <WeatherLoadingContainer />
-      ) : weather.list ? (
+      ) : weather ? (
         <WeatherSection $isToggled={toggleDark}>
           <Area>{area}</Area>
           <WeatherIcon
             alt="weather"
-            src={`weatherIcons/${weather.list[0].weather[0].icon}.png`}
+            src={`weatherIcons/${weather.current.weather[0].icon}.png`}
           />
-          <Temperature>{Math.round(weather.list[0].main.temp)}°C</Temperature>
+          <Temperature>{Math.round(weather.current.temp)}°C</Temperature>
         </WeatherSection>
       ) : (
         <Error>

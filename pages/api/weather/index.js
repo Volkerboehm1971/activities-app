@@ -11,7 +11,7 @@ export default async function Weather(request, response) {
 
   if (request.method === "GET") {
     const apiResponse = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&units=metric&appid=${WEATHER_API_KEY}`
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lng}&units=metric&appid=${WEATHER_API_KEY}`
     );
 
     const WeatherData = await apiResponse.json();

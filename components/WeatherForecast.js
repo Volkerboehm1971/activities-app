@@ -1,7 +1,8 @@
-import {
-  filterWeatherData,
-  filterWeatherByTime,
-} from "../utils/filterWeatherData";
+import { useState } from "react";
+import useSWR from "swr";
+import WeekdayFromDateString from "./WeekdayFromDateString";
+import WeatherForecastModal from "./WeatherForecastModal";
+import { filterWeatherByHour } from "../utils/filterWeatherData";
 import {
   WeatherForecastField,
   ModalOpenButton,
@@ -16,11 +17,6 @@ import {
   WeatherHeadline,
 } from "./styledComponents/WeatherForecast.styles";
 
-import { useState, useEffect } from "react";
-import useSWR from "swr";
-import WeekdayFromDateString from "./WeekdayFromDateString";
-import WeatherForecastModal from "./WeatherForecastModal";
-
 export default function WeatherForecast({ detailActivity }) {
   const [showWeatherForecastModal, setShowWeatherForecastModal] =
     useState(false);
@@ -30,24 +26,11 @@ export default function WeatherForecast({ detailActivity }) {
       `/api/weather/?lat=${detailActivity.lat}&lng=${detailActivity.lng}`
   );
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  if (isLoading) return <p>Loading...</p>;
 
-  const filteredWeather = filterWeatherData(weather.list);
-
-  const filteredWeatherMorning = filterWeatherByTime(
-    filteredWeather,
-    "06:00:00"
-  ).slice(0, 3);
-  const filteredWeatherAfternoon = filterWeatherByTime(
-    filteredWeather,
-    "12:00:00"
-  ).slice(0, 3);
-  const filteredWeatherEvening = filterWeatherByTime(
-    filteredWeather,
-    "18:00:00"
-  ).slice(0, 3);
+  const filteredWeatherMorning = filterWeatherByHour(weather.hourly, 6);
+  const filteredWeatherAfternoon = filterWeatherByHour(weather.hourly, 12);
+  const filteredWeatherEvening = filterWeatherByHour(weather.hourly, 18);
 
   return (
     filteredWeatherAfternoon.length > 0 && (
@@ -55,17 +38,19 @@ export default function WeatherForecast({ detailActivity }) {
         <WeatherForecastField>
           <WeatherHeadline>3 Day Weather Forecast</WeatherHeadline>
           <ThreeDaysContainer>
-            {filteredWeatherAfternoon.map((weather, index) => (
+            {filteredWeatherAfternoon.map((item, index) => (
               <DayContainer key={index}>
                 <DisplayedDayDetailsPage>
-                  <WeekdayFromDateString dateString={weather.dt_txt} />
+                  <WeekdayFromDateString
+                    dateString={new Date(item.dt * 1000).toISOString()}
+                  />
                 </DisplayedDayDetailsPage>
                 <WeatherIconDetailsPage
                   alt="WeatherToday"
-                  src={`weatherIcons/${weather.weather[0].icon}.png`}
+                  src={`weatherIcons/${item.weather[0].icon}.png`}
                 />
                 <TemperatureDetailsPage>
-                  {Math.round(weather.main.temp)}°C
+                  {Math.round(item.temp)}°C
                 </TemperatureDetailsPage>
               </DayContainer>
             ))}
